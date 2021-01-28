@@ -1,0 +1,123 @@
+---
+title: "Eichhorn's rule, the site index concept, and the development of yield levels"
+author: Carl Vigren
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Eichhorn's rule, the site index concept, and the development of yield levels}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(forester)
+library(tidyverse)
+library(robustbase)
+```
+
+Sometimes called the 'basic tenet' of forestry, as we can read in Assmann (1970), Eichhorn's rule (after Eichhorn (1904)) states that for silver fir \emphasis{Abies alba}:
+
+"a given mean height of stand is matched by the same volume in all site classes".
+
+Gehrhardt (1909) found this to be true also for Norway Spruce \emph{Picea abies} & Scots Pine \emph{Pinus sylvestris}. Gehrhardt extended the rule to apply not only to \emph{standing volume, but total volume produced}.
+
+Given that:
+- There are only weak forestry operations
+- The volume corresponds to the \strong{total} volume, i.e. including dead and harvested volume.
+
+You can find the tables used by Gehrhardt in the forester package.
+
+```{r echo=TRUE}
+forester::Silver_fir_1921
+```
+
+While the different site classes clearly achieve a mean height at different time scales:
+
+```{r echo=TRUE, eval=TRUE, out.width="100%", dpi=300}
+Silver_fir_1921 %>% ggplot(aes(x=`Age`,y=`Mean height m`,color=factor(Site_class)))+geom_line()+theme(legend.position = "bottom")
+```
+
+There is no difference in the relation of the mean height and total yield (m3) between the site classes:
+
+```{r echo=TRUE, eval=TRUE, out.width="100%", warning=FALSE, dpi=300}
+Silver_fir_1921 %>% ggplot(aes(x=`Mean height m`,y=`Total stem wood m3`,color=factor(Site_class)))+geom_line()+theme(legend.position = "bottom")
+```
+
+
+We can test this by following a methodology suggested by Greg Johnson of the Weyerhauser Company at the Western Mensurationists meeting July 3, 2003.
+
+Our null hypothesis is that there is \emph{no difference between the growth models fitted to each site class and the model fitted regardless of site class}
+
+By fitting a Chapman-Richards growth function to each of the site classes separately and one to all the data, we can see if there is any meaningful improvement gained by separating the data by site class.
+
+By using `tidyr::nest`, we can fit functions to every set at the same time. First we create a copy of the data, in which we remove the Site classes, and then append it to the original data. We then nest the data by site class and give it a new name.
+
+```{r, echo=TRUE, eval=TRUE}
+alldata <- Silver_fir_1921 %>% mutate(Site_class="All")
+sitedata <- rbind(Silver_fir_1921, alldata)
+
+#We need to remove any NA's in Siteclass, volume or height.
+sitedata <- sitedata %>% filter(!is.na(Site_class), !is.na(`Total stem wood m3`), !is.na(`Mean height m`)) %>% rename(Volume=`Total stem wood m3`, height=`Mean height m`)
+sitedata <- sitedata %>% group_by(Site_class) %>% nest()
+sitedata
+```
+
+
+We can now easily model the different datasets with the same model. Let's model it using the Chapman-Richards function.
+
+```{r, echo=TRUE, eval=TRUE}
+modfit <- function(df){
+  nls(Volume ~ a * (height^b), data=df, start=c(a=1,b=1))
+}
+```
+
+
+```{r, echo=TRUE, eval=TRUE}
+sitedata_model <- sitedata %>% 
+  mutate(Model= purrr::map(.x=data, .f= modfit)) %>% 
+  # extract formula from each model, convert to one-sided form, &
+  # replace coefficients with fitted values, & store in dataframe
+  # as character string 
+  rowwise() %>%
+  mutate(func = formula(Model) %>% 
+           as.character() %>% 
+           magrittr::extract(3) %>%
+           gsub("height", ".x", ., fixed = T) %>%
+           gsub("a", Model$m$getPars()[1], .) %>%
+           gsub("b", Model$m$getPars()[2], .) %>%
+           paste("~", ., collapse = "")) %>%
+  ungroup()
+
+print(sitedata_model)
+```
+
+Let's plot the different models.
+```{r echo=TRUE, eval=TRUE, out.width="100%", dpi=300}
+ggplot(sitedata_model$data[[6]])+
+  theme(legend.position = "bottom")+
+  geom_point(aes(x=height,y=Volume)) + #All the data
+    # add formula in each row as a separate geom_function layer
+  lapply(seq(1, nrow(sitedata_model)),
+         function(i) geom_function(fun = rlang::as_function(formula(sitedata_model$func[i])),
+                                   aes(colour = sitedata_model$Site_class[i]))) +
+  
+  # change legend name (can also change palette / labels / etc.)
+  scale_colour_discrete(name = "Site class")
+
+```
+
+The different models look almost indistinguishable, although the regression fit to Site Class V seems to be slightly different.
+
+We'll use an ANOVA to illustrate to what degree.
+
+```{r echo=TRUE, eval=TRUE}
+anova(sitedata_model$Model[[1]],sitedata_model$Model[[2]],sitedata_model$Model[[3]],sitedata_model$Model[[4]],sitedata_model$Model[[5]],sitedata_model$Model[[6]])
+```
+
+

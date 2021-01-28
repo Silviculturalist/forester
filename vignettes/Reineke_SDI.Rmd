@@ -1,0 +1,212 @@
+---
+title: "Reineke_SDI"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Reineke_SDI}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, warning=FALSE, include=FALSE}
+library(forester)
+library(scales)
+library(tidyverse)
+library(broom)
+library(modelr)
+library(gridExtra)
+library(grid)
+```
+
+
+# Reineke's Stand Density Index
+
+While working as an associate Silviculturist for the California Forest Service (*USDA*), L. H. Reineke suggested 
+that since two stands can be described as having the exactly same (approximately normal) diameter distribution but wildly different number of stems, and as a result large differences in volume, that we must measure the level of stocking.
+
+## What is a fully stocked stand?
+
+Reineke observed in his paper (1933) in the *Journal of Agricultural Research* that the number of stems at full density declined sharply with increasing average diameter before levelling out. 
+
+
+This relationship, which can be modelled on the form $N = a\bar{D}^{-b}$ can be expressed as a linear expression:$log(N) = b * log(\bar{D}) + log(a)$ on a log-log scale.
+
+**IMPORTANT:** Although the base of the logarithm is insignificant for the index - you will calculate different intercepts with anything other than $log_{10}$.
+
+```{r, figures-side, echo=FALSE, eval=TRUE, fig.asp=1.375, fig.width=7, out.width="100%", dpi=300, warning=FALSE}
+
+a<- ggplot()+
+  xlab("Average Diameter")+
+  ylab("Stems per Acre")+
+  xlim(1,40)+
+  ylim(0,30000)+
+  coord_cartesian(ylim=c(0,30000))+
+  geom_function(fun=~10^(4.605)*.x^(-1.605))
+b<- ggplot()+
+  xlab("Average Diameter")+
+  ylab("Stems per Acre")+
+  scale_x_continuous(limits = c(1,40),breaks=c(1,2,3,4,5,6,7,8,9,10,20,30,40),trans=log10_trans())+
+  scale_y_continuous(limits=c(10,40000),breaks=c(10,20,30,40,50,60,70,80,90,100,200,300,400,500,600,700,800,900,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000, 20000, 30000, 40000),trans=log10_trans())+
+  geom_function(fun=~10^(4.605)*.x^-1.605)
+
+gridExtra::grid.arrange(a,b,ncol=2)
+```
+
+
+# Different species
+
+In `forester::Reineke_1933`, you can find some of the original data of the average diameter *Inches* for different number of stems *per Acre* which was included in Reineke's graphs, particularly for two species: White fir, *Abies concolor* and Red fir, *Abies magnifica*.
+
+```{r echo=FALSE, eval=TRUE}
+c <- Reineke_1933 %>% filter(SPP=="Abies magnifica") %>% head()
+d <- Reineke_1933 %>% filter(SPP=="Abies concolor") %>% head()
+knitr::kable(
+  list(c,d),
+  caption="Reineke's White and Red Fir stands",
+  bookstabs=TRUE, valign='t'
+)
+```
+
+Let's fit a regression to the number of stems per Acre versus mean diameter in Inches.
+
+```{r echo=TRUE, warning=FALSE}
+
+Reineke_all <- Reineke_1933 %>% mutate(SPP="All")
+Reineke_1933 <- rbind(Reineke_1933,Reineke_all)
+
+model1<- Reineke_1933 %>%
+  group_by(SPP) %>%
+  nest() %>%
+  mutate(Model= map(data, ~nls(NperAcre~ a * AverageDiameterInches^(b),start=list(a=-1,b=2),data=.))) %>%
+# extract formula from each model, convert to one-sided form, &
+# replace coefficients with fitted values, & store in dataframe
+# as character string
+rowwise() %>%
+  mutate(func = formula(Model) %>%
+           as.character() %>%
+           magrittr::extract(3) %>%
+           gsub("AverageDiameterInches", ".x", ., fixed = T) %>%
+           gsub("a", Model$m$getPars()[1], .) %>%
+           gsub("b", Model$m$getPars()[2], .) %>%
+           paste("~", ., collapse = "")) %>%
+  ungroup()
+
+```
+
+
+
+```{r, regression-plot, echo=FALSE, eval=TRUE, fig.asp=1.375, fig.width=7, out.width="100%", warning=FALSE, dpi=300}
+ggplot(data = model1$data[[3]]) +
+  geom_point(aes(x = AverageDiameterInches, y = NperAcre))+
+
+  # add formula in each row as a separate geom_function layer
+  lapply(seq(1, 2),
+         function(i) geom_function(fun = rlang::as_function(formula(model1$func[i])),
+                                   aes(colour = model1$SPP[i]))) +
+
+  # change legend name (can also change palette / labels / etc.)
+  scale_colour_discrete(name = "SPP")+
+  scale_x_continuous(limits = c(1,45),breaks=c(1,5,10,15,20,25,30,35,40,45),trans=log10_trans())+
+  scale_y_continuous(limits=c(70,10000),breaks = c(70,80,90,100,200,300,400,600,800,900,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000),trans=log10_trans())
+  
+
+```
+
+When you draw the curve to reflect the maximum residuals rather than the mean residuals, it will reflect the maximum possible densities for a species. Usually the slope is close to -1.605.
+
+$$log_{10}(N) = -1.605 * log_{10}(\bar{D}) + k$$
+
+Reineke calls the line that passes through *1'000 trees per Acre at 10 inches diameter*  the **"Reference curve"**.
+It's also called the self-thinning line or the maximum-density line (Wikipedia).
+
+The *Reference curve* has a quite similar slope between species, and can be adjusted using the constant $k$.
+
+Let's calculate $k$ for the *Reference curve* for the slope -1.605.
+
+$$log_{10}(1000) = -1.605*log_{10}(10)+ k$$
+
+This is the same as: 
+
+$$3 = -1.605 * 1 + k = -1.605 + k$$
+Therefore, $$k = 3 + 1.605 = 4.605$$
+Since we know that $k = log_{10}(a)$
+
+The self-thinning line which crosses 1000 stems at an average diameter of 10 inches is then written:
+
+$$N = 1000 = 10^{4.605}*\bar{D}^{-1.605}$$
+
+and on a log-log scale, this becomes:
+
+$$log_{10}(N)= log_{10}(1'000) = 3 = -1.605*log_{10}(\bar{D}) + 4.605$$
+
+This means that $a$ of any number of stems per acre at an average diameter of 10 inches can be described:
+$$log_{10}(SDI) = -1.605*(1) + k$$
+
+## Stand Density Index
+
+At the same slope as the reference curve, other, parallell curves can be drawn with different numbers of stems per acre at  10 inches diameter, i.e. $$log(N) = -1.605 * log(10) + k$$
+
+When the average diameter is 10 inches, i.e. $log_{10}(10) = 1$, 
+Our coefficient $a$ in $N = ax^{b}$ becomes $10^k$, where $k = log(N)+1.605$
+
+
+Aa curve for SDI=900 is then drawn: $$log_{10}(900) = -1.605 * log_{10}(10) + k$$
+Where $k$ is $$k = log_{10}(900)+1.605$$
+
+Create one function for each SDI between 1000 and 100 with an increment of -100.
+```{r}
+SDI_func <- function(SDI){
+  as.formula(paste("~",(10^(1.605+log10(SDI))), "*.x^(-1.605)"))
+}
+
+SDIlist <- data.frame(SDI=seq(from=1000, to=100,by=-100))
+
+SDIlist <- SDIlist %>% 
+  mutate(func= map(SDI,SDI_func))
+
+SDIlist <- SDIlist %>% 
+  mutate(xcordlab=40)
+
+SDIlist <- SDIlist %>% rowwise() %>% mutate(ycordlab= map(.x=xcordlab,.f=func)) %>% unnest(ycordlab)
+
+SDIlist$linetype <- c(1,rep(2,nrow(SDIlist)-1))
+
+SDIlist$SDI <- factor(SDIlist$SDI, levels=c("1000","900","800","700","600","500","400","300","200","100"))
+SDIlist$linetype <- factor(SDIlist$linetype, levels=c(1,2))
+print(SDIlist)
+
+```
+
+
+```{r, SDI-plot, echo=TRUE, eval=TRUE, fig.asp=1.375, fig.width=7, out.width="100%", warning=TRUE, dpi=300}
+
+ggplot()+
+  scale_x_continuous(limits = c(1,40),breaks=c(1,2,3,4,5,6,7,8,9,10,20,30,40),trans=log_trans())+
+  scale_y_continuous(limits=c(10,41000),breaks = c(10,20,30,40,50,60,70,80,90,100,200,300,400,500,600,700,800,900,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,20000,30000,40000),trans=log_trans())+
+  lapply(seq(1,nrow(SDIlist)),
+         function(i) geom_function(fun = SDIlist$func[[i]],
+                                   aes(linetype=SDIlist$linetype[i])))+
+  lapply(seq(1,nrow(SDIlist)),
+         function(i) annotate("text",
+                              label=paste("  SDI ",SDIlist$SDI[i]),
+                              x=SDIlist$xcordlab[i],
+                              y=SDIlist$ycordlab[i],
+                              hjust=0,
+                              size=3))+
+  theme(legend.position = "none")+
+  coord_cartesian(expand = FALSE,clip="off",xlim = c(1,40))+
+  theme(plot.margin=unit(c(1,2,0.5,0.5),"cm"))+
+  xlab("Average Diameter in Inches")+
+  ylab("Trees per Acre")
+    
+```
+
+
+
+

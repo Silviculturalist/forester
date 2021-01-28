@@ -1,0 +1,52 @@
+#' Pine spacing trials in unthinned stands
+#'
+#' @source Elfving, B. (1975) "Volume and structure in unthinned stands of Scots Pine", PhD diss., No. 35, Research Notes, Dept. of Forest Yield Research, Royal College of Forestry. Modin-Tryck AB, Stockholm, Sweden.
+#'
+#'@format A data frame with columns:
+#'\describe{
+#' \item{County}{County identifier}
+#' \item{Site}{Site identifier}
+#' \item{Plot}{Plot identifier}
+#' \item{Spacing}{Plant spacing, metres}
+#' \item{HDOM}{Height corresponding to DDOM as calculated by the stand height curve, m}
+#' \item{HA}{Arithmetic mean height, m.}
+#' \item{DDOM}{Arithmetic mean diameter at breast heigh including bark of the 100 largest trees per ha, cm}
+#' \item{DA}{Arithmetic mean diameter at breast height including bark, cm}
+#' \item{N}{Stem number per hectare}
+#' \item{G}{Basal area including bark, m^2/ha}
+#' \item{SDA}{Standard deviation of the diameter distribution, cm}
+#' \item{Revision}{Revision number}
+#'}
+#'
+#'@description
+#'
+#'Appendix 4 has been scanned to PDF from physical copy, encoded run adobe character recognition and corrected by visual inspection.
+#'Later copied and pasted to Excel, where it was sorted into spreadsheet columns and rows by Carl Vigren.
+#'
+#'\strong{Excerpt from the English abstract}
+#'
+#'Special attention is payed to five planted spacing trials, each consisting of four to five various spacings with
+#'two replications of each spacing. Detailed information about the stand development on each subplot up to stand age 22 years is given.
+#'
+#'\strong{Excerpts from the English summary}
+#'
+#'
+#'In chapter 4 a material is analysed, which consists of 4 revisions on each of 4 planted spacing test plots.
+#'At the last revision stand age on these plots was 22 years. Represented spacings vary between 0.75 and 3.0 metres.
+#'The plots are referred to with the following capitals, which symbolize the administrative districts where the plots are situated:
+#'L, F, R, Y and Z.
+#'
+#'\strong{Natural Thinning:}
+#'
+#'In the first year blanks were carefully restocked, that is why every plant was alive at the first revision. Already at the second revision there is a clear increase of plant loss with increasing initial stem number. Natural thinning is mainly caused by concurrence (sic! competition) on these plots.
+#'Few plants are lost through snow breakage, elk grazing and so on.
+#'
+#'\strong{Height development:}
+#'
+#'At the last revisions mean height decreases and top height increases with increasing initial density. The increase of top height is due to the selection effect. It has not been possible to trace any effect of the stand density upon the top height growth.
+#'
+#'\strong{Diameter development:}
+#'
+#'Diameter growth is much more dependent on stand density than height growth.
+#'
+"Pine_spacing_trials"
