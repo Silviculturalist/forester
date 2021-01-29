@@ -5,23 +5,32 @@
 \title{Site index estimation by site factors}
 \usage{
 SIS_estimate(
+  plotid,
   species,
   vegetation,
+  ground_layer,
   latitude,
   longitude,
   altitude,
-  aspect.main,
-  incline.percent,
+  aspect_main,
+  incline_percent,
   soil_moisture,
   soil_texture,
-  climate_code,
+  soil_depth,
+  lateral_water,
+  ditched,
+  local_climate,
   county
 )
 }
 \arguments{
-\item{species}{Spruce or Pine}
+\item{plotid}{PlotID}
 
-\item{vegetation}{Type}
+\item{species}{"Picea abies" or "Pinus sylvestris"}
+
+\item{vegetation}{Type 1-18.}
+
+\item{ground_layer}{Type 1="Lichen type", 2="Lichen-rich bogmoss type", 3="Lichen-rich",4="Bogmoss type" Sphagnum,5="Swamp moss type",6="Fresh moss type"}
 
 \item{latitude}{Decimal degrees.}
 
@@ -29,13 +38,23 @@ SIS_estimate(
 
 \item{altitude}{Metres above sea level}
 
-\item{soil_moisture}{Type}
+\item{aspect_main}{Main aspect of site, one of :"North","South","East","West" or 0.}
 
-\item{soil_texture}{Type}
+\item{incline_percent}{Incline of slope, in percent.}
 
-\item{climate_code}{Optional, else from lat, lon.}
+\item{soil_moisture}{Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"}
+
+\item{soil_texture}{Type 1-9}
+
+\item{soil_depth}{Type 1="Deep, >70cm", 2 = "Rather shallow, 20-70 cm", 3 = "Shallow <20", 4 = "Varying"}
+
+\item{lateral_water}{Type 1="Missing", 2="Seldom",3="shorter periods",4="longer periods",5="slope".}
+
+\item{ditched}{TRUE/FALSE if affected by ditching.}
 
 \item{county}{Optional, else from lat/lon}
+
+\item{climate_code}{Optional, else from lat, lon.}
 }
 \value{
 Site index, in metres.

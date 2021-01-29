@@ -14,7 +14,9 @@ siteData(
   vegetation,
   soil_texture,
   soil_moisture,
-  temperature_sum.c
+  temperature_sum.c,
+  aspect,
+  incline
 )
 }
 \arguments{
