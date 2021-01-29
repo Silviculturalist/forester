@@ -49,5 +49,4 @@
 #'
 #'Diameter growth is much more dependent on stand density than height growth.
 #'
-#'@export
 "Pine_spacing_trials"

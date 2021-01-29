@@ -10,7 +10,7 @@
 #' @param latitude Decimal degrees.
 #' @param longitude Decimal degrees.
 #' @param altitude Metres above sea level
-#' @param aspect_main Main aspect of site, one of :"North","South","East","West
+#' @param aspect_main Main aspect of site, one of :"North","South","East","West" or 0.
 #' @param incline_percent Incline of slope, in percent.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param soil_texture Type 1-9
@@ -22,7 +22,7 @@
 #' @export
 #'
 #' @return Site index, in metres.
-#' @example
+#' @examples
 
 
 SIS_estimate <- function(plotid,species, vegetation, ground_layer, latitude, longitude, altitude, aspect_main, incline_percent, soil_moisture, soil_texture, soil_depth, lateral_water, ditched, local_climate, county){
@@ -34,7 +34,7 @@ if(!aspect_main %in% c("North","South","East","West",0)) stop("aspect_main must 
 
 
 #County calc
-if(!exists(county)){
+if(missing(county)){
   county <- forester::county_sweden(latitude=latitude,longitude = longitude)
 }
 
@@ -105,7 +105,7 @@ if(species=="Pinus sylvestris"){
 
   } else if(soil_moisture==2 & vegetation %in% c(1,2,3,4,5,6,7,8,9)){
     deep_soil <- ifelse(soil_depth==1,TRUE,FALSE)
-    m2 <- ifelse(local_climate=="M3",TRUE,FALSE)
+    m2 <- ifelse(local_climate=="M2",TRUE,FALSE)
 
     lnh100dm <- 5.34912 + -0.02037*(latitude-60+abs(latitude-60)) + -0.00481*((altitude^2)/10000) + 0.11574*deep_soil + -0.16403*m2
 
@@ -250,7 +250,7 @@ if(species=="Pinus sylvestris"){
 
 }
 
-if(exists(h100dm)){
+if(exists("h100dm")){
   return(h100dm)
 } else {
   return(NA)
