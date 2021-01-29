@@ -3,14 +3,18 @@
 #' @description Corrected functions from Appendix II for estimation of site index by site factors according to Hägglund and Lundmark (1977), in
 #' Hägglund, B. (1979) Ett system för bonitering av skogsmark - analys, kontroll och diskussion inför praktisk tillämpning. Rapport 14, Projekt HUGIN. Skogsvetenskapliga fakulteten, Sveriges Lantbruksuniversitet. Umeå. Sweden.
 #'
-#' @param species Spruce or Pine
+#' @param plotid  PlotID
+#' @param species "Picea abies" or "Pinus sylvestris"
 #' @param vegetation Type 1-18.
 #' @param ground_layer Type 1="Lichen type", 2="Lichen-rich bogmoss type", 3="Lichen-rich",4="Bogmoss type (Sphagnum),5="Swamp moss type",6="Fresh moss type"
 #' @param latitude Decimal degrees.
 #' @param longitude Decimal degrees.
 #' @param altitude Metres above sea level
+#' @param aspect.main Main aspect of site, one of :"North","South","East","West
+#' @param incline.percent Incline of slope, in percent.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param soil_texture Type 1-9
+#' @param soil_depth Type 1="Deep, >70cm", 2 = "Rather shallow, 20-70 cm", 3 = "Shallow <20", 4 = "Varying"
 #' @param lateral_water Type 1="Missing", 2="Seldom",3="shorter periods",4="longer periods",5="slope".
 #' @param ditched TRUE/FALSE if affected by ditching.
 #' @param climate_code Optional, else from lat, lon.
