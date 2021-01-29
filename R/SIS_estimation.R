@@ -6,12 +6,12 @@
 #' @param plotid  PlotID
 #' @param species "Picea abies" or "Pinus sylvestris"
 #' @param vegetation Type 1-18.
-#' @param ground_layer Type 1="Lichen type", 2="Lichen-rich bogmoss type", 3="Lichen-rich",4="Bogmoss type (Sphagnum),5="Swamp moss type",6="Fresh moss type"
+#' @param ground_layer Type 1="Lichen type", 2="Lichen-rich bogmoss type", 3="Lichen-rich",4="Bogmoss type" Sphagnum,5="Swamp moss type",6="Fresh moss type"
 #' @param latitude Decimal degrees.
 #' @param longitude Decimal degrees.
 #' @param altitude Metres above sea level
-#' @param aspect.main Main aspect of site, one of :"North","South","East","West
-#' @param incline.percent Incline of slope, in percent.
+#' @param aspect_main Main aspect of site, one of :"North","South","East","West
+#' @param incline_percent Incline of slope, in percent.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param soil_texture Type 1-9
 #' @param soil_depth Type 1="Deep, >70cm", 2 = "Rather shallow, 20-70 cm", 3 = "Shallow <20", 4 = "Varying"
@@ -19,16 +19,17 @@
 #' @param ditched TRUE/FALSE if affected by ditching.
 #' @param climate_code Optional, else from lat, lon.
 #' @param county Optional, else from lat/lon
+#' @export
 #'
 #' @return Site index, in metres.
-#' @export
+#' @example
 
 
-SIS_estimate <- function(plotid,species, vegetation, ground_layer, latitude, longitude, altitude, aspect.main, incline.percent, soil_moisture, soil_texture, soil_depth, lateral_water, ditched, local_climate, county){
+SIS_estimate <- function(plotid,species, vegetation, ground_layer, latitude, longitude, altitude, aspect_main, incline_percent, soil_moisture, soil_texture, soil_depth, lateral_water, ditched, local_climate, county){
 
 assertive.numbers::assert_all_are_whole_numbers(c(vegetation, soil_moisture,soil_texture),tol = 0)
 
-if(!aspect.main %in% c("North","South","East","West",0)) stop("aspect.main must be 'North', 'South', 'East', 'West' or 0")
+if(!aspect_main %in% c("North","South","East","West",0)) stop("aspect_main must be 'North', 'South', 'East', 'West' or 0")
 
 
 
@@ -40,13 +41,13 @@ if(!exists(county)){
 #incline calculation
 #NB IF ABOVE 2:20 , 5.71° , 10%.
 #Applicable if Pine on North or East aspect above 350 MASL
-if(incline.percent>10 & aspect.main %in% c("North","East")){
+if(incline_percent>10 & aspect_main %in% c("North","East")){
   ne_incline <- TRUE
 } else {
   ne_incline <- FALSE
 }
 
-if(incline.percent<=10){
+if(incline_percent<=10){
   no_incline <- TRUE
 } else {
   no_incline <- FALSE
@@ -62,7 +63,6 @@ if(missing(local_climate)){
 D <-  altitude + 130*latitude - 8900
 
 #G1, G2 correction coefficient
-#DEVELOPMENT OBS: COEFFICIENT OR CONSTANT?
 g1 <- if(D<=-60){
   1.05
   } else if(-60<=D & D<0){
