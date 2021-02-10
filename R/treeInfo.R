@@ -18,14 +18,22 @@
 #' @export
 #'
 #' @examples
-treeInfo <- function(tree_ID, year, species, age, height.m, diameter.cm, bark.mm, double_bark.mm, crown_base_height.m, coord_x, coord_y){
+treeInfo <- function(tree_ID, origin_year ,observation_year, species, age, height.m, diameter.cm, bark.mm, double_bark.mm, crown_base_height.m, coord_x, coord_y){
 
-  if(!exists(bark.mm)) {
+  if(missing(double_bark.mm)) {
     double_bark.mm <- 2*bark.mm
   }
 
-  value <- list(tree_ID=tree_ID,year=year,species=species,age=age,height.m=height.m,diameter.cm=diameter.cm,bark.mm=bark.mm,double_bark.mm=double_bark.mm, crown_base_height.m=crown_base_height.m, coord_x=coord_x, coord_y=coord_y)
+  if(missing(age)) {
+    age <- observation_year - origin_year
+  }
 
-  attr(value, "class") <- "tree"
+  if(missing(origin_year)){
+    origin_year <- observation_year - age
+  }
+
+  value <- list(tree_ID=tree_ID,origin_year=origin_year,observation_year=observation_year,species=species,age=age,height.m=height.m,diameter.cm=diameter.cm,bark.mm=bark.mm,double_bark.mm=double_bark.mm, crown_base_height.m=crown_base_height.m, coord_x=coord_x, coord_y=coord_y)
+
+  attr(value, "class") <- c("tree", "list")
   value
 }
