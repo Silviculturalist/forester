@@ -30,6 +30,8 @@ siteData <- function(altitude, latitude, longitude, distance_to_coast, polygon, 
   if(missing(soil_moisture)) stop("soil_moisture is required")
   if(!missing(polygon)){
     message("Warning: Polygon geometry not validated by forester::siteData")
+  } else if(missing(polygon)){
+    polygon <- NULL
   }
 
 
@@ -62,7 +64,7 @@ siteData <- function(altitude, latitude, longitude, distance_to_coast, polygon, 
 
 
 
-  value <- list(main_species, altitude, latitude, longitude, polygon, county, local_climate, vegetation, soil_texture, soil_moister, temperature_sum.c, aspect, incline)
+  value <- list("altitude"=altitude, "latitude"=latitude, "longitude"=longitude, "polygon"=polygon, "county"=county, "local_climate"=local_climate, "vegetation"=vegetation, "soil_texture"=soil_texture, "soil_moisture"=soil_moisture, "temperature_sum.c"=temperature_sum.c, "aspect"=aspect, "incline"=incline)
 
   attr(value, "class") <- "siteData"
 
