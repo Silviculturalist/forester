@@ -1,4 +1,4 @@
-#' Distance to Coast Sweden
+#' Distance to Coast
 #'
 #' @param latitude A decimal latitude WGS84.
 #' @param longitude A decimal longitude WGS84.
@@ -11,8 +11,8 @@
 #' @export
 #'
 #' @examples
-#' SWE_coast_distance(56.8,14.8)
-SWE_coast_distance <- function(latitude,longitude, detail='large', unit='km'){
+#' coast_distance(56.8,14.8)
+coast_distance <- function(latitude,longitude, detail='large', unit='km'){
   world_coastline <- rnaturalearth::ne_coastline(scale=detail,'sf') %>% st_transform(4326)
   site_spatial_point_df <- data.frame(`lat`=latitude,`long`=longitude)
   site_spatial_point <- site_spatial_point_df %>% st_as_sf(coords=c("long","lat")) %>% st_set_crs(4326)
