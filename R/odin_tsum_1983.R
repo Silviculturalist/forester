@@ -1,7 +1,7 @@
 #' odin_tsum_1983
 #'
-#' @param lat Latitude in decimal degrees.
-#' @param masl Metres above sea level
+#' @param latitude Latitude in decimal degrees.
+#' @param altitude Metres above sea level
 #'
 #' @description Function 7 from Odin, Eriksson & Perttu (1983) Temperature Climate Maps for Swedish Forestry". Reports in Forest Ecology and Forest Soils 45. p. 45.
 #'
@@ -11,10 +11,7 @@
 #' @export
 #'
 #' @examples
-#' odin_tsum_1983(lat=68.88, masl=38)
-odin_tsum_1983 <- function(lat_degree,lat_min=0, lat_sec=0, masl){
-
-  lat <- lat_degree + (lat_min/60) + (lat_sec/3600)
-
-  4835 - (57.6*lat) - (0.9*masl)
+#' odin_tsum_1983(latitude=68.88, altitude=38)
+odin_tsum_1983 <- function(latitude, altitude){
+  4835 - (57.6*latitude) - (0.9*altitude)
 }
