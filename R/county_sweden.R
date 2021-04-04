@@ -21,7 +21,7 @@ county_sweden <- function(latitude, longitude){
   county_code <- sp::over(coord_list,forester::county_shape_file)$DLANSKOD
 
     if(county_code == 1){
-      county <- "Norrbottens Lappmark"
+      county <- "Norrbottens lappmark"
     } else if(county_code == 2){
       county <- "Norrbottens kustland"
     } else if(county_code == 3){
