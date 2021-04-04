@@ -123,7 +123,7 @@ regeneration_stocking <- function(altitude, latitude,age, regeneration_method, p
     return(SLH)
   } else if(method%in%c("cultivated-sown","cultivated-planted")){
 
-    if(main_species="Picea abies"){
+    if(main_species=="Picea abies"){
       main_species_is_spruce <- 1
     } else {
       main_species_is_spruce <- 0
