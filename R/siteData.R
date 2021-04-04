@@ -3,6 +3,7 @@
 #' @description Initiates a siteData object, containing information about the plot site.
 #'
 #' @param standid Stand ID
+#' @param main_species Main species.
 #' @param distance_to_coast if there is no coordinate information
 #' @param aspect Main aspect (N,E,S,W or 0)
 #' @param incline degrees.

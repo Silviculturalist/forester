@@ -1,5 +1,5 @@
 #' si_to_bonitet
-#' @description Interface for Hägglund (1981) "Samband mellan ståndortsindex H100 och bonitet för tall och gran i Sverige", Report #26, Projekt Hugin.
+#' @description Interface for Hägglund (1981) "Samband mellan ståndortsindex H100 och bonitet för tall och gran i Sverige", Report #26, Projekt Hugin. This function soft-deprecated in favour of `forester::si_to_bonitet_integrated`.
 #' @param H100 Estimated stand top height at 100 years age.
 #' @param fun One of the supplied functions, see details.
 #' @return Estimates the mean volume growth in m3sk / ha yr-1 at the time of culmination (or if late culmination, at 150yrs of age)
