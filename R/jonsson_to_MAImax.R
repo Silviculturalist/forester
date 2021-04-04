@@ -2,6 +2,7 @@
 #' Maximum Mean Annual Increment expected from Jonsson Site Index (1-9)
 #'
 #' @description  Translates the Jonsson site index, an integer 1 - 8. 9 designates impediment.
+#' OBS: The MAI for impediment (class 9) has been set to 0.5.
 #'
 #' Can also be roughly delineated.
 #' MaiMax = 8 * 0.75^(Jonsson_si-2)
@@ -32,6 +33,8 @@ Jonsson_to_MAImax <- function(Jonsson_si){
     1.8
   } else if(Jonsson_si==8){
     1.2
+  } else if(Jonsson_si==9){
+    0.5
   }
 
 }
