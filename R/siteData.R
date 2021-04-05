@@ -5,8 +5,8 @@
 #' @param stand_id Stand ID
 #' @param main_species Main species.
 #' @param distance_to_coast if there is no coordinate information
-#' @param aspect Main aspect (N,E,S,W or 0)
-#' @param incline degrees.
+#' @param aspect_main Main aspect (N,E,S,W or 0)
+#' @param incline_percent degrees.
 #' @param altitude Metres above sea level
 #' @param latitude Latitude decimal WGS84
 #' @param longitude Longitude decimal WGS84
@@ -14,8 +14,12 @@
 #' @param county County in Sweden. If not supplied, will calculate through \link[forester]{county_sweden}
 #' @param local_climate Swedish Local Climate Code. If not supplied, will calculate through \link[forester]{local_climate_sweden}
 #' @param vegetation NFI Vegetation code (FsKod) 1-18
+#' @param ground_layer Type 1="Lichen type", 2="Lichen-rich bogmoss type", 3="Lichen-rich",4="Bogmoss type" Sphagnum,5="Swamp moss type",6="Fresh moss type"
 #' @param soil_texture 1-9
-#' @param soil_moisture 1-5
+#' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
+#' @param soil_depth Type 1="Deep, >70cm", 2 = "Rather shallow, 20-70 cm", 3 = "Shallow <20", 4 = "Varying"
+#' @param lateral_water Type 1="Missing", 2="Seldom",3="shorter periods",4="longer periods",5="slope".
+#' @param ditched TRUE/FALSE if affected by ditching.
 #' @param temperature_sum.c Degrees celsius. If not supplied, will calculate from \link[forester]{odin_tsum_1983}
 #'
 #' @return

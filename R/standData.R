@@ -8,7 +8,7 @@
 #'
 #' @examples
 standData <- function(siteData,treelistData){
-  standData <- list(siteData, treelistData,standSummary)
+  standData <- list(siteData, treelistData, standSummary)
   class(standData) <- c("standData","list")
   return(standData)
 }
