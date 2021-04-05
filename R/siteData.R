@@ -2,7 +2,7 @@
 #'
 #' @description Initiates a siteData object, containing information about the plot site.
 #'
-#' @param standid Stand ID
+#' @param stand_id Stand ID
 #' @param main_species Main species.
 #' @param distance_to_coast if there is no coordinate information
 #' @param aspect Main aspect (N,E,S,W or 0)
@@ -22,7 +22,7 @@
 #' @export
 #'
 #' @examples
-siteData <- function(altitude, latitude, longitude, distance_to_coast, polygon, county, local_climate, vegetation, soil_texture, soil_moisture, temperature_sum.c, aspect,incline){
+siteData <- function(stand_id, altitude, latitude, longitude, distance_to_coast, polygon, county, local_climate, vegetation, soil_texture, soil_moisture, temperature_sum.c, aspect,incline){
 
   if(missing(altitude)) stop("altitude is required")
   if(missing(latitude)) stop("latitude is required")
@@ -65,7 +65,7 @@ siteData <- function(altitude, latitude, longitude, distance_to_coast, polygon, 
 
 
 
-  value <- list("altitude"=altitude, "latitude"=latitude, "longitude"=longitude, "polygon"=polygon, "county"=county, "local_climate"=local_climate, "vegetation"=vegetation, "soil_texture"=soil_texture, "soil_moisture"=soil_moisture, "temperature_sum.c"=temperature_sum.c, "aspect"=aspect, "incline"=incline)
+  value <- list("stand_id"=stand_id,"altitude"=altitude, "latitude"=latitude, "longitude"=longitude, "polygon"=polygon, "county"=county, "local_climate"=local_climate, "vegetation"=vegetation, "soil_texture"=soil_texture, "soil_moisture"=soil_moisture, "temperature_sum.c"=temperature_sum.c, "aspect"=aspect, "incline"=incline)
 
   attr(value, "class") <- "siteData"
 
