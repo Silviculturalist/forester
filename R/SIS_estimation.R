@@ -191,7 +191,7 @@ if(species=="Pinus sylvestris"){
     m2 <- ifelse(local_climate=="M2",TRUE,FALSE)
     swamp_moss <- ifelse(ground_layer==5,TRUE,FALSE)
 
-    lnh100dm <- 5.68205 + -0.03423((latitude-60)+abs(latitude-60)) + -0.02122((latitude-60)-abs(latitude-60)) + -0.00691*((altitude^2)/10000) + short_water*0.03247 + long_water*+0.05097 + -0.10806*m2 + -0.073*swamp_moss
+    lnh100dm <- 5.68205 + -0.03423*((latitude-60)+abs(latitude-60)) + -0.02122*((latitude-60)-abs(latitude-60)) + -0.00691*((altitude^2)/10000) + short_water*0.03247 + long_water*+0.05097 + -0.10806*m2 + -0.073*swamp_moss
 
     if(vegetation %in% c(2,3,5,6,7)){
       h100dm <- exp(lnh100dm + -0.02991)
@@ -261,7 +261,7 @@ if(species=="Pinus sylvestris"){
 if(exists("h100dm")){
   return(h100dm)
 } else {
-  if(exists(plotid)){
+  if(!missing(plotid)){
     warning(paste0("No method was found for plot: ",plotid))
   } else {
     warning(paste0("No method was found for your plot. "))
