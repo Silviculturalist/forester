@@ -233,7 +233,7 @@ if(species=="Pinus sylvestris"){
       h100dm <- exp(lnh100dm + 0.12)
 
     } else if (vegetation==7){
-      h100dm <- exp(ln100dm + 0.08075)
+      h100dm <- exp(lnh100dm + 0.08075)
 
     } else if (vegetation==4){
       h100dm <- exp(lnh100dm + 0.05342)
