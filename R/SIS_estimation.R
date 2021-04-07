@@ -58,6 +58,14 @@ if(missing(local_climate)){
   local_climate <- forester::local_climate_sweden(latitude=latitude,longitude = longitude)
 }
 
+#use googleway for altitude if missing
+if(missing(altitude)){
+  altresults <- googleway::google_elevation(data.frame(lon=longitude,lat=latitude),location_type = "individual",key=key)
+  altitude <- as.numeric(altresults$results[1])
+  rm(altresults)
+}
+
+
 
 #D correction value.
 D <-  altitude + 130*latitude - 8900
