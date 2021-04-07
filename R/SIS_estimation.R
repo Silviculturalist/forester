@@ -261,8 +261,14 @@ if(species=="Pinus sylvestris"){
 if(exists("h100dm")){
   return(h100dm)
 } else {
+  if(exists(plotid)){
+    warning(paste0("No method was found for plot: ",plotid))
+  } else {
+    warning(paste0("No method was found for your plot. "))
+  }
+
   return(NA)
-  warning(paste0("No method was found for plot: ",plotid))
+
   }
 
 }
