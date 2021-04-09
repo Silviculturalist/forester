@@ -206,7 +206,7 @@ if(species=="Pinus sylvestris"){
       h100dm <- exp(lnh100dm + 0.039)
     }
 
-  } else if(soil_moisture==2 & vegetation %in% c(13,14,15,16)){
+  } else if(soil_moisture==2 & vegetation %in% c(10,11,12,13,14,15,16,17,18)){ #Carex low and high, Lichen and lichen rich are lingonberry or worse group. Also Equisetum group.
     swamp_moss <- ifelse(ground_layer==5,TRUE,FALSE)
     short_water_1 <- ifelse(lateral_water==3, TRUE, FALSE)
     short_water <- ifelse(lateral_water%in%c(1,2,3), TRUE, FALSE)
@@ -214,9 +214,9 @@ if(species=="Pinus sylvestris"){
 
     lnh100dm <- 5.51876 + -0.04342*((latitude-60)+abs(latitude-60)) + -0.01837*((latitude-60)-abs(latitude-60)) + -0.01095*short_water*((altitude^2)/10000) + -0.00716*long_water*((altitude^2)/10000) + -0.073*swamp_moss + short_water_1*0.03361 + 0.04605*long_water
 
-    if(vegetation==13){
+    if(vegetation==13){ # if blueberry
       h100dm <- exp(lnh100dm + 0.07842)
-    } else if(vegetation>=14){
+    } else if(vegetation!=13){ # change from lingon and worse to not blueberry
       h100dm <- exp(lnh100dm)
     }
 
