@@ -14,6 +14,7 @@
 #' @param crown.base.height.m Height from ground to base of tree crown.
 #' @param generation Tree generation
 #' @param volume Volume in m3sk.
+#' @param basal_area Basal area of tree in m2.
 #' @param coord_x X-coordinate
 #' @param coord_y Y-coordinate
 #'
