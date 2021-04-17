@@ -23,6 +23,7 @@
 #'
 #' @return Site index, in metres.
 #' @examples
+#' SIS_estimate(plotid=12332, species="Pinus sylvestris",vegetation=13, ground_layer=6, latitude=63.8,longitude=12.32, altitude=200,incline_percent=0,soil_moisture=2,soil_texture=2,soil_depth=1,lateral_water=1,ditched=FALSE)
 
 
 SIS_estimate <- function(plotid,species, vegetation, ground_layer, latitude, longitude, altitude, aspect_main, incline_percent, soil_moisture, soil_texture, soil_depth, lateral_water, ditched, local_climate, county){
