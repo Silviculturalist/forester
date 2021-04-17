@@ -26,7 +26,7 @@
 #' @export
 #'
 #' @examples
-siteData <- function(stand_id, altitude, latitude, longitude, distance_to_coast, polygon, county, local_climate, vegetation, soil_texture, soil_moisture, temperature_sum.c, aspect,incline){
+siteData <- function(stand_id, altitude, latitude, longitude, distance_to_coast, polygon, county, local_climate, vegetation, soil_texture, soil_moisture, temperature_sum.c, aspect,incline_percent){
 
   if(missing(altitude)) stop("altitude is required")
   if(missing(latitude)) stop("latitude is required")
@@ -56,9 +56,9 @@ siteData <- function(stand_id, altitude, latitude, longitude, distance_to_coast,
     distance_to_coast <- forester::coast_distance(latitude = latitude, longitude = longitude)
   }
 
-  if(missing(incline)){
-    incline <- 0
-    message("No incline given, setting incline to 0.")
+  if(missing(incline_percent)){
+    incline_percent <- 0
+    message("No incline given, setting incline_percent to 0.")
   }
 
   if(missing(aspect)){
@@ -66,10 +66,13 @@ siteData <- function(stand_id, altitude, latitude, longitude, distance_to_coast,
     message("No aspect given, setting aspect to 0.")
   }
 
+  SIS_Pinus_sylvestris <- SIS_estimate(species="Pinus sylvestris",vegetation=vegetation, ground_layer=ground_layer, latitude=latitude,longitude=longitude, altitude=altitude,incline_percent=incline_percent,soil_moisture=soil_moisture,soil_texture=soil_texture,soil_depth=soil_depth,lateral_water=lateral_water,ditched=ditched)
+  SIS_Picea_abies <- SIS_estimate(species="Picea abies",vegetation=vegetation, ground_layer=ground_layer, latitude=latitude,longitude=longitude, altitude=altitude,incline_percent=incline_percent,soil_moisture=soil_moisture,soil_texture=soil_texture,soil_depth=soil_depth,lateral_water=lateral_water,ditched=ditched)
 
 
 
-  value <- list("stand_id"=stand_id,"altitude"=altitude, "latitude"=latitude, "longitude"=longitude, "polygon"=polygon, "county"=county, "local_climate"=local_climate, "vegetation"=vegetation, "soil_texture"=soil_texture, "soil_moisture"=soil_moisture, "temperature_sum.c"=temperature_sum.c, "aspect"=aspect, "incline"=incline)
+
+  value <- list("stand_id"=stand_id,"altitude"=altitude, "latitude"=latitude, "longitude"=longitude, "polygon"=polygon, "county"=county, "local_climate"=local_climate, "vegetation"=vegetation, "soil_texture"=soil_texture, "soil_moisture"=soil_moisture, "temperature_sum.c"=temperature_sum.c, "aspect"=aspect, "incline_percent"=incline_percent, "SIS_Pinus_sylvestris"=SIS_Pinus_sylvestris, "SIS Picea abies"=SIS_Picea_abies)
 
   attr(value, "class") <- "siteData"
 
