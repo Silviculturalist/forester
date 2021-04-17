@@ -12,6 +12,7 @@
 #' @param bark.mm Tree bark thickness, in mm.
 #' @param double_bark.mm Tree double bark thickness, in mm.
 #' @param crown.base.height.m Height to lowest living green branch on a tree.
+#' @param basal_area Basal area of tree in m2.
 #' @param volume Tree volume, m3sk.
 #' @param coordx X coordinate
 #' @param coordy Y coordinate
