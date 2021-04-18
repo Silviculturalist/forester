@@ -1,3 +1,15 @@
+#' Form Height functions for individual trees
+#'
+#' @description Detailed in Soderberg (1992) - Functions for forest management: Height, form height and bark thickness of individual trees. Dept. of Forest Survey. Report 52. ISSN 0348-0496. 87 pages. Swedish.
+#' N.B. Although the original functions detailed a variable for divided plots, such as when a plot consists '..of different land classes,
+#' age classes, site index classes, density classes and cutting classes or belongs to different owners. It is included in the function for documentational purposes, but the dummy variable is set to 0.
+#'
+#' @param standData A standData object.
+#'
+#' @return form height, metres.
+#' @export
+#'
+#' @examples
 tree_form_Soderberg_1992 <- function(standData){
   if(!class(standData)%in%c("standData")){
     stop("Input standData is not a standData object. Please make sure it is the correct class.")
