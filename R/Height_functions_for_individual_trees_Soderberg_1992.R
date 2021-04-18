@@ -5,7 +5,7 @@
 #'
 #' @param Input A standData object.
 #'
-#' @return height, metres.
+#' @return height, decimetres.
 #' @export
 #'
 #' @examples
