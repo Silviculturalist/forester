@@ -103,6 +103,7 @@ height.individual.trees.Soderberg.1992 <- function(standData){
   #Pine Northern Sweden height
   if(standData$treelistData$species=="Pinus sylvestris" && northern_sweden==1){
     return(
+      exp(
       -0.28390E3*diameter_over_bark_f+
       +0.64168E4*(diameter_over_bark_f^2)+
       +0.63874E-2*stand_age+
@@ -115,12 +116,15 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       +0.87350E-1*(ba_quotient_pine)+
       -0.56157E-1*divided_plot+
       -0.72392E-1*close_to_coast+
-      +0.68125E+1
+      +0.68125E1+
+      +0.01155 #correction for logarithmic bias, appendix 5.
+    )
     )
   }
   #Pine Middle Sweden height
   else if(standData$treelistData$species=="Pinus sylvestris" && middle_sweden==1){
     return(
+      exp(
       -0.29249E3*diameter_over_bark_f+
       +0.61832E4*(diameter_over_bark_f^2)+
       +0.52675E-2*stand_age+
@@ -136,13 +140,16 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       +0.23251E0*basal_area_betula+
       -0.55749E-1*divided_plot+
       -0.10186E0*close_to_coast+
-      +0.15712E1
+      +0.15712E1+
+      +0.00938 #correction for logarithmic bias, appendix 5.
+    )
     )
   }
 
   #Pine southern sweden height
   else if(standData$treelistData$species=="Pinus sylvestris" && southern_sweden==1){
     return(
+      exp(
       -0.30345E3*diameter_over_bark_f+
       +0.88427E4*(diameter_over_bark_f^2)+
       +0.68724E-2*stand_age+
@@ -158,7 +165,9 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       +0.36444E-1*southern_sweden+
       -0.60312E-1*divided_plot+
       -0.19855E0*close_to_coast+
-      +0.52706E1
+      +0.52706E1+
+      +0.01264 #correction for logarithmic bias, appendix 5.
+      )
 
     )
   }
@@ -166,6 +175,7 @@ height.individual.trees.Soderberg.1992 <- function(standData){
   #Spruce northern Sweden height
   else if(standData$treelistData$species=="Picea abies" && any(c(northern_sweden,middle_sweden))){
     return(
+      exp(
       -0.28663E3*diameter_over_bark_f+
       +0.47831E4*(diameter_over_bark_f^2)+
       +0.31669E-2*stand_age+
@@ -179,13 +189,16 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       +0.90784E-1*ba_quotient_spruce+
       -0.30688E-1*divided_plot+
       -0.62548E-1*close_to_coast+
-      +0.65200E1
+      +0.65200E1+
+      +0.01095 #correction for logarithmic bias, appendix 5.
+    )
     )
   }
 
   #Spruce southern sweden height
   else if(standData$treelistData$species=="Picea abies" && southern_sweden==1){
     return(
+      exp(
       -0.27421E3*diameter_over_bark_f+
       +0.38013E4*(diameter_over_bark_f^2)+
       +0.31094E-2*stand_age+
@@ -199,13 +212,16 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       +0.68141E-1*ba_quotient_betula+
       -0.47848E-1*divided_plot+
       -0.69386E-1*close_to_coast+
-      +0.57495E1
+      +0.57495E1+
+      +0.01051 #correction for logarithmic bias, appendix 5.
+      )
     )
   }
 
   #Birch northern and middle sweden, height
   else if(str_detect(standData$treelistData$species, "^Betula") && any(c(northern_sweden,middle_sweden))){
     return(
+      exp(
       -0.26607E3*diameter_over_bark_f+
       +0.71415E4*(diameter_over_bark_f^2)+
       +0.32789E-2*stand_age+
@@ -218,13 +234,15 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       -0.74398E-1*ba_quotient_pine+
       -0.22539E-1*ba_quotient_spruce+
       -0.35918E-1*divided_plot+
-      +0.72446E1
-
+      +0.72446E1+
+      +0.01248 #correction for logarithmic bias, appendix 5.
+    )
     )
   }
 
   else if(str_detect(standData$treelistData$species, "^Betula") && southern_sweden==1){
     return(
+      exp(
       -0.22552E3*diameter_over_bark_f+
       +0.39171E4*(diameter_over_bark_f^2)+
       +0.17264E-2*stand_age+
@@ -238,12 +256,15 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       +0.10104E0*ba_quotient_betula+
       +0.42911E-1*southern_sweden+
       -0.68048E-1*divided_plot+
-      +0.57820E1
+      +0.57820E1+
+      +0.01901 #correction for logarithmic bias, appendix 5.
+      )
     )
   }
 
   else if(standData$treelistData$species=="Fagus sylvatica"){
     return(
+      exp(
     -0.14407E3*diameter_over_bark_f+
     +0.72319E-2*stand_age+
     -0.27244E-4*(stand_age^2)+
@@ -252,12 +273,15 @@ height.individual.trees.Soderberg.1992 <- function(standData){
     +0.18800E0*southern_sweden+
     -0.18416E0*southern_region_5+
     -0.17410E0*divided_plot+
-    +0.52974E1
+    +0.52974E1+
+    +0.01296 #correction for logarithmic bias, appendix 5.
+      )
     )
   }
 
   else if(str_detect(standData$treelistData$species, "^Quercus")){
     return(
+      exp(
       -0.25811E3*diameter_over_bark_f+
       +0.63100E4*(diameter_over_bark_f^2)+
       +0.13039E-2*si_pine+
@@ -267,12 +291,15 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       +0.17355E0*southern_sweden+
       -0.47987E-1*southern_region_5+
       -0.69304E-1*divided_plot+
-      +0.57884E1
+      +0.57884E1+
+      +0.01584 #correction for logarithmic bias, appendix 5.
+      )
     )
   }
 
   else if(forester::tree_type(species = species)=="Deciduous" && any(c(northern_sweden,middle_sweden))){
     return(
+      exp(
       -0.14546E3*diameter_over_bark_f+
       +0.53659E-2*stand_age+
       -0.29042E-4*(stand_age^2)+
@@ -281,12 +308,15 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       +0.75841E-1*ba_quotient_spruce+
       -0.82953E-1*divided_plot+
       +0.15566E0*close_to_coast+
-      +0.70706E1
+      +0.70706E1+
+      +((0.191^2)/2) #Baskerville 1972, funktion was not include in appendix 5.
+      )
     )
   }
 
   else if(forester::tree_type(species = species)=="Deciduous" && southern_sweden==1){
     return(
+      exp(
       -0.22078E3*diameter_over_bark_f+
       +0.53920E4*(diameter_over_bark_f^2)+
       +0.53701E-2*stand_age+
@@ -299,7 +329,9 @@ height.individual.trees.Soderberg.1992 <- function(standData){
       +0.10783E0*ba_quotient_spruce+
       -0.55868E-1*ba_quotient_betula+
       -0.51870E-1*divided_plot+
-      +0.56569E1
+      +0.56569E1+
+      +((0.195^2)/2) #Baskerville 1972, funktion was not include in appendix 5.
+      )
     )
   }
 
