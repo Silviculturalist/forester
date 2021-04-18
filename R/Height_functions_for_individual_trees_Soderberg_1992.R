@@ -97,8 +97,6 @@ height.individual.trees.Soderberg.1992 <- function(standData){
   divided_plot <- 0
 
   ########
-  ### OBSERVE the functions do not have correction for logarithmic bias, se appendix 5 in work.
-
 
   #Pine Northern Sweden height
   if(standData$treelistData$species=="Pinus sylvestris" && northern_sweden==1){
