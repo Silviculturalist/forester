@@ -5,7 +5,7 @@
 #'
 #' @param Input A standData object.
 #'
-#' @return height, decimetres.
+#' @return Individual tree height, decimetres.
 #' @export
 #'
 #' @examples
