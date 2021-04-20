@@ -2,7 +2,7 @@
 #'
 #' @param standData A standData object
 #'
-#' @return
+#' @return Individual tree height, decimetres.
 #' @export
 #'
 #' @examples
@@ -153,6 +153,7 @@ heightIndividualTreesWithAgeSoderberg1992 <- function(standData){
         -0.47547E-1
         -0.16487E-1
         -0.82981E1
+        +0.00819 #correction for logarithmic bias, appendix 5.
 
 
       )
@@ -182,6 +183,7 @@ else if(standData$treelistData$species=="Pinus sylvestris" && middle_sweden==1){
       -0.53233E-1
       -0.50755E-1
       -0.81303E2
+      +0.00673 #correction for logarithmic bias, appendix 5.
 
 
     )
@@ -214,6 +216,7 @@ else if(standData$treelistData$species=="Pinus sylvestris" && middle_sweden==1){
         +0.15100E-1
         -0.42302E-1
         +0.14687E2
+        +0.00819 #correction for logarithmic bias, appendix 5.
 
       )
 
@@ -245,6 +248,7 @@ else if(standData$treelistData$species=="Pinus sylvestris" && middle_sweden==1){
         +0.13342E-1
         -0.39180E-1
         +0.61585E1
+        +0.00832 #correction for logarithmic bias, appendix 5.
       )
     )
   }
@@ -273,10 +277,160 @@ else if(standData$treelistData$species=="Pinus sylvestris" && middle_sweden==1){
         -0.16755E-1
         +0.18975E-1
         +0.60404E1
+        +0.00769 #correction for logarithmic bias, appendix 5.
       )
     )
   }
 
+  else if(str_detect(standData$treelistData$species, "^Betula") && any(c(northern_sweden,middle_sweden))){
+    return(
+      exp(
+        -0.22919E3
+        +0.48986E4
+        +0.52925E1
+        -0.39008E-1
+        +0.96299E-3
+        +0.83824E-3
+        +0.16511E-1
+        -0.17611E-3
+        -0.87603E-1
+        +0.25864E-1
+        -0.13252E-1
+        -0.10123E-3
+        -0.46130E-6
+        -0.40542E-1
+        -0.56039E-1
+        -0.49758E-1
+        +0.64427E1
+        +0.01008 #correction for logarithmic bias, appendix 5.
+
+
+      )
+    )
+  }
+
+  else if(str_detect(standData$treelistData$species, "^Betula") && southern_sweden==1){
+    return(
+      exp(
+        -0.21624E3
+        +0.47683E4
+        -0.14308E2
+        -0.10377E-1
+        +0.57275E-3
+        +0.70769E-3
+        +0.12258E-1
+        -0.14025E-3
+        +0.15315E0
+        -0.25440E0
+        +0.16736E-1
+        -0.35533E-5
+        -0.46067E-1
+        +0.77659E-1
+        +0.81706E-1
+        -0.69576E-1
+        -0.59341E-1
+        -0.41456E-1
+        +0.46194E1
+        +0.01638 #correction for logarithmic bias, appendix 5.
+
+      )
+    )
+  }
+
+  else if(standData$treelistData$species=="Fagus sylvatica"){
+    return(
+      exp(
+        -0.12884E3
+        -0.21199E2
+        +0.21053E3
+        +0.15372E-3
+        +0.97506E-2
+        -0.90290E-4
+        -0.39544E0
+        +0.29474E0
+        -0.17280E-5
+        +0.15103E0
+        -0.13339E0
+        +0.97831E-1
+        +0.56648E1
+        +0.01140 #correction for logarithmic bias, appendix 5.
+
+      )
+    )
+  }
+
+
+  else if(str_detect(standData$treelistData$species, "^Quercus")){
+    return(
+      exp(
+        -0.24748E3
+        +0.61199E4
+        -0.16569E-2
+        -0.16744E-1
+        +0.99719E-3
+        +0.11754E-2
+        +0.10960E-1
+        -0.10344E-3
+        -0.11226E0
+        -0.23866E-3
+        +0.16577E0
+        -0.10511E0
+        -0.54901E-1
+        +0.56224E1
+        +0.01462 #correction for logarithmic bias, appendix 5.
+
+      )
+    )
+  }
+
+  else if(forester::tree_type(species = species)=="Deciduous" && any(c(northern_sweden,middle_sweden))){
+    return(
+      exp(
+        -0.10949E3
+        -0.20419E2
+        +0.22966E3
+        -0.21025E-2
+        +0.11182E-2
+        +0.12554E-2
+        +0.17302E-1
+        -0.16525E-3
+        +0.64313E0
+        -0.34368E0
+        -0.23565E-1
+        +0.10443E0
+        +0.11788E0
+        +0.26360E-1
+        -0.53057E-1
+        +0.13323E0
+        +0.63675E1
+        +((0.179^2)/2) #Baskerville 1972, funktion was not include in appendix 5.
+
+      )
+    )
+  }
+
+  else if(forester::tree_type(species = species)=="Deciduous" && southern_sweden==1){
+    return(
+      exp(
+        -0.21737E3
+        +0.66360E4
+        -0.39007E2
+        +0.80255E-3
+        +0.76595E-3
+        +0.10224E-1
+        -0.94866E-4
+        +0.26833E0
+        -0.30654E0
+        +0.24865E-1
+        +0.93169E-1
+        -0.29612E-1
+        -0.67029E-1
+        +0.39136E1
+        +((0.181^2)/2) #Baskerville 1972, funktion was not include in appendix 5.
+
+      )
+    )
+  }
 
 }
 
