@@ -7,6 +7,7 @@
 #' @param observation_year Year of observation.
 #' @param species Species, latin.
 #' @param age Age, years.
+#' @param age_at_breast_height Age, at breast height. Total age - time to breast height.
 #' @param height.m Height, metres.
 #' @param diameter.cm Diameter at breast height, cm.
 #' @param bark.mm Bark thickness, mm.
