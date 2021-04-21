@@ -7,6 +7,10 @@
 #'
 #'  A 'roof' was set at a maximum of 0.9% per annum and never let the loss be less than 0.1% per annum.
 #'
+#'  The mortality level during the observed period was judged to have been
+#'  higher than normal so at application the mortality given by the functions
+#'  was reduced with 40 % in northern Sweden and 25 % in southern Sweden.
+#'
 #'  \href{https://lagen.nu/sou/1978:7#sid293-img}{Available Online (Swedish)}
 #'
 #' @param standData
@@ -139,8 +143,18 @@ ba_mortality_thinned_Bengtsson_1978 <- function(standData){
 
   }
 
+  #The mortality level during the observed period was judged to have been higher
+  #than normal so at application the mortality given by the functions was
+  #reduced with 40 % in northern Sweden and 25 % in southern Sweden.
+
+  if(northern_sweden==1){
   return(
-    a+(b1*mean_diameter) + (b2*(mean_diameter^2)) + (b3*stand_age) + (b4*(stand_age^2)) + (b5*mai_pine_s_sweden)
+    (a+(b1*mean_diameter) + (b2*(mean_diameter^2)) + (b3*stand_age) + (b4*(stand_age^2)) + (b5*mai_pine_s_sweden))*0.6
   )
+  } else {
+    return(
+    (a+(b1*mean_diameter) + (b2*(mean_diameter^2)) + (b3*stand_age) + (b4*(stand_age^2)) + (b5*mai_pine_s_sweden))*0.75
+    )
+  }
 
 }
