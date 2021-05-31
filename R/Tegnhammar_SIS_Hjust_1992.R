@@ -148,7 +148,7 @@ Tegnhammar_SIS_Hjust_1992 <- function(latitude, longitude, altitude,vegetation, 
     +12.557257*lateral_water_longer_periods+
     +7.162013*ditched+
     -2.241642*fine+
-    -3.944442*coarse+
+    -3.944443*coarse+
     -22.450707*peat_humification_low+
     -10.735284*peat_humification_medium+
     -2.872332*peat_humification_high+
