@@ -12,14 +12,14 @@
 #' @param soil_texture
 #' @param ditched
 #' @param lateral_water
-#' @param peat_humification "Low", "Medium" or "High"
+#' @param peat_humification "Low", if organic remnants clearly visible: squeezing sample gives somewhat cloudy water; "Medium", if with some difficulty organic remnants can be distinguished, if sample is squeezed the water is cloudy; or "High", if no organic remnants can be distinguished. Water and humus cannot be separated by squeezing. Humus is porridge-like.
 #'
 #' @return
 #' @export
 #'
 #' @examples
-Tegnhammar_SIS_Hjust_1992 <- function(latitude, longitude, altitude,vegetation, ground_layer,aspect_main,incline_percent,soil_moisture,soil_depth,soil_texture,ditched,lateral_water,peat_humification="Medium"){
-  if(latitude>60){
+Tegnhammar_SIS_Hjust_1992 <- function(species,latitude, longitude, altitude,vegetation, ground_layer,aspect_main,incline_percent,soil_moisture,soil_depth,soil_texture,ditched,lateral_water,peat_humification="Medium"){
+  if(latitude>60){ #Replacement for Limes Norrlandicus
     LatN <- TRUE
     LatS <- FALSE
   } else {
@@ -56,6 +56,15 @@ Tegnhammar_SIS_Hjust_1992 <- function(latitude, longitude, altitude,vegetation, 
 
   moist <- if(soil_moisture==4){1} else {0}
 
+  peat <- if(soil_texture==9){1} else {0}
+
+  if(ditched==1 && peat==0 && moist==0){
+    message("Ditched only defined for peat or moist soils! Setting ditched to 0.")
+    ditched <- 0
+  }
+
+
+
   lateral_water_longer_periods <- if(lateral_water==4){1} else {0}
 
   lateral_water_shorter_periods <- if(lateral_water==3){1} else {0}
@@ -64,7 +73,7 @@ Tegnhammar_SIS_Hjust_1992 <- function(latitude, longitude, altitude,vegetation, 
 
   fine <- if(soil_texture%in%c(7,8)){1} else {0}
 
-  peat <- if(soil_texture==9){1} else {0}
+
 
   if(peat==0){
     peat_humification_low <- 0
