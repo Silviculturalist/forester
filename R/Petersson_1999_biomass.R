@@ -22,8 +22,9 @@
 #' @param five_years_radial_increment.mm five years radial increment, in mm.
 #' @param peat TRUE if soil type is peat, otherwise FALSE. Soil type is peat
 #' if the tree plot is more than 30 cm deep peat.
-#' @param latitude WGS84
-#' @param longitude WGS84
+#' @param latitude latitude
+#' @param longitude longitude
+#' @param espg_in EPSG of Latitude and Longitude, default=4326.
 #' @param altitude Metres above sea level.
 #'
 #' @return List of weights, in g.
@@ -40,6 +41,7 @@ Petersson_1999_biomass <- function(species,
                                    peat,
                                    latitude,
                                    longitude,
+                                   epsg_in=4326,
                                    altitude
 ){
   #Check tree species is supported.
@@ -58,6 +60,30 @@ Petersson_1999_biomass <- function(species,
   if(!(dominant_species%in%c("Picea abies","Pinus sylvestris"))){
     stop("SI must be calculated for either 'Picea abies' or 'Pinus sylvestris'")
   }
+
+  #Convert input crs to RT90.
+
+  if(epsg_in!=3021){
+
+    message("Input is reprojected to RT90 2.5 gon V,  EPSG:3021")
+
+    geom_point <- as.matrix(data.frame(x=longitude,y=latitude))
+
+    geom_point <- terra::vect(geom_point, crs=paste0("epsg:",epsg_in))
+
+    geom_point <- terra::project(geom_point, paste0("epsg:",3021)) #RT90
+
+    longitude <- terra::geom(geom_point)[3]
+    latitude <- terra::geom(geom_point)[4]
+
+  }
+
+
+
+
+
+
+
 
   if(dominant_species=="Picea abies"){
     picea <- TRUE
