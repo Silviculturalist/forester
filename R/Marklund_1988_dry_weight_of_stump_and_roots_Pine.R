@@ -4,12 +4,17 @@
 #' @param dominant_species Dominant species on the plot.
 #' @param latitude Latitude, RT90.
 #' @param age_at_breast_height Age at breast height.
-#' @param Dry_soil
-#' @param Moist_soil
-#' @param peat
-#' @param mobile_ground_water_longer_periods
-#' @param mobile_ground_water_shorter_periods
-#' @param altitude
+#' @param Dry_soil If the ground water level is more than 2 m deep, TRUE,
+#' otherwise FALSE.
+#' @param Moist_soil If the ground water level is less than 1 m deep, TRUE,
+#' otherwise FALSE.
+#' @param peat If the humus layer is thicker than 30 cm, TRUE, otherwise
+#' FALSE.
+#' @param mobile_ground_water_longer_periods If surface/subsurface water flow
+#' occurs during longer periods, TRUE, otherwise FALSE.
+#' @param mobile_ground_water_shorter_periods If surface/subsurface water flow
+#' occurs during shorter periods, TRUE, otherwise FALSE.
+#' @param altitude Altitude, in km.
 #'
 #' @return Dry weight of stump and roots, in kilograms.
 #' @export
