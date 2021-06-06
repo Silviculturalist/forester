@@ -74,7 +74,7 @@ Jonsson_1980_height_Pine_126_200 <- function(
   relative_diameter_sq <- -13990E-6*((diameter_at_breast_height/diameter_of_largest_tree_on_plot)^2)
 
   lat <- -47366E-7*latitude
-  lat_x_altitude <- -68762E-11*altitude
+  lat_x_altitude <- -68762E-11*altitude*latitude
 
   normal_growth_mm <- constant+
     diameter_over_bark+

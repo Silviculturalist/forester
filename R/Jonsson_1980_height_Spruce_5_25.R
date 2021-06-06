@@ -39,11 +39,11 @@ Jonsson_1980_height_Spruce_5_25 <- function(
   altitude
 ){
   if(age_at_breast_height<5){
-    stop("Pine must be at least 5 years.")
+    stop("Spruce must be at least 5 years.")
   }
 
   if(age_at_breast_height>25){
-    stop("Pine must be at most 25 years.")
+    stop("Spruce must be at most 25 years.")
   }
 
   if(jonson_bonitet>7){
@@ -74,7 +74,7 @@ Jonsson_1980_height_Spruce_5_25 <- function(
   relative_diameter_sq <- 37094E-6*((diameter_at_breast_height/diameter_of_largest_tree_on_plot)^2)
 
   lat <- -29892E-6*latitude
-  lat_x_altitude <- -43385E-10*altitude
+  lat_x_altitude <- -43385E-10*altitude*latitude
 
   normal_growth_mm <- constant+
     diameter_over_bark+

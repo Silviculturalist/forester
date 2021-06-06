@@ -39,11 +39,11 @@ Jonsson_1980_height_Spruce_26_50 <- function(
   altitude
 ){
   if(age_at_breast_height<26){
-    stop("Pine must be at least 26 years.")
+    stop("Spruce must be at least 26 years.")
   }
 
   if(age_at_breast_height>50){
-    stop("Pine must be at most 50 years.")
+    stop("Spruce must be at most 50 years.")
   }
 
   if(jonson_bonitet>7){

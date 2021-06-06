@@ -1,10 +1,10 @@
-#' Height function for Scots Pine between 5-25 yr,
+#' Height function for Birch between 5-25 yr,
 #' from Jonsson (1980)
 #'
 #' @source Jonsson, B. (1980) "Functions for the long-term forecasting of the
 #' size and structure of timber yields". Report #7. Section of Forest Mensuration
 #' and Management. Swedish University of Agricultural Sciences.
-#' ISSN: 0349-2133. ISBN: 91-576-0477-0. Umeå. p. 70.
+#' ISSN: 0349-2133. ISBN: 91-576-0477-0. Umeå. p. 94.
 #'
 #' @description
 #' Written to be used with the Swedish National Forest Inventory's 6.64 m radius
@@ -14,8 +14,8 @@
 #' This function originally for ln( increment). Result has been re-transformed.
 #' Log. bias assumed to be included in written coefficient.
 #'
-#' Standard Deviation: 0.1523
-#' Number of trees: 676
+#' Standard Deviation: 0.1513
+#' Number of trees: 355
 #' Coefficient of multiple correlation: 0.88
 #'
 #'
@@ -30,20 +30,20 @@
 #' @export
 #'
 #' @examples
-Jonsson_1980_height_Pine_5_25 <- function(
+Jonsson_1980_height_Birch_5_25 <- function(
   jonson_bonitet,
   diameter_at_breast_height,
   diameter_of_largest_tree_on_plot,
   age_at_breast_height,
   latitude,
   altitude
-  ){
+){
   if(age_at_breast_height<5){
-    stop("Pine must be at least 5 years.")
+    stop("Birch must be at least 5 years.")
   }
 
   if(age_at_breast_height>25){
-    stop("Pine must be at most 25 years.")
+    stop("Birch must be at most 25 years.")
   }
 
   if(jonson_bonitet>7){
@@ -52,29 +52,29 @@ Jonsson_1980_height_Pine_5_25 <- function(
   }
 
   if(jonson_bonitet%in%c(1,2)){
-    constant <- 39611E-4
+    constant <- 41911E-4
   } else if(jonson_bonitet==3){
-    constant <- 38252E-4
+    constant <- 41911E-4
   } else if(jonson_bonitet==4){
-    constant <- 37738E-4
+    constant <- 41325E-4
   }else if(jonson_bonitet==5){
-    constant <- 37207E-4
+    constant <- 40798E-4
   }else if(jonson_bonitet==6){
-    constant <- 36103E-4
+    constant <- 40686E-4
   }else if(jonson_bonitet==7){
-    constant <- 35413E-4
+    constant <- 39493E-4
   }
 
-  diameter_over_bark <- -12603E-2*(diameter_at_breast_height+50)^-1
-  diameter_over_bark_sq <- 14574E-1*(diameter_at_breast_height)^-2
+  diameter_over_bark <- -14963E-2*(diameter_at_breast_height+50)^-1
+  diameter_over_bark_sq <- 12704E-1*(diameter_at_breast_height)^-2
 
-  tree_rings_breast_height <- 23304E-1*age_at_breast_height
+  tree_rings_breast_height <- 11073E-6*age_at_breast_height
 
-  relative_diameter <- -13878E-6*(diameter_at_breast_height/diameter_of_largest_tree_on_plot)
-  relative_diameter_sq <- -32227E-6*((diameter_at_breast_height/diameter_of_largest_tree_on_plot)^2)
+  relative_diameter <- -19889E-5*(diameter_at_breast_height/diameter_of_largest_tree_on_plot)
+  relative_diameter_sq <- 24952E-6*((diameter_at_breast_height/diameter_of_largest_tree_on_plot)^2)
 
-  lat <- -21195E-6*latitude
-  lat_x_altitude <- -46529E-10*altitude*latitude
+  lat <- -16138E-6*latitude
+  lat_x_altitude <- -59630E-10*altitude*latitude
 
   normal_growth_mm <- constant+
     diameter_over_bark+
