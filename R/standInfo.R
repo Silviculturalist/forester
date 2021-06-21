@@ -1,6 +1,0 @@
-
-
-
-standInfo <- function(){
-
-}
