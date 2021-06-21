@@ -75,7 +75,9 @@ singleTreeAgeEstimation <- function(diameter, diameter_ba, latitude, altitude, l
   reld <- diameter / diameter_ba
 
   # ln d mean diameter of codominant trees
-  lnd <- -0.9231+(1.0032*log(total_stand_age))-(0.00701*total_stand_age)-(4.005/SIS)+(0.0186*SIS)-(1.882/total_ba) + 0.036
+  #lnd <- -0.9231+(1.0032*log(total_stand_age))-(0.00701*total_stand_age)-(4.005/SIS)+(0.0186*SIS)-(1.882/total_ba) + 0.036
+  lnd <- Elfving_2003_mean_diameter_codominant_trees(total_stand_age=total_stand_age, SIS=SIS, total_ba=total_ba)
+
 
 if(is.na(total_stand_age)){
     #Without stand age
