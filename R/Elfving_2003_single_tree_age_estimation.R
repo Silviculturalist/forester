@@ -21,7 +21,7 @@
 #' @export
 #'
 
-singleTreeAgeEstimation <- function(diameter, diameter_ba, latitude, altitude, lnd, total_stand_age, SIS, total_ba, species, field_vegetation, even_aged, county, peat, ditch){
+Elfving_2003_single_tree_age_estimation <- function(diameter, diameter_ba, latitude, altitude, lnd, total_stand_age, SIS, total_ba, species, field_vegetation, even_aged, county, peat, ditch){
   #Standard or Undergrowth tree?
   if(diameter > 1.8*exp((lnd+8))){
     standard_tree <-  TRUE
