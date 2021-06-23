@@ -29,7 +29,7 @@
 #' @param basal_area_other_species Basal area of other species on the plot. (m2/ha)
 #' @param SI Site index H100 Pine , m.
 #' @param basal_area_weighted_mean_diameter Diameter corresponding to mean basal area (m).
-#' @param basal_area_weighted_mean_diameter_other_species Diameter coressponding to mean basal area (m) of other species on plot.
+#' @param basal_area_weighted_mean_diameter_other_species Diameter corresponding to mean basal area (m) of other species on plot.
 #' @param thinned 1 if the stand been thinned, otherwise 0.
 #' @param thinned_previous_5_years 1 if the stand has been thinned within 5 years, otherwise 0.
 #' @param vegetation Variable indicating vegetation type scaled from -5 to +4 as follows:
