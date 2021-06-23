@@ -237,7 +237,7 @@ Eko_PM_basal_area_5_year_increment_northern_central_Sweden_Broadleaves <- functi
 
   return(
     exp(
-      dependent_vars + independent_vars
+      dependent_vars + independent_vars + 0.1648
     )
   )
 

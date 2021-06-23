@@ -66,7 +66,7 @@
 #' @export
 #'
 #' @examples
-Eko_PM_basal_area_5_year_increment_southern_Sweden_Spruces <- function(
+Eko_PM_basal_area_5_year_increment_southern_Sweden_Spruce <- function(
   basal_area.m2,
   stem_number_ha,
   age_at_breast_height,
@@ -226,7 +226,7 @@ Eko_PM_basal_area_5_year_increment_southern_Sweden_Spruces <- function(
 
   return(
     exp(
-      dependent_vars + independent_vars
+      dependent_vars + independent_vars + 0.0737
     )
   )
 

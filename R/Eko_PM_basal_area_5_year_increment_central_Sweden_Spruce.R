@@ -231,7 +231,7 @@ Eko_PM_basal_area_5_year_increment_central_Sweden_Spruce <- function(
 
   return(
     exp(
-      dependent_vars + independent_vars
+      dependent_vars + independent_vars + 0.0712
     )
   )
 

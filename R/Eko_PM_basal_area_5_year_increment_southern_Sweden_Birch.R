@@ -239,7 +239,7 @@ Eko_PM_basal_area_5_year_increment_southern_Sweden_Birch <- function(
 
   return(
     exp(
-      dependent_vars + independent_vars
+      dependent_vars + independent_vars + 0.1590
     )
   )
 
