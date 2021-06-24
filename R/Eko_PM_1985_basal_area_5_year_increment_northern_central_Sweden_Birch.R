@@ -66,7 +66,7 @@
 #' @export
 #'
 #' @examples
-Eko_PM_basal_area_5_year_increment_northern_central_Sweden_Birch <- function(
+Eko_PM_1985_basal_area_5_year_increment_northern_central_Sweden_Birch <- function(
   basal_area.m2,
   stem_number_ha,
   age_at_breast_height,

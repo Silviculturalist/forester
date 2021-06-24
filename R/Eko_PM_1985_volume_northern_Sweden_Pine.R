@@ -1,4 +1,4 @@
-#' Volume function for Pine in northern Sweden.
+#' Volume function for Scots Pine in northern Sweden.
 #'
 #' @source Ekö, Per Magnus (1985) "En produktionsmodell för skog i Sverige, baserad på bestånd från
 #' riksskogstaxeringens provytor: A growth simulator for Swedish forests, based on
@@ -15,7 +15,7 @@
 #'
 #'
 #'
-#' @param basal_area.m2 Basal area over bark (m2/ha)
+#' @param basal_area.m2 Basal area over bark of Scots Pine (m2/ha)
 #' @param basal_area_other_species Basal area of other species on the plot. (m2/ha)
 #' @param age_at_breast_height Age at breast height, calculated as the mean age of the two thickest trees (years).
 #' @param stem_number_ha Number of stems per hectare.
@@ -54,8 +54,8 @@ Eko_PM_1985_volume_northern_Sweden_Pine <- function(
     +1.05864*F4age+
     -0.170140*log(stem_number_ha)+
     +0.247550*log(SIdm)+
-    +0.213800E-01*thinned_previous_five_years+
-    +0.295300E-01*thinned_before_previous_five_years+
+    +0.213800E-01*thinned_before_previous_five_years+
+    +0.295300E-01*thinned_previous_five_years+
     +0.510332E-02*(basal_area_weighted_mean_diameter_other_species/basal_area_weighted_mean_diameter)*basal_area_other_species+
     +1.08339
 

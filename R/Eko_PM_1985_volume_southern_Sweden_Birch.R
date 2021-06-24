@@ -15,13 +15,12 @@
 #'
 #'
 #'
-#' @param basal_area.m2 Basal area over bark (m2/ha)
+#' @param basal_area.m2 Basal area over bark of Birch (m2/ha)
 #' @param basal_area_other_species Basal area of other species on the plot. (m2/ha)
 #' @param age_at_breast_height Age at breast height, calculated as the mean age of the two thickest trees (years).
 #' @param stem_number_ha Number of stems per hectare.
 #' @param SI Site index H100 Spruce , m.
 #' @param latitude Degrees
-#' @param altitude Meters above sea level.
 #' @param fertilised 1 if the stand has been fertilised, otherwise 0.
 #' @param thinned 1 if the stand has been thinned, otherwise 0.
 #' @param basal_area_weighted_mean_diameter Diameter corresponding to mean basal area (m).
@@ -38,7 +37,6 @@ Eko_PM_1985_volume_southern_Sweden_Birch <- function(
   stem_number_ha,
   SI,
   latitude,
-  altitude,
   fertilised,
   thinned,
   basal_area_weighted_mean_diameter,

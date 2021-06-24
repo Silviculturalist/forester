@@ -15,7 +15,7 @@
 #'
 #'
 #'
-#' @param basal_area.m2 Basal area over bark (m2/ha)
+#' @param basal_area.m2 Basal area over bark of Broadleaves (m2/ha)
 #' @param basal_area_other_species Basal area of other species on the plot. (m2/ha)
 #' @param age_at_breast_height Age at breast height, calculated as the mean age of the two thickest trees (years).
 #' @param stem_number_ha Number of stems per hectare.

@@ -1,27 +1,27 @@
-#' Basal area growth function for Broadleaves in northern and central Sweden.
+#' Basal area growth function for Beech in Sweden.
 #'
 #' @source Ekö, Per Magnus (1985) "En produktionsmodell för skog i Sverige, baserad på bestånd från
 #' riksskogstaxeringens provytor: A growth simulator for Swedish forests, based on
 #' data from the national forest survey. Rapporter nr. 16. Swedish University of
 #' Agricultural Sciences, dept. of Silviculture. Umeå. ISBN 91-576-2386-4. ISSN
-#'  0348-8969.  p. 73
+#'  0348-8969.  p. 72
 #'
 #' @description
-#' Number of observations: 1367
+#' Number of observations: 298
 #'
-#' \tabular{lrrrr}{
-#' Thinning \tab SI<160 \tab 160≤SI<200 \tab 200≤SI<240 \tab SI>240   \cr
-#' Unthinned \tab 319 \tab 335 \tab 225 \tab 160  \cr
-#' Thinned \tab 85 \tab 100 \tab 75 \tab 68 \cr
+#' \tabular{lrr}{
+#' Thinning \tab SI<310 \tab SI≥310 \cr
+#' Unthinned \tab 67 \tab 103 \cr
+#' Thinned \tab 61 \tab 67 \cr
 #' }
 #'
 #' Multiple correlation coefficient: 0.89
 #'
 #'
-#' Standard deviation about the function, Sf : 0.608
+#' Standard deviation about the function, Sf : 0.603
 #'
 #'
-#' Sf/ Standard deviation about the mean, (\%): 47
+#' Sf/ Standard deviation about the mean, (\%): 46
 #'
 #' @param basal_area.m2 Basal area over bark (m2/ha)
 #' @param stem_number_ha Number of stems per hectare.
@@ -66,7 +66,7 @@
 #' @export
 #'
 #' @examples
-Eko_PM_basal_area_5_year_increment_northern_central_Sweden_Broadleaves <- function(
+Eko_PM_1985_basal_area_5_year_increment_Sweden_Beech <- function(
   basal_area.m2,
   stem_number_ha,
   age_at_breast_height,
@@ -113,121 +113,49 @@ Eko_PM_basal_area_5_year_increment_northern_central_Sweden_Broadleaves <- functi
   }
 
   independent_vars <-
-    -0.345933*ba_quotient_chronic_mortality+
-    -0.138015*ground_veg_indicator+
-    -0.650878E-01*bilberry_cowberry+
-    -0.175149E-01*latitude+
-    -0.570035E-03*altitude+
-    +0.151318*TAX77
+    -0.862301*ba_quotient_acute_mortality+
+    +0.162579E-02*SIdm+
+    +0.538943
 
 
 
 
-  if(SIdm<160){
+  if(SIdm<310){
 
     if(thinned==0){
       dependent_vars <-
-        +0.865166E-01*basal_area.m2+
-        +0.755603*log(basal_area.m2)+
-        -0.806548E-03*stem_number_ha+
-        +0.275974*log(stem_number_ha)+
-        -0.540881E-02*age_at_breast_height+
-        -0.117056*log(age_at_breast_height)+
-        -0.187866E-01*basal_area_other_species+
-        -1.18519
+        +0.948126*log(basal_area.m2)+
+        +0.563620E-01*log(stem_number_ha)+
+        -0.751665*log(age_at_breast_height)+
+        -0.163302E-01*basal_area_other_species
 
 
     } else {
       dependent_vars <-
-        +0.865166E-01*basal_area.m2+
-        +0.755603*log(basal_area.m2)+
-        -0.806548E-03*stem_number_ha+
-        +0.275974*log(stem_number_ha)+
-        -0.540881E-02*age_at_breast_height+
-        -0.117056*log(age_at_breast_height)+
-        -0.187866E-01*basal_area_other_species+
-        -0.952398
+        +0.948126*log(basal_area.m2)+
+        +0.563620E-01*log(stem_number_ha)+
+        -0.751665*log(age_at_breast_height)+
+        -0.163302E-01*basal_area_other_species+
+        +0.887110E-01
     }
 
 
 
-  } else if(SIdm>=160 && SIdm<200){
+  } else if(SIdm>=310){
     if(thinned==0){
       dependent_vars <-
-        -0.129773E-01*basal_area.m2+
-        +0.989525*log(basal_area.m2)+
-        -0.715363E-04*stem_number_ha+
-        +0.490676E-01*log(stem_number_ha)+
-        +0.218728E-02*age_at_breast_height+
-        -0.944317*log(age_at_breast_height)+
-        -0.143834E-01*basal_area_other_species+
-        +2.78296
+        +0.821914*log(basal_area.m2)+
+        +0.102770*log(stem_number_ha)+
+        -0.753735*log(age_at_breast_height)+
+        -0.163641E-01*basal_area_other_species
 
     } else {
       dependent_vars <-
-        -0.129773E-01*basal_area.m2+
-        +0.989525*log(basal_area.m2)+
-        -0.715363E-04*stem_number_ha+
-        +0.490676E-01*log(stem_number_ha)+
-        +0.218728E-02*age_at_breast_height+
-        -0.944317*log(age_at_breast_height)+
-        -0.143834E-01*basal_area_other_species+
-        +2.87671
-
-    }
-
-
-
-  } else if(SIdm>=200 && SIdm<240){
-
-    if(thinned==0){
-      dependent_vars <-
-        +0.517826E-01*basal_area.m2+
-        +0.768565*log(basal_area.m2)+
-        -0.381320E-03*stem_number_ha+
-        +0.201267*log(stem_number_ha)+
-        +0.131078E-02*age_at_breast_height+
-        -0.831523*log(age_at_breast_height)+
-        -0.122796E-01*basal_area_other_species+
-        +1.65650
-
-
-    } else {
-      dependent_vars <-
-        +0.517826E-01*basal_area.m2+
-        +0.768565*log(basal_area.m2)+
-        -0.381320E-03*stem_number_ha+
-        +0.201267*log(stem_number_ha)+
-        +0.131078E-02*age_at_breast_height+
-        -0.831523*log(age_at_breast_height)+
-        -0.122796E-01*basal_area_other_species+
-        +1.59209
-    }
-
-  } else if(SIdm>=240){
-
-    if(thinned==0){
-      dependent_vars <-
-        +0.243920E-02*basal_area.m2+
-        +0.857832*log(basal_area.m2)+
-        -0.949555E-04*stem_number_ha+
-        +0.192173*log(stem_number_ha)+
-        -0.292753E-02*age_at_breast_height+
-        -0.570009*log(age_at_breast_height)+
-        -0.240816E-01*basal_area_other_species+
-        +0.916942
-
-
-    } else {
-      dependent_vars <-
-        +0.243920E-02*basal_area.m2+
-        +0.857832*log(basal_area.m2)+
-        -0.949555E-04*stem_number_ha+
-        +0.192173*log(stem_number_ha)+
-        -0.292753E-02*age_at_breast_height+
-        -0.570009*log(age_at_breast_height)+
-        -0.240816E-01*basal_area_other_species+
-        +1.17865
+        +0.821914*log(basal_area.m2)+
+        +0.102770*log(stem_number_ha)+
+        -0.753735*log(age_at_breast_height)+
+        -0.163641E-01*basal_area_other_species+
+        +0.887110E-01
 
     }
 
@@ -237,7 +165,7 @@ Eko_PM_basal_area_5_year_increment_northern_central_Sweden_Broadleaves <- functi
 
   return(
     exp(
-      dependent_vars + independent_vars + 0.1648
+      dependent_vars + independent_vars + 0.1379
     )
   )
 
