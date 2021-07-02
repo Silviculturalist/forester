@@ -26,8 +26,8 @@
 #'  If output is "Height", the numeric value for the height (dm) a stand will
 #'  reach at age_2.
 #'
-#'  If output is "Equation", a text response with the equation for that height
-#'  curve.
+#'  If output is "Equation", a named list with 2 elements: I) "Equation": text response with the equation for that height
+#'  curve. II) "T13": The time taken to reach breast height 1.3m.
 #' @export
 #'
 #' @examples
@@ -151,7 +151,8 @@ if(output=="SIH100"){
 } else if(output=="Height"){
   return(13+params$A2*(1-exp(-age_2*params$RK))^params$RM2)
 } else if(output=="Equation"){
-  return(print(paste0("y~13+",params$A2,"*(1-exp(-age*",params$RK,"))^",params$RM2)))
+  return(list("Equation"=paste0("y~13+",params$A2,"*(1-exp(-age*",params$RK,"))^",params$RM2),
+              "T13"=T13))
 }
 
 

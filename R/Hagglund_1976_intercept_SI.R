@@ -2,7 +2,7 @@
 #'
 #' @description Demands:
 #'
-#' - The stand shall be a Scots Pine or Norway Spruce stand with maximum 20% of basal area composed of other species.
+#' - The stand shall be a Scots Pine or Norway Spruce stand with maximum 20 \% of basal area composed of other species.
 #'
 #' - The stand must be even-aged.
 #'
