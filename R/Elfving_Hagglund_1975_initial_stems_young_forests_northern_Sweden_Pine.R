@@ -6,12 +6,16 @@
 #'
 #'
 #' Number of sites = 426.
+#'
 #' Mean stems per ha: 7.2151
+#'
 #' Standard deviation mean stems per ha: 0.571
 #'
 #'
 #' standard deviation about the function: 0.394
+#'
 #' R = 0.73
+#'
 #' Cp = 12. (Daniel & Wood 1971, pp. 86)
 #'
 #'

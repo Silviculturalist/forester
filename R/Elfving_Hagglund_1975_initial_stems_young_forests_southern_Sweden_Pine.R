@@ -6,12 +6,16 @@
 #'
 #'
 #' Number of sites = 235.
+#'
 #' Mean stems per ha: 7.3192
+#'
 #' Standard deviation mean stems per ha: 0.523
 #'
 #'
 #' standard deviation about the function: 0.371
+#'
 #' R = 0.72
+#'
 #' Cp = 7. (Daniel & Wood 1971, pp. 86)
 #'
 #'
@@ -22,7 +26,7 @@
 #'
 #' @param stand_density 0-1.
 #' @param pre_commercial_thinning Has the stand been pre-commercially thinned?
-#' @param age_at_breast_height Stand age at breast height (1.3 m)
+#' @param age_at_breast_height Stand age at breast height (1.3 m). For example [forester::Hagglund_age_to_height()]
 #'
 #' @return Stems thicker than 2.5 cm per ha.
 #' @export

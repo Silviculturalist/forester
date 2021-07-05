@@ -90,7 +90,7 @@ Hagglund_age_to_height <-  function(
         output = "SIH100") - (SI*10)
       root <- uniroot(g, c(0,150))[[1]] #The answer is between the ages of...
 
-      age_to_breast_height <- forester::Hagglund_1972_northern_Sweden_height_trajectories_Spruce(latitude=latitude,
+      age_to_breast_height <- forester::Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(latitude=latitude,
                                                                                                  age_at_breast_height = root, #Keep all the decimal places
                                                                                                  top_height_dm = (SI*10),
                                                                                                  culture=culture,
