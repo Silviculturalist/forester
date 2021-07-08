@@ -82,7 +82,9 @@ Eko_PM_1985_basal_area_5_year_increment_northern_Sweden_Spruce <- function(
   altitude,
   TAX77=0,
   fertilised,
-  latitude
+  latitude,
+  ba_quotient_chronic_mortality=0,
+  ba_quotient_acute_mortality=0
 ){
   SIdm <- SI*10
 
