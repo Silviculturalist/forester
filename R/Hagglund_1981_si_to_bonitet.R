@@ -28,10 +28,9 @@
 #' @examples
 #' si_to_bonitet_integrated(H100=14, function="a")
 
-si_to_bonitet <- function(H100, main_species, vegetation, altitude, county){
+Hagglund_1981_si_to_bonitet <- function(H100, main_species, vegetation, altitude, county){
   stopifnot(is.numeric(H100))
   stopifnot(H100>0)
-  stopifnot(length(fun)==1)
 
   F1 <- 0.72 + (H100/130)
   F2 <- 0.70 + (H100/100)
