@@ -4,34 +4,35 @@
 #' @param diameter_of_mean_basal_area_over_bark_cm Diameter corresponding to the mean basal area over bark, cm.
 #' @param basal_area_over_bark_ha_m2 Basal area over bark per hectare, m2.
 #' @param age_bh_100_largest_trees_per_ha_years Age of 100 largest trees at breast height per hectare in years.
+#' @param SI Site index H100 m.
 #'
 #' @return %
 #' @export
 #'
 #' @examples
-Eriksson_1976_bark_subtraction_procent <- function(diameter_of_mean_basal_area_over_bark_cm, basal_area_over_bark_ha_m2,age_bh_100_largest_trees_per_ha_years){
+Eriksson_1976_bark_subtraction_procent <- function(diameter_of_mean_basal_area_over_bark_cm,SI, basal_area_over_bark_ha_m2,age_bh_100_largest_trees_per_ha_years){
 
-  if(site_index<=17.9){
+  if(SI<=17.9){
     #G16
     b1 <- -0.138
 
-  } else if(site_index<=21.9){
+  } else if(SI<=21.9){
     #G20
     b1 <- -0.183
 
-  } else if(site_index<=25.9){
+  } else if(SI<=25.9){
     #G24
     b1 <- -0.206
 
-  } else if(site_index<=29.9){
+  } else if(SI<=29.9){
     #G28
     b1 <- -0.236
 
-  } else if(site_index<=33.9){
+  } else if(SI<=33.9){
     #G32
     b1 <- -0.243
 
-  } else if(site_index>=34){
+  } else if(SI>=34){
     #G36
     b1 <- -0.243
   }
