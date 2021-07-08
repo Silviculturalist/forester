@@ -1,8 +1,10 @@
 #' Annual Volume Increment under bark per hectare, m3
-#' @source From p. 90;91. in Eriksson, H. (1976) "Granens produktion i Sverige", translated: "Yield of Norway spruce in Sweden". Report no. 41. Dept. of Forest Yield Research. Royal College of Forestry. Stockholm.
+#' @source From p. 63;64. in Eriksson, H. (1976) "Granens produktion i Sverige", translated: "Yield of Norway spruce in Sweden". Report no. 41. Dept. of Forest Yield Research. Royal College of Forestry. Stockholm.
+#'
+#' @details Coefficient of variation for basal area  on a 5 plot has been calculated as per p.112.
 #'
 #' @param basal_area_ha_before_thinning_m2 Basal area under bark per hectare before thinning, m2.
-#' @param site_index Spruce
+#' @param site_index SI H100 m Spruce
 #' @param thinning_percent_ba_under_bark Thinning as percentage of basal area under bark before thinning.
 #' @param diameter_of_mean_basal_area_of_thinned_trees_cm Diameter corresponding to mean basal area under bark of the thinned trees, cm.
 #' @param diameter_of_mean_basal_area_before_thinning_cm Diameter corresponding to the mean basal area of the stand before thinning, cm.
@@ -11,7 +13,6 @@
 #' @param increment_period_years Length of increment period, years.
 #' @param dominant_height_dm Dominant height, dm.
 #' @param age_bh_100_largest_trees_per_ha_years Age at breast height of the 100 largest trees per hectare, years.
-#' @param basal_area_5_m_coef_of_variation Groupstructure index (Coefficient of variation for the basal area under bark on 5-metre circular plots inside the sample plot.) % .
 #'
 #'
 #'
@@ -20,59 +21,73 @@
 #'
 #' @examples
 Eriksson_1976_annual_volume_increment_under_bark_per_ha <- function(basal_area_ha_before_thinning.m2,
-                                                                             site_index,
-                                                                             thinning_percent_ba_under_bark,
-                                                                             diameter_of_mean_basal_area_of_thinned_trees_cm,
-                                                                             diameter_of_mean_basal_area_before_thinning_cm,
-                                                                             number_thinned_trees_per_ha,
-                                                                             number_trees_per_ha_before_thinning,
-                                                                             increment_period_years,
-                                                                             dominant_height_dm,
-                                                                             age_bh_100_largest_trees_per_ha_years,
-                                                                             basal_area_5_m_coef_of_variation){
+                                                                    site_index,
+                                                                    thinning_percent_ba_under_bark,
+                                                                    diameter_of_mean_basal_area_of_thinned_trees_cm,
+                                                                    diameter_of_mean_basal_area_before_thinning_cm,
+                                                                    number_thinned_trees_per_ha,
+                                                                    number_trees_per_ha_before_thinning,
+                                                                    increment_period_years,
+                                                                    dominant_height_dm,
+                                                                    age_bh_100_largest_trees_per_ha_years,
+                                                                    basal_area_5_m_coef_of_variation){
+
   if(site_index<=17.9){
     #G16
-    b1 <- 0.253
-    b2 <- -0.100
-    b3 <- 0.067
-    b4 <- 1.103
-    b5 <- -0.906
-    b6 <- -0.296
+    b1 <- 0.250
+    b2 <- -0.046
+    b3 <- 0.049
+    b4 <- 0.033
+    b5 <- -0.748
+    b6 <- -0.308
+    c <- 0.447
   } else if(site_index<=21.9){
     #G20
-    b1 <- 0.370
-    b2 <- -0.107
-    b3 <- 0.080
-    b4 <- 1.015
-    b5 <- -0.939
-    b6 <- -0.233
+    b1 <- 0.213
+    b2 <- -0.055
+    b3 <- 0.085
+    b4 <- 0.460
+    b5 <- -0.875
+    b6 <- -0.313
+    c <- 0.488
   } else if(site_index<=25.9){
     #G24
-    b1 <- 0.435
-    b2 <- -0.109
-    b3 <- 0.109
-    b4 <- 0.831
-    b5 <- -0.730
-    b6 <- -0.125
+    b1 <- 0.304
+    b2 <- -0.056
+    b3 <- 0.126
+    b4 <- 0.035
+    b5 <- -0.571
+    b6 <- -0.154
+    c <- 0.498
   } else if(site_index<=29.9){
     #G28
-    b1 <- 0.322
-    b2 <- -0.108
-    b3 <- 0.042
-    b4 <- 0.907
-    b5 <- -0.795
-    b6 <- -0.109
+    b1 <- 0.260
+    b2 <- -0.059
+    b3 <- 0.034
+    b4 <- 0.112
+    b5 <- -0.667
+    b6 <- -0.066
+    c <- 0.568
   } else if(site_index>=30){
     #G32
-    b1 <-  0.358
-    b2 <- -0.097
-    b3 <- 0.035
-    b4 <- 0.868
-    b5 <- -0.861
-    b6 <- -0.042
+    b1 <-  0.337
+    b2 <- -0.046
+    b3 <- 0.056
+    b4 <- 0.120
+    b5 <- -0.789
+    b6 <- -0.013
+    c <- 0.763
   }
 
   return(
-    0.141*((basal_area_ha_before_thinning.m2)^b1)*((thinning_percent_ba_under_bark-0.01)^b2)*((((diameter_of_mean_basal_area_of_thinned_trees_cm/diameter_of_mean_basal_area_before_thinning_cm)+0.1)*(((100*number_thinned_trees_per_ha)/number_trees_per_ha_before_thinning)+0.01))^0.062)*((increment_period_years/10)^b3)*(dominant_height_dm^b4)*((age_bh_100_largest_trees_per_ha_years/10)^b5)*(basal_area_5_m_coef_of_variation^b6)
+    2.635*basal_area_ha_before_thinning.m2^b1*
+      (thinning_percent_ba_under_bark+0.01)^b2*
+      ((diameter_of_mean_basal_area_of_thinned_trees_cm/diameter_of_mean_basal_area_before_thinning_cm+0.1)*(100*number_thinned_trees_per_ha/number_trees_per_ha_before_thinning+0.01))^0.024*
+      increment_period_years^b3*
+      dominant_height_dm^b4*
+      age_bh_100_largest_trees_per_ha_years^b5*
+      (13.778*((age_bh_100_largest_trees_per_ha_years/10)^c)*((number_trees_per_ha_before_thinning/1000)^-0.052))^b6
   )
+
 }
+
