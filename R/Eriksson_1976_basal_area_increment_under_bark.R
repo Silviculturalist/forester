@@ -1,4 +1,4 @@
-#' Annual Volume Increment under bark per hectare, m3
+#' Annual Increment in Basal Area in Spruce Stand in Eriksson 1976
 #' @source From p. 63;64. in Eriksson, H. (1976) "Granens produktion i Sverige", translated: "Yield of Norway spruce in Sweden". Report no. 41. Dept. of Forest Yield Research. Royal College of Forestry. Stockholm.
 #'
 #' @details Coefficient of variation for basal area  on a 5 plot has been calculated as per p.112.
@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @examples
-Eriksson_1976_annual_volume_increment_under_bark_per_ha <- function(basal_area_ha_before_thinning.m2,
+Eriksson_1976_basal_increment_under_bark <- function(basal_area_ha_before_thinning.m2,
                                                                     site_index,
                                                                     thinning_percent_ba_under_bark,
                                                                     diameter_of_mean_basal_area_of_thinned_trees_cm,
@@ -29,8 +29,8 @@ Eriksson_1976_annual_volume_increment_under_bark_per_ha <- function(basal_area_h
                                                                     number_trees_per_ha_before_thinning,
                                                                     increment_period_years,
                                                                     dominant_height_dm,
-                                                                    age_bh_100_largest_trees_per_ha_years,
-                                                                    basal_area_5_m_coef_of_variation){
+                                                                    age_bh_100_largest_trees_per_ha_years
+                                                                   ){
 
   if(site_index<=17.9){
     #G16
