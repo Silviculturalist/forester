@@ -1,0 +1,19 @@
+Agestam_1985_volume_Spruce_SI <- function(
+  basal_area_Spruce_m2_ha,
+  SI_Spruce,
+  age_at_breast_height_Spruce,
+  stems_ha_Spruce,
+  stems_ha_other
+){
+  return(
+    exp(
+      +1.2010*log(basal_area_Spruce_m2_ha)+
+      +0.6476*log(SI_Spruce*10)+
+      +0.1581*log(age_at_breast_height_Spruce)+
+      -0.01084*sqrt(stems_ha_Spruce)+
+      -0.002148*sqrt(stems_ha_other)+
+      -11.1378*(1/age_at_breast_height_Spruce)+
+      -2.1739
+    )
+  )
+}
