@@ -16,7 +16,7 @@
 #'
 #'
 #'
-#' @param basal_area_under_bark_Pine Basal area Pine including bark, m2/ha.
+#' @param basal_area_under_bark_Pine Basal area Pine under bark, m2/ha.
 #' @param SI_Pine Site Index H100 for Scots Pine from Hägglund (1974)
 #' @param latitude Latitude, degrees.
 #'
