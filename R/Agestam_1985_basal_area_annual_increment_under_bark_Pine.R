@@ -1,18 +1,36 @@
+#' Basal area growth function for Pine from Agestam 1985
+#'
+#' @source Agestam, E. (1985) 'A growth simulator for mixed stands of pine, spruce
+#' and birch in Sweden. Diss. Swedish University of Agricultural Sciences. Report no. 15. Dept. of Forest Yield Research. ISSN 0348-7636.
+#' ISBN 91-576-2528-x. 150 pp. Garpenberg, Sweden; page. 29.
+#'
+#' @details Material:
+#'
+#' Number of growth periods: 505
+#'
+#' Multiple correlation coefficient: 0.888
+#'
+#' Standard deviation about the function (sf) : 0.245
+#'
+#' sf/standard deviation about the mean:  46%
 #'
 #'
-#' @param basal_area_Pine_m2_ha_after_thinning
-#' @param stem_count_Pine
-#' @param age_at_breast_height_period_start
-#' @param SI_H100_Pine
-#' @param basal_area_other_species_m2_ha_after_thinning
-#' @param mean_basal_area_under_bark_Pine_m2
-#' @param mean_basal_area_under_bark_all_species_m2
-#' @param increment_period_years
+#' @param basal_area_Pine_m2_ha_after_thinning Basal area of Pine after thinning, under bark. m2/ha.
+#' @param stem_count_Pine Number of Pine stems per ha after thinning.
+#' @param age_at_breast_height_period_start Age at breast height for Pine at the period start.
+#' @param SI_H100_Pine Site index H100 for Pine according to height trajectory defined in Hägglund, 1974.
+#' @param basal_area_other_species_m2_ha_after_thinning Basal area under bark of other species after thinning, under bark. m2/ha.
+#' @param diameter_mean_basal_area_stem_Pine_cm Diameter corresponding to mean basal area under bark, Pine. cm.
+#' @param diameter_mean_basal_area_stem_all_species_cm Diameter corresponding to mean basal area under bark, all species on plot. cm.
+#' @param increment_period_years Length of increment period, in years.
 #'
-#' @return
+#' @return Annual basal area growth under bark for Pine. m2/ha.
 #' @export
 #'
 #' @examples
+#' library(ggplot2)
+#' ggplot()+geom_function(fun= function(x) Agestam_1985_basal_area_annual_increment_under_bark_Pine(basal_area_Pine_m2_ha_after_thinning = 15,stem_count_Pine = 800,age_at_breast_height_period_start = x,SI_H100_Pine = 25,basal_area_other_species_m2_ha_after_thinning = 15,diameter_mean_basal_area_stem_Pine_cm = 1,diameter_mean_basal_area_stem_all_species_cm = 1,increment_period_years = 10))+xlim(c(10,140))+ylim(c(0,0.5))
+#
 Agestam_1985_basal_area_annual_increment_under_bark_Pine <- function(
   basal_area_Pine_m2_ha_after_thinning,
   stem_count_Pine,
@@ -27,17 +45,14 @@ Agestam_1985_basal_area_annual_increment_under_bark_Pine <- function(
   #Age during middle of increment period.
   age_at_breast_height_period_start <- age_at_breast_height_period_start+(increment_period_years/2)
 
-if(age_at_breast_height_period_start<=40){
-  a <- 0.37398
-} else if(age_at_breast_height_period_start>=41 &&
-     age_at_breast_height_period_start<=60){
-    a <- 0.01077
-  } else if(age_at_breast_height_period_start>=61 &&
-            age_at_breast_height_period_start<=80){
-    a <- 0.01335
-  } else if(age_at_breast_height_period_start>=81){
-    a <- 0.01824
-  }
+  a <- dplyr::case_when(
+    age_at_breast_height_period_start<=40 ~ 0.37398,
+    age_at_breast_height_period_start<=60 ~ 0.38475,
+    age_at_breast_height_period_start<=80 ~ 0.38733,
+    TRUE ~ 0.39222
+
+  )
+
 
   return(
     exp(
@@ -49,7 +64,7 @@ if(age_at_breast_height_period_start<=40){
         -0.19424*log(age_at_breast_height_period_start)+
         -0.2130E-3*(basal_area_other_species_m2_ha_after_thinning*100)+
         +0.10502*log((diameter_mean_basal_area_stem_Pine_cm)/(diameter_mean_basal_area_stem_all_species_cm))
-    )/10
+    )/100
   )
 
 }
