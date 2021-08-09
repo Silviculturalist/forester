@@ -34,7 +34,7 @@ Agestam_1985_mortality_above_bark_Pine <- function(
       16.039+
       +0.4809*log(stems_Pine_ha)+
       +2.2526*log(basal_area_above_bark_all_species)+
-      -3.5439*log(SI*10)+
+      -3.5439*log(SI_Pine*10)+
       -2.6191*log(age_at_breast_height)
     )
   )
