@@ -11,7 +11,7 @@
 #'
 #' Standard deviation about the function (sf) : 0.396
 #'
-#' sf/standard deviation about the mean:  38%
+#' sf/standard deviation about the mean:  38\%
 #'
 #'
 #' @param basal_area_Birch_m2_ha_after_thinning Basal area of Birch after thinning, under bark. m2/ha.

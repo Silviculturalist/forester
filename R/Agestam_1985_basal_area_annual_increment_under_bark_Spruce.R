@@ -12,7 +12,7 @@
 #'
 #' Standard deviation about the function (sf) : 0.293
 #'
-#' sf/standard deviation about the mean:  35%
+#' sf/standard deviation about the mean:  35\%
 #'
 #'
 #'

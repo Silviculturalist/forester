@@ -12,7 +12,7 @@
 #'
 #' Standard deviation about the function (sf) : 0.245
 #'
-#' sf/standard deviation about the mean:  46%
+#' sf/standard deviation about the mean:  46\%
 #'
 #'
 #' @param basal_area_Pine_m2_ha_after_thinning Basal area of Pine after thinning, under bark. m2/ha.
