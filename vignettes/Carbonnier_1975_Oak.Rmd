@@ -1,0 +1,180 @@
+---
+title: "Carbonnier Oak Culture Sweden"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Work in progress
+
+Observe, the following does not produce the correct results.
+
+```{r}
+#Carbonnier production table Oak Sweden example.
+
+#Inputs
+total_age <- 30
+increment <- 5
+H100_Oak <- 28
+stems <- 1300
+silt_fraction <- 50
+
+#empty results table
+output1 <- matrix(nrow=0,ncol=12)
+colnames(output1) <- c(
+  "age",
+  "dominant_height_m",
+  "diameter_BA",
+  "mean_height_L",
+  "stems",
+  "BA",
+  "Volume",
+  "thinned_diameter_BA",
+  "thinned_stems",
+  "thinned_BA",
+  "thinned_volume",
+  "MAI",
+  "BA_per_annum_rent"
+)
+output1 <- data.frame(output1)
+
+#thinning programmes A or B
+# A thins every 5 years.
+# B thins every 5 years until 60. Thereafter every 10 years until 90, whereafter it is thinned every 15 years.
+thin_BA<- c(2.2,4.5,3.9,3.7,3.2,2.7,2.3,2.1,2,1.9,1.9,1.9,1.8,1.8,1.7,1.7,1.6,1.5,1.5,1.4,1.3,1.3,0)
+
+period <- 1
+
+while(total_age<145){
+
+  if(period>1){
+
+    if(period<2){
+      last_thin <- 0
+      second_last_thin <- 0
+      third_last_thin <- 0
+    } else if(period<3){
+      last_thin <- thin_BA[period]
+      second_last_thin <- thin_BA[period-1]
+      third_last_thin <- 0
+    } else {
+      last_thin <- thin_BA[period]
+      second_last_thin <- thin_BA[period-1]
+      third_last_thin <- thin_BA[period-2]
+    }
+
+    percent_growth_BA <- Carbonnier_1975_compound_basal_area_growth_Oak(SIH100 = H100_Oak,
+                                                                        silt_fraction = silt_fraction,
+                                                                        total_age = total_age,
+                                                                        BA_before_thinning = BA,
+                                                                        BA_before_thinning_understory = 0,
+                                                                        mean_basal_area_diameter_after_thinning = mean_diameter2,
+                                                                        mean_height_Lorey_after_thinning = mean_height2,
+                                                                        stems_after_thinning = stems2,
+                                                                        removal_last_thinning_BA = last_thin,
+                                                                        removal_last_thinning_BA_understory = 0,
+                                                                        removal_second_last_thinning_BA = second_last_thin,
+                                                                        removal_second_last_thinning_BA_understory = 0,
+                                                                        removal_third_last_thinning_BA = third_last_thin,
+                                                                        removal_third_last_thinning_BA_understory = 0)
+
+
+    #updating key variables if not period 1.
+    stems <- stems2
+    BA <- BA2
+    volume <- volume2
+    total_age <- total_age+increment
+  }
+
+  #calculate height
+  dominant_height_m <- Carbonnier_1975_Sweden_height_trajectories_Oak(total_age = 100,top_height_m = 28,age_2 = total_age,output = "Height")
+
+  #calculate mean diameter
+  mean_diameter <- Carbonnier_1975_initial_stand_mean_diameter(stems = stems,dominant_height_m = dominant_height_m)
+
+  #calculate Basal area from stems and mean diameter.
+  BA <- stems*((pi*((mean_diameter/100)/2)^2))
+
+  #calculate mean height
+  mean_height <- Carbonnier_1975_mean_height_before_thinning_Oak(dominant_height_m = dominant_height_m,stems = stems)
+
+  #calculate form factor
+  form_factor <- Carbonnier_1975_form_factor_Oak(Lorey_mean_height = Lorey_mean_height(tree_height_m = mean_height,basal_area_m2 = BA))
+
+  #volume m3.
+  volume <- mean_height*BA*form_factor
+
+  #thinning 2.2 m2
+  BA2 <- BA-thin_BA[period]
+
+  BA_thinned <- BA-BA2
+
+  #quotient 0.92 recommended.
+  thinned_mean_diameter <- 0.92*mean_diameter
+
+  #calculate thinned stems
+  thinned_stems <- BA_thinned/((pi*((thinned_mean_diameter/100)/2)^2))
+
+  #calculate remaining stems
+  stems2 <- stems-thinned_stems
+
+  #calculate diameter corresponding to mean basal area
+  mean_diameter2 <- 2*sqrt((BA2/stems2)/pi)*100
+
+  #mean height after thinning
+  mean_height2 <- Carbonnier_1975_mean_height_after_thinning_Oak(Loreys_mean_height_before_thinning = mean_height,
+                                                                 basal_area_weighted_mean_diameter_cm_before_thinning = mean_diameter,
+                                                                 basal_area_weighted_mean_diameter_cm_after_thinning = mean_diameter2)
+
+  #form factor after thinning
+  form_factor2 <- Carbonnier_1975_form_factor_Oak(mean_height2)
+
+  #volume after thinning
+  volume2 <- mean_height2*BA2*form_factor2
+
+  #removed volume
+  thinned_volume <- volume-volume2
+
+  #MAI
+  MAI <- volume/total_age
+
+  output2 <- c(
+    "age" = total_age,
+    "dominant_height_m" = dominant_height_m,
+    "diameter_BA" = mean_diameter2,
+    "mean_height_L" = mean_height2,
+    "stems" = stems2,
+    "BA" = BA2,
+    "Volume" = volume2,
+    "thinned_diameter_BA" = thinned_mean_diameter,
+    "thinned_stems" = thinned_stems,
+    "thinned_BA" = BA_thinned,
+    "thinned_volume" = thinned_volume,
+    "MAI" = MAI,
+    "BA_per_annum_rent" = (1-(((1+percent_growth_BA)/100) ^ (1 / 5)))*100
+  )
+
+  output1 <- if(period>1){
+    dplyr::bind_rows(output1,output2)
+  } else {
+      output2
+  }
+
+  #update period
+  period <- period+1
+}
+
+round(output1,1) %>% view()
+
+```

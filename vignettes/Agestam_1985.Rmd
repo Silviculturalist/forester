@@ -1,0 +1,249 @@
+---
+title: "Agestam 1985"
+author: "Carl Vigren"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: references.bib
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+As part of the HUGIN project during the late 1970's and 1980's, Agestam presented in his seminal thesis a growth simulator for mixed stands of Pine, Spruce and Birch in Sweden [@agestam1985].
+
+The HUGIN project included the following models for established stands (\>\>8m mean height), as presented by @ekö1985 pp. 9, table 1.
+
+| Species                                                                                 | Type of model      | Data                                  | Reference             |
+|-----------------------------------------------------------------------------------------|--------------------|---------------------------------------|-----------------------|
+| Scots Pine                                                                              | Stand model        | The Great Yield Investigation (1971). |                       |
+| Norway Spruce                                                                           | Stand model        | The Great Yield Investigation (1971). | @eriksson1976         |
+| Mixed stands of Pine, Spruce and Birch                                                  | Stand model        | The Great Yield Investigation (1971). | @agestam1985          |
+| Pure and mixed stands of pine, spruce, birch, beech, oak and other broad-leaved trees.  | Single-tree model. | NFI                                   | @söderberg1986        |
+| Pure and mixed stands of pine, spruce, birch, beech, oak, and other broad-leaved trees. | Stand model        | NFI                                   | @ekö1985              |
+| Lodgepole Pine                                                                          | Stand model        | Permanent plots                       | Hägglund et al (1979) |
+
+: Growth simulators for established forests in the HUGIN-system.
+
+These models followed a general sequence set up by @jonsson1980 .
+
+1.  Simulation of young stand and growth up to 8 metres.
+
+2.   A growth period increment length is chosen, c:a 5 years.
+
+For every period.
+
+i) Age is updated.
+
+ii) Dominant height is calculated from trajectories, e.g.
+
+The development of young stands is estimated by a separate model, e.g. @elfving1975 .
+
+```{r}
+## Agestam production table 1.
+library(tidyverse)
+library(forester)
+
+#Start values.
+# Pure Pine stand, T20, total age 38, 2800 stems/ha.  23.8 m2/ha.
+stems <- 2800
+BA <- 23.8
+age <- 38
+SI_Pine <- 20
+increment_period <- 5
+latitude=64
+
+#age to breast height
+age_to_breast_height <- forester::Hagglund_age_to_height(latitude = latitude,
+                                 SI = SI_Pine,
+                                 dominant_height_m = 1.31,
+                                 species = "Pinus sylvestris",
+                                 regeneration = "culture")[[2]]
+
+age_at_breast_height <- age-age_to_breast_height
+
+
+## Height equation
+dominant_height_m <- Hagglund_1974_Sweden_height_trajectories_Pine(age_at_breast_height = 100,
+                                                                   top_height_dm = 200,
+                                                                   regeneration ="culture",
+                                                                   age_2 = age_at_breast_height,
+                                                                   output = "Height")/10
+
+## start volume
+volume <- Agestam_1985_volume_Pine_SI(basal_area_Pine_m2_ha = BA,
+                                      SI_Pine_m = SI_Pine,
+                                      age_at_breast_height_Pine = age_at_breast_height,
+                                      stems_Pine_ha = stems,
+                                      latitude = latitude)
+
+
+#start mean BA diam cm.
+mean_BA_diam_cm <- forester::basal_area_weighted_mean_diameter_cm(basal_area_m2_ha = BA,stem_count = stems)
+
+## start thinning 40% BA above bark.
+BA_thinned <- BA*0.4
+stems_thinned <- BA_thinned/(pi*((mean_BA_diam_cm/2)/100)^2)
+
+BA <- BA-BA_thinned
+stems <- stems-stems_thinned
+
+#volume_after_thinning
+volume2 <- Agestam_1985_volume_Pine_SI(basal_area_Pine_m2_ha = BA,
+                                      SI_Pine_m = SI_Pine,
+                                      age_at_breast_height_Pine = age_at_breast_height,
+                                      stems_Pine_ha = stems,
+                                      latitude = latitude)
+
+#thinned_volume
+thinned_volume <- volume-volume2
+
+volume <- volume2
+
+output1 <- data.frame("age"=age,
+                      "age_brh"=age_at_breast_height,
+                      "dominant_height_m"=dominant_height_m,
+                      "stems"= stems,
+                      "stems_thinned"=stems_thinned,
+                      "thinned_volume"=thinned_volume,
+                      "BA_diam_cm_living"=mean_BA_diam_cm,
+                      "BA_diam_cm_self_thinned"=0,
+                      "BA"=BA,
+                      "volume"=volume,
+                      "mortality"=0)
+
+
+while(age_at_breast_height<=140){
+
+  age_at_breast_height <- age_at_breast_height+increment_period
+  age<- age+increment_period
+
+  dominant_height_m <- Hagglund_1974_Sweden_height_trajectories_Pine(age_at_breast_height = 100,
+                                                                     top_height_dm = SI_Pine*10,
+                                                                     regeneration = "culture",
+                                                                     age_2 = age_at_breast_height ,
+                                                                     output = "Height")/10
+
+  #Thinning
+
+  #Default 0.
+  stems_thinned <- 0
+  thinned_volume <- 0
+
+  if((age_at_breast_height-increment_period)<70 & age_at_breast_height>70){
+    BA_thinned <- BA*0.35
+    stems_thinned <- BA_thinned/(pi*((mean_BA_diam_cm/2)/100)^2)
+
+    BA <- BA-BA_thinned
+    stems <- stems-stems_thinned
+
+    #volume_after_thinning
+    volume2 <- Agestam_1985_volume_Pine_SI(basal_area_Pine_m2_ha = BA,
+                                           SI_Pine_m = SI_Pine,
+                                           age_at_breast_height_Pine = age_at_breast_height,
+                                           stems_Pine_ha = stems,
+                                           latitude = latitude)
+
+    #thinned_volume
+    thinned_volume <- volume-volume2
+
+    volume <- volume2
+  }
+
+
+
+  #Estimate mortality
+
+  #Mortality during period
+  mortality_m2_ha <- Agestam_1985_mortality_above_bark_Pine(stems_Pine_ha = stems,
+                                                            basal_area_above_bark_all_species = BA,
+                                                            SI = SI_Pine,
+                                                            age_at_breast_height = age_at_breast_height)*increment_period
+
+  mean_BA_diam_cm <- forester::basal_area_weighted_mean_diameter_cm(basal_area_m2_ha = BA,
+                                                                    stem_count = stems)
+  self_thinned_stem_diam_cm <- forester::Agestam_1985_mortality_diameter_cm(species = "Pinus sylvestris",
+                                                                     age_at_breast_height = age_at_breast_height,
+                                                                     basal_area_weighted_mean_diameter_cm_living = mean_BA_diam_cm)
+
+  self_thinned_stems <- round(mortality_m2_ha/((pi*(self_thinned_stem_diam_cm/2)^2)/(100*100)),0)
+
+  stems_thinned <- stems_thinned+self_thinned_stems
+
+
+  #bark subtraction
+  bark_period_start_m2_ha <- Agestam_1985_bark_subtraction_Pine(basal_area_over_bark_Pine = BA,
+                                                          SI_Pine = SI_Pine,
+                                                          latitude = latitude
+                                                          )
+
+
+  BA_under_bark_period_start_m2_ha <- BA - bark_period_start_m2_ha
+
+  #BA growth
+  BA_growth_m2_ha <- Agestam_1985_basal_area_annual_increment_under_bark_Pine(basal_area_Pine_m2_ha_after_thinning = BA_under_bark_period_start_m2_ha,
+                                                           stem_count_Pine = stems,
+                                                           age_at_breast_height_period_start = age_at_breast_height,
+                                                           SI_H100_Pine = SI_Pine,
+                                                           basal_area_other_species_m2_ha_after_thinning = 0,
+                                                           diameter_mean_basal_area_stem_Pine_cm = forester::basal_area_weighted_mean_diameter_cm(basal_area_m2_ha = BA_under_bark_period_start_m2_ha,stem_count = stems),
+                                                           diameter_mean_basal_area_stem_all_species_cm = forester::basal_area_weighted_mean_diameter_cm(basal_area_m2_ha = BA_under_bark_period_start_m2_ha,stem_count = stems) ,
+                                                           increment_period_years = increment_period)*increment_period
+
+  #Total after growth
+  BA_after_growth_m2_ha <- BA_under_bark_period_start_m2_ha+BA_growth_m2_ha
+
+  #Add bark
+  BA_after_growth_m2_ha <- Agestam_1985_bark_addition_Pine(basal_area_under_bark_Pine = BA_after_growth_m2_ha,
+                                                           SI_Pine = SI_Pine,
+                                                           latitude = latitude)+BA_after_growth_m2_ha
+
+
+  #final Basal Area
+  BA <- BA_after_growth_m2_ha-mortality_m2_ha
+
+  #new stem count
+  stems <- stems-self_thinned_stems
+
+  #Volume
+  volume <- Agestam_1985_volume_Pine_SI(basal_area_Pine_m2_ha = BA,
+                                            SI_Pine_m = SI_Pine,
+                                            age_at_breast_height=age_at_breast_height,
+                                            stems_Pine_ha = stems,
+                                            latitude = latitude)
+
+
+  output2 <- data.frame("age"=age,
+                        "age_brh"=age_at_breast_height,
+                        "dominant_height_m"=dominant_height_m,
+                        "stems"= stems,
+                        "stems_thinned"=stems_thinned,
+                        "thinned_volume"=thinned_volume,
+                        "BA_diam_cm_living"=mean_BA_diam_cm,
+                        "BA_diam_cm_self_thinned"=self_thinned_stem_diam_cm,
+                        "BA"=BA,
+                        "volume"=volume,
+                        "mortality"=mortality_m2_ha)
+
+  output1 <- dplyr::bind_rows(output1,output2)
+
+
+}
+
+round(output1,1)
+
+#Correct values from production table 1, p. 86.
+correct <- data.frame("age_brh"=c(29,34,39,44,49,54,61,71,81,91,101,111,121,131,141),"volume"=c(69,87,107,130,153,177,212,175,216,261,306,352,397,442,486.5))
+
+#Plot results
+ggplot(output1,aes(x=age_brh,y=volume,linetype="own"))+geom_line()+geom_line(data=correct,aes(x=age_brh,y=volume,linetype="correct"))
+
+
+```
