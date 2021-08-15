@@ -36,6 +36,7 @@ Carbonnier_1975_compound_basal_area_growth_Oak <- function(
   removal_third_last_thinning_BA_understory
 
 ){
+  return(
   -0.7804+
   +0.1728*((10^3)/total_age)+
   +0.7061*((10^2)/mean_basal_area_diameter_after_thinning)-
@@ -46,4 +47,5 @@ Carbonnier_1975_compound_basal_area_growth_Oak <- function(
       ((removal_third_last_thinning_BA+removal_third_last_thinning_BA_understory)/2))/(BA_before_thinning+BA_before_thinning_understory)
   )+
   -0.0945*((10*SIH100)/silt_fraction)
+  )
 }
