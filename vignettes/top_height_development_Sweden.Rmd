@@ -1,0 +1,49 @@
+---
+title: "Development of the Top Height Concept in Swedish Forest Science"
+author: "Carl Vigren"
+date: "8/16/2021"
+output: html_document
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+During the middle of the 19th century, central European foresters based in the germanic *kleinstater* were looking for a metric which reliably could be used to distinguish the productivity of forest stands.
+
+Early estimates of volume were made in the form of
+
+$$
+V = Basal~area\times\overline{height}\times Air~percentage~of~Mass 
+$$
+
+Examples can be given in, e.g. @jonson1914 . Wherein the air percentage of mass was calibrated roughly from plots run by the Royal College of Forestry.
+
+However, both diameter and mean height are heavily influenced by silvicultural operations, e.g. PCT, thinning.
+
+@fries1964, p. 15, provides a compact introduction to the development of the top height concept.
+
+Up until the time of writing his dissertation (1964), *dominant height* or *top height*, was defined by @näslund1936, p. 48, as the height predicted by the height function at a diameter of $\bar{D} + 3\sigma$ , mean diameter + 3 standard deviations.
+
+> Based on the above definition, Professor Manfred Näslund, late Professor Lars Tirén as well as professors Erik Hagberg, Charles Carbonnier and Bertil Matérn recommended a for practical use more suitable definition: the height according to the height curve for the arithmetic mean diameter of the first tenth of the trees, when these have been ordered after falling diameter at breast height, $h_{10\%}$ . @fries1964
+
+> It has yet to be proven that the height trajectory is valid not only for the thickest diameter, but also for the height for a certain relative amount within a stand, for example the 10% thickest trees' heights. Matérn has conducted such a study, which has not been published:
+
+@fries1964 p. 26 recounts an unpublished study by Professor Bertil Matérn which were announced in a memorandum, @carbonnier1959.
+
+> The study concerns the arithmetic mean diameter for the 50 and 100 thickest trees per ha as well as for the 5 and 10% thickest trees both before thinning during the establishment of the permanent plots (time 1) and at the latest revision (time 2). The study shows that the trees, which at time 2 were among the 5% thickest trees, at time 1 had approximately the same mean diameter as the 5% thickest trees at time 1. The same applies for the 10% thickest trees, but not for the 50 or 100 thickest trees per ha.
+
+Since top height is mostly undisturbed by normal silvicultural operations, by the 1970's, site index had emerged as a concept from which one could distinguish the productivity of a stand by their top height and age at breast height (time to breast height is very variable even on sites with similar productivity as a result of extraneous factors such as browsing by rodents, frost or particularly injurious pests such as fungi, e.g. *Phacidium infestans*).
+
+As stated by @fries1974 , now an Associate Professor at the dept. of forest production at the Royal College of Forestry, site index is a function of the mean height and age of the 100 thickest trees per hectare.
+
+Due to the inherent difficulty and time-consuming process of identifying these trees, in practice site index would be distinguished by sample plots.
+
+-   0.1 ha (17.84 m radius) arithmetic mean height and age at breast height for the thickest 10 trees.
+
+-   0.02 ha (7.98 m radius) - two thickest trees.
+
+-   0.01 ha (5.64 m radius) - thickest tree.
+
+@matérn1976 shows that for a theoretical stand of size 0.1 ha, an relatively unbiased estimate can be achieved by measuring the two thickest trees on one plot of radius 9.317 m (0.027 ha).
