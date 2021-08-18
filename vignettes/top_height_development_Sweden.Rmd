@@ -46,4 +46,6 @@ Due to the inherent difficulty and time-consuming process of identifying these t
 
 -   0.01 ha (5.64 m radius) - thickest tree.
 
+Associated bias was found to be \~1.5% if site index was estimated from plots of size 0.01 ha.
+
 @matérn1976 shows that for a theoretical stand of size 0.1 ha, an relatively unbiased estimate can be achieved by measuring the two thickest trees on one plot of radius 9.317 m (0.027 ha).
