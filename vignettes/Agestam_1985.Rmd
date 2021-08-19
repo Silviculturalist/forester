@@ -36,11 +36,11 @@ These models followed a general sequence set up by @jonsson1980 .
 
 1.  Simulation of young stand and growth up to 8 metres.
 
-2.   A growth period increment length is chosen, c:a 5 years.
+2.  A growth period increment length is chosen, c:a 5 years.
 
 For every period.
 
-i) Age is updated.
+i)  Age is updated.
 
 ii) Dominant height is calculated from trajectories, e.g.
 
