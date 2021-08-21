@@ -11,7 +11,7 @@
 #' @param increment_period_years Length of increment period, years.
 #' @param dominant_height_dm Dominant height, dm.
 #' @param age_bh_100_largest_trees_per_ha_years Age at breast height of the 100 largest trees per hectare, years.
-#' @param basal_area_5_m_coef_of_variation Groupstructure index (Coefficient of variation for the basal area under bark on 5-metre circular plots inside the sample plot.) % .
+#' @param basal_area_5_m_coef_of_variation Groupstructure index (Coefficient of variation for the basal area under bark on 5-metre circular plots inside the sample plot.) \% .
 #'
 #'
 #'

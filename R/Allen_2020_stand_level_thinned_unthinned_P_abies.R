@@ -17,7 +17,7 @@
 #' thinning / Basal area before thinning. If thinning_by=="stems_percent": Stems
 #' after thinning / Stems before thinning. For no thinning, 1.
 #' @param dominant_height_at_thinning Dominant height of stand at thinning.
-#' E.g. mean of tallest 10%.
+#' E.g. mean of tallest 10 \%.
 #'
 #' @return A data.frame. Stand description at stand age + 5 .
 #' @export

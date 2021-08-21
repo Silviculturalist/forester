@@ -13,11 +13,11 @@
 #'
 #' Standard deviation about the function (sf): 0.309
 #'
-#' (sf)/standard deviation about the mean: 90.2%
+#' (sf)/standard deviation about the mean: 90.2 \%
 #'
 #' @param dominant_height_m Dominant height, m.
 #' @param stems Stems per hectare
-#' @param thinned TRUE / FALSE if the thinning removal at the start of the period is at least 10% of the basal area, 1, otherwise 0.
+#' @param thinned TRUE / FALSE if the thinning removal at the start of the period is at least 10\% of the basal area, 1, otherwise 0.
 #'
 #' @return Ratio between the diameter of self-thinned stems and the diameter of the remaining stems.
 #' @export
