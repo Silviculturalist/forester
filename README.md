@@ -2,7 +2,7 @@
 
 ## TL;DR
 
-Old stand simulators are difficult to replicate, incur a language barrier, are difficult to access, use different units and names for variables and factors. By standardizing the structure in which data is stored in forestry and enforcing a modular approach we can easily swap out data, functions, simulation models or run them simultaneously.
+Old stand simulators are difficult to replicate, incur a language barrier, are difficult to access, use different units and names for variables and factors. By standardizing we can easily swap out data, functions, simulation models or run them side-by-side.
 
 For style guide on R code, <https://adv-r.hadley.nz>
 
@@ -34,7 +34,9 @@ The goal of this github repository is to be a centre to:
 
 I am continuing to develop object structures for which R will recognize attributes which are related to trees, stand information, site information, and treatment information, such that this may grow into a stand simulator on its' own.
 
-As work with the package progresses, it is my full intent that this should not be limited to Swedish conditions, but should eventually form an open online repository for functions related to forest science, forestry and related data from all over the world. Some models from Norway, e.g. Allen et al. (2020) are already incorporated.
+As work with the package progresses, it is my full intent that other repositories should open, which are not be limited to swedish conditions, but should eventually form an open online repository for functions related to forest science, forestry and related data from all over the world with the same variable names, naming routines and general philosophy. 
+
+Some models from Norway, e.g. Allen et al. (2020) are already incorporated, but will be moved to more suitable repositories with time.
 
 ## Why?
 
@@ -72,7 +74,13 @@ Author \_ Year \_ Dependent Variable \_ Locality \_ Species
 
 *E.g. Eko_PM_1985_basal_area_5\_year_increment_northern_Sweden_Spruce*
 
+When a species name is used in a function name, it should be colloquial, e.g. Pine, Spruce. 
+When a species name is used in an argument, it should be latin binomial: "Pinus sylvestris", "Picea abies". 
+
 All functions must include a LaTeX preamble from roxygen2 which writes the help documentation. All functions must include their source.
+
+**It is preferable that functions are vectorised.** 
+Work is ongoing to enforce this standard on committed work.
 
 ### Variables
 
@@ -83,6 +91,9 @@ variable . unit
 *E.g.* diameter.cm
 
 A non-exhaustive list of variable names follows, taken from the treelistData file. These have been based on previous work from the Heureka project, Indelningspaketet, Projekt HUGIN, and other stand simulators by the forest science faculty at SLU. This does not hinder additions from expanding the expected structure, for example vegetation types, although it would be preferable to introduce new variables.
+
+Variables should be named so as to as clearly as possible convey their meaning. *Avoid abbreviations*. 
+Export standards for software can be written, but should not be included in this package, such as for the **StanForD 2010 standard**, used by foresty machines.
 
 #### Tree Level Variables
 
