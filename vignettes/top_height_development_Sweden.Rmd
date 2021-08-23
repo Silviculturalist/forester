@@ -36,7 +36,7 @@ Up until the time of writing his dissertation (1964), *dominant height* or *top 
 
 Since top height is mostly undisturbed by normal silvicultural operations, by the 1970's, site index had emerged as a concept from which one could distinguish the productivity of a stand by their top height and age at breast height (time to breast height is very variable even on sites with similar productivity as a result of extraneous factors such as browsing by rodents, frost or particularly injurious pests such as fungi, e.g. *Phacidium infestans*).
 
-Particularly studies undertaken together with the material collected under @näslund1971 during *The Great Yield Investigation*, [@hägglund1972;@hägglund1973;@hägglund1974] gained prominence and favor as a result of the large underlying material.
+Particularly studies undertaken together with the material collected under @näslund1971 during *The Great Yield Investigation*, [@hägglund1972; @hägglund1973; @hägglund1974] gained prominence and favor as a result of the large underlying material.
 
 As stated by @fries1974 , now an Associate Professor at the dept. of forest production at the Royal College of Forestry, site index is a function of the mean height and age of the 100 thickest trees per hectare.
 
@@ -98,4 +98,4 @@ By comparing the influence on basal area increment of an adjusted SI-H versus re
 
 where $SIH_{corr}=SIH + k*(age_{dom}-15)$, @tegnhammar1992 could show that residuals were minimised for an age-trend (k) of *0.5-0.8 dm/year* .
 
-## References 
+## References
