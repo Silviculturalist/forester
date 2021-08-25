@@ -19,7 +19,7 @@
 #' @examples
 Pettersson_1992_young_stands_total_volume_Pine <- function(
   dominant_height,
-  initial_stems,
+  initial_stems
 ){
 
   return(
