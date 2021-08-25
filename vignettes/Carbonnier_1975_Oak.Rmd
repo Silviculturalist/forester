@@ -2,26 +2,29 @@
 title: "Carbonnier Oak Culture Sweden"
 author: "Carl Vigren"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Carbonnier Oak Culture Sweden}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
+  dev='pdf',
   collapse = TRUE,
   comment = "#>"
 )
+
 ```
 
 ## An example of a simple growth model in R.
 
-```{r}
+```{r echo=TRUE, eval=TRUE}
 #Carbonnier production table Oak Sweden example.
 library(forester)
 library(tidyverse)
+
 
 #Inputs
 total_age <- 30
@@ -262,7 +265,9 @@ while (total_age < 140) {
   period <- period + 1
 }
 
-round(output1, 1) %>% view()
+table1 <- round(output1,1)
+
+table1
 
 
 
@@ -272,13 +277,13 @@ round(output1, 1) %>% view()
 
 ### Basal Area Annual Increment
 
-```{r echo=FALSE, out.width='100%'}
+```{r echo=FALSE}
 output1 %>% ggplot(aes(x=BA,y = BA_percent_growth))+geom_point()
 ```
 
 ### Basal Area
 
-```{r echo=FALSE , out.width='100%'}
+```{r echo=FALSE}
 
 ## Timeline simulator.
 before <- output1$BA+output1$thinned_BA
@@ -309,7 +314,7 @@ BA %>% ggplot(aes(x=age,y=BA,linetype="Simulator"),color="grey30",alpha=0.9)+geo
 
 ### Volume
 
-```{r echo=FALSE, out.width='100%'}
+```{r echo=FALSE}
 ## Timeline simulator.
 before <- output1$Volume+output1$thinned_volume
 age <- output1$age
@@ -327,7 +332,7 @@ volume %>% ggplot(aes(x=age,y=volume))+
   theme_classic()+
   labs(
   title="Oak 28 Stand Development",
-  subtitle="Southern Sweden, soil particle content<0.06mm 50%, negligible understory < 6-9 m2/ha.\nThinning repeated every 5 years",
+  subtitle="Southern Sweden\nSoil particle content<0.06mm 50%\nNegligible understory < 6-9 m2/ha.\nThinning repeated every 5 years",
   x="Total Stand Age",
   y="Standing Volume, cu.m.",
   caption="After growth functions by Carbonnier (1975)"
