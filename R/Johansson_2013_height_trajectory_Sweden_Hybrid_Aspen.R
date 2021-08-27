@@ -1,6 +1,6 @@
 #' Height trajectory for Hybrid Aspen, Populus tremula L x Populus tremuloides Michx., in Sweden from Johansson 1999.
 #'
-#' @source Johansson, T. (1999) A site dependent top height growth model for hybrid aspen. Journal of Forestry Research. 24. 691-698. Available: \url{https://link.springer.com/article/10.1007%2Fs11676-013-0365-6}
+#' @source Johansson, T. (2013) A site dependent top height growth model for hybrid aspen. Journal of Forestry Research. 24. 691-698. Available: \url{https://link.springer.com/article/10.1007%2Fs11676-013-0365-6}
 #'
 #' @description
 #'
@@ -32,6 +32,10 @@
 #' @export
 #'
 #' @examples
+#'
+#' #SIH50 40 m: 40 m at age 50.
+#' Johansson_2013_height_trajectory_Sweden_Hybrid_Aspen(dominant_height = 40,age = 50,output="Equation")
+#'
 Johansson_2013_height_trajectory_Sweden_Hybrid_Aspen <- function(
   dominant_height,
   age,
@@ -43,11 +47,7 @@ Johansson_2013_height_trajectory_Sweden_Hybrid_Aspen <- function(
   }
 
 
-  if(age>50|age2>50){
-    warning(
-      "Suitable for stands of Hybrid Aspen under age of 50."
-    )
-  }
+  message("Suitable for stands of Hybrid Aspen under age of 50.")
 
   b0 <- 2.0381
   b1 <- 4692.5
@@ -55,8 +55,6 @@ Johansson_2013_height_trajectory_Sweden_Hybrid_Aspen <- function(
 
   Z0 <- dominant_height-b2
   P <- Z0+((Z0^2 + (2*b1*dominant_height)/(age^b0))^0.5)
-
-  height2 <- dominant_height*(((age2^b0)*((age^b0)*P+b1)) / ((age^b0)*((age2^b0)*P+b1)))
 
   if(output=="SIH100"){
     return(
@@ -66,7 +64,7 @@ Johansson_2013_height_trajectory_Sweden_Hybrid_Aspen <- function(
 
   if(output=="Equation"){
     return(
-      paste0("y~",dominant_height,"*(((",age,"^b0)*((100^b0)*",P,"+",b1,")) / ((100^",b0,")*((age^",b0,")*",P,"+",b1,")))")
+      paste0("y~",dominant_height,"*(((age2^",b0,")*((",age^b0,")*",P,"+",b1,")) / ((",age^b0,")*((age2^",b0,")*",P,"+",b1,")))")
     )
   }
 
