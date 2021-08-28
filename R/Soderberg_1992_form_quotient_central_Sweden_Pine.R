@@ -21,14 +21,14 @@
 #' Number of observations = 2275
 #'
 #' @param SI100_Pine SIH 100 Pine according to Hägglund 1974. e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine]
-#'
 #' @param distance_to_coast_km Closest distance to coast, in km, e.g. [forester::coast_distance]
 #' @param diameter_cm Diameter over bark of tree, in cm.
 #' @param diameter_largest_tree_on_plot_cm Diameter over bark of the tree with the greatest diameter on the plot, cm.
 #' @param total_age_stand Total age of the stand.
-#' @param Basal_area_Pine Basal Area m2 / ha of Scots Pine
-#' @param Basal_area_Spruce Basal Area m2 / ha of Norway Spruce
-#' @param Basal_area_Birch Basal Area m2 / ha of Birch
+#' @param Basal_area_Pine Basal Area m2 of Scots Pine
+#' @param Basal_area_Spruce Basal Area m2 of Norway Spruce
+#' @param Basal_area_Birch Basal Area m2 of Birch
+#' @param Basal_area_plot Basal area m2 on plot.
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude, metres.
 #' @param divided_plot 0 for full plots, 1 for divided plots.
@@ -48,14 +48,15 @@ Soderberg_1992_form_quotient_central_Sweden_Pine <- function(
   Basal_area_Pine,
   Basal_area_Spruce,
   Basal_area_Birch,
+  Basal_area_plot,
   latitude,
   altitude,
-  divided_plot
+  divided_plot=0
 ){
 
-  BA_quotient_Pine <- Basal_area_Pine/(Basal_area_Pine+Basal_area_Spruce+Basal_area_Birch)
-  BA_quotient_Spruce <- Basal_area_Spruce/(Basal_area_Pine+Basal_area_Spruce+Basal_area_Birch)
-  BA_quotient_Birch <- Basal_area_Birch/(Basal_area_Pine+Basal_area_Spruce+Basal_area_Birch)
+  BA_quotient_Pine <- Basal_area_Pine/Basal_area_plot
+  BA_quotient_Spruce <- Basal_area_Spruce/Basal_area_plot
+  BA_quotient_Birch <- Basal_area_Birch/Basal_area_plot
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   close_to_coast <- ifelse(distance_to_coast<50,1,0)
 

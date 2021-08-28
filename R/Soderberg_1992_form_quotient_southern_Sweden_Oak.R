@@ -31,9 +31,8 @@
 #' @param diameter_cm Diameter over bark of tree, in cm.
 #' @param diameter_largest_tree_on_plot_cm Diameter over bark of the tree with the greatest diameter on the plot, cm.
 #' @param total_age_stand Total age of the stand.
-#' @param Basal_area_Pine Basal Area m2 / ha of Scots Pine
-#' @param Basal_area_Spruce Basal Area m2 / ha of Norway Spruce
-#' @param Basal_area_Birch Basal Area m2 / ha of Birch
+#' @param Basal_area_Spruce Basal Area m2 of Norway Spruce
+#' @param Basal_area_plot Basal area m2 on plot.
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude, metres.
 #' @param divided_plot 0 for full plots, 1 for divided plots.
@@ -50,17 +49,16 @@ Soderberg_1992_form_quotient_southern_Sweden_Oak <- function(
   diameter_cm,
   diameter_largest_tree_on_plot_cm,
   total_age_stand,
-  Basal_area_Pine,
   Basal_area_Spruce,
-  Basal_area_Birch,
+  Basal_area_plot,
   latitude,
   altitude,
-  divided_plot,
+  divided_plot=0,
   county
 ){
 
 
-  BA_quotient_Spruce <- Basal_area_Spruce/(Basal_area_Pine+Basal_area_Spruce+Basal_area_Birch)
+  BA_quotient_Spruce <- Basal_area_Spruce/(Basal_area_plot)
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   south_eastern_county <- ifelse(county %in% c("Stockholm","Södermanland","Uppsala","Östergötland","Kalmar","Västmanland"),1,0)
   region5 <- ifelse(county %in% c("Blekinge", "Kristianstad", "Malmöhus", "Västra Götaland", "Halland", "Gotland"),1,0)
