@@ -125,7 +125,7 @@ Soderberg_1986_BA_increment_central_Sweden_under_65_Pine <- function(
         -0.40552E+01*(log(basal_area_of_tree_cm2)/(age_at_breast_height+10))+
         +0.95220E+02*(1/(age_at_breast_height+10))+
         -0.44511E+03*((1/(age_at_breast_height+10))^2)+
-        thinning+
+        +thinning+
         +0.23348E+01*diameter_quotient+
         -0.16233E+01*(diameter_quotient^2)+
         +0.33478E+00*BA_quotient_Spruce+
