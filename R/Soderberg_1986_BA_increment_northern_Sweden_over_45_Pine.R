@@ -87,8 +87,8 @@ Soderberg_1986_BA_increment_northern_Sweden_over_45_Pine <- function(
   basal_area_of_tree_cm2 <- Basal_area_of_tree_m2*10000
   north <- ifelse(aspect=="north",1,0)
   south <- ifelse(aspect=="south",1,0)
-  spruce <- ifelse(species=="Picea abies")
-  pine <- ifelse(species=="Pinus sylvestris")
+  spruce <- ifelse(SI_species=="Picea abies")
+  pine <- ifelse(SI_species=="Pinus sylvestris")
   dry <- ifelse(soil_moisture==1,1,0)
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha

@@ -57,12 +57,10 @@
 #' @param SI_species Species for which SIH100 was estimated. One of : 'Picea abies' or 'Pinus sylvestris'.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param aspect Aspect, one of: "north", "south" or 0.
-#' @param latitude Latitude, degrees.
-#' @param altitude Altitude, meters.
+#' @param county County name.
 #' @param peatland 1 if plot is Peatland, 0 for others (default).
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
 #' @param fertilised_plot 1 for fertilised plots, 0 for others (default).
-#' @param plot_inventoried_76_77 1 for plots measured in the years 1976-77, 0 for others (default).
 #'
 #' @return Basal area increment during 5 years, m2.
 #' @export
@@ -83,17 +81,14 @@ Soderberg_1986_BA_increment_southern_Sweden_over_45_Spruce <- function(
   SI_species,
   aspect,
   soil_moisture,
-  latitude,
-  altitude,
   county,
   peatland=0,
   divided_plot=0,
-  fertilised_plot=0,
-  plot_inventoried_76_77=0
+  fertilised_plot=0
 ){
   basal_area_of_tree_cm2 <- Basal_area_of_tree_m2*10000
-  spruce <- ifelse(species=="Picea abies")
-  pine <- ifelse(species=="Pinus sylvestris")
+  spruce <- ifelse(SI_species=="Picea abies")
+  pine <- ifelse(SI_species=="Pinus sylvestris")
   moist <- ifelse(soil_moisture>3,1,0)
   dry <- ifelse(soil_moisture==1,1,0)
   north <- ifelse(aspect=="north",1,0)
@@ -138,7 +133,7 @@ Soderberg_1986_BA_increment_southern_Sweden_over_45_Spruce <- function(
   return(
     exp(
       +0.10064E+01*log(basal_area_of_tree_cm2)+
-        +1.6664E+03*(1/(age_at_breast_height+10))+
+        +0.16664E+03*(1/(age_at_breast_height+10))+
         -0.29572E+04*((1/(age_at_breast_height+10))^2)+
         +thinning+
         +0.13696E+01*diameter_quotient+

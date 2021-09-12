@@ -54,7 +54,6 @@
 #' @param peatland 1 if plot is Peatland, 0 for others (default).
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
 #' @param fertilised_plot 1 for fertilised plots, 0 for others (default).
-#' @param plot_inventoried_76_77 1 for plots measured in the years 1976-77, 0 for others (default).
 #'
 #' @return Basal area increment during 5 years, m2.
 #' @export
@@ -75,15 +74,13 @@ Soderberg_1986_BA_increment_central_Sweden_over_45_Spruce <- function(
   soil_moisture,
   latitude,
   altitude,
-  county,
   peatland=0,
   divided_plot=0,
-  fertilised_plot=0,
-  plot_inventoried_76_77=0
+  fertilised_plot=0
 ){
   basal_area_of_tree_cm2 <- Basal_area_of_tree_m2*10000
-  spruce <- ifelse(species=="Picea abies")
-  pine <- ifelse(species=="Pinus sylvestris")
+  spruce <- ifelse(SI_species=="Picea abies")
+  pine <- ifelse(SI_species=="Pinus sylvestris")
   moist <- ifelse(soil_moisture>3,1,0)
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   BA_quotient_Pine <- Basal_area_Pine_m2_ha/Basal_area_plot_m2_ha
