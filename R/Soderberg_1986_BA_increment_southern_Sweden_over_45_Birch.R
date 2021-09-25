@@ -1,6 +1,6 @@
-#' 5 year Basal area increment over bark, Birch, southern Sweden, under 65 years at breast height from Söderberg (1986)
+#' 5 year Basal area increment over bark, Birch, southern Sweden, over 45 years at breast height from Söderberg (1986)
 #'
-#' @source Söderberg, U. (1986) Funktioner för skogliga produktionsprognoser - Tillväxt och formhöjd för enskilda träd av inhemska trädslag i Sverige. / Functions for forecasting of timber yields - Increment and form height for individual trees of native species in Sweden. Report 14. Section of Forest Mensuration and Management. Swedish University of Agricultural Sciences. Umeå. ISBN 91-576-2634-0. ISSN 0349-2133. pp.251. p. 194.
+#' @source Söderberg, U. (1986) Funktioner för skogliga produktionsprognoser - Tillväxt och formhöjd för enskilda träd av inhemska trädslag i Sverige. / Functions for forecasting of timber yields - Increment and form height for individual trees of native species in Sweden. Report 14. Section of Forest Mensuration and Management. Swedish University of Agricultural Sciences. Umeå. ISBN 91-576-2634-0. ISSN 0349-2133. pp.251. p. 196.
 #'
 #' @description
 #' \strong{Applicable counties:}
@@ -20,15 +20,15 @@
 #'
 #'
 #' @details
-#' Multiple correlation coefficient R = 0.78
+#' Multiple correlation coefficient R = 0.74
 #'
-#' Spread about the function sf = 0.658
+#' Spread about the function sf = 0.697
 #'
-#' sf/Spread about the mean = 0.63
+#' sf/Spread about the mean = 0.68
 #'
-#' Number of observations = 1034
+#' Number of observations = 704
 #'
-#' Sum of weights: 892.9
+#' Sum of weights: 648.6
 #'
 #' NB in Söderberg (1986), no correction for logarithmic bias was introduced, as, (freely translated) p. 114:
 #' "At the presentation of the functions we lightly touched on the effects of the measurement
@@ -48,27 +48,29 @@
 #' @param Basal_area_of_tree_m2 Basal area of the tree, m^2.
 #' @param Basal_area_Pine_m2_ha Basal area Pine on the plot, m^2 / ha.
 #' @param Basal_area_Spruce_m2_ha Basal area Spruce on the plot, m^2 / ha.
+#' @param Basal_area_Birch_m2_ha Basal area Birch on the plot, m^2 / ha.
 #' @param Basal_area_plot_m2_ha Basal area of all tree species the plot, m^2 / ha.
 #' @param age_at_breast_height Age at breast height of the tree.
 #' @param thinned TRUE if the stand has been thinned, otherwise FALSE.
 #' @param last_thinned Number of growing seasons since last thinning.
 #' @param SI100 Site Index H100, m.
 #' @param SI_species Species for which SIH100 was estimated. One of : 'Picea abies' or 'Pinus sylvestris'.
-#' @param aspect Aspect, one of: "north", "south" or 0.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
 #' @param fertilised_plot 1 for fertilised plots, 0 for others (default).
+#' @param plot_inventoried_76_77 1 for plots measured in the years 1976-77, 0 for others (default).
 #'
 #' @return Basal area increment during 5 years, m2.
 #' @export
 #'
 #' @examples
-Soderberg_1986_BA_increment_southern_Sweden_under_65_Birch <- function(
+Soderberg_1986_BA_increment_southern_Sweden_over_45_Birch <- function(
   diameter_cm,
   diameter_largest_tree_on_plot_cm,
   Basal_area_of_tree_m2,
   Basal_area_Pine_m2_ha,
   Basal_area_Spruce_m2_ha,
+  Basal_area_Birch_m2_ha,
   Basal_area_plot_m2_ha,
   age_at_breast_height,
   thinned,
@@ -78,7 +80,8 @@ Soderberg_1986_BA_increment_southern_Sweden_under_65_Birch <- function(
   soil_moisture,
   county,
   divided_plot=0,
-  fertilised_plot=0
+  fertilised_plot=0,
+  plot_inventoried_76_77=0
 ){
   basal_area_of_tree_cm2 <- Basal_area_of_tree_m2*10000
   spruce <- ifelse(SI_species=="Picea abies")
@@ -87,13 +90,14 @@ Soderberg_1986_BA_increment_southern_Sweden_under_65_Birch <- function(
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   BA_quotient_Pine <- Basal_area_Pine_m2_ha/Basal_area_plot_m2_ha
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha
+  BA_quotient_Birch <- Basal_area_Birch_m2_ha/Basal_area_plot_m2_ha
 
   south_eastern_county <- ifelse(county %in% c("Stockholm","Södermanland","Uppsala","Östergötland","Kalmar","Västmanland"),1,0)
 
   thinning <- ifelse(thinned==FALSE,
                      (#unthinned
-                       -0.50494E-01*Basal_area_plot_m2_ha+
-                         +0.79803E-03*(Basal_area_plot_m2_ha^2)
+                       -0.32163E-01*Basal_area_plot_m2_ha+
+                         +0.32234E-03*(Basal_area_plot_m2_ha^2)
 
                      )
 
@@ -101,15 +105,16 @@ Soderberg_1986_BA_increment_southern_Sweden_under_65_Birch <- function(
 
                      ifelse(thinned==TRUE & last_thinned<5,
                             (#thinned within 5 years
-                              -0.31238E-01*Basal_area_plot_m2_ha
+                              -0.35013E-01*Basal_area_plot_m2_ha+
+                                +0.40031E-03*(Basal_area_plot_m2_ha^2)
                             )
 
 
                             ,
 
                             (#thinned longer ago than 5 years.
-                              -0.49770E-01*Basal_area_plot_m2_ha+
-                                +0.46417E-03*(Basal_area_plot_m2_ha^2)
+                              -0.37450E-01*Basal_area_plot_m2_ha+
+                                +0.44980E-03*(Basal_area_plot_m2_ha^2)
 
                             )
 
@@ -122,22 +127,22 @@ Soderberg_1986_BA_increment_southern_Sweden_under_65_Birch <- function(
 
   return(
     exp(
-      +0.10731E+01*log(basal_area_of_tree_cm2)+
-        -0.57527E+01*(log(basal_area_of_tree_cm2)/(age_at_breast_height+10))+
-        +0.14600E+03*(1/(age_at_breast_height+10))+
-        -0.10335E+04*((1/(age_at_breast_height+10))^2)+
+      +0.86066E+00*log(basal_area_of_tree_cm2)+
+        +0.76322E+02*(1/(age_at_breast_height+10))+
         +thinning+
-        +0.15895E+01*diameter_quotient+
-        -0.86151E+00*(diameter_quotient^2)+
-        +0.86278E+00*BA_quotient_Pine+
-        +0.28913E+00*BA_quotient_Spruce+
-        +0.14656E-02*spruce*SI100*10+#m to dm.
-        +0.15297E-02*pine*SI100*10+ #m to dm.
-        +0.10583E+00*moist+
-        -0.95624E-01*south_eastern_county+
-        +0.18366E+00*divided_plot+
-        +0.73270E-01*fertilised_plot+
-        -0.47436E+01
+        +0.16702E+01*diameter_quotient+
+        -0.80138E+00*(diameter_quotient^2)+
+        +0.67104E+00*BA_quotient_Pine+
+        +0.45025E+00*BA_quotient_Spruce+
+        +0.24659E+00*BA_quotient_Birch+
+        +0.17333E-02*spruce*SI100*10+#m to dm.
+        +0.22591E-02*pine*SI100*10+ #m to dm.
+        +0.12044E+00*moist+
+        -0.11905E+00*south_eastern_county+
+        +0.13061E+00*divided_plot+
+        +0.19571E+00*fertilised_plot+
+        +0.20698E+00*plot_inventoried_76_77+
+        -0.37239E+01
 
     )/10000 #cm2 to m2
   )
