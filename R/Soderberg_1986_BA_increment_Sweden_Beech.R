@@ -34,6 +34,8 @@
 #' @param Basal_area_Birch_m2_ha Basal area Birch on the plot, m^2 / ha.
 #' @param Basal_area_plot_m2_ha Basal area of all tree species the plot, m^2 / ha.
 #' @param age_at_breast_height Age at breast height of the tree.
+#' @param SI_species Species for which SIH100 was estimated. One of : 'Picea abies' or 'Pinus sylvestris'.
+#' @param SI100 Site Index H100, m.
 #' @param thinned TRUE if the stand has been thinned, otherwise FALSE.
 #' @param last_thinned Number of growing seasons since last thinning.
 #' @param latitude Latitude, degrees.
@@ -51,6 +53,8 @@ Soderberg_1986_BA_increment_Sweden_Beech <- function(
   Basal_area_Pine_m2_ha,
   Basal_area_Birch_m2_ha,
   Basal_area_plot_m2_ha,
+  SI_species,
+  SI100,
   age_at_breast_height,
   thinned,
   last_thinned,
