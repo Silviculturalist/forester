@@ -1,28 +1,30 @@
-#' Form quotient for Scots Pine, northern Sweden from Söderberg (1986)
+#' Form quotient for Scots Pine, southern Sweden from Söderberg (1986)
 #'
-#' @source Söderberg, U. (1986) Funktioner för skogliga produktionsprognoser - Tillväxt och formhöjd för enskilda träd av inhemska trädslag i Sverige. / Functions for forecasting of timber yields - Increment and form height for individual trees of native species in Sweden. Report 14. Section of Forest Mensuration and Management. Swedish University of Agricultural Sciences. Umeå. ISBN 91-576-2634-0. ISSN 0349-2133. pp.251. p. 208.
+#' @source Söderberg, U. (1986) Funktioner för skogliga produktionsprognoser - Tillväxt och formhöjd för enskilda träd av inhemska trädslag i Sverige. / Functions for forecasting of timber yields - Increment and form height for individual trees of native species in Sweden. Report 14. Section of Forest Mensuration and Management. Swedish University of Agricultural Sciences. Umeå. ISBN 91-576-2634-0. ISSN 0349-2133. pp.251. p. 212.
 #'
 #' @description
 #' \strong{Applicable counties:}
 #'
-#' *Norrbottens Lappmark
-#' *Norrbottens kustland
-#' *Västerbottens lappmark
-#' *Västerbottens kustland
-#' *Västernorrland - Ångermanlands landskap
-#' *Västernorrland - Medelpads landskap
-#' *Jämtland - Jämtlands landskap
-#' *Jämtland - Härjedalens landskap
-#' *Kopparberg - Sälen-Idre.
+#' *Stockholm
+#' *Södermanland
+#' *Uppsala
+#' *Östergötland
+#' *Kalmar
+#' *Västmanland
+#' *Blekinge
+#' *Kristianstad
+#' *Malmöhus
+#' *Västra Götaland
+#' *Halland
 #'
 #' @details
-#' Multiple correlation coefficient R = 0.94
+#' Multiple correlation coefficient R = 0.92
 #'
-#' Spread about the function sf = 0.107
+#' Spread about the function sf = 0.120
 #'
-#' sf/Spread about the mean = 0.352
+#' sf/Spread about the mean = 0.395
 #'
-#' Number of observations = 3785
+#' Number of observations = 4231
 #'
 #'
 #' NB in Söderberg (1986), no correction for logarithmic bias was introduced, as, (freely translated) p. 114:
@@ -40,8 +42,6 @@
 #'
 #' @param diameter_cm Diameter at breast height
 #' @param diameter_largest_tree_on_plot_cm Diameter at breast height of the largest tree on the plot.
-#' @param Basal_area_of_tree_m2 Basal area of the tree, m^2.
-#' @param Basal_area_Pine_m2_ha Basal area Pine on the plot, m^2 / ha.
 #' @param Basal_area_Spruce_m2_ha Basal area Spruce on the plot, m^2 / ha.
 #' @param Basal_area_plot_m2_ha Basal area of all tree species the plot, m^2 / ha.
 #' @param age_at_breast_height Age at breast height of the tree.
@@ -69,22 +69,22 @@
 #' 17 \tab Lichen, frequent occurrence \cr
 #' 18 \tab Lichen, dominating \cr
 #' }
-#' @param aspect Aspect, one of: "north", "south" or 0.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude, meters above sea level.
 #' @param distance_to_coast_km Closest distance to coast, in km, e.g. [forester::coast_distance]
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
-#'
-#' @return Basal area increment during 5 years, m2.
+#' @param maritime TRUE, if the plot is situated in a maritime climatic region. cf. Ångström 1958. e.g. [forester::local_climate_Sweden()]. Otherwise FALSE.
+#' @param fertilised_plot 1 for fertilised plots, 0 for others (default).
+#' @param county County name.
+#' @return Form quotient, metres.
 #' @export
 #'
 #' @examples
-Soderberg_1986_diameter_quotient_northern_Sweden_Pine <- function(
+Soderberg_1986_form_quotient_southern_Sweden_Pine <- function(
   diameter_cm,
   diameter_largest_tree_on_plot_cm,
   distance_to_coast_km,
-  Basal_area_Pine_m2_ha,
   Basal_area_Spruce_m2_ha,
   Basal_area_plot_m2_ha,
   SI_species,
@@ -93,48 +93,51 @@ Soderberg_1986_diameter_quotient_northern_Sweden_Pine <- function(
   age_at_breast_height,
   latitude,
   altitude,
-  aspect,
+  county,
+  maritime,
   soil_moisture,
   divided_plot=0,
+  fertilised_plot
 ){
   spruce <- ifelse(SI_species=="Picea abies")
   pine <- ifelse(SI_species=="Pinus sylvestris")
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
-  BA_quotient_Pine <- Basal_area_Pine_m2_ha/Basal_area_plot_m2_ha
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha
   empetrum_calluna <- ifelse(vegetation%in%c(15,16),1,0)
+  herb <- ifelse(vegetation<7,1,0)
   close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
-  south <- ifelse(aspect=="south",1,0)
   moist <- ifelse(soil_moisture>3,1,0)
+  region5 <- ifelse(county %in% c("Blekinge", "Kristianstad","Malmöhus","Västra Götaland","Halland","Gotland"),1,0)
 
 
   return(
     exp(
-      -0.22799E+03*(1/((diameter_cm*10) + 50))+ #diameter in mm
-        +0.66896E+04*((1/((diameter_cm*10) + 50))^2)+ #diameter in mm
-        -0.11349E+02*(1/(age_at_breast_height+10))+
-        +0.17205E+03*((1/(age_at_breast_height+10))^2)+
-        -0.16672E-02*age_at_breast_height+
-        -0.58581E-01*(diameter_cm*10/age_at_breast_height)+ #diameter in mm
-        +0.11750E-02*spruce*SI100*10+#m to dm.
-        +0.11099E-02*pine*SI100*10+ #m to dm.
-        +0.97338E-02*Basal_area_plot_m2_ha+
-        -0.92807E-04*(Basal_area_plot_m2_ha^2)+
-        -0.94134E-01*diameter_quotient+
-        +0.11760E-01*(diameter_quotient^2)+
-        +0.43779E+00*latitude+
-        -0.34411E-02*(latitude^2)+
-        -0.19820E-06*(altitude^2)+
-        -0.20823E-01*close_to_coast+
-        -0.44766E-01*divided_plot+
-        -0.19262E-01*empetrum_calluna+
-        +0.20471E-01*south+
-        -0.18321E-01*moist+
-        +0.88735E-01*BA_quotient_Pine+
-        +0.43954E-01*BA_quotient_Spruce+
-        -0.11064E+02
+      -0.24437E+03*(1/((diameter_cm*10) + 50))+ #diameter in mm
+        +0.96502E+04*((1/((diameter_cm*10) + 50))^2)+ #diameter in mm
+        -0.14142E+02*(1/(age_at_breast_height+10))+
+        +0.16515E+03*((1/(age_at_breast_height+10))^2)+
+        -0.26773E-02*age_at_breast_height+
+        -0.41275E-01*(diameter_cm*10/age_at_breast_height)+ #diameter in mm
+        +0.12858E-02*spruce*SI100*10+#m to dm.
+        +0.16419E-02*pine*SI100*10+ #m to dm.
+        +0.92576E-02*Basal_area_plot_m2_ha+
+        -0.89234E-04*(Basal_area_plot_m2_ha^2)+
+        +0.24741E+00*diameter_quotient+
+        -0.22097E+00*(diameter_quotient^2)+
+        -0.88419E+00*latitude+
+        +0.76429E-02*(latitude^2)+
+        -0.45527E-04*(altitude)+
+        -0.64779E-01*divided_plot+
+        -0.20583E-01*herb+
+        +0.37361E-01*fertilised_plot+
+        -0.21721E-01*maritime+
+        -0.30357E-01*empetrum_calluna+
+        -0.40200E-01*moist+
+        +0.11526E+00*BA_quotient_Spruce+
+        -0.28372E-01*region5+
+        +0.28245E+02
 
-    )/10000 #cm2 to m2
+    )
   )
 
 
