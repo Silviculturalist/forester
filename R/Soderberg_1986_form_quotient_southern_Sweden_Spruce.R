@@ -46,7 +46,6 @@
 #' @param diameter_cm Diameter at breast height
 #' @param diameter_largest_tree_on_plot_cm Diameter at breast height of the largest tree on the plot.
 #' @param Basal_area_Spruce_m2_ha Basal area Spruce on the plot, m^2 / ha.
-#' @param Basal_area_Pine_m2_ha Basal area Pine on the plot, m^2 / ha.
 #' @param Basal_area_plot_m2_ha Basal area of all tree species the plot, m^2 / ha.
 #' @param age_at_breast_height Age at breast height of the tree.
 #' @param SI_species Species for which SIH100 was estimated. One of : 'Picea abies' or 'Pinus sylvestris'.
@@ -86,11 +85,11 @@ Soderberg_1986_form_quotient_southern_Sweden_Spruce <- function(
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha
   north <- ifelse(aspect=="north",1,0)
-  seldom_lateral_water <- ifelse(lateraL_water%in%c(1,2),1,0)
+  seldom_lateral_water <- ifelse(lateral_water%in%c(1,2),1,0)
 
   south_eastern_county <- ifelse(county%in%c("Stockholm","Södermanland","Uppsala","Östergötland","Kalmar","Västmanland"),1,0)
 
-  value_constant <- ifelse(county!="Gotland",2.7730E+01, ((2.7730E+01)-0.089))
+  value_constant <- ifelse(county!="Gotland",0.27730E+01, ((0.27730E+01)-0.089))
 
   return(
     exp(
