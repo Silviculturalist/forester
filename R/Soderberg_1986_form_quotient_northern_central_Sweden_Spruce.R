@@ -79,7 +79,6 @@
 #' @param distance_to_coast_km Closest distance to coast, in km, e.g. [forester::coast_distance]
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
 #' @param continental TRUE, if the plot is situated in a continental climatic region. cf. Ångström 1958. e.g. [forester::local_climate_Sweden()]. Otherwise FALSE.
-#' @param fertilised_plot 1 for fertilised plots, 0 for others (default).
 #' @param aspect Aspect, one of: "north","south" or 0.
 #' @param lateral_water Type 1="Missing", 2="Seldom",3="Shorter periods", 4="Longer periods",5="Slope".
 #' @return Form quotient, metres.
