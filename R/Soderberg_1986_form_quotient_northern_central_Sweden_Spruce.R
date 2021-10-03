@@ -114,7 +114,7 @@ Soderberg_1986_form_quotient_northern_central_Sweden_Spruce <- function(
   close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
   dry <- ifelse(soil_moisture==1,1,0)
   moist <- ifelse(soil_moisture>3,1,0)
-  seldom_lateral_water <- ifelse(lateraL_water%in%c(1,2),1,0)
+  seldom_lateral_water <- ifelse(lateral_water%in%c(1,2),1,0)
 
 
 

@@ -109,7 +109,7 @@ Soderberg_1986_form_quotient_northern_central_Sweden_Birch <- function(
   empetrum_calluna <- ifelse(vegetation%in%c(15,16),1,0)
   dry <- ifelse(soil_moisture==1,1,0)
   moist <- ifelse(soil_moisture>3,1,0)
-  seldom_lateral_water <- ifelse(lateraL_water%in%c(1,2),1,0)
+  seldom_lateral_water <- ifelse(lateral_water%in%c(1,2),1,0)
 
 
 
