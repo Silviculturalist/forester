@@ -1,6 +1,6 @@
 #' Height trajectory for Hybrid Aspen, Populus tremula L x Populus tremuloides Michx., in Sweden from Johansson 1999.
 #'
-#' @source Johansson, T. (2013) A site dependent top height growth model for hybrid aspen. Journal of Forestry Research. 24. 691-698. Available: \url{https://link.springer.com/article/10.1007%2Fs11676-013-0365-6}
+#' @source Johansson, T. (2013) A site dependent top height growth model for hybrid aspen. Journal of Forestry Research. 24. 691-698. Available: \url{https://link.springer.com/article/10.1007\%2Fs11676-013-0365-6}
 #'
 #' @description
 #'

@@ -29,8 +29,8 @@
 #' @export
 #'
 #' @examples
-#'You can get the function of any Site Index Curve by inserting Height=x and Age= Reference Age.
-#'Let's plot a series of SI curves for Spruce.
+#' #You can get the function of any Site Index Curve by inserting Height=x and Age= Reference Age.
+#' #Let's plot a series of SI curves for Spruce.
 #'
 #' ggplot()+
 #'   geom_function(aes(linetype="40"), fun= function(age) (13+422.35797942705*(1-exp(-age*0.0266185526050425))^1.20201373284005)/10)+

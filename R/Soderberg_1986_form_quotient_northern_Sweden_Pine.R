@@ -94,7 +94,7 @@ Soderberg_1986_diameter_quotient_northern_Sweden_Pine <- function(
   altitude,
   aspect,
   soil_moisture,
-  divided_plot=0,
+  divided_plot=0
 ){
   spruce <- ifelse(SI_species=="Picea abies")
   pine <- ifelse(SI_species=="Pinus sylvestris")

@@ -28,9 +28,9 @@
 #' @param pre_commercial_thinning Has the stand been pre-commercially thinned?
 #' @param SI Site index H 100.
 #' @param altitude meters above sea level.
-#' @broadleaves_percent_of_basal_area Percent of basal area composed of broadleaves.
-#' @even_or_somewhat_uneven_aged TRUE / FALSE
-#' @uneven_aged TRUE/FALSE
+#' @param broadleaves_percent_of_basal_area Percent of basal area composed of broadleaves.
+#' @param even_or_somewhat_uneven_aged TRUE / FALSE
+#' @param uneven_aged TRUE/FALSE
 #'
 #' @return Stems thicker than 2.5 cm per ha.
 #' @export

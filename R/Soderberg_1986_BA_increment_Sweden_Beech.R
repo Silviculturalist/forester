@@ -60,7 +60,7 @@ Soderberg_1986_BA_increment_Sweden_Beech <- function(
   last_thinned,
   latitude,
   altitude,
-  divided_plot=0,
+  divided_plot=0
 ){
   basal_area_of_tree_cm2 <- Basal_area_of_tree_m2*10000
   spruce <- ifelse(SI_species=="Picea abies")

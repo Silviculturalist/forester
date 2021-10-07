@@ -3,7 +3,9 @@
 #' @description Volume functions for Birch which are used in Heureka. PM Heureka 2004-01-20 Björn Elfving.
 #'
 #' @source Brandel, G. 1990. Volymfunktioner för enskilda träd. Tall, gran och björk. SLU, inst. för skogsproduktion. Rapport nr 26.
-#' @source Available: \url{https://www.heurekaslu.org/w/images/9/93/Heureka_prognossystem_%28Elfving_rapportutkast%29.pdf}
+#'
+#'
+#' @source Available: \url{https://www.heurekaslu.org/w/images/9/93/Heureka_prognossystem_\%28Elfving_rapportutkast\%29.pdf}
 #'
 #' @param diameter_cm Diameter in cm
 #' @param height_m Height, metres.

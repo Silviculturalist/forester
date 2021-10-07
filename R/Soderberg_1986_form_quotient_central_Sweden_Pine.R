@@ -66,7 +66,7 @@ Soderberg_1986_form_quotient_central_Sweden_Pine <- function(
   altitude,
   soil_moisture,
   fertilised_plot,
-  divided_plot=0,
+  divided_plot=0
 ){
   spruce <- ifelse(SI_species=="Picea abies")
   pine <- ifelse(SI_species=="Pinus sylvestris")

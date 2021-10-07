@@ -74,7 +74,7 @@ Soderberg_1986_BA_increment_southern_Sweden_Broadleaves <- function(
   last_thinned,
   aspect,
   latitude,
-  divided_plot=0,
+  divided_plot=0
 ){
   basal_area_of_tree_cm2 <- Basal_area_of_tree_m2*10000
   north <- ifelse(aspect=="north",1,0)

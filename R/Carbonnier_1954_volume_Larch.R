@@ -1,7 +1,9 @@
 #' Volume of Larch trees, from Carbonnier 1954.
 #'
 #' @source Carbonnier, C. 1954. Funktioner för kubering av europeisk, sibirisk och japansk lärk. MS.
-#' @source PM for Heureka 2004-01-20 Björn Elfving. Available: \url{https://www.heurekaslu.org/w/images/9/93/Heureka_prognossystem_%28Elfving_rapportutkast%29.pdf}
+#'
+#'
+#' @source PM for Heureka 2004-01-20 Björn Elfving. Available: \url{https://www.heurekaslu.org/w/images/9/93/Heureka_prognossystem_\%28Elfving_rapportutkast\%29.pdf}
 #'
 #' @param diameter_cm Diameter at breast height, cm.
 #' @param height_m Height of tree, metres.

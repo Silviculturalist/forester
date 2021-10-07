@@ -29,8 +29,8 @@
 #' @param SI Site index H 100.
 #' @param altitude meters above sea level.
 #' @param age_at_breast_height Age of stand at breast height. For example [forester::Hagglund_age_to_height()]
-#' @broadleaves_percent_of_basal_area Percent of basal area composed of broadleaves.
-#' @even_or_somewhat_uneven_aged TRUE / FALSE
+#' @param broadleaves_percent_of_basal_area Percent of basal area composed of broadleaves.
+#' @param even_or_somewhat_uneven_aged TRUE / FALSE
 #'
 #' @return Stems thicker than 2.5 cm per ha.
 #' @md

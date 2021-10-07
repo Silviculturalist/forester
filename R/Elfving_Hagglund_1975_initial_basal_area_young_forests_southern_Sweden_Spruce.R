@@ -32,7 +32,7 @@
 #' @param SI Site index H100 m. Required only if stems_per_ha or age_at_breast_height is "function".
 #' @param age_at_breast_height Age of stand at breast height. Required only if stems_per_ha is "function".
 #' @param even_or_somewhat_uneven_aged TRUE if even_aged or slightly uneven-aged.
-#' @regeneration One of "culture", "natural regeneration" or "unknown.". Required only if age_to_breast_height is "function".
+#' @param regeneration One of "culture", "natural regeneration" or "unknown.". Required only if age_to_breast_height is "function".
 #'
 #' @return Basal area per hectare, m^2.
 #' @export
