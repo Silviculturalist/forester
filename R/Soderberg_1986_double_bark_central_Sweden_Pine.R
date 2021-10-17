@@ -30,7 +30,7 @@
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude, metres.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
-#' @param distance_to_coast Closest distance to coast, in km, e.g. [forester::coast_distance()]
+#' @param distance_to_coast_km Closest distance to coast, in km, e.g. [forester::coast_distance()]
 #' @param SI100 Site Index H100, m.
 #'
 #' @return Double bark thickness, mm.
@@ -43,11 +43,11 @@ Soderberg_1986_double_bark_central_Sweden_Pine <- function(
   latitude,
   altitude,
   soil_moisture,
-  distance_to_coast,
+  distance_to_coast_km,
   SI100
 ){
 
-  far_from_coast <- ifelse(distance_to_coast>50,1,0)
+  far_from_coast <- ifelse(distance_to_coast_km>50,1,0)
 
   dry <- ifelse(soil_moisture==1,1,0)
 

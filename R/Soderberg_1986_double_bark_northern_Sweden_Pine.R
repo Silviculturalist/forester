@@ -34,7 +34,7 @@
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude, metres.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
-#' @param distance_to_coast Closest distance to coast, in km, e.g. [forester::coast_distance()]
+#' @param distance_to_coast_km Closest distance to coast, in km, e.g. [forester::coast_distance()]
 #' @param vegetation Vegetation type according to follows Swedish National forest inventory FALTSKIKT:
 #' \tabular{ll}{
 #' Code \tab Vegetation \cr
@@ -70,13 +70,13 @@ Soderberg_1986_double_bark_northern_Sweden_Pine <- function(
   latitude,
   altitude,
   soil_moisture,
-  distance_to_coast,
+  distance_to_coast_km,
   vegetation,
   continental,
   SI100
 ){
 
-  far_from_coast <- ifelse(distance_to_coast>50,1,0)
+  far_from_coast <- ifelse(distance_to_coast_km>50,1,0)
 
   herb <- ifelse(vegetation<7,1,0)
 
