@@ -15,7 +15,7 @@
 #'
 #' Number of observations = 846
 #'
-#' NB: \emphasis{Betula pendula} is in the original source referred as \emphasis{Betula verrucosa}
+#' NB: \emph{Betula pendula} is in the original source referred as \emph{Betula verrucosa}
 #'
 #'
 #' @param diameter_cm_under_bark Diameter under bark of tree, in cm.
