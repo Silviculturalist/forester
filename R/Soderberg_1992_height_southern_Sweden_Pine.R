@@ -90,5 +90,4 @@ Soderberg_1992_height_southern_Sweden_Pine <- function(
         +0.01264 #correction for logarithmic bias, appendix 5.
     )/10 # Return height in meters, not dm.
   )
-  )
 }
