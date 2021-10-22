@@ -51,9 +51,9 @@ Soderberg_1986_double_bark_central_Sweden_Pine <- function(
 
   dry <- ifelse(soil_moisture==1,1,0)
 
-  B1 <- ifelse(SI100>=141 & SI100 <=220,1,0)
+  B1 <- ifelse(SI100>=14.1 & SI100 <=22.0,1,0)
 
-  B2 <- ifelse(SI100>=221,1,0)
+  B2 <- ifelse(SI100>=22.1,1,0)
 
   return(
     exp(

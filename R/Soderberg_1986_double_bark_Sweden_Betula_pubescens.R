@@ -65,8 +65,8 @@ Soderberg_1986_double_bark_Sweden_Betula_pubescens <- function(
   herb <- ifelse(vegetation<7,1,0)
 
 
-  B1 <- ifelse(SI100>=141 & SI100<=180,1,0)
-  B2 <- ifelse(SI100>=181,1,0)
+  B1 <- ifelse(SI100>=14.1 & SI100<=18.0,1,0)
+  B2 <- ifelse(SI100>=18.1,1,0)
 
 
   return(

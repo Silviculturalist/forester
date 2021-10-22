@@ -53,7 +53,7 @@ Soderberg_1986_double_bark_central_Sweden_Spruce <- function(
         -0.52109*10^(-5)*((diameter_cm_under_bark*10)^2)+
         +0.45036*10^(-2)*age_at_breast_height+
         -0.58820*10^(-5)*(age_at_breast_height^2)+
-        -0.15400*10^(-2)*SI100+
+        -0.15400*10^(-2)*(SI100*10)+
         +0.88803*10^(-1)*dry+
         +0.96139*10^(-1)*far_from_coast+
         +1.73903
