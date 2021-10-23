@@ -8,10 +8,24 @@
 #' *Kopparberg - övriga
 #' *Gävleborg - Hälsinglands landskap
 #' *Gävleborg - övriga
-#' *Kopparberg - övriga
 #' *Värmland
 #'
+#' \strong{Regarding the regional division of the models:}
 #'
+#' Freely translated from Söderberg 1986 p. 29:
+#' 'The regional division is motivated in the following.
+#' For Pine the country has been divided into 3 regions (see figure 4.1),
+#' which are based on the different forms of Scots Pine which have been distinguished
+#' by Sylvén 1917. The distribution of the different forms of Scots Pine is assumed
+#' to depend on the expansion-history of the Pine, according to which the Pine
+#' immigrated both from the north and the south with a transitional zone in central
+#' Sweden, where both forms are present. For other species, the change in genotype
+#' is more continuous over the country (Kiellander 1974). For Norway Spruce, it is
+#' assumed that it has had time for 30-50 generations in northern Sweden, contrasted
+#' against only 10-20 in southern Sweden (Kiellander 1966). Therefore the same regional
+#' division is used for Norway Spruce as for Scots Pine. For the other species, the regional
+#' division is limited to two regions, wherein the northern and central regions have been merged.
+
 #'
 #' @details
 #' Multiple correlation coefficient R = 0.88

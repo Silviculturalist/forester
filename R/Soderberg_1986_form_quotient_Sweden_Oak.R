@@ -34,7 +34,7 @@
 #' about the function are difficult to establish. If one were to assume that the
 #' spread about the function was overestimated by 10 percent, the predicted
 #' growth from the functions would be increased by roughly 2 percent. For 20
-#' percents overestimation, an increase of predicted growth by 4.5 perpcent."
+#' percents overestimation, an increase of predicted growth by 4.5 percent."
 #'
 #'
 #'
