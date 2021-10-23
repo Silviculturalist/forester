@@ -1,5 +1,6 @@
-#' Tor Jonsson's smoothing of Maass' experience tables.
-#' @source Jonsson, T. (1914) Om boniteringen av skogsmark, eng: On the
+#' Tor Jonson's smoothing of Maass' experience tables.
+#'
+#' @source Jonson, T. (1914) Om boniteringen av skogsmark, eng: On the
 #' estimation of the productivity of forest land. Skogsvårdsföreningens
 #' tidsskrift, nr. 5, p. 382.
 #'
@@ -12,7 +13,7 @@
 #' @export
 #'
 #' @examples
-jonsson_thinned_percentage_1914 <- function(stand_age){
+Jonson_1914_thinned_percentage <- function(stand_age){
   return(
     9*(stand_age-29)^(1/3)
   )

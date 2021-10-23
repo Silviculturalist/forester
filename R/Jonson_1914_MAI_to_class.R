@@ -1,15 +1,17 @@
-#' MAI to Jonsson
+#' Jonson 1914 classifier
 #'
-#'@description Class according to Jonsson (1914). OBS class 9 is given for all sites MAI < 1.2 m3sk.
+#' @description Class according to Jonson (1914). OBS class 9 is given for all sites MAI < 1.2 m3sk.
+#'
+#' @source Jonson, Tor (1914). Om bonitering av skogsmark. Svenska skogsvårdsföreningens tidsskrift. Häfte 5. p. 369-392.
 #'
 #' @param bonitet MAI, m3sk.
 #'
-#' @return Class according to Jonsson (1914)
+#' @return Class according to Jonson (1914)
 #' @export
 #'
 #' @examples
-#' MAI_to_jonsson(5.3)
-MAI_to_jonsson <- function(bonitet){
+#' Jonson_1914_MAI_to_class(5.3)
+Jonson_1914_MAI_to_class <- function(bonitet){
 
   if(bonitet>=10.5){
     return(1)

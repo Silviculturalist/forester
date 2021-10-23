@@ -1,10 +1,10 @@
-#' Expected volume in fully stocked Pine stands according to Jonsson (1914)
+#' Expected volume in fully stocked Pine stands according to Jonson (1914)
 #'
-#' @source Jonsson, T. (1914) Om boniteringen av skogsmark, eng: On the
+#' @source Jonson, T. (1914) Om boniteringen av skogsmark, eng: On the
 #' estimation of the productivity of forest land. Skogsvårdsföreningens
 #' tidsskrift, nr. 5, p. 379.
 #'
-#' @description Author recommends Picea abies only be used as species as
+#' @description Jonson recommends Picea abies only be used as species as
 #' certain support with expressed reservation.
 #'
 #' @param stand_mean_height metres.
@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-jonsson_stand_volume_1914 <- function(stand_mean_height,species="Pinus
+Jonson_1914_stand_volume <- function(stand_mean_height,species="Pinus
                                       sylvestris"){
 
   if(species=="Pinus sylvestris"){
