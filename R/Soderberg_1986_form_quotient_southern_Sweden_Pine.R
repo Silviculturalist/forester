@@ -22,7 +22,7 @@
 #' *Malmöhus
 #' *Blekinge
 #'
-#' \strong NB for the island of Gotland, use [forester::Soderberg_1986_form_quotient_Gotland_Sweden_Pine()]
+#' \strong{NB for the island of Gotland, use [forester::Soderberg_1986_form_quotient_Gotland_Sweden_Pine()]}
 #'
 #' \strong{Regarding the regional division of the models:}
 #'
