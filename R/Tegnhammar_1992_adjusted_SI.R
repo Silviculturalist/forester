@@ -19,15 +19,15 @@
 #' Forest Survey. Swedish University of Agricultural Sciences. Umeå.p.14.
 #' ISSN 0348-0496
 #'
-#' @param SIH Site index, decimeters
+#' @param SIH Site index, metres.
 #' @param dominant_age arithmetic mean of the age at breast height of the
 #' dominant trees.
 #' @param latitude degrees
 #'
-#' @return SIHjust, dm.
+#' @return SIHjust, m.
 #' @export
 #'
 #' @examples
-Tegnhammar_SIHjust_1992 <- function(SIH, dominant_age, latitude) {
-  return(SIH + (3.89 - 0.0498 * latitude) * (dominant_age - 15))
+Tegnhammar_1992_adjusted_SI <- function(SIH, dominant_age, latitude) {
+  return(((SIH*10) + (3.89 - 0.0498 * latitude) * (dominant_age - 15))/10)
 }
