@@ -7,5 +7,5 @@
 #'
 #' @format A terra::SpatVector
 #'
-#' @description A polygon deligning an area including Sweden which is north of 'Limes norrlandicus'.
+#' @description A polygon delineating an area including Sweden which is north of 'Limes norrlandicus'.
 "Limes_norrlandicus"
