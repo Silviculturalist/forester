@@ -91,7 +91,9 @@
 #' }
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param latitude Latitude, degrees.
-#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0. \table{lc}{
+#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0.
+#'
+#' \tabular{cl}{
 #' 1 \tab North  \cr
 #' 2 \tab North-East \cr
 #' 3 \tab East \cr

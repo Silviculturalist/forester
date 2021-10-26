@@ -64,12 +64,12 @@
 #' 2 \tab Lichen-rich bogmoss type (>25\% lichen + >50\% Sphagnum of existing ground layer)\cr
 #' 3 \tab Lichen rich (>25\% lichen, & not >50\% Sphagnum of existing ground layer) \cr
 #' 4 \tab Bogmoss type (\emph{Sphagnum} > 50\% of existing ground layer) \cr
-#' 5 \tab Swamp moss type (\emph{Polytrichum commune, P. gracile, P. strictum, Sphagnum, Depranocladus, Scorpidium, Paludella, Calliergon, Tomentypnum, Campylium.})
-#' 6 \tab Fresh moss type (\emph{Hylocomium splendens, Ptilium crista-castrensis, Dicranum ssp.})
+#' 5 \tab Swamp moss type (\emph{Polytrichum commune, P. gracile, P. strictum, Sphagnum, Depranocladus, Scorpidium, Paludella, Calliergon, Tomentypnum, Campylium.}) \cr
+#' 6 \tab Fresh moss type (\emph{Hylocomium splendens, Ptilium crista-castrensis, Dicranum ssp.}) \cr
 #' }
 #' @param aspect If more than 1:20 (5\%), one of the following, otherwise 0.
 #'
-#'  \table{lc}{
+#'  \tabular{cl}{
 #' 1 \tab North \cr
 #' 2 \tab North-East \cr
 #' 3 \tab East \cr
