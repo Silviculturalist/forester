@@ -91,6 +91,16 @@
 #' }
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param latitude Latitude, degrees.
+#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0. \table{lc}{
+#' 1 \tab North  \cr
+#' 2 \tab North-East \cr
+#' 3 \tab East \cr
+#' 4 \tab South-East \cr
+#' 5 \tab South \cr
+#' 6 \tab South-West \cr
+#' 7 \tab West \cr
+#' 8 \tab North-West \cr
+#' }
 #' @param altitude Altitude, meters above sea level.
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
 #' @param fertilised_plot 1 for fertilised plots, 0 for others (default).
@@ -108,6 +118,7 @@ Soderberg_1986_form_quotient_northern_central_Sweden_Birch <- function(
   SI_species,
   SI100,
   vegetation,
+  aspect,
   age_at_breast_height,
   latitude,
   altitude,
@@ -121,7 +132,7 @@ Soderberg_1986_form_quotient_northern_central_Sweden_Birch <- function(
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha
   BA_quotient_Pine <- Basal_area_Pine_m2_ha/Basal_area_plot_m2_ha
-  north <- ifelse(aspect=="north",1,0)
+  north <- ifelse(aspect%in%c(8,1,2,3),1,0)
   empetrum_calluna <- ifelse(vegetation%in%c(15,16),1,0)
   dry <- ifelse(soil_moisture==1,1,0)
   moist <- ifelse(soil_moisture>3,1,0)
