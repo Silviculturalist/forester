@@ -57,7 +57,18 @@
 #'   when the original plot consists of different land classes, density classes
 #'   or cutting classes or belongs to different owners. 0 for full plots
 #'   (default).
-#' @param aspect Aspect, one of: "north","south" or 0.
+#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0.
+#'
+#' \tabular{cl}{
+#' 1 \tab North  \cr
+#' 2 \tab North-East \cr
+#' 3 \tab East \cr
+#' 4 \tab South-East \cr
+#' 5 \tab South \cr
+#' 6 \tab South-West \cr
+#' 7 \tab West \cr
+#' 8 \tab North-West \cr
+#' }
 #' @return Form quotient, metres.
 #' @export
 #'
@@ -77,7 +88,7 @@ Soderberg_1986_form_quotient_Sweden_Beech <- function(
   pine <- ifelse(SI_species=="Pinus sylvestris")
   BA_quotient_Beech <- Basal_area_Beech_m2_ha/Basal_area_plot_m2_ha
   BA_quotient_Oak <- Basal_area_Oak_m2_ha/Basal_area_plot_m2_ha
-  north <- ifelse(aspect=="north",1,0)
+  north <- ifelse(aspect%in%c(8,1,2,3),1,0)
 
   return(
     exp(

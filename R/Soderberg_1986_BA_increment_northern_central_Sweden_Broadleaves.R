@@ -68,7 +68,18 @@
 #' @param age_at_breast_height Age at breast height of the tree.
 #' @param thinned TRUE if the stand has been thinned, otherwise FALSE.
 #' @param last_thinned Number of growing seasons since last thinning.
-#' @param aspect Aspect, one of: "north", "south" or 0.
+#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0.
+#'
+#' \tabular{cl}{
+#' 1 \tab North  \cr
+#' 2 \tab North-East \cr
+#' 3 \tab East \cr
+#' 4 \tab South-East \cr
+#' 5 \tab South \cr
+#' 6 \tab South-West \cr
+#' 7 \tab West \cr
+#' 8 \tab North-West \cr
+#' }
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude above sea level, meters.
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
@@ -93,7 +104,7 @@ Soderberg_1986_BA_increment_northern_central_Sweden_Broadleaves <- function(
   plot_inventoried_76_77=0
 ){
   basal_area_of_tree_cm2 <- Basal_area_of_tree_m2*10000
-  north <- ifelse(aspect=="north",1,0)
+  north <- ifelse(aspect%in%c(8,1,2,3),1,0)
   BA_quotient_Pine <- Basal_area_Pine_m2_ha/Basal_area_plot_m2_ha
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha
 

@@ -67,7 +67,18 @@
 #' @param SI100 Site Index H100, m.
 #' @param SI_species Species for which SIH100 was estimated. One of : 'Picea abies' or 'Pinus sylvestris'.
 #' @param latitude Latitude, degrees.
-#' @param aspect Aspect, one of: "north", "south" or 0.
+#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0.
+#'
+#' \tabular{cl}{
+#' 1 \tab North  \cr
+#' 2 \tab North-East \cr
+#' 3 \tab East \cr
+#' 4 \tab South-East \cr
+#' 5 \tab South \cr
+#' 6 \tab South-West \cr
+#' 7 \tab West \cr
+#' 8 \tab North-West \cr
+#' }
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
 #' @param fertilised_plot 1 for fertilised plots, 0 for others (default).
@@ -96,8 +107,8 @@ Soderberg_1986_BA_increment_northern_Sweden_under_65_Pine <- function(
   plot_inventoried_76_77=0
 ){
   basal_area_of_tree_cm2 <- Basal_area_of_tree_m2*10000
-  north <- ifelse(aspect=="north",1,0)
-  south <- ifelse(aspect=="south",1,0)
+  north <- ifelse(aspect%in%c(8,1,2,3),1,0)
+  south <- ifelse(aspect%in%c(4,5,6,7),1,0)
   spruce <- ifelse(SI_species=="Picea abies")
   pine <- ifelse(SI_species=="Pinus sylvestris")
   moist <- ifelse(soil_moisture>3,1,0)

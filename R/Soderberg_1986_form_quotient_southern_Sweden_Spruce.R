@@ -80,7 +80,18 @@
 #' @param continental TRUE, if the plot is situated in a continental climatic region. cf. Ångström 1958. e.g. [forester::local_climate_Sweden()]. Otherwise FALSE.
 #' @param maritime TRUE, if the plot is situated in a maritime climatic region. cf. Ångström 1958. e.g. [forester::local_climate_Sweden()]. Otherwise FALSE.
 #' @param county County name.
-#' @param aspect Aspect, one of: "north","south" or 0.
+#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0.
+#'
+#' \tabular{cl}{
+#' 1 \tab North  \cr
+#' 2 \tab North-East \cr
+#' 3 \tab East \cr
+#' 4 \tab South-East \cr
+#' 5 \tab South \cr
+#' 6 \tab South-West \cr
+#' 7 \tab West \cr
+#' 8 \tab North-West \cr
+#' }
 #' @param lateral_water Type 1="Missing", 2="Seldom",3="Shorter periods", 4="Longer periods",5="Slope".
 #' @return Form quotient, metres.
 #' @export
@@ -107,7 +118,7 @@ Soderberg_1986_form_quotient_southern_Sweden_Spruce <- function(
   pine <- ifelse(SI_species=="Pinus sylvestris")
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha
-  north <- ifelse(aspect=="north",1,0)
+  north <- ifelse(aspect%in%c(8,1,2,3),1,0)
   seldom_lateral_water <- ifelse(lateral_water%in%c(1,2),1,0)
 
   south_eastern_county <- ifelse(county%in%c("Stockholm","Södermanland","Uppsala","Östergötland","Kalmar","Västmanland"),1,0)

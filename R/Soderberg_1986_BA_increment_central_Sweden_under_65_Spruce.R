@@ -64,7 +64,6 @@
 #' @param SI100 Site Index H100, m.
 #' @param SI_species Species for which SIH100 was estimated. One of : 'Picea abies' or 'Pinus sylvestris'.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
-#' @param aspect Aspect, one of: "north", "south" or 0.
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude, meters.
 #' @param peatland 1 if plot is Peatland, 0 for others (default).
@@ -89,7 +88,6 @@ Soderberg_1986_BA_increment_central_Sweden_under_65_Spruce <- function(
   last_thinned,
   SI100,
   SI_species,
-  aspect,
   soil_moisture,
   latitude,
   altitude,

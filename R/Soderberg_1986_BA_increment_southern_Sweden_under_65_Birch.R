@@ -75,7 +75,6 @@
 #' @param last_thinned Number of growing seasons since last thinning.
 #' @param SI100 Site Index H100, m.
 #' @param SI_species Species for which SIH100 was estimated. One of : 'Picea abies' or 'Pinus sylvestris'.
-#' @param aspect Aspect, one of: "north", "south" or 0.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
 #' @param fertilised_plot 1 for fertilised plots, 0 for others (default).

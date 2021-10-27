@@ -85,7 +85,18 @@
 #' 17 \tab Lichen, frequent occurrence \cr
 #' 18 \tab Lichen, dominating \cr
 #' }
-#' @param aspect Aspect, one of: "north", "south" or 0.
+#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0.
+#'
+#' \tabular{cl}{
+#' 1 \tab North  \cr
+#' 2 \tab North-East \cr
+#' 3 \tab East \cr
+#' 4 \tab South-East \cr
+#' 5 \tab South \cr
+#' 6 \tab South-West \cr
+#' 7 \tab West \cr
+#' 8 \tab North-West \cr
+#' }
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude, meters above sea level.
@@ -120,7 +131,7 @@ Soderberg_1986_diameter_quotient_northern_Sweden_Pine <- function(
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha
   empetrum_calluna <- ifelse(vegetation%in%c(15,16),1,0)
   close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
-  south <- ifelse(aspect=="south",1,0)
+  south <- ifelse(aspect%in%c(4,5,6,7),1,0)
   moist <- ifelse(soil_moisture>3,1,0)
 
 

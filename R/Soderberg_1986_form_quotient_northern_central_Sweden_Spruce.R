@@ -95,7 +95,18 @@
 #' @param distance_to_coast_km Closest distance to coast, in km, e.g. [forester::coast_distance]
 #' @param divided_plot 1 for plots described in different parts, which appears when the original plot consists of different land classes, density classes or cutting classes or belongs to different owners. 0 for full plots (default).
 #' @param continental TRUE, if the plot is situated in a continental climatic region. cf. Ångström 1958. e.g. [forester::local_climate_Sweden()]. Otherwise FALSE.
-#' @param aspect Aspect, one of: "north","south" or 0.
+#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0.
+#'
+#' \tabular{cl}{
+#' 1 \tab North  \cr
+#' 2 \tab North-East \cr
+#' 3 \tab East \cr
+#' 4 \tab South-East \cr
+#' 5 \tab South \cr
+#' 6 \tab South-West \cr
+#' 7 \tab West \cr
+#' 8 \tab North-West \cr
+#' }
 #' @param lateral_water Type 1="Missing", 2="Seldom",3="Shorter periods", 4="Longer periods",5="Slope".
 #' @return Form quotient, metres.
 #' @export
@@ -125,7 +136,7 @@ Soderberg_1986_form_quotient_northern_central_Sweden_Spruce <- function(
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha
   BA_quotient_Pine <- Basal_area_Pine_m2_ha/Basal_area_plot_m2_ha
-  north <- ifelse(aspect=="north",1,0)
+  north <- ifelse(aspect%in%c(8,1,2,3),1,0)
   herb <- ifelse(vegetation<7,1,0)
   close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
   dry <- ifelse(soil_moisture==1,1,0)

@@ -70,7 +70,18 @@
 #' @param SI100 Site Index H100, m.
 #' @param SI_species Species for which SIH100 was estimated. One of : 'Picea abies' or 'Pinus sylvestris'.
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
-#' @param aspect Aspect, one of: "north", "south" or 0.
+#' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0.
+#'
+#' \tabular{cl}{
+#' 1 \tab North  \cr
+#' 2 \tab North-East \cr
+#' 3 \tab East \cr
+#' 4 \tab South-East \cr
+#' 5 \tab South \cr
+#' 6 \tab South-West \cr
+#' 7 \tab West \cr
+#' 8 \tab North-West \cr
+#' }
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude, meters.
 #' @param peatland 1 if plot is Peatland, 0 for others (default).
@@ -107,7 +118,7 @@ Soderberg_1986_BA_increment_northern_Sweden_over_45_Spruce <- function(
   spruce <- ifelse(SI_species=="Picea abies")
   pine <- ifelse(SI_species=="Pinus sylvestris")
   dry <- ifelse(soil_moisture==1,1,0)
-  north <- ifelse(aspect=="north",1,0)
+  north <- ifelse(aspect%in%c(8,1,2,3),1,0)
   diameter_quotient <- diameter_cm/diameter_largest_tree_on_plot_cm
   BA_quotient_Pine <- Basal_area_Pine_m2_ha/Basal_area_plot_m2_ha
   BA_quotient_Spruce <- Basal_area_Spruce_m2_ha/Basal_area_plot_m2_ha
