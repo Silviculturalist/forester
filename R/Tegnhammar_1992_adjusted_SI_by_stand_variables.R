@@ -31,8 +31,8 @@
 #' s = 30.71662
 #' R^2  = 0.7045
 #'
-#' @param latitude decimal degrees.
-#' @param longitude decimal degrees.
+#' @param latitude decimal degrees. By default WGS84, see parameter 'epsg'.
+#' @param longitude decimal degrees. By default WGS84, see parameter 'epsg'.
 #' @param altitude metres above sea level
 #' @param vegetation Vegetation type according to follows Swedish National forest inventory FALTSKIKT:
 #' \tabular{ll}{
@@ -94,7 +94,7 @@
 #' 8 \tab Clay \cr
 #' 9 \tab Peat \cr
 #' }
-#' @param humidity Humidity during the \emph{vegetation period}. mm. Eg. Eriksson, B. (1986) fig.34. Available online (26/10/2021) \url{https://www.smhi.se/polopoly_fs/1.166663!/RMK_46\%20Nederbörds-\%20och\%20humiditetsklimat\%20i\%20Sverige\%20under\%20vegetationsperioden..pdf}
+#' @param humidity Humidity during the \emph{vegetation period}. mm. If not provided, will be calculated from latitude, longitude with [forester::Eriksson_1986_humidity()] from Eriksson, B. (1986) fig.34. Available online (26/10/2021) \url{https://www.smhi.se/polopoly_fs/1.166663!/RMK_46\%20Nederbörds-\%20och\%20humiditetsklimat\%20i\%20Sverige\%20under\%20vegetationsperioden..pdf}
 #' @param ditched TRUE/FALSE if affected by ditching.
 #' @param lateral_water Type 1="Missing",Type 2="Seldom",3="shorter periods",4="longer periods", 5="slope".
 #' @param peat_humification "Low", if organic remnants clearly visible: squeezing sample gives somewhat cloudy water; "Medium", if with some difficulty organic remnants can be distinguished, if sample is squeezed the water is cloudy; or "High", if no organic remnants can be distinguished. Water and humus cannot be separated by squeezing. Humus is porridge-like.
@@ -105,6 +105,11 @@
 #'
 #' @examples
 Tegnhammar_1992_adjusted_SI_by_stand_variables <- function(species,latitude,longitude, altitude,vegetation, ground_layer,aspect_main,incline_percent,soil_moisture,soil_depth,soil_texture,humidity,ditched,lateral_water,peat_humification="Medium",epsg='EPSG:4326'){
+
+  #If missing humidity.
+  if(missing(humidity)){
+     assign("humidity",forester::Eriksson_1986_humidity(latitude = latitutde,longitude = longitude,epsg=epsg))
+  }
 
   #TRUE if site is located north of Limes Norrlandicus
   limes_N <- terra::relate(terra::vect(matrix(ncol=2,nrow=1,dimnames = list(c(),c("lon","lat")),data=c(longitude,latitude)),crs=epsg),as(Limes_norrlandicus,"SpatVector"),"within")[1]
