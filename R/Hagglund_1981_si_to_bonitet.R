@@ -1,5 +1,6 @@
-#' si_to_bonitet_integrated
-#' @description Interface for Hägglund (1981) "Samband mellan ståndortsindex H100 och bonitet för tall och gran i Sverige", Report #26, Projekt Hugin. This function is separate from `forester::si_to_bonitet`. In`forester::si_to_bonitet_integrated` function choice is controlled by indirect parameter input.
+#' Smoothed Productivity estimates in m^3sk (cu.m.) from Hägglund 1981.
+#'
+#' @description Interface for Hägglund (1981) "Samband mellan ståndortsindex H100 och bonitet för tall och gran i Sverige", Report #26, Projekt Hugin. This function is separate from the deprecated `forester::si_to_bonitet`. In`forester::si_to_bonitet_integrated` function choice is controlled by indirect parameter input.
 #' @param H100 Estimated stand top height at 100 years age.
 #' @param main_species Main species.
 #' @param vegetation Vegetation class.
