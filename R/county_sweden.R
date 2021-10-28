@@ -1,24 +1,33 @@
 #' Coordinate to county Sweden
 #'
-#' @description Based on the shape file \link[forester]{county_shape_file} returns the Swedish county which the coordinate is placed in.
+#' @description Returns the Swedish county which the coordinate is placed in.
 #'  If there is no match, county will be 'Other', and a warning will be shown.
 #'
 #' @param latitude Latitude, decimal
 #' @param longitude Longitude, decimal
+#' @param espg Reference system. Default 'WGS84': 4326. For SWEREF99TM: '3006'.
 #'
 #' @return Text, Swedish County
 #' @export
 #'
-county_sweden <- function(latitude, longitude){
+county_sweden <- function(latitude, longitude,epsg=4326){
 
   if(missing(latitude) | missing(longitude)) stop("Cannot calculate county, requires either County or Latitude & Longitude.")
 
-  warning("County is calculated from coordinates. Coordinates assumed WGS84. Reprojected to SWEREF99TM.")
-  coord_list <- data.frame('latitude'=latitude,'longitude'=longitude)
-  sp::coordinates(coord_list) <- ~longitude+latitude
-  sp::proj4string(coord_list) <- '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
-  coord_list <- sp::spTransform(coord_list,"+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
-  county_code <- sp::over(coord_list,forester::county_shape_file)$DLANSKOD
+  #Stop if lat lon are wrong for SWEREF99TM.
+  if(epsg==3006 & longitude>1E6){
+    stop("Latitude and Longitude have been mixed up.")
+  }
+
+  point <- sf::st_sfc(sf::st_point(x=c(longitude,latitude)))
+  sf::st_crs(point) <- epsg
+
+  #Reproject to SWEREF99TM if epsg is not 3006.
+  if(epsg!=3006){
+    assign(x="point",value=sf::st_transform(point,crs=3006))
+  }
+
+  county_code <- forester:::swedish_counties_1998$DLANSKOD[sf::st_within(point, forester:::swedish_counties_1998)[[1]]]
 
     if(county_code == 1){
       county <- "Norrbottens lappmark"
