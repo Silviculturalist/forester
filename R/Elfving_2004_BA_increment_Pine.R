@@ -4,7 +4,7 @@
 #'
 #' @details R^2 = 0.758
 #'
-#' @source Elfving, B. (2010) Translated, re-formulated Pro-Memoria for HEUREKA based on Manuscript 2004-01-26. 'Individual-tree basal area growth functions for all Swedish forests'. Available: \url{https://www.heurekaslu.se/w/images/9/93/Heureka_prognossystem_%28Elfving_rapportutkast%29.pdf}
+#' @source Elfving, B. (2010) Translated, re-formulated Pro-Memoria for HEUREKA based on Manuscript 2004-01-26. 'Individual-tree basal area growth functions for all Swedish forests'. Available: \url{https://www.heurekaslu.se/w/images/9/93/Heureka_prognossystem_\%28Elfving_rapportutkast\%29.pdf}
 #'
 #' @param diameter_cm Diameter of the tree at breast height, 1.3 m
 #' @param Basal_area_weighted_mean_diameter_cm Basal area weighted mean diameter of the trees on the plot, cm. \eqn{(\sum{diameter_cm^3} / \sum{diameter_cm^2})}
@@ -40,7 +40,7 @@
 #' }
 #' @param divided_plot 1 for plots described in different parts, where the other part is **not** open land.  0 for full plots (default). (divided_plot and edge_effect cannot be TRUE at the same time)
 #' @param edge_effect 1 for a partitioned plot where the other part **is** open land. 0 for full plots (default). (divided_plot and edge_effect cannot be TRUE at the same time)
-#' @param uneven_aged 1 if less than 80% of the main stand volume is within a 20-year age-span.
+#' @param uneven_aged 1 if less than 80\% of the main stand volume is within a 20-year age-span.
 #' @param fertilised 1 if the plot has been fertilised, otherwise 0 (default).
 #' @param thinned 1 if the plot has been thinned, otherwise 0.
 #' @param last_thinned Number of growth seasons since the stand was last thinned.
@@ -71,6 +71,10 @@ Elfving_2004_BA_increment_Pine <- function(
   last_thinned
 
 ){
+
+  if(divided_plot==1 & edge_effect==1){
+    stop("Both divided_plot and edge_effect cannot be 1 at the same time.")
+  }
 
   if(uneven_aged==TRUE){
     assign("computed_tree_age",computed_tree_age*0.9)
