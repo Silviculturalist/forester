@@ -2,6 +2,10 @@
 #'
 #' @description Based on data from permanent plots at the National Forest Inventory.
 #'
+#' @details R^2 = 0.758
+#'
+#' @source Elfving, B. (2010) Translated, re-formulated Pro-Memoria for HEUREKA based on Manuscript 2004-01-26. 'Individual-tree basal area growth functions for all Swedish forests'. Available: \url{https://www.heurekaslu.se/w/images/9/93/Heureka_prognossystem_%28Elfving_rapportutkast%29.pdf}
+#'
 #' @param diameter_cm Diameter of the tree at breast height, 1.3 m
 #' @param Basal_area_weighted_mean_diameter_cm Basal area weighted mean diameter of the trees on the plot, cm. \eqn{(\sum{diameter_cm^3} / \sum{diameter_cm^2})}
 #' @param BA_sum_of_trees_with_larger_diameter Basal area sum of trees on the plot with larger diameters than that of the target tree.
