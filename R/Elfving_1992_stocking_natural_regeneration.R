@@ -56,6 +56,26 @@ Elfving_1992_stocking_natural_regeneration <- function(
   Jonson_site_class,
   area
 ){
+  stopifnot(scarification%in%c(TRUE,FALSE,1,0))
+  stopifnot(prescribed_burning%in%c(TRUE,FALSE,1,0))
+  stopifnot(untreated%in%c(TRUE,FALSE,1,0))
+  stopifnot(uncleaned%in%c(TRUE,FALSE,1,0))
+  stopifnot(Jonson_site_class%in%1:9)
+  stopifnot(area>=0)
+  stopifnot(demanded_seedlings_per_ha>=0)
+  stopifnot(seed_trees_per_ha>=0)
+  stopifnot(proportion_cultivated>=0 & proportion_cultivated<=1)
+  if(altitude<0){warning("Altitude is less than 0 metres above sea level.")}
+
+  if(untreated & prescribed_burning){
+    stop("Argument 'untreated' cannot be TRUE at the same time as 'prescribed_burning' or 'scarification'.")
+  }
+  if(untreated & scarification){
+    stop("Argument 'untreated' cannot be TRUE at the same time as 'prescribed_burning' or 'scarification'.")
+  }
+
+
+
   demanded_seedlings_per_ha <- demanded_seedlings_per_ha/1000
 
   moist <- ifelse(soil_moisture>3,1,0)
@@ -70,7 +90,7 @@ Elfving_1992_stocking_natural_regeneration <- function(
 
   temp <- 1.7413+
     -0.0163*(((altitude/100)^2)*northern)+
-    +0.6863*(2*(1/((1+exp(-0.3*age))^-0.5)))+
+    +0.6863*(2*(1/((1+exp(-0.3*growth_periods_since_cut))^-0.5)))+
     +0.6663*proportion_cultivated+
     -0.1500*demanded_seedlings_per_ha+
     +0.0218*(((111*latitude)-6050)/50)*dry+
@@ -91,8 +111,15 @@ Elfving_1992_stocking_natural_regeneration <- function(
     +0.1075*northern+
     -0.00619*(((111*latitude)-6050)/50)
 
+  SLH <- (0.056 + 0.887*(sin(temp/2)*sin(temp/2))) #Bias corrected and retransformed value.
+
+  W <- sin(-0.11 + 1.671*temp - 0.583*temp^2)
+
   return(
-    (0.056 + 0.887*(sin(temp/2)*sin(temp/2))) #Bias corrected and retransformed value.
+  list(
+    "Stocking Level"= SLH,
+    "Young stand quality W" = W
+  )
   )
 
   #Note: Is retransformation really correct?
@@ -100,3 +127,4 @@ Elfving_1992_stocking_natural_regeneration <- function(
 
 
 }
+
