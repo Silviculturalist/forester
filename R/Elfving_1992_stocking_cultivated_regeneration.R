@@ -33,7 +33,7 @@
 #' @param prescribed_burning TRUE if a prescribed burn has been done after the cut, otherwise FALSE.
 #' @param Jonson_site_class Site class according to Jonson 1914. e.g. [forester::Hagglund_1981_si_to_bonitet()] and  [forester::Jonson_1914_MAI_to_class()]
 #'
-#' @return Stocking, varying between 0-1.
+#' @return A list with elements (1) : Stocking, varying between 0-1, and (2): Young stand quality W.
 #' @export
 #'
 #' @examples

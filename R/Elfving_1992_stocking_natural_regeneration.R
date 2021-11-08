@@ -36,7 +36,7 @@
 #' @param Jonson_site_class Site class according to Jonson 1914. e.g. [forester::Hagglund_1981_si_to_bonitet()] and  [forester::Jonson_1914_MAI_to_class()]
 #' @param area Area of site in hectares.
 #'
-#' @return Stocking, varying between 0-1.
+#' @return A list with elements (1) : Stocking, varying between 0-1, and (2): Young stand quality W.
 #' @export
 #'
 #' @examples
@@ -113,7 +113,7 @@ Elfving_1992_stocking_natural_regeneration <- function(
 
   SLH <- (0.056 + 0.887*(sin(temp/2)*sin(temp/2))) #Bias corrected and retransformed value.
 
-  W <- sin(-0.11 + 1.671*temp - 0.583*temp^2)
+  W <- sin(-0.11 + 1.671*temp - 0.583*temp^2)*sin(-0.11 + 1.671*temp - 0.583*temp^2)
 
   return(
   list(
