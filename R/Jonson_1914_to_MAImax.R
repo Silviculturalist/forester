@@ -3,7 +3,7 @@
 #' @description  Translates the Jonson site class, an integer 1 - 8. 9 designates impediment.
 #' OBS: The MAI for impediment (class 9) has been set to 0.5.
 #'
-#' Can also be roughly delineated.
+#' Can also be roughly delineated according to \url{https://www.heurekaslu.se/w/images/9/93/Heureka_prognossystem_\%28Elfving_rapportutkast\%29.pdf} p. 5.
 #' MaiMax = 8 * 0.75^(jonson_class-2)
 #'
 #' @param jonson_class Integer 1 - 9
