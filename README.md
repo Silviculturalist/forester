@@ -93,7 +93,10 @@ variable . unit
 A non-exhaustive list of variable names follows, taken from the treelistData file. These have been based on previous work from the Heureka project, Indelningspaketet, Projekt HUGIN, and other stand simulators by the forest science faculty at SLU. This does not hinder additions from expanding the expected structure, for example vegetation types, although it would be preferable to introduce new variables.
 
 Variables should be named so as to as clearly as possible convey their meaning. *Avoid abbreviations*. 
-Export standards for software can be written, but should not be included in this package, such as for the **StanForD 2010 standard**, used by foresty machines.
+Export standards for software can be written, but should not be included in this package, such as for the **StanForD 2010 standard**, used by forestry machines.
+
+
+Optional arguments should take the default value NULL, see SO answer : <https://stackoverflow.com/a/28370496/11550980>
 
 #### Tree Level Variables
 
