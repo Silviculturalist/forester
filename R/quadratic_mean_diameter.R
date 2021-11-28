@@ -15,7 +15,7 @@ quadratic_mean_diameter <- function(
 ){
 
   return(
-    sqrt((Basal_area_m2_ha)/((pi/4)*stems_per_ha))
+    sqrt((Basal_area_m2_ha*10000)/((pi/4)*stems_per_ha))
   )
 
 }
