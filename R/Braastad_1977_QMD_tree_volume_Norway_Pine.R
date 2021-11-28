@@ -9,8 +9,8 @@
 #' @export
 #'
 #' @examples
-#' Braastad_1977_volume_Norway_Pine(23,19)
-Braastad_1977_volume_Norway_Pine <- function(
+#' Braastad_1977_QMD_tree_volume_Norway_Pine(23,19)
+Braastad_1977_QMD_tree_volume_Norway_Pine <- function(
   diameter_cm,
   height_m
 ){
