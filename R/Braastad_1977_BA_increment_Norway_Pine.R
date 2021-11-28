@@ -1,6 +1,6 @@
 #' Percent Basal Area Increment in stands of Scots Pine by Tveite 1976 for Braastad 1977
 #'
-#' @param SIH40 Site Index H40 e.g. Site Index H40 , e.g. Tveite 1976 ([forester::Tveite_1976_height_trajectory_Norway_Pine()])
+#' @param SIH40 Site Index H40 e.g. Site Index H40 , e.g. Tveite 1976 ([forester::Tveite_1976_height_trajectory_Pine_Norway()])
 #' @param total_stand_age Total stand age, years.
 #' @param BA_m2_ha_after_thinning Basal Area, m2/ha after thinning
 #' @param stems_after_thinning Stems per hectare, after thinning.
