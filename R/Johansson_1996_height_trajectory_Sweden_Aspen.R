@@ -24,6 +24,7 @@
 #' @param dominant_height Dominant height of stand, m.
 #' @param age Total age.
 #' @param age2 Total age at output age.
+#' @param model1 Default FALSE. If TRUE, uses model 1 from 1996 instead of recommendation from FAKTA SKOG 13?
 #' @param output One of "SIH100","Equation" or "Height".
 #'
 #' @return
@@ -34,17 +35,43 @@ Johansson_1996_height_trajectory_Sweden_Aspen <- function(
   dominant_height,
   age,
   age2,
+  model1=FALSE,
   output
 ){
   if(missing(output)){
     stop("Output must be one of 'SIH100','Equation' or 'Height'")
   }
 
+  ifelse(age>60|age2>60,
+         warning(
+           "Suitable for stands of Aspen under age of 60."
+         ),NA)
 
-  if(age>60|age2>60){
-    warning(
-      "Suitable for stands of Aspen under age of 60."
-    )
+  if(isTRUE(model1)){
+
+
+
+    if(output=="SIH100"){
+      return(
+        dominant_height*(((1-exp(-0.0235*(100)))/(1-exp(-0.0235*age)))^1.1568)
+      )
+    }
+
+    if(output=="Equation"){
+      return(
+        paste0("y ~dominant_height*(((1-exp(-0.0235*(age2)))/(1-exp(-0.0235*age)))^1.1568)")
+      )
+    }
+
+    if(output=="Height"){
+      return(
+        dominant_height*(((1-exp(-0.0235*(age2)))/(1-exp(-0.0235*age)))^1.1568)
+      )
+    }
+
+
+
+
   }
 
   paramasi <- 7
