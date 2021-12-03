@@ -10,7 +10,7 @@
 #' @param age Age at breast height.
 #' @param age2 Age at breast height at which to calculate new height.
 #'
-#' @return Top Height at age at breast height == age2
+#' @return Dominant Height at age at breast height == age2
 #' @export
 #'
 #' @examples
