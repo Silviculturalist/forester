@@ -28,9 +28,9 @@ Johansson_2011_height_trajectory_Sweden_Poplar <- function(
   dominant_height,
   age,
   age2,
-  output
+  output="Height"
 ){
-  if(missing(output)){
+  if(!(output%in%c("SIH100","Equation","Height"))){
     stop("Output must be one of 'SIH100','Equation' or 'Height'")
   }
 

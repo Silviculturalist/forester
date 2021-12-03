@@ -39,7 +39,7 @@
 #' @param dominant_height Dominant height of stand, m.
 #' @param age Total age.
 #' @param age2 Total age at output age.
-#' @param output One of "SIH100","Equation" or "Height".
+#' @param output One of "SIH100","Equation" or "Height" (default).
 #'
 #' @return
 #' @export
@@ -49,9 +49,10 @@ Johansson_1999_height_trajectory_Sweden_Alnus_glutinosa <- function(
   dominant_height,
   age,
   age2,
-  output
+  output="Height"
 ){
-  if(missing(output)){
+
+  if(!(output%in%c("SIH100","Equation","Height"))){
     stop("Output must be one of 'SIH100','Equation' or 'Height'")
   }
 

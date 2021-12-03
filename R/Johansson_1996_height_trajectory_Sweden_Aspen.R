@@ -25,7 +25,7 @@
 #' @param age Total age.
 #' @param age2 Total age at output age.
 #' @param model1 Default FALSE. If TRUE, uses model 1 from 1996 instead of recommendation from FAKTA SKOG 13?
-#' @param output One of "SIH100","Equation" or "Height".
+#' @param output One of "SIH100","Equation" or "Height" (default).
 #'
 #' @return
 #' @export
@@ -36,11 +36,12 @@ Johansson_1996_height_trajectory_Sweden_Aspen <- function(
   age,
   age2,
   model1=FALSE,
-  output
+  output="Height"
 ){
-  if(missing(output)){
+  if(!(output%in%c("SIH100","Equation","Height"))){
     stop("Output must be one of 'SIH100','Equation' or 'Height'")
   }
+
 
   ifelse(age>60|age2>60,
          warning(

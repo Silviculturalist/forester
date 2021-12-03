@@ -22,9 +22,9 @@ Elfving_2003_height_trajectory_Sweden_Spruce <- function(
   dominant_height,
   age,
   age2,
-  output
+  output="Height"
 ){
-  if(missing(output)){
+  if(!(output%in%c("SIH100","Equation","Height"))){
     stop("Output must be one of 'SIH100','Equation' or 'Height'")
   }
 

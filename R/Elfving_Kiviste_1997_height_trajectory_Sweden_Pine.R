@@ -26,9 +26,9 @@ Elfving_Kiviste_1997_height_trajectory_Sweden_Pine <- function(
   dominant_height,
   age,
   age2,
-  output
+  output="Height"
 ){
-  if(missing(output)){
+  if(!(output%in%c("SIH100","Equation","Height"))){
     stop("Output must be one of 'SIH100','Equation' or 'Height'")
   }
 

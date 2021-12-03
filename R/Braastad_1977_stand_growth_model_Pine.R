@@ -37,7 +37,7 @@ Braastad_1977_stand_growth_model_Pine <- function(
   stand_total_age <- T13+Age
 
   #Dominant height
-  dominant_height<- Tveite_1976_height_trajectory_Norway_Pine(Height=SIH40,Age=40,Age2=Age)
+  dominant_height<- Tveite_1976_height_trajectory_Norway_Pine(dominant_height = SIH40,age=40,age2=Age)
 
   #Returns a list of two elements. i) Lorey's mean height, ii) Basal area m2 per hectare.
   HL_before_thinning <- Braastad_1977_initial_stand_Norway_Pine(dominant_height = dominant_height,
@@ -63,7 +63,7 @@ Braastad_1977_stand_growth_model_Pine <- function(
                                 stems_per_ha=stems_per_ha)
 
   #Volume before thinning
-  Volume_before_thinning <- Braastad_1977_QMD_tree_volume_Norway_Pine(diameter_cm = QMD_before_thinning,height_m = HL_before_thinning )
+  Volume_before_thinning <- Braastad_1977_QMD_tree_volume_Norway_Pine(diameter_cm = QMD_before_thinning,height_m = HL_before_thinning )*stems_per_ha/1000
 
   #Set initial params if removed number of trees is fixed.
 
@@ -93,7 +93,11 @@ Braastad_1977_stand_growth_model_Pine <- function(
   HL_remaining <- Tveite_1967_Loreys_mean_height_Norway_Pine(dominant_height = dominant_height,stems_per_ha = stems_remaining,basal_area_m2_ha = BA_remaining,diameter_mean_basal_area_stem = QMD_remaining)
 
   #Estimate Volume remaining
-  Volume_remaining<- Braastad_1977_QMD_tree_volume_Norway_Pine(diameter_cm = QMD_remaining,height_m = HL_remaining)
+  Volume_remaining<- Braastad_1977_QMD_tree_volume_Norway_Pine(diameter_cm = QMD_remaining,height_m = HL_remaining)*stems_remaining/1000
+
+  #Estimate Volume removed
+  Volume_removed <- Volume_before_thinning-Volume_remaining
+
 
 
 
