@@ -12,28 +12,27 @@
 #' @source Hägglund, Björn (1972) Om övre höjdens utveckling för gran i norra
 #'  Sverige: Site index curves for Norway Spruce in northern Sweden. Diss. Dept.
 #'  of Forest Yield Research. Royal College of Forestry. Report 21. 298 pp. Stockholm.
+#' @param dominant_height height of tree or stand in m.
+#' @param age Age of stand or tree at breast height 1.3 m.
+#' @param age2 Necessary if output is "Height". The age for which height along the same curve is to be computed.
+#' @param culture 1 (Default) if stand is culture, otherwise 0.
 #' @param latitude Latitude in degrees. For function 8.4, set to 0.
-#' @param age_at_breast_height Age of stand or tree at breast height 1.3 m.
-#' @param top_height_dm Top height of tree or stand in dm.
-#' @param culture 1 if stand is culture, otherwise 0.
-#' @param age_2 Necessary if output is "Height". The age for which height along
-#' the same curve is to be computed.
 #' @param output One of "SIH100", "Height", or "Equation".
 #'
-#' @return If output is "SIH100", the numeric value for the height (dm) a stand
+#' @return If output is "SIH100", the numeric value for the height (m) a stand
 #' will reach at age 100.
 #'
-#'  If output is "Height", the numeric value for the height (dm) a stand will
-#'  reach at age_2.
+#'  If output is "Height", the numeric value for the height (m) a stand will
+#'  reach at age2.
 #'
 #'  If output is "Equation", a named list with 2 elements: I) "Equation": text response with the equation for that height
 #'  curve. II) "T13": The time taken to reach breast height 1.3m.
 #' @export
 #'
 #' @examples
-#' Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(latitude = 60.1,age_at_breast_height = 80, top_height_dm = 120,culture = 0,output = "Equation")
+#' Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(latitude = 60.1,age = 80, top_height_dm = 120,culture = 0,output = "Equation")
 #' #"y~13+224.224608372892*(1-exp(-age*0.0113938018668758))^1.44412711110086"
-#' Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(latitude = 66.9,age_at_breast_height = 80, top_height_dm = 120,culture = 0,output = "Equation")
+#' Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(latitude = 66.9,age = 80, top_height_dm = 120,culture = 0,output = "Equation")
 #' #"y~13+228.827607753106*(1-exp(-age*0.0116464323317232))^1.52753582497555"
 #'
 #' #Remember to divide by 10 to go to metres from dm.
@@ -46,29 +45,33 @@
 #'   ylim(c(0,30))
 #'
 #'
-Hagglund_1972_northern_Sweden_Height_trajectories_Spruce <- function(latitude,
-                                                            age_at_breast_height,
-                                                            top_height_dm,
-                                                            culture=0,
-                                                            age_2,
-                                                            output="SIH100"
+Hagglund_1972_northern_Sweden_Height_trajectories_Spruce <- function(dominant_height,
+                                                                     age,
+                                                                     age2,
+                                                                     latitude,
+                                                                     culture=1,
+                                                                     output="Height"
 ){
-
-  if(missing(output)){
-    stop("Output must be defined.")
-  }
 
   if(!(output%in%c("SIH100","Height","Equation"))){
     stop("Output must be one of 'SIH100', 'Height' or 'Equation'.")
-  } else if(output=="Height" && missing(age_2)){
-    stop("Height at age_2 cannot be calculated without age_2")
   }
 
+  if(output=="Height" & missing(age2)){
+    stop("Height at age2 cannot be calculated without age2")
+  }
+
+  if(missing(latitude)){
+    stop("Cannot calculate without latitude.")
+  }
 
   P <- 0.9175^culture
+
+  top_height_dm <- dominant_height*10
+
   top_height_dm <- top_height_dm - 13
 
-  if(age_at_breast_height>(407-1.167*top_height_dm)){
+  if(age>(407-1.167*top_height_dm)){
     warning("Too old stand, outside of the material.")
   }
 
@@ -92,7 +95,7 @@ Hagglund_1972_northern_Sweden_Height_trajectories_Spruce <- function(latitude,
 
 subroutine_bonitering <- function(
     top_height,
-    age_at_breast_height,
+    age,
     B,
     C,
     D,
@@ -111,13 +114,12 @@ subroutine_bonitering <- function(
 
     RM2 <- D+E/(0.56721+0.000008*AI3^1.8008)
 
-    DIF <- top_height-A2*(1-exp(-age_at_breast_height*RK))^RM2
+    DIF <- top_height-A2*(1-exp(-age*RK))^RM2
 
-    if(DIF<=0){
-      AI2 <- AI3
-    } else {
-      AI1 <- AI3
-    }
+    ifelse(DIF<=0,
+           assign("AI2",AI3),
+           assign("AI1",AI3)
+    )
 
 
     }
@@ -128,7 +130,7 @@ subroutine_bonitering <- function(
 }
 
 params <- subroutine_bonitering(top_height = top_height_dm,
-                                age_at_breast_height = age_at_breast_height,
+                                age = age,
                                 B=B,
                                 C=C,
                                 D=D,
@@ -138,7 +140,9 @@ params <- subroutine_bonitering(top_height = top_height_dm,
 if(params$A2>336){
   warning("Too high productivity, outside of the material.")
 
-} else if(params$A2<189){
+}
+
+if(params$A2<189){
   warning("Too low productivity, outside of the material.")
 }
 
@@ -146,12 +150,12 @@ T26 <- (-1/params$RK)*log(1-(13/params$A2)^(1/params$RM2))
 T13 <- P*(7.0287+0.66118*T26)
 
 if(output=="SIH100"){
-  H100 <- 13+params$A2*(1-exp((T13-100)*params$RK))^params$RM2
-  return(H100)
+  return((13+params$A2*(1-exp((T13-100)*params$RK))^params$RM2)/10)
+
 } else if(output=="Height"){
-  return(13+params$A2*(1-exp(-age_2*params$RK))^params$RM2)
+  return((13+params$A2*(1-exp(-age2*params$RK))^params$RM2)/10)
 } else if(output=="Equation"){
-  return(list("Equation"=paste0("y~13+",params$A2,"*(1-exp(-age*",params$RK,"))^",params$RM2),
+  return(list("Equation"=paste0("y~(13+",params$A2,"*(1-exp(-age*",params$RK,"))^",params$RM2,")/10"),
               "T13"=T13))
 }
 

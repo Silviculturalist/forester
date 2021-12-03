@@ -12,18 +12,18 @@
 #' @source Hägglund, Björn (1974) Övre höjdens utveckling i tallbestånd:
 #' Site index curves for Scots Pine in Sweden. Dept.
 #'  of Forest Yield Research. Royal College of Forestry. Report 31. 54 pp. Stockholm.
-#' @param age_at_breast_height Age of stand or tree at breast height 1.3 m.
-#' @param top_height_dm Top height of tree or stand in dm.
-#' @param regeneration How was the stand established? One of "culture", "natural regeneration" or "unknown".
-#' @param age_2 Necessary if output is "Height". The age for which height along
+#' @param dominant_height Top height of tree or stand in m.
+#' @param age Age of stand or tree at breast height 1.3 m.
+#' @param age2 Necessary if output is "Height". The age for which height along
 #' the same curve is to be computed.
-#' @param output One of "SIH100", "Height", or "Equation".
+#' @param regeneration How was the stand established? One of "culture", "natural" or "unknown".
+#' @param output One of "Height" (default), "SIH100", or "Equation".
 #'
-#' @return If output is "SIH100", the numeric value for the height (dm) a stand
+#' @return If output is "SIH100", the numeric value for the height (m) a stand
 #' will reach at age 100.
 #'
-#'  If output is "Height", the numeric value for the height (dm) a stand will
-#'  reach at age_2.
+#'  If output is "Height", the numeric value for the height (m) a stand will
+#'  reach at age2.
 #'
 #'  If output is "Equation", a named list with 2 elements: I) "Equation": text response with the equation for that height
 #'  curve. II) "T13": The time taken to reach breast height 1.3m.
@@ -74,26 +74,30 @@
 #' annotate("text",x=115, y=18, label="16",size=3)
 
 
-Hagglund_1974_Sweden_height_trajectories_Pine <- function(age_at_breast_height,
-                                                                     top_height_dm,
-                                                                     regeneration="culture",
-                                                                     age_2,
-                                                                     output="SIH100"
+Hagglund_1974_Sweden_height_trajectories_Pine <- function(dominant_height,
+                                                          age,
+                                                          age2,
+                                                          regeneration = "culture",
+                                                          output = "Height"
 ){
-
-  if(missing(output)){
-    stop("Output must be defined.")
-  }
 
   if(!(output%in%c("SIH100","Height","Equation"))){
     stop("Output must be one of 'SIH100', 'Height' or 'Equation'.")
-  } else if(output=="Height" && missing(age_2)){
-    stop("Height at age_2 cannot be calculated without age_2")
   }
+
+  if(output=="Height" & missing(age2)){
+    stop("Height at age2 cannot be calculated without age2")
+  }
+
+  if(!(regeneration%in%c("culture","natural","unknown"))){
+    stop("Argument regeneration must be one of 'culture','natural','unknown'.")
+  }
+
+  top_height_dm <- dominant_height*10
 
   top_height_dm <- top_height_dm - 13
 
-  if(age_at_breast_height>120){
+  if(age>120){
     warning("Too old stand, outside of the material.")
   }
 
@@ -101,7 +105,7 @@ Hagglund_1974_Sweden_height_trajectories_Pine <- function(age_at_breast_height,
 
   subroutine_bonitering <- function(
     top_height,
-    age_at_breast_height,
+    age,
     regeneration){
 
     AI1 <- 10
@@ -121,18 +125,17 @@ Hagglund_1974_Sweden_height_trajectories_Pine <- function(age_at_breast_height,
       if(RK<0.0001){
         RK <- 0.0001
       }
-      #try(print(A2))
+
       A2 <- 1.0075*AI3
 
 
 
-      DIF <- top_height-A2*(1-exp(-age_at_breast_height*RK))^RM2
+      DIF <- top_height-A2*(1-exp(-age*RK))^RM2
 
-      if(DIF<=0){
-        AI2 <- AI3
-      } else {
-        AI1 <- AI3
-      }
+      ifelse(DIF<=0,
+             assign("AI2",AI3),
+             assign("AI1",AI3)
+      )
 
 
     }
@@ -140,11 +143,15 @@ Hagglund_1974_Sweden_height_trajectories_Pine <- function(age_at_breast_height,
     T26 <- (-1/RK)*log(1-(13/A2)^(1/RM2))
     T262 <- T26^2
 
-    if(regeneration=="natural regeneration"){
+    if(regeneration=="natural"){
       T13 <- 7.4624+0.11672*T262
-    } else if(regeneration=="unknown"){
+    }
+
+    if(regeneration=="unknown"){
       T13 <- 6.8889+0.12405*T262
-    } else if(regeneration=="culture"){
+    }
+
+    if(regeneration=="culture"){
       T13 <- 7.4624+0.11672*T262-0.39276*T26
     }
 
@@ -158,27 +165,31 @@ Hagglund_1974_Sweden_height_trajectories_Pine <- function(age_at_breast_height,
   }
 
   params <- subroutine_bonitering(top_height = top_height_dm,
-                                  age_at_breast_height = age_at_breast_height,
+                                  age = age,
                                   regeneration = regeneration)
 
 
   if(params$A2>311){
     warning("Too high productivity, outside of the material.")
 
-  } else if(params$A2<180){
+  }
+
+  if(params$A2<180){
     warning("Too low productivity, outside of the material.")
 
-  } else if(params$A2>250 && age_at_breast_height>100){
+  }
+
+  if(params$A2>250 & age>100){
     warning("Too old stand, outside of material.")
   }
 
   if(output=="SIH100"){
-    H100 <- 13+params$A2*(1-exp((params$T13-100)*params$RK))^params$RM2
-    return(H100)
+    return((13+params$A2*(1-exp((params$T13-100)*params$RK))^params$RM2)/10)
+
   } else if(output=="Height"){
-    return(13+params$A2*(1-exp(-age_2*params$RK))^params$RM2)
+    return((13+params$A2*(1-exp(-age2*params$RK))^params$RM2)/10)
   } else if(output=="Equation"){
-    return(list("Equation"=paste0("y~13+",params$A2,"*(1-exp(-age*",params$RK,"))^",params$RM2),
+    return(list("Equation"=paste0("y~(13+",params$A2,"*(1-exp(-age*",params$RK,"))^",params$RM2,")/10"),
                 "T13"=params$T13))
   }
 
