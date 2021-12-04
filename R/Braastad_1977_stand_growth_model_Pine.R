@@ -61,7 +61,11 @@ Braastad_1977_stand_growth_model_Pine <- function(
   HL_before_thinning <- Braastad_1977_initial_stand_Norway_Pine(dominant_height = dominant_height,
                                                 stand_total_age = stand_total_age,
                                                 stems_per_ha = stems_per_ha,
-                                                SIH40 = SIH40)[[1]]
+                                                SIH40 = SIH40)[[1]]*height_reduction
+
+  #If HLory larger than dominant height, set to dominant height.
+  HL_before_thinning <- ifelse(HL_before_thinning>dominant_height,dominant_height,HL_before_thinning)
+
 
   #Throws warning if basal area not given and outside of function limits for calculating initial basal area.
   ifelse(is.null(Basal_area_m2_ha) & stems_per_ha<1000 | is.null(Basal_area_m2_ha) & stems_per_ha>6000 | is.null(Basal_area_m2_ha) & HL_before_thinning<6 |is.null(Basal_area_m2_ha) & HL_before_thinning>12,
@@ -87,9 +91,23 @@ Braastad_1977_stand_growth_model_Pine <- function(
 
   relative_spacing_index<- Hart_Becking_relative_spacing_index(stems_per_ha = stems_per_ha,dominant_height = dominant_height)
 
+  #If there is a lower bound on thinning, calculate stems thinned.
+
+  #If RSI - lower bound is above zero, there is room for thinning:
   ifelse(is.null(thinning_fix_stems) & !is.null(thinning_lower_relative_spacing) & !is.null(thinning_upper_relative_spacing) & (relative_spacing_index-thinning_lower_relative_spacing)>0,
          assign("stems_thinned",stems_per_ha-((10^8)/((thinning_upper_relative_spacing^2)*(dominant_height^2))))
          ,assign("stems_thinned",0))
+
+  #If RSI - lower bound is 0 or below, there is no room for thinning..
+  ifelse(is.null(thinning_fix_stems) & !is.null(thinning_lower_relative_spacing) & !is.null(thinning_upper_relative_spacing) & (relative_spacing_index-thinning_lower_relative_spacing)<=0,
+
+         )
+
+
+  #If there is NOT a lower bound on thinning.
+
+
+
 
   #Calculate stems remaining
   stems_remaining <- stems_per_ha-stems_thinned
@@ -116,13 +134,25 @@ Braastad_1977_stand_growth_model_Pine <- function(
   QMD_remaining <- quadratic_mean_diameter(Basal_area_m2_ha = BA_remaingin, stems_per_ha = stems_remaining)
 
   #Estimate HLory after thinning
-  HL_remaining <- Tveite_1967_Loreys_mean_height_Norway_Pine(dominant_height = dominant_height,stems_per_ha = stems_remaining,basal_area_m2_ha = BA_remaining,diameter_mean_basal_area_stem = QMD_remaining)
+  HL_remaining <- Tveite_1967_Loreys_mean_height_Norway_Pine(dominant_height = dominant_height,stems_per_ha = stems_remaining,basal_area_m2_ha = BA_remaining,diameter_mean_basal_area_stem = QMD_remaining)*height_reduction
+
+  #If HLory larger than dominant height, set to dominant height.
+  HL_remaining <- ifelse(HL_remaining>dominant_height,dominant_height,HL_remaining)
+
+
+  #Lorey's height of thinned trees.
+  HL_felled <- ifelse(BA_thinned>0,(((HL_before_thinning*Basal_area_m2_ha)-(HL_remaining*BA_remaining))/BA_thinned),0)
+
+
+
+
+
 
   #Estimate Volume remaining
   Volume_remaining<- Braastad_1977_QMD_tree_volume_Norway_Pine(diameter_cm = QMD_remaining,height_m = HL_remaining)*stems_remaining/1000
 
-  #Estimate Volume removed
-  Volume_removed <- Volume_before_thinning-Volume_remaining
+  #Estimate Volume removed. If you have more volume remaining than you had at the start, you have the same amount.
+  Volume_removed <- ifelse((Volume_remaining-Volume_before_thinning)>0,(Volume_before_thinning+0.5),(Volume_before_thinning+0.5)-(Volume_remaining+0.5))
 
   #Calculate ratio thinned / initial
   ratio_thinned_to_initial<- Braastad_1977_diameter_quotient_thinned_trees_to_unthinned_stand_Norway_Pine(dominant_height = dominant_height)
@@ -170,36 +200,16 @@ Braastad_1977_stand_growth_model_Pine <- function(
   ONT <- years_to_increment*(BA_remaining+Basal_area_m2_ha)/2
   MGH <- MGH+ONT
   PER <- PER + years_to_increment
+  EGH <-  MGH/PER
 
-  #Calculate Volume increment m3 per annum. (MAI)
-  MAI <- (Volume_before_thinning- Volume_remaining) / years_to_increment
+  #Total Volume Produced.
+  Volume_total <- Volume_total + (Volume_before_thinning+0.5) - (Volume_remaining+0.5)
 
+  #Calculate Volume increment m3 per annum. (CAI)
+  CAI <- (Volume_before_thinning- Volume_remaining) / years_to_increment
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  Tveite_1967_Loreys_mean_height_Norway_Pine(dominant_height = SIH40,stems_per_ha = stems_per_ha,basal_area_m2_ha = Basal_area_m2_ha,diameter_mean_basal_area_stem = )
-
-  Braastad_1977_BA_increment_percent_Norway_Pine()
-  Braastad_1977_initial_stand_Norway_Pine()
-  Braastad_1977_volume_Norway_Pine()
-  Braastad_1977_diameter_quotient_thinned_trees_to_unthinned_stand_Norway_Pine()
-  Brantseg_1969_diameter_quotient_thinned_trees_to_remaining_Norway_Pine()
-  Tveite_1967_Loreys_mean_height_Norway_Pine()
-  Tveite_1976_height_trajectory_Norway_Pine()
-
-
-
+  #Calculate Mean Annual Increment (MAI)
+  MAI <- (Total_Volume)/(stand_total_age)
 
   #Estimate initial values for basal area
 
