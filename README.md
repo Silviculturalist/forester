@@ -20,6 +20,14 @@ To install the latest development version of this package, use devtools.
 devtools::install_github("Silviculturalist/forester")
 ```
 
+## Current Cooperations
+
+PrognAus (PROGNosis for AUStria), an Austrian individual tree growth and yield model is being rewritten for R concurrently, <https://github.com/Silviculturalist/Prognaus> as a fork from Sonja Vospernik's main modules from the original PrognAus programme <https://github.com/SonjaVospernik/Prognaus> to maintain the same programming style, parameter names as Forester.
+
+## Visualisation Module
+A separate goal is to develop an open-ended visualisation module for forester written in C++ which is based on Khronos Groups royalty free open standards OpenGL and/or Vulcan. A simple API can be written for access through R - handing a suitable data.frame with stand information over.
+
+
 ## Goal
 
 I hope that this will become a good digital centre for maintaining our valuable research heritage in the digital era, and will work hand-in-hand with digitization efforts from the SLU library to ensure that source material is not only referenced in the documentation, but in the future actively linked to.
@@ -34,9 +42,9 @@ The goal of this github repository is to be a centre to:
 
 I am continuing to develop object structures for which R will recognize attributes which are related to trees, stand information, site information, and treatment information, such that this may grow into a stand simulator on its' own.
 
-As work with the package progresses, it is my full intent that other repositories should open, which are not be limited to swedish conditions, but should eventually form an open online repository for functions related to forest science, forestry and related data from all over the world with the same variable names, naming routines and general philosophy. 
+As work with the package progresses, it is my full intent that other repositories should open, which are not be limited to Nordic conditions, but should eventually form an open online repository for functions related to forest science, forestry and related data from all over the world with the same variable names, naming routines and general philosophy. 
 
-Some models from Norway, e.g. Allen et al. (2020) are already incorporated, but will be moved to more suitable repositories with time.
+Plenty functions from Norway are already included.
 
 ## Why?
 
@@ -65,6 +73,10 @@ The package includes:
 4.  Data , so far mostly older published.
 
 ## Data and Language Style
+
+### Performance
+Overhead loops create a large overhead in R. Through Rccp, we can seamlessly integrate C++ functions in the R package to maintain the speed of C++ and the readability and useability of R for functions or programmes which might slow things down.
+
 
 ### Functions
 
@@ -197,3 +209,4 @@ Soil texture same as from the Heureka project, see : <https://www.heurekaslu.se/
 | 3                  | Shorter Periods |
 | 4                  | Longer periods  |
 | 5                  | Slope           |
+
