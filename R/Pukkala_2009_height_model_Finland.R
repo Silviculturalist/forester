@@ -1,6 +1,6 @@
 #' Height model for Individual Trees from Pukkala 2009.
 #'
-#' @source Pukkala, T., Lähde, E., Laiho, O. (2009). Growth and Yield Models of uneven-sized forest stands in Finland. For. Ecol. Manage. 258: 207-216. Available (25/12/2021) \url[https://doi.org/10.1016/j.foreco.2009.03.052]
+#' @source Pukkala, T., Lähde, E., Laiho, O. (2009). Growth and Yield Models of uneven-sized forest stands in Finland. For. Ecol. Manage. 258: 207-216. Available (25/12/2021) \url{https://doi.org/10.1016/j.foreco.2009.03.052}
 #'
 #' @param vegetation Code from [forester::Finland_vegetation_types()].
 #' @param diameter_cm Diameter of the tree at breast height (1.3 m)
