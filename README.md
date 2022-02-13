@@ -25,8 +25,8 @@ devtools::install_github("Silviculturalist/forester")
 PrognAus (PROGNosis for AUStria), an Austrian individual tree growth and yield model is being rewritten for R concurrently, <https://github.com/Silviculturalist/Prognaus> as a fork from Sonja Vospernik's main modules from the original PrognAus programme <https://github.com/SonjaVospernik/Prognaus> to maintain the same programming style, parameter names as Forester.
 
 ## Visualisation Module
-A separate goal is to develop an open-ended visualisation module for forester written in C++ which is based on Khronos Groups royalty free open standards OpenGL and/or Vulcan. A simple API can be written for access through R - handing a suitable data.frame with stand information over.
 
+A separate goal is to develop an open-ended visualisation module for forester written in C++ which is based on Khronos Groups royalty free open standards OpenGL and/or Vulcan. A simple API can be written for access through R - handing a suitable data.frame with stand information over.
 
 ## Goal
 
@@ -42,7 +42,7 @@ The goal of this github repository is to be a centre to:
 
 I am continuing to develop object structures for which R will recognize attributes which are related to trees, stand information, site information, and treatment information, such that this may grow into a stand simulator on its' own.
 
-As work with the package progresses, it is my full intent that other repositories should open, which are not be limited to Nordic conditions, but should eventually form an open online repository for functions related to forest science, forestry and related data from all over the world with the same variable names, naming routines and general philosophy. 
+As work with the package progresses, it is my full intent that other repositories should open, which are not be limited to Nordic conditions, but should eventually form an open online repository for functions related to forest science, forestry and related data from all over the world with the same variable names, naming routines and general philosophy.
 
 Plenty functions from Norway are already included.
 
@@ -50,15 +50,15 @@ Plenty functions from Norway are already included.
 
 As such, it will remedy several of the issues I have noticed with earlier stand simulators :
 
--    Documentation of R packages is stricter and more structured.
+-   Documentation of R packages is stricter and more structured.
 
--    Issues can be recognized and solved open-source.
+-   Issues can be recognized and solved open-source.
 
--    The user will have full control over all processes (no black-box functionality!)
+-   The user will have full control over all processes (no black-box functionality!)
 
--    The material is less at risk to become obsolete through technical issue.
+-   The material is less at risk to become obsolete through technical issue.
 
--    Trust in the collection is gradually increased and maintained by its' transparency.
+-   Trust in the collection is gradually increased and maintained by its' transparency.
 
 ## What's included?
 
@@ -75,8 +75,8 @@ The package includes:
 ## Data and Language Style
 
 ### Performance
-Overhead loops create a large overhead in R. Through Rccp, we can seamlessly integrate C++ functions in the R package to maintain the speed of C++ and the readability and useability of R for functions or programmes which might slow things down.
 
+Overhead loops create a large overhead in R. Through Rccp, we can seamlessly integrate C++ functions in the R package to maintain the speed of C++ and the readability and useability of R for functions or programmes which might slow things down.
 
 ### Functions
 
@@ -86,13 +86,11 @@ Author \_ Year \_ Dependent Variable \_ Locality \_ Species
 
 *E.g. Eko_PM_1985_basal_area_5\_year_increment_northern_Sweden_Spruce*
 
-When a species name is used in a function name, it should be colloquial, e.g. Pine, Spruce. 
-When a species name is used in an argument, it should be latin binomial: "Pinus sylvestris", "Picea abies". 
+When a species name is used in a function name, it should be colloquial, e.g. Pine, Spruce. When a species name is used in an argument, it should be latin binomial: "Pinus sylvestris", "Picea abies".
 
 All functions must include a LaTeX preamble from roxygen2 which writes the help documentation. All functions must include their source.
 
-**It is preferable that functions are vectorised.** 
-Work is ongoing to enforce this standard on committed work.
+**It is preferable that functions are vectorised.** Work is ongoing to enforce this standard on committed work.
 
 ### Variables
 
@@ -104,11 +102,23 @@ variable . unit
 
 A non-exhaustive list of variable names follows, taken from the treelistData file. These have been based on previous work from the Heureka project, Indelningspaketet, Projekt HUGIN, and other stand simulators by the forest science faculty at SLU. This does not hinder additions from expanding the expected structure, for example vegetation types, although it would be preferable to introduce new variables.
 
-Variables should be named so as to as clearly as possible convey their meaning. *Avoid abbreviations*. 
-Export standards for software can be written, but should not be included in this package, such as for the **StanForD 2010 standard**, used by forestry machines.
-
+Variables should be named so as to as clearly as possible convey their meaning. *Avoid abbreviations*. Export standards for software can be written, but should not be included in this package, such as for the **StanForD 2010 standard**, used by forestry machines.
 
 Optional arguments should take the default value NULL, see SO answer : <https://stackoverflow.com/a/28370496/11550980>
+
+### Factor variables with many categories
+
+### Vegetation
+
+Typical example : **vegetation classes**. Classes are different between national forest inventories and forest practice in countries. For this reason, the *variable* is set to **vegetation** across functions, but a helper function is defined to distinguish between many factors that would otherwise clutter the help documentation. E.g. `Finland_vegetation_types()` . Function-specific behavior ensures that unexpected input simply doesn't work.
+
+### Incline, Aspect
+
+Both incline and aspect are typical continuous variables - different nomenclatures exist between countries and between individual reports in how these are intended to be handed to functions. Because of these large discrepances, I suggest any categorical coding is handled *inside* the function, and the arguments are handed a continuous variable, e.g.
+
+Incline: Percentage (Ratio?).
+
+Aspect: Degrees, 0-360.
 
 #### Tree Level Variables
 
@@ -210,3 +220,28 @@ Soil texture same as from the Heureka project, see : <https://www.heurekaslu.se/
 | 4                  | Longer periods  |
 | 5                  | Slope           |
 
+## Common function types
+
+### Top Height functions
+
+Some of the most strictly defined functions, it is strongly preferable that as far as possible, they should be formulated following the schematic form. This was implemented in commit `03ed15c4a47d3cac49b8d2ae3e80c7a922751522` (3rd december 2021). This ensures that higher level functions, e.g. `shift_to_breast_height()` can interact properly with the height trajectory functions.
+
+*Author_year_locale_height_trajector(y/-ies)\_commonName* is a function with the following arguments:
+
+-   dominant height : observed dominant height (meters)
+
+-   age : observed age (meters)
+
+-   age2 : Age at output (in case of Height)
+
+-   output : one of 'Height' (default), 'SI100' or 'Equation'.
+
+-   additional arguments attempt to follow argument naming conventions with sensible default.
+
+-   *Output must be in meters.* Many works commonly report height in decimeters. This must be transformed before it is returned by the function.
+
+This is appropriate in relation to common usage, e.g. for predicting height at another age along the same curve; or for plotting (equation output). Site Index is only a convenience output, and may be deprecated in the future as typical base ages are different between countries (e.g. *Norway* SI40; *Sweden* SI100).
+
+#### Height trajectories other than Top Height.
+
+Other measures than dominant height / top height have commonly been used, most notably Lorey's mean height. In terms of naming for such functions, we attempt to follow the above recommendations as closely as possible, e.g. `Tveite_1967_Loreys_mean_height_Norway_Pine()` .
