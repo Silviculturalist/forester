@@ -19,14 +19,14 @@
 #' @param latitude Latitude, decimal.
 #' @param altitude Meters above sea level.
 #' @param even_aged TRUE if even-aged stand (one-layered). FALSE if uneven-aged stand (multi-layered)
-#'@export
+#'
 #'@name andreassen_2003
 #'
 
 #' @rdname andreassen_2003
 #' @inheritParams andreassen_2003
 #' @details
-#' @export
+#'
 
 Andreasssen_2003_BA_increment_Norway_Norway_Spruce_SI <- function(
   basal_area_m2,
