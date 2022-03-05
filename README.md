@@ -106,120 +106,6 @@ Variables should be named so as to as clearly as possible convey their meaning. 
 
 Optional arguments should take the default value NULL, see SO answer : <https://stackoverflow.com/a/28370496/11550980>
 
-### Factor variables with many categories
-
-### Vegetation
-
-Typical example : **vegetation classes**. Classes are different between national forest inventories and forest practice in countries. For this reason, the *variable* is set to **vegetation** across functions, but a helper function is defined to distinguish between many factors that would otherwise clutter the help documentation. E.g. `Finland_vegetation_types()` . Function-specific behavior ensures that unexpected input simply doesn't work.
-
-### Incline, Aspect
-
-Both incline and aspect are typical continuous variables - different nomenclatures exist between countries and between individual reports in how these are intended to be handed to functions. Because of these large discrepances, I suggest any categorical coding is handled *inside* the function, and the arguments are handed a continuous variable, e.g.
-
-Incline: Percentage (Ratio?).
-
-Aspect: Degrees, 0-360.
-
-#### Tree Level Variables
-
-| Variable             | Description                                                                                                  |
-|----------------------|--------------------------------------------------------------------------------------------------------------|
-| treeID               | The unique ID of a tree.                                                                                     |
-| origin_year          | Year of planting                                                                                             |
-| observation_year     | Year of observation.                                                                                         |
-| generation           | Does this tree belong to the current generation of management? 1==current, 2==previous, 3..                  |
-| species              | Tree species, in Latin, excl. auktor. e.g. "Picea abies", "Pinus sylvestris".                                |
-| age                  | Tree total age.                                                                                              |
-| age_at_breast_height | Tree age at 1.3 m. Total age - time to breast height.                                                        |
-| height.m             | Tree height in metres.                                                                                       |
-| diameter.cm          | Tree diameter in centimetres.                                                                                |
-| bark.mm              | Bark thickness, in mm.                                                                                       |
-| double_bark.mm       | Tree bark thickness, in mm.                                                                                  |
-| crown.base.height.m  | Height to the lower living green branch not separated from the rest of the crown by more than 2 (3?) whorls. |
-| basal_area           | Basal area of the tree in m^2.                                                                               |
-| volume               | Tree volume, m3sk.                                                                                           |
-| coord_x              | X coordinate.                                                                                                |
-| coord_y              | Y coordinate.                                                                                                |
-
-#### Site Level Variables
-
-| Variable             | Description                                                                                                                                              |
-|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| stand_id             | Stand ID                                                                                                                                                 |
-| main_species         | Main species in latin, e.g. "Picea abies" "Pinus sylvestris".                                                                                            |
-| distance_to_coast.km | Distance to the nearest Swedish coast. If missing, will be calculated by forester::coast_distance.                                                       |
-| aspect_main          | Main aspect (N, E, S, W, or 0).                                                                                                                          |
-| incline_percent      | If missing, 0.                                                                                                                                           |
-| altitude             | Meters above sea level                                                                                                                                   |
-| latitude             | Latitude decimal WGS84 EPSG:4326.                                                                                                                        |
-| longitude            | Longitude decimal WGS84 EPSG:4326.                                                                                                                       |
-| polygon              | Optional list of boundary conditions. Warning siteData does not check validity of polygon geometry.                                                      |
-| county               | County in Sweden. If not supplied, will calculate through forester::county_sweden. N.B. Due to the age of functions, these counties are not the current. |
-| local_climate        | Swedish Local Climate Code, cf. Ångström 1958. If not supplied will attempt to calculate through forester::climate_code_sweden                           |
-| vegetation           | 1-18. Variable indicating field layer vegetation type (NFI vegetation code FSkod). See below.                                                            |
-| ground_layer         | 1-6. Variable indicating ground layer vegetation. See below.                                                                                             |
-| soil_texture         | 1-9. See below.                                                                                                                                          |
-| soil_moisture        | 1-5. See below.                                                                                                                                          |
-| soil_depth           | 1-4. See below.                                                                                                                                          |
-| lateral_water        | 1-5. See below.                                                                                                                                          |
-| ditched              | TRUE/FALSE if site affected by ditching.                                                                                                                 |
-| temperature_sum.c    | Degrees celsius. If not supplied, will calculate from forester::odin_tsum_1983.                                                                          |
-
-| Field Layer Code | Description                 |
-|------------------|-----------------------------|
-| 1                | Tall herbs w/o dwarf shrubs |
-| 2                | Tall herbs with bilberry    |
-| 3                | Tall herbs with cowberry    |
-| 4                | Low herbs w/o dwarf shrubs  |
-| 5                | Low herbs with bilberry     |
-| 6                | Low herbs with cowberry     |
-| 7                | No field layer              |
-| 8                | broad-leaved grasses        |
-| 9                | narrow-leaved grasses       |
-| 10               | Sedge, tall                 |
-| 11               | Sedge, low                  |
-| 12               | Horsetail                   |
-| 13               | Bilberry                    |
-| 14               | Cowberry                    |
-| 15               | Crowberry                   |
-| 16               | Poor shrubs                 |
-| 17               | Lichen-rich                 |
-| 18               | Lichen-dominated.           |
-
-| Ground Layer Code | Description               |
-|-------------------|---------------------------|
-| 1                 | Lichen type               |
-| 2                 | Lichen-rich bogmoss type  |
-| 3                 | Lichen rich               |
-| 4                 | Bogmoss type (*Sphagnum*) |
-| 5                 | Swamp moss type           |
-| 6                 | Fresh moss type.          |
-
-Soil texture same as from the Heureka project, see : <https://www.heurekaslu.se/wiki/Definition:SoilTextureCode>
-
-| Soil Moisture Code | Description                |
-|--------------------|----------------------------|
-| 1                  | Dry / torr                 |
-| 2                  | Mesic / frisk              |
-| 3                  | Mesic-moist / frisk-fuktig |
-| 4                  | Moist / fuktig             |
-| 5                  | Wet / blöt.                |
-
-| Soil Depth Code | Description              |
-|-----------------|--------------------------|
-| 1               | Deep, \>70 cm            |
-| 2               | Rather shallow, 20-70 cm |
-| 3               | Shallow \<20 cm          |
-| 4               | Varying                  |
-
-| Lateral Water Code | Description     |
-|--------------------|-----------------|
-| 1                  | Missing         |
-| 2                  | Seldom          |
-| 3                  | Shorter Periods |
-| 4                  | Longer periods  |
-| 5                  | Slope           |
-
 ## Common function types
 
 ### Top Height functions
@@ -245,3 +131,29 @@ This is appropriate in relation to common usage, e.g. for predicting height at a
 #### Height trajectories other than Top Height.
 
 Other measures than dominant height / top height have commonly been used, most notably Lorey's mean height. In terms of naming for such functions, we attempt to follow the above recommendations as closely as possible, e.g. `Tveite_1967_Loreys_mean_height_Norway_Pine()` .
+
+### Categorical Coding- avoiding help-file cluttering.
+
+#### Factor variables with many categories
+
+#### Vegetation
+
+Typical example : **vegetation classes**. Classes are different between national forest inventories and forest practice in countries. For this reason, the *variable* is set to **vegetation** across functions, but a helper function is defined to distinguish between many factors that would otherwise clutter the help documentation. E.g. `Finland_vegetation_types()` . Function-specific behavior ensures that unexpected input simply doesn't work.
+
+#### Incline, Aspect
+
+Both incline and aspect are typical continuous variables - different nomenclatures exist between countries and between individual reports in how these are intended to be handed to functions. Because of these large discrepances, I suggest any categorical coding is handled *inside* the function, and the arguments are handed a continuous variable, e.g.
+
+Incline: Percentage (Ratio?).
+
+Aspect: Degrees, 0-360.
+
+Many functions utilise a wide variety of different categorical variables which are not translatable to a continuous variable or better expressed in a more general way. E.g. vegetation, soil texture or moisture classes. Not uncommonly these are standards given by the national forest inventory of the country.
+
+These may include a large number of variables which are not easily renderable/viewable in a normal help-file context. They may also have to be repeated in many places. Therefore a separate function is suitable and avoids local errors/typos.
+
+Examples include `Finland_vegetation_types()`, `Sweden_vegetation_types()` , `Sweden_soil_types()` .
+
+Typically they include a short header printed by `cat` , followed by a subsettable `tibble`, which must include at least the coding and english/latin definition. In case of closely related categorical variables, e.g. soil moisture, soil depth, soil texture - these can be included in the same function with a conditional return clause, e.g. `Sweden_soil_types(type = "texture")` .
+
+Some cases with very few categories can be questionable but are possible to include anyway, if it fits well with other group variables or are very commonly used, e.g. `Sweden_soil_types(type = "water")` .
