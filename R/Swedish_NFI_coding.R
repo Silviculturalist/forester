@@ -145,4 +145,15 @@ Sweden_soil_types <- function(type="texture"){
       )
     )
   }
+
+  if(type=="water"){
+    cat("Swedish soil water / lateral water coding\nCorresponds to NFI-variable RÖRLMVA\n")
+    return(
+      dplyr::tibble(
+        Code=seq(1,3,1),
+        English=c("Seldom/never","Shorter periods","Longer periods"),
+        Swedish=c("Saknas","Kortare perioder","Längre perioder")
+      )
+    )
+  }
 }
