@@ -89,7 +89,7 @@ Gustavsen_1980_height_trajectory_Finland_Norway_Spruce <- function(
 # SpruceBh %>% mutate(Pred=exp(predict(SpruceBhYr)))
 
 #' Smoothing of time required to reach breast height according to Gustavsen 1980.
-#' @details Both species modelled with log-linear function, adj. R^2>0.98
+#' @details Both species modelled with log-linear function.
 #' @param SI100 Site index 100, according to Gustavsen 1980.
 #' @param species One of 'Picea abies' (default) or 'Pinus sylvestris'.
 #' @return Number of years required to reach breast height 1.3m.
