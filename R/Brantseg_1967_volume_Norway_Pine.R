@@ -95,7 +95,7 @@ Brantseg_1967_volume_detailed_Norway_Scots_Pine <- function(
 #'
 #' @return Height to the tree crown base.
 #' @export
-Brantseg_1967_crown_base_height_Norway_Scots_Pine() <- function(
+Brantseg_1967_crown_base_height_Norway_Scots_Pine <- function(
     diameter_cm,
     height_m){
   return(
