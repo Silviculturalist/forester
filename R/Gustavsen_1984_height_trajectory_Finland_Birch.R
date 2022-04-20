@@ -68,7 +68,7 @@ Gustavsen_1984_height_trajectory_Finland_Birch <- function(
 }
 
 
-data.frame(H50 = c(26,24,22,20,18,16,14,12),t1.3=c(4,4,5,5,6,6,7,8)) %>% mutate(predicted=exp(predict(lm(formula= log(t1.3)~H50)))) %>% ggplot()+geom_point(aes(x=H50,y=t1.3))+geom_line(aes(x=H50,y=predicted))
+#data.frame(H50 = c(26,24,22,20,18,16,14,12),t1.3=c(4,4,5,5,6,6,7,8)) %>% mutate(predicted=exp(predict(lm(formula= log(t1.3)~H50)))) %>% ggplot()+geom_point(aes(x=H50,y=t1.3))+geom_line(aes(x=H50,y=predicted))
 
 #' Smoothing of time required to reach breast height according to Gustavsen 1984.
 #' @details log-linear function log(t1.3)~H50.
