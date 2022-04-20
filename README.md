@@ -132,6 +132,16 @@ This is appropriate in relation to common usage, e.g. for predicting height at a
 
 Other measures than dominant height / top height have commonly been used, most notably Lorey's mean height. In terms of naming for such functions, we attempt to follow the above recommendations as closely as possible, e.g. `Tveite_1967_Loreys_mean_height_Norway_Pine()` .
 
+#### Height relationships other than age-height.
+
+In some cases, e.g. when the equation form uses Näslund 1936 (eq. 7, p. 43), where y is the height of the tree, x corresponding to the diameter at breast height and a & b are estimated constants.
+
+$$
+y-1.3 = \frac{x^2}{(a+bx)^2}
+$$
+
+These functions should probably be categorized under a different name than height_trajectory for clarity.
+
 ### Categorical Coding- avoiding help-file cluttering.
 
 #### Factor variables with many categories
@@ -157,3 +167,7 @@ Examples include `Finland_vegetation_types()`, `Sweden_vegetation_types()` , `Sw
 Typically they include a short header printed by `cat` , followed by a subsettable `tibble`, which must include at least the coding and english/latin definition. In case of closely related categorical variables, e.g. soil moisture, soil depth, soil texture - these can be included in the same function with a conditional return clause, e.g. `Sweden_soil_types(type = "texture")` .
 
 Some cases with very few categories can be questionable but are possible to include anyway, if it fits well with other group variables or are very commonly used, e.g. `Sweden_soil_types(type = "water")` .
+
+## Very large or slow functions
+
+Functions containing very many cases/switches/if else statements, slow blocks, iterations or wrappers containing entire models should probably be written up in C++ and called via Rcpp (Not yet implemented).
