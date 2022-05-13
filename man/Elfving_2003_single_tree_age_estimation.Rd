@@ -5,16 +5,17 @@
 \title{Functions for estimation of single tree ages at breast height}
 \usage{
 Elfving_2003_single_tree_age_estimation(
-  diameter,
+  diameter_cm,
   diameter_ba,
+  mean_diameter_codominant_trees,
   latitude,
   altitude,
   lnd,
   total_stand_age,
   SIS,
-  total_ba,
+  Basal_area_plot,
   species,
-  field_vegetation,
+  vegetation,
   even_aged,
   county,
   peat,
@@ -22,34 +23,55 @@ Elfving_2003_single_tree_age_estimation(
 )
 }
 \arguments{
-\item{diameter}{diameter at breast height, cm}
+\item{diameter_cm}{diameter at breast height, cm}
 
 \item{diameter_ba}{diameter of basal area weighted mean tree, cm.}
+
+\item{mean_diameter_codominant_trees}{Mean Diameter of the co-dominant trees, e.g. [forester::Elfving_2003_mean_diameter_codominant_trees()]}
 
 \item{latitude}{latitude}
 
 \item{altitude}{altitude, metres above sea level.}
 
-\item{lnd}{log mean diameter of co-dominant trees. Output of mean_diam_codominant.}
-
 \item{total_stand_age}{total stand age}
 
-\item{SIS}{site index according site factors, given as top height at age 100, m.}
+\item{Basal_area_plot}{As estimated with relascope in field. m^2 / ha}
 
-\item{total_ba}{As estimated with relascope in field. m^2 / ha}
+\item{species}{One of: "Pinus sylvestris", "Picea abies", "Betula pendula", "Betula pubescens", "Fagus sylvatica", "Quercus robur","Ulmus glabra","Tilia cordata","Acer platanoides","Prunus avium","Salix ..","Carpinus betulus" or "Sorbus aucuparia"}
 
-\item{species}{Tree species}
-
-\item{field_vegetation}{type, FsKod.}
+\item{vegetation}{vegetation Vegetation type according to follows Swedish National forest inventory FALTSKIKT:
+\tabular{ll}{
+Code \tab Vegetation \cr
+1 \tab  Rich-herb without shrubs \cr
+2 \tab Rich-herb with shrubs/bilberry \cr
+3 \tab Rich-herb with shrubs/lingonberry \cr
+4 \tab Low-herb without shrubs \cr
+5 \tab Low-herb with shrubs/bilberry \cr
+6 \tab Low-herb with shrubs/lingonberry \cr
+7 \tab No field layer \cr
+8 \tab Broadleaved grass \cr
+9 \tab Thinleaved grass \cr
+10 \tab Sedge, high \cr
+11 \tab Sedge, low \cr
+12 \tab Horsetail, Equisetum ssp. \cr
+13 \tab Bilberry \cr
+14 \tab Lingonberry \cr
+15 \tab Crowberry \cr
+16 \tab Poor shrub \cr
+17 \tab Lichen, frequent occurrence \cr
+18 \tab Lichen, dominating \cr
+}}
 
 \item{even_aged}{TRUE / FALSE,  above 80 percent of volume within 20 yr span.}
 
 \item{county}{Swedish county}
 
 \item{ditch}{TRUE / FALSE}
+
+\item{SIS_100}{Site index from stand variables, metres. e.g. [forester::SIS_estimate()]}
 }
 \value{
-age at breast height
+A list, with element 1 : Age at breast height, 2: Boolean if tree is a standard, 3: Boolean if tree is suppressed.
 }
 \description{
 Presented in Elfving, B. (2003) Ålderstilldelning till enskilda träd i skogliga tillväxtprognoser. SLU, inst. f. skogsskötsel. Arbetsrapport 182.

@@ -4,7 +4,8 @@
 \name{Pine_spacing_trials}
 \alias{Pine_spacing_trials}
 \title{Pine spacing trials in unthinned stands}
-\format{A data frame with columns:
+\format{
+A data frame with columns:
 \describe{
 \item{County}{County identifier}
 \item{Site}{Site identifier}
@@ -18,7 +19,8 @@
 \item{G}{Basal area including bark, m^2/ha}
 \item{SDA}{Standard deviation of the diameter distribution, cm}
 \item{Revision}{Revision number}
-}}
+}
+}
 \source{
 Elfving, B. (1975) "Volume and structure in unthinned stands of Scots Pine", PhD diss., No. 35, Research Notes, Dept. of Forest Yield Research, Royal College of Forestry. Modin-Tryck AB, Stockholm, Sweden.
 }

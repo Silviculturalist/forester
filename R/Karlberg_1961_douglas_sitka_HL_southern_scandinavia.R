@@ -8,11 +8,11 @@
 #'  Available Online (2022-04-03):
 #'  \url{https://pub.epsilon.slu.se/9527/1/kungl_skogshogskolans_skrifter_034.pdf}
 #'
-#'  @description HL was chosen to be able to appropriately compared with Möller
+#' @description HL was chosen to be able to appropriately compared with Möller
 #'  (1933).
 #'
 #'  Site classes were therefore chosen as follows:
-#'  \table{lr}{
+#'  \tabular{lr}{
 #'  Site Class \tab HL50 \cr
 #'  I \tab 32 (30.5-33.5) \cr
 #'  II \tab 29 (27.5-30.5) \cr
@@ -53,11 +53,11 @@ Karlberg_1961_height_trajectory_HL_Scandinavia_Douglas_Fir <- function(
 #'  Available Online (2022-04-03):
 #'  \url{https://pub.epsilon.slu.se/9527/1/kungl_skogshogskolans_skrifter_034.pdf}
 #'
-#'  @description HL was chosen to be able to appropriately compared with Möller
+#' @description HL was chosen to be able to appropriately compared with Möller
 #'  (1933).
 #'
 #'  Site classes were therefore chosen as follows:
-#'  \table{lr}{
+#'  \tabular{lr}{
 #'  Site Class \tab HL50 \cr
 #'  I \tab 30 (28.5-31.5) \cr
 #'  II \tab 27 (25.5-28.5) \cr
