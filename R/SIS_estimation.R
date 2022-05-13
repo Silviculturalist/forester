@@ -260,7 +260,7 @@ if(species=="Pinus sylvestris"){
 }
 
 if(exists("h100dm")){
-  return(h100dm)
+  return(h100dm/10)
 } else {
   if(!missing(plotid)){
     warning(paste0("No method was found for plot: ",plotid))

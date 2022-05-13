@@ -21,7 +21,7 @@
 #' @export
 #'
 #' @examples thinning_response_Hynonen_2019(BasalArea=30, height_weighted_w_ba=15, isOMT=F, degreedays=1577, CUT10.15=T)
-thinning_response_Hynynen_2019 <- function(BasalArea, height_weighted_w_ba, REM_percent=33, management=1, isOMT, degreedays, CUT0.5=F, CUT5.10=F, CUT10.15=F){
+Hynynen_2019_thinning_response <- function(BasalArea, height_weighted_w_ba, REM_percent=33, management=1, isOMT, degreedays, CUT0.5=F, CUT5.10=F, CUT10.15=F){
 
   if(management==1){
     UEA <- 0

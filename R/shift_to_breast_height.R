@@ -2,7 +2,7 @@
 #'
 #' @param height_trajectory A height-trajectory function containing the arguments 'dominant_height', 'age','age2','output'.
 #' @param dominant_height Dominant height
-#' @param reference_age Age
+#' @param age Age
 #' @param age2 Age at which to return height.
 #' @param interval_low Default=0,Lowest possible time to breast height. (If a function already has an intercept at breast height)
 #' @param interval_high Default=10, highest possible time to breast height.
