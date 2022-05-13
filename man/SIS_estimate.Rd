@@ -63,3 +63,6 @@ Site index, in metres.
 Corrected functions from Appendix II for estimation of site index by site factors according to Hägglund and Lundmark (1977), in
 Hägglund, B. (1979) Ett system för bonitering av skogsmark - analys, kontroll och diskussion inför praktisk tillämpning. Rapport 14, Projekt HUGIN. Skogsvetenskapliga fakulteten, Sveriges Lantbruksuniversitet. Umeå. Sweden.
 }
+\examples{
+SIS_estimate(plotid=12332, species="Pinus sylvestris",vegetation=13, ground_layer=6, latitude=63.8,longitude=12.32, altitude=200,incline_percent=0,soil_moisture=2,soil_texture=2,soil_depth=1,lateral_water=1,ditched=FALSE)
+}

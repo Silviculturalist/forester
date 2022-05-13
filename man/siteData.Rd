@@ -5,9 +5,11 @@
 \title{siteData}
 \usage{
 siteData(
+  stand_id,
   altitude,
   latitude,
   longitude,
+  distance_to_coast,
   polygon,
   county,
   local_climate,
@@ -16,17 +18,21 @@ siteData(
   soil_moisture,
   temperature_sum.c,
   aspect,
-  incline
+  incline_percent
 )
 }
 \arguments{
+\item{stand_id}{Stand ID}
+
 \item{altitude}{Metres above sea level}
 
 \item{latitude}{Latitude decimal WGS84}
 
 \item{longitude}{Longitude decimal WGS84}
 
-\item{polygon}{Optional List of boundary coordinates.}
+\item{distance_to_coast}{if there is no coordinate information}
+
+\item{polygon}{Optional List of boundary coordinates. Warning siteData does not check validity of polygon geometry.}
 
 \item{county}{County in Sweden. If not supplied, will calculate through \link[forester]{county_sweden}}
 
@@ -36,9 +42,23 @@ siteData(
 
 \item{soil_texture}{1-9}
 
-\item{soil_moisture}{1-5}
+\item{soil_moisture}{Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"}
 
 \item{temperature_sum.c}{Degrees celsius. If not supplied, will calculate from \link[forester]{odin_tsum_1983}}
+
+\item{incline_percent}{degrees.}
+
+\item{main_species}{Main species.}
+
+\item{aspect_main}{Main aspect (N,E,S,W or 0)}
+
+\item{ground_layer}{Type 1="Lichen type", 2="Lichen-rich bogmoss type", 3="Lichen-rich",4="Bogmoss type" Sphagnum,5="Swamp moss type",6="Fresh moss type"}
+
+\item{soil_depth}{Type 1="Deep, >70cm", 2 = "Rather shallow, 20-70 cm", 3 = "Shallow <20", 4 = "Varying"}
+
+\item{lateral_water}{Type 1="Missing", 2="Seldom",3="shorter periods",4="longer periods",5="slope".}
+
+\item{ditched}{TRUE/FALSE if affected by ditching.}
 }
 \value{
 

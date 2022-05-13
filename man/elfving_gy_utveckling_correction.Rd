@@ -4,7 +4,8 @@
 \name{elfving_gy_utveckling_correction}
 \alias{elfving_gy_utveckling_correction}
 \title{Elfving Tree level Basal Area Development Functions}
-\format{A data frame with columns:
+\format{
+A data frame with columns:
 \describe{
   \item{d}{diameter at breast height (1.3 m above ground) including bark, cm}
   \item{d2gt}{d^2 /1000}
@@ -41,7 +42,8 @@
   \item{part}{indicator for a partitioned plot where the other part not is open land}
   \item{edgeff}{indicator for a partitioned plot where the other part is open land}
   \item{lnbarel}{ln ((ba+1) / (bar+1)) , where bar is ba in surrounding stand measured with relascope}
-  }}
+  }
+}
 \source{
 from the manuscript Elfving, B. (2004). "Individual-tree basal area growth functions for all Swedish forests" (Unpubl.)
         Readable: \url{https://www.heurekaslu.se/w/images/9/93/Heureka_prognossystem_\%28Elfving_rapportutkast\%29.pdf}

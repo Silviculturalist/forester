@@ -4,13 +4,15 @@
 \name{Silver_fir_1921}
 \alias{Silver_fir_1921}
 \title{Silver fir growth}
-\format{A data frame with columns:
+\format{
+A data frame with columns:
 \describe{
 \item{Site_class}{A value between I-V}
 \item{Height}{Mean height of the main stand, metres}
 \item{Stem number}{Stem number}
 \item{Total stem wood m3}{Total stem wood m3}
-}}
+}
+}
 \source{
 \strong{Gehrhardt, E. (1923) Ertragstafeln für Eiche, Buche, Tanne, Fichte und Riefer. Berlag von Julius Springer. Berlin. 46 pages. pp. 35-40.}
 }
