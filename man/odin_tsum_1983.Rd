@@ -4,12 +4,12 @@
 \alias{odin_tsum_1983}
 \title{odin_tsum_1983}
 \usage{
-odin_tsum_1983(lat_degree, lat_min = 0, lat_sec = 0, masl)
+odin_tsum_1983(latitude, altitude)
 }
 \arguments{
-\item{masl}{Metres above sea level}
+\item{latitude}{Latitude in decimal degrees.}
 
-\item{lat}{Latitude in decimal degrees.}
+\item{altitude}{Metres above sea level}
 }
 \value{
 Returns the estimated annual temperature sum above 5 degrees celsius.
@@ -20,5 +20,5 @@ Function 7 from Odin, Eriksson & Perttu (1983) Temperature Climate Maps for Swed
  \emph{Tsum = 4835 - 57,6 x LAT - 0,9 x MASL}
 }
 \examples{
-odin_tsum_1983(lat=68.88, masl=38)
+odin_tsum_1983(latitude=68.88, altitude=38)
 }

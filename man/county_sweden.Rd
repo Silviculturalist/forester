@@ -4,17 +4,19 @@
 \alias{county_sweden}
 \title{Coordinate to county Sweden}
 \usage{
-county_sweden(latitude, longitude)
+county_sweden(latitude, longitude, epsg = 4326)
 }
 \arguments{
 \item{latitude}{Latitude, decimal}
 
 \item{longitude}{Longitude, decimal}
+
+\item{espg}{Reference system. Default 'WGS84': 4326. For SWEREF99TM: '3006'.}
 }
 \value{
 Text, Swedish County
 }
 \description{
-Based on the shape file \link[forester]{county_shape_file} returns the Swedish county which the coordinate is placed in.
+Returns the Swedish county which the coordinate is placed in.
  If there is no match, county will be 'Other', and a warning will be shown.
 }

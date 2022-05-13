@@ -4,17 +4,21 @@
 \alias{Elfving_2003_mean_diameter_codominant_trees}
 \title{Mean diameter of co-dominant trees}
 \usage{
-Elfving_2003_mean_diameter_codominant_trees(total_stand_age, SIS, total_ba)
+Elfving_2003_mean_diameter_codominant_trees(
+  total_stand_age,
+  SIS,
+  Basal_area_plot
+)
 }
 \arguments{
 \item{total_stand_age}{total stand age}
 
-\item{SIS}{site index according site factors, given as top height at age 100, m.}
+\item{SIS_100}{site index according site factors, given as top height at age 100, m.}
 
-\item{total_ba}{As estimated with relascope in field. m^2 / ha}
+\item{Basal_area_stand}{OBS. Of the entire stand! As estimated with relascope in field. m^2 / ha}
 }
 \value{
-
+Mean diameter of co-dominants, cm.
 }
 \description{
 Presented in Elfving, B. (2003) Ålderstilldelning till enskilda träd i skogliga tillväxtprognoser. SLU, inst. f. skogsskötsel. Arbetsrapport 182.

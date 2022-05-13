@@ -11,7 +11,7 @@
 #'
 #' @return Stand Volume, m^3 / ha.
 #' @details Log scale statistics:
-#'  \table{lr}{
+#'  \tabular{lr}{
 #' R^2 \tab 0.997 \cr
 #' RMSE (m^3ha^-1) \tab 14.30\cr
 #' C.V. (%) \tab 5.43 \cr

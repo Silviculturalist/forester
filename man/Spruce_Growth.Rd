@@ -4,13 +4,15 @@
 \name{Spruce_Growth}
 \alias{Spruce_Growth}
 \title{Growth laws of normal spruce stands, 1904}
-\format{A data frame with columns:
+\format{
+A data frame with columns:
 \describe{
 \item{Age}{A value between 10-130 with 10 yr increments}
 \item{Height}{Height of the crop, metres}
 \item{Height increment}{Increment since former yr}
 \item{Bonitet}{Site productivity class}
-}}
+}
+}
 \source{
 *Wuchsgesetze normaler Fichtenbestände* Mitth. aus d. forstl.
  Vers.-wesen Österreichs 1904. XXIX h. sid. 1 1 o. f.
