@@ -6,7 +6,7 @@ SaplingHeightDistribution <- function(
   Deterministic,
   Wet,
   Dry,
-  vegetation,
+  vegetation
 
 ){
 
@@ -25,9 +25,9 @@ SaplingHeightDistribution <- function(
 
   #Calculate Proportion Conifer
 
-  proportionOfConifer <- function(
-
-  )
+  # proportionOfConifer <- function(
+  #
+  # )
 
 
 

@@ -154,7 +154,7 @@ Nystrom_regeneration_HEUREKA <- function(
       Hwd,
       Shrubs,
       Lichen,
-      Deterministic,
+      Deterministic
     ){
       ProportionOfDeciduous <- 1-ProportionOfConifer
 
@@ -315,7 +315,7 @@ Nystrom_regeneration_HEUREKA <- function(
 
 
 
-  }
+
 
 
 
