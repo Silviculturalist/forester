@@ -116,8 +116,6 @@
 #'
 #' @return Basal area increment during 5 years, m2.
 #' @export
-#'
-#' @examples
 Soderberg_1986_BA_increment_northern_central_Sweden_over_45_Birch <- function(
   diameter_cm,
   diameter_largest_tree_on_plot_cm,

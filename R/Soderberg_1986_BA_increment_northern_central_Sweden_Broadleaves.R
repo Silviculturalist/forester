@@ -87,8 +87,6 @@
 #'
 #' @return Basal area increment during 5 years, m2.
 #' @export
-#'
-#' @examples
 Soderberg_1986_BA_increment_northern_central_Sweden_Broadleaves <- function(
   Basal_area_of_tree_m2,
   Basal_area_Pine_m2_ha,

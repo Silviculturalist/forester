@@ -85,7 +85,7 @@ theme(plot.title = element_text(face="italic",family="serif"),
       legend.position = "none")+
 labs(
   title="Development of Dominant height of\nScots pine in Sweden",
-  caption="After HÃ¤gglund (1974) f. 4.1.",
+  caption="After Hägglund (1974) f. 4.1.",
   x="Age at breast height (years)",
   y="Dominant Height (m)"
 )+

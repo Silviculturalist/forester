@@ -73,8 +73,8 @@
 #'
 #' @return Basal area increment during 5 years, m2.
 #' @export
-#'
-#' @examples
+
+
 Soderberg_1986_BA_increment_central_Sweden_under_65_Spruce <- function(
   diameter_cm,
   diameter_largest_tree_on_plot_cm,

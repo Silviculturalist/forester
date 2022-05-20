@@ -51,14 +51,14 @@ Based on the Chapman-Richards function.
 }
 \examples{
 ggplot()+
-geom_function(aes(linetype="Lodgepole Pine\n(HÃ¤gglund & RemrÃ¶d 1977)\nh[50]\n"), fun = function(age) (13+288.435733147131*(1-exp(-age*0.0121359757121435))^1.03593431330045)/10)+
-  geom_function(aes(linetype="Lodgepole Pine\n(HÃ¤gglund & RemrÃ¶d 1977)\nh[50]\n"), fun= function(age) (13+328.578193602562*(1-exp(-age*0.0144478357572835))^1.0250418112026)/10)+
-  geom_function(aes(linetype="Lodgepole Pine\n(HÃ¤gglund & RemrÃ¶d 1977)\nh[50]\n"), fun= function(age) (13+368.699928131572*(1-exp(-age*0.0167678399608579))^1.01362095232006)/10)+
-  geom_function(aes(linetype="Lodgepole Pine\n(HÃ¤gglund & RemrÃ¶d 1977)\nh[50]\n"), fun= function(age) (13+405.718962027163*(1-exp(-age*0.0189158559922424))^1.00267824162738)/10)+
-  geom_function(aes(linetype="Scots Pine\n(HÃ¤gglund 1974)\nh[100]\n"), fun= function (age) (13+234.725854492188*(1-exp(-age*0.0174101983378584))^1.13907963858789)/10)+
-  geom_function(aes(linetype="Scots Pine\n(HÃ¤gglund 1974)\nh[100]\n"), fun= function (age) (13+269.555444335938*(1-exp(-age*0.0210388040153862))^1.11546448678253)/10)+
-  geom_function(aes(linetype="Scots Pine\n(HÃ¤gglund 1974)\nh[100]\n"), fun= function (age) (13+303.224047851563*(1-exp(-age*0.0247184794701687))^1.10210374208523)/10)+
-  geom_function(aes(linetype="Scots Pine\n(HÃ¤gglund 1974)\nh[100]\n"), fun= function (age) (13+334.570678710938*(1-exp(-age*0.0282856703465072))^1.0941196674377)/10)+
+geom_function(aes(linetype="Lodgepole Pine\n(Hägglund & Remröd 1977)\nh[50]\n"), fun = function(age) (13+288.435733147131*(1-exp(-age*0.0121359757121435))^1.03593431330045)/10)+
+  geom_function(aes(linetype="Lodgepole Pine\n(Hägglund & Remröd 1977)\nh[50]\n"), fun= function(age) (13+328.578193602562*(1-exp(-age*0.0144478357572835))^1.0250418112026)/10)+
+  geom_function(aes(linetype="Lodgepole Pine\n(Hägglund & Remröd 1977)\nh[50]\n"), fun= function(age) (13+368.699928131572*(1-exp(-age*0.0167678399608579))^1.01362095232006)/10)+
+  geom_function(aes(linetype="Lodgepole Pine\n(Hägglund & Remröd 1977)\nh[50]\n"), fun= function(age) (13+405.718962027163*(1-exp(-age*0.0189158559922424))^1.00267824162738)/10)+
+  geom_function(aes(linetype="Scots Pine\n(Hägglund 1974)\nh[100]\n"), fun= function (age) (13+234.725854492188*(1-exp(-age*0.0174101983378584))^1.13907963858789)/10)+
+  geom_function(aes(linetype="Scots Pine\n(Hägglund 1974)\nh[100]\n"), fun= function (age) (13+269.555444335938*(1-exp(-age*0.0210388040153862))^1.11546448678253)/10)+
+  geom_function(aes(linetype="Scots Pine\n(Hägglund 1974)\nh[100]\n"), fun= function (age) (13+303.224047851563*(1-exp(-age*0.0247184794701687))^1.10210374208523)/10)+
+  geom_function(aes(linetype="Scots Pine\n(Hägglund 1974)\nh[100]\n"), fun= function (age) (13+334.570678710938*(1-exp(-age*0.0282856703465072))^1.0941196674377)/10)+
   scale_x_continuous(limits=c(0,60), breaks=seq(0,60,10), expand=c(0,0))+
   scale_y_continuous(limits=c(0,30), breaks=seq(0,30,5), expand=c(0,0))+
   theme_classic()+

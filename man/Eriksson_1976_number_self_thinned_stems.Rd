@@ -10,7 +10,7 @@ Eriksson, H. (1976) "Granens produktion i Sverige", translated: "Yield of Norway
 Eriksson_1976_number_self_thinned_stems(
   dominant_height_m,
   number_trees_per_ha_period_start,
-  basal_area_m2_ha_before_thinning,
+  basal_area_over_bark_m2_ha_before_thinning,
   SI
 )
 }
@@ -19,7 +19,7 @@ Eriksson_1976_number_self_thinned_stems(
 
 \item{number_trees_per_ha_period_start}{Number of trees per hectare at start of period.}
 
-\item{basal_area_m2_ha_before_thinning}{Basal area above bark m2/ha before thinning.}
+\item{basal_area_over_bark_m2_ha_before_thinning}{Basal area above bark m2/ha before thinning.}
 }
 \value{
 numeric.

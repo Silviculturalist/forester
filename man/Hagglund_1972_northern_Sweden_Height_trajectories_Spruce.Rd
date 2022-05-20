@@ -61,8 +61,8 @@ Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(latitude = 66.9,age = 8
 
 #Remember to divide by 10 to go to metres from dm.
 ggplot()+
-  geom_function(aes(color="Lat=60.1Â°"), fun = function(age) (13+224.224608372892*(1-exp(-age*0.0113938018668758))^1.44412711110086)/10)+
-  geom_function(aes(color="Lat=66.9Â°"), fun = function(age) (13+228.827607753106*(1-exp(-age*0.0116464323317232))^1.52753582497555)/10)+
+  geom_function(aes(color="Lat=60.1°"), fun = function(age) (13+224.224608372892*(1-exp(-age*0.0113938018668758))^1.44412711110086)/10)+
+  geom_function(aes(color="Lat=66.9°"), fun = function(age) (13+228.827607753106*(1-exp(-age*0.0116464323317232))^1.52753582497555)/10)+
   labs(x="Age at breast height (years)",
        y= "Dominant height (metres)")+
   xlim(c(0,150))+

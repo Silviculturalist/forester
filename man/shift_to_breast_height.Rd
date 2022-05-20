@@ -19,6 +19,8 @@ shift_to_breast_height(
 
 \item{dominant_height}{Dominant height}
 
+\item{age}{Age}
+
 \item{age2}{Age at which to return height.}
 
 \item{interval_low}{Default=0,Lowest possible time to breast height. (If a function already has an intercept at breast height)}
@@ -26,8 +28,6 @@ shift_to_breast_height(
 \item{interval_high}{Default=10, highest possible time to breast height.}
 
 \item{...}{A list of additional arguments passed to height_trajectory.}
-
-\item{reference_age}{Age}
 }
 \value{
 Height at breast height age2.
