@@ -2,7 +2,14 @@
 % Please edit documentation in R/Andreassen_2003_ba_models_Norway.R
 \name{andreassen_2003}
 \alias{andreassen_2003}
-\alias{Andreasssen_2003_BA_increment_Norway_Norway_Spruce_SI}
+\alias{Andreassen_2003_BA_increment_Norway_Norway_Spruce_SI}
+\alias{Andreassen_2003_BA_increment_Norway_Scots_Pine_SI}
+\alias{Andreassen_2003_BA_increment_Norway_Birch_SI}
+\alias{Andreassen_2003_BA_increment_Norway_Broadleaves_SI}
+\alias{Andreassen_2003_BA_increment_Norway_Norway_Spruce_topographic}
+\alias{Andreassen_2003_BA_increment_Norway_Scots_Pine_topographic}
+\alias{Andreassen_2003_BA_increment_Norway_Birch_topographic}
+\alias{Andreassen_2003_BA_increment_Norway_Broadleaves_topographic}
 \title{Individual tree growth models of Norway spruce, Scots Pine, Birch and other broadleaves in Norway.}
 \source{
 Andreassen, K., Tomter, S.M. (2003) Basal area growth models for
@@ -11,22 +18,103 @@ in Norway. For. Ecol. Manage. 180:1-3. 11-24. ISSN 0378-1127. DOI:
 \url{https://doi.org/10.1016/S0378-1127(02)00560-1}
 }
 \usage{
-Andreasssen_2003_BA_increment_Norway_Norway_Spruce_SI(
-  basal_area_m2,
+Andreassen_2003_BA_increment_Norway_Norway_Spruce_SI(
+  BA_m2,
   diameter_cm,
   BA_m2_ha,
   BA_m2_ha_Spruce,
   BA_m2_ha_Broadleaves,
-  mean_height_Lorey_m,
-  DGV_cm,
+  HL,
+  QMD,
   stems_ha,
   SI40_Spruce = NULL,
   SI40_Pine = NULL,
   even_aged = TRUE
 )
+
+Andreassen_2003_BA_increment_Norway_Scots_Pine_SI(
+  BA_m2,
+  diameter_cm,
+  BA_m2_ha,
+  BA_m2_ha_Spruce,
+  BA_m2_ha_Broadleaves,
+  HL,
+  QMD,
+  stems_ha,
+  SI40_Spruce = NULL,
+  SI40_Pine = NULL,
+  even_aged = TRUE
+)
+
+Andreassen_2003_BA_increment_Norway_Birch_SI(
+  BA_m2,
+  diameter_cm,
+  BA_m2_ha,
+  BA_m2_ha_Spruce,
+  BA_m2_ha_Broadleaves,
+  QMD,
+  SI40_Spruce = NULL,
+  SI40_Pine = NULL,
+  even_aged = TRUE
+)
+
+Andreassen_2003_BA_increment_Norway_Broadleaves_SI(
+  BA_m2,
+  diameter_cm,
+  BA_m2_ha,
+  BA_m2_ha_Broadleaves,
+  QMD,
+  SI40_Spruce = NULL,
+  SI40_Pine = NULL,
+  even_aged = TRUE
+)
+
+Andreassen_2003_BA_increment_Norway_Norway_Spruce_topographic(
+  BA_m2,
+  diameter_cm,
+  BA_m2_ha,
+  BA_m2_ha_Spruce,
+  BA_m2_ha_Broadleaves,
+  QMD,
+  latitude,
+  altitude,
+  even_aged = TRUE
+)
+
+Andreassen_2003_BA_increment_Norway_Scots_Pine_topographic(
+  BA_m2,
+  diameter_cm,
+  BA_m2_ha,
+  BA_m2_ha_Broadleaves,
+  QMD,
+  latitude,
+  altitude,
+  even_aged = TRUE
+)
+
+Andreassen_2003_BA_increment_Norway_Birch_topographic(
+  BA_m2,
+  diameter_cm,
+  BA_m2_ha,
+  QMD,
+  latitude,
+  altitude,
+  even_aged = TRUE
+)
+
+Andreassen_2003_BA_increment_Norway_Broadleaves_topographic(
+  BA_m2,
+  diameter_cm,
+  BA_m2_ha,
+  BA_m2_ha_Spruce,
+  QMD,
+  latitude,
+  altitude,
+  even_aged = TRUE
+)
 }
 \arguments{
-\item{basal_area_m2}{Basal area of the tree, in m^2.}
+\item{BA_m2}{Basal area of the tree, in m^2.}
 
 \item{diameter_cm}{Diameter at breast height 1.3 m in cm.}
 
@@ -36,9 +124,9 @@ Andreasssen_2003_BA_increment_Norway_Norway_Spruce_SI(
 
 \item{BA_m2_ha_Broadleaves}{Basal area Broadleaves, in m^2 / ha}
 
-\item{mean_height_Lorey_m}{Lorey's Mean Height for the plot.}
+\item{HL}{Lorey's Mean Height for the plot.}
 
-\item{DGV_cm}{Basal area weighted mean diameter, in cm. (To do: Check with authors)}
+\item{QMD}{Basal area weighted mean diameter, in cm. (To do: Check with authors)}
 
 \item{stems_ha}{Number of stems per hectare.}
 
@@ -48,16 +136,15 @@ Andreasssen_2003_BA_increment_Norway_Norway_Spruce_SI(
 
 \item{even_aged}{TRUE if even-aged stand (one-layered). FALSE if uneven-aged stand (multi-layered)}
 
-\item{BA_m2_ha_Pine}{Basal area Pine, in m^2 / ha}
-
 \item{latitude}{Latitude, decimal.}
 
 \item{altitude}{Meters above sea level.}
+
+\item{BA_m2_ha_Pine}{Basal area Pine, in m^2 / ha}
 }
 \description{
+OBSERVE! Quality control not complete.
+
 Models based on 5.64 m radius plots (100 m^2).
 Mean inventory period of 5.4 years.
-}
-\details{
-
 }
