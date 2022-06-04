@@ -17,8 +17,6 @@
 #'
 #' @return Diameter quotient.
 #' @export
-#'
-#' @examples
 Braastad_1974_diameter_quotient_thinned_trees_to_unthinned_stand_Norway_Norway_Spruce <- function(
   quadratic_mean_diameter_before,
   Basal_area_m2_ha_before,

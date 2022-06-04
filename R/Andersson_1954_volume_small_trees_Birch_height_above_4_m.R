@@ -10,8 +10,6 @@
 #'
 #' @return Volume in dm3.
 #' @export
-#'
-#' @examples
 Andersson_1954_volume_small_trees_Birch_height_above_4_m <- function(
   diameter_cm,
   height_m

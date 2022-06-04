@@ -8,8 +8,6 @@
 #'
 #' @return numeric.
 #' @export
-#'
-#' @examples
 Eriksson_1976_number_self_thinned_stems <- function(dominant_height_m,
                                                     number_trees_per_ha_period_start,
                                                     basal_area_over_bark_m2_ha_before_thinning,

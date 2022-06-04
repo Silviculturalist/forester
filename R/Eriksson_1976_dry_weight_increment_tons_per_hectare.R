@@ -17,8 +17,6 @@
 #'
 #' @return Annual increment in volume under bark per hectare, m3.
 #' @export
-#'
-#' @examples
 Eriksson_1976_dry_weight_increment_tons_per_hectare <- function(basal_area_ha_before_thinning.m2,
                                                                     site_index,
                                                                     thinning_percent_ba_under_bark,

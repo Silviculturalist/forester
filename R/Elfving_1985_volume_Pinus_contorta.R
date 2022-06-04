@@ -7,8 +7,7 @@
 #'
 #' @return Volume of tree, dm3.
 #' @export
-#'
-#' @examples
+
 Elfving_1985_volume_Pinus_contorta <- function(
   diameter_cm,
   height_m

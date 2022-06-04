@@ -14,8 +14,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 Petersson_Stahl_2006_below_ground_biomass_Birch <- function(
   diameter.cm,
   Root_detail

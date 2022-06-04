@@ -14,8 +14,6 @@
 #'
 #' @return Dry weight of living branches and needles for Spruce, in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_living_branches_and_needles_Spruce <- function(
   diameter.cm,
   height.m,

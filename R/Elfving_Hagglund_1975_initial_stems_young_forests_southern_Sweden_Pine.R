@@ -35,8 +35,6 @@
 #'
 #' @return Stems thicker than 2.5 cm per ha.
 #' @export
-#'
-#' @examples
 Elfving_Hagglund_1975_initial_stems_young_forests_southern_Sweden_Pine<- function(
   stand_density=0.65,
   pre_commercial_thinning,

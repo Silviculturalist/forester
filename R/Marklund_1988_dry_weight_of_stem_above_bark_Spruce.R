@@ -10,8 +10,6 @@
 #'
 #' @return Dry weight of stem above bark, in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_stem_above_bark_Spruce <- function(
   diameter.cm,
   height.m,

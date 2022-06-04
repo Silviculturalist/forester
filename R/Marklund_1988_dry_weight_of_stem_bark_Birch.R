@@ -12,8 +12,6 @@
 #'
 #' @return Dry weight of stem bark for Birch, in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_stem_bark_Birch <- function(
   diameter.cm,
   height.m,

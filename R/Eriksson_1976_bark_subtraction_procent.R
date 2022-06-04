@@ -8,8 +8,6 @@
 #'
 #' @return %
 #' @export
-#'
-#' @examples
 Eriksson_1976_bark_subtraction_procent <- function(diameter_of_mean_basal_area_over_bark_cm,SI, basal_area_over_bark_ha_m2,age_bh_100_largest_trees_per_ha_years){
 
   if(SI<=17.9){

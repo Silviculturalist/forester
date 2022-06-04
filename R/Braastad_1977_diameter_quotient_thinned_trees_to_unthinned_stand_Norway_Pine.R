@@ -6,8 +6,6 @@
 #'
 #' @return Ratio Diameter of thinned trees / Diameter of unthinned stand.
 #' @export
-#'
-#' @examples
 Braastad_1977_diameter_quotient_thinned_trees_to_unthinned_stand_Norway_Pine <- function(
   dominant_height
 ){

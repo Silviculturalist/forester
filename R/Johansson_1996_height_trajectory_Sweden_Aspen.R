@@ -29,8 +29,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 Johansson_1996_height_trajectory_Sweden_Aspen <- function(
   dominant_height,
   age,

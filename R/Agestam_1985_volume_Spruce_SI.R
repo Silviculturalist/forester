@@ -22,8 +22,6 @@
 #'
 #' @return Volume Spruce m3sk/ha.
 #' @export
-#'
-#' @examples
 Agestam_1985_volume_Spruce_SI <- function(
   basal_area_Spruce_m2_ha,
   SI_Spruce,

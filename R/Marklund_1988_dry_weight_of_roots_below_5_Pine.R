@@ -7,8 +7,6 @@
 #'
 #' @return Dry weight of roots below 5 cm diameter for Pine, in kilograms.
 #' @export
-#'
-#' @examples
 
 Marklund_1988_dry_weight_of_roots_below_5<- function(
   diameter.cm,

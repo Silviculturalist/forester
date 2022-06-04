@@ -21,8 +21,6 @@
 #'
 #' @return A data.frame. Stand description at stand age + 5 .
 #' @export
-#'
-#' @examples
 Allen_2020_P_abies_five_year_increment <- function(stand_age,
                                                    volume,
                                                    SI_40,

@@ -10,8 +10,6 @@
 #'
 #' @return Maximum mean annual increment m3sk/yr.
 #' @export
-#'
-#' @examples
 Jonson_1914_to_MAImax <- function(jonson_class){
 
   ifelse()

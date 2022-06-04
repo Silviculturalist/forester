@@ -21,8 +21,6 @@
 #' [forester::Leijon_1979_SI_translation_Spruce_to_Pine_2]
 #' [forester::Leijon_1979_SI_translation_Spruce_to_Pine_3]
 #' @export
-#'
-#' @examples
 Leijon_1979_SI_translation_Pine_to_Spruce_1 <- function(
   SI_Pine
 ){

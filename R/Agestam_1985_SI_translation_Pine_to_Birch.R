@@ -20,8 +20,6 @@
 #'
 #' @return SI H100 Birch, meters.
 #' @export
-#'
-#' @examples
 Agestam_1985_SI_translation_Pine_to_Birch <- function(
   SI_Pine
 ){

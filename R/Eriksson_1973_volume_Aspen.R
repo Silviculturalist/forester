@@ -10,8 +10,7 @@
 #'
 #' @return Volume, dm3
 #' @export
-#'
-#' @examples
+
 Eriksson_1973_volume_Aspen <- function(
   diameter_cm,
   height_m

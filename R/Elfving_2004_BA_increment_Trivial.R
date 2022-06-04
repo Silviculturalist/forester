@@ -41,8 +41,7 @@
 #'
 #' @return The 5 - year increase of Basal Area (m^2)
 #' @export
-#'
-#' @examples
+
 Elfving_2004_BA_increment_Trivial <- function(
   diameter_cm,
   BA_sum_of_trees_with_larger_diameter,

@@ -22,8 +22,7 @@
 #'
 #' @return Volume on bark cu. m. / ha.
 #' @export
-#'
-#' @examples
+
 Persson_1992_volume_Pine <- function(
   basal_area_above_bark,
   dominant_height_m,

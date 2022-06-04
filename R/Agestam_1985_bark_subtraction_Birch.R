@@ -23,8 +23,7 @@
 #'
 #' @return Bark area at breast height, Birch, m2/ha.
 #' @export
-#'
-#' @examples
+
 Agestam_1985_bark_subtraction_Birch <- function(
   basal_area_above_bark_Birch,
   age_at_breast_height,

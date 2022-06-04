@@ -29,8 +29,6 @@
 #'
 #' @return List of weights, in g.
 #' @export
-#'
-#' @examples
 Petersson_1999_biomass <- function(species,
                                    diameter.cm,
                                    height.m,

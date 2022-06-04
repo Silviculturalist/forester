@@ -26,8 +26,7 @@
 #'
 #' @return Annual basal area growth under bark for Spruce. m2/ha.
 #' @export
-#'
-#' @examples
+
 Agestam_1985_basal_area_annual_increment_under_bark_Spruce <- function(
   basal_area_Spruce_m2_ha_after_thinning,
   stem_count_Spruce,

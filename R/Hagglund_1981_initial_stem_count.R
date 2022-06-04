@@ -17,8 +17,6 @@
 #' 2. Multiple Coefficient of Correlation for used function.
 #' 3. Spread about the function, m^2/ha.
 #' @export
-#'
-#' @examples
 Hagglund_1981_initial_stem_count <- function(
   SI,
   altitude_m,

@@ -16,8 +16,6 @@
 #'
 #' @return Basal area weighted mean diameter
 #' @export
-#'
-#' @examples
 Pettersson_1992_BA_weighted_mean_diameter_after_PCT_Spruce <- function(
   dominant_height,
   diameter_mean_basal_area_stem

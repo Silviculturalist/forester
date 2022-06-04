@@ -20,8 +20,6 @@
 #'
 #' @return Basal area at the end of the period, m2/ha.
 #' @export
-#'
-#' @examples
 Persson_1992_average_basal_area_Pine <- function(
   SI,
   dominant_height_m

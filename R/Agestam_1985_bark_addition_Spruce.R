@@ -21,8 +21,7 @@
 #'
 #' @return Basal area bark at breast height, m2/ha.
 #' @export
-#'
-#' @examples
+
 Agestam_1985_bark_addition_Spruce <- function(
   basal_area_under_bark_Spruce,
   SI_Spruce

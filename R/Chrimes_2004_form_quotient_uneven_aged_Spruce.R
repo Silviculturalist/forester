@@ -12,8 +12,6 @@
 #'
 #' @return Form quotient
 #' @export
-#'
-#' @examples
 Chrimes_2004_form_quotient_uneven_aged_Spruce <- function(
   diameter_cm,
   stand_basal_area_m2_ha

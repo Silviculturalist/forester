@@ -16,8 +16,6 @@
 #'
 #' @return Total basal area production before first thinning m2 /ha.
 #' @export
-#'
-#' @examples
 Pettersson_1992_total_BA_production_before_first_thinning_Spruce <- function(
   basal_area_before_first_thinning
 ){

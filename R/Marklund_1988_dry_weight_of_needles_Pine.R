@@ -13,8 +13,6 @@
 #'
 #' @return Dry weight of needles in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_needles_Pine <- function(
   diameter.cm,
   height.m,

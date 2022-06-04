@@ -16,8 +16,6 @@
 #'
 #' @return Annual increment in basal area under bark per hectare, m2.
 #' @export
-#'
-#' @examples
 Eriksson_1976_volume_increment_under_bark_Spruce <- function(basal_area_ha_before_thinning.m2,
                                                             site_index,
                                                             thinning_percent_ba_under_bark,

@@ -9,8 +9,6 @@
 #'
 #' @return Mean height of the Oak stand, in meters.
 #' @export
-#'
-#' @examples
 Carbonnier_1975_mean_height_before_thinning_Oak <- function(
   dominant_height_m,
   stems

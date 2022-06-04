@@ -13,8 +13,6 @@
 #'
 #' @return Dry weight of roots above 5 cm diameter, in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_roots_above_5 <- function(
   diameter.cm,
   SI,

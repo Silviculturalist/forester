@@ -7,8 +7,6 @@
 #'
 #' @return Annual self thinning in basal area over bark per hectare, m2.
 #' @export
-#'
-#' @examples
 Eriksson_1976_self_thinning <- function(number_trees_per_ha_period_start, dominant_height_m, SI){
 
   dominant_height_dm <- dominant_height_m*10

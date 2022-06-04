@@ -13,8 +13,6 @@
 #'
 #' @return Volume, in dm3.
 #' @export
-#'
-#' @examples
 Brandel_1990_volume_Pine <- function(
   diameter_cm,
   height_m,

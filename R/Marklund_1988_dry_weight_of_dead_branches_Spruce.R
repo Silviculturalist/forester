@@ -10,8 +10,6 @@
 #'
 #' @return Dry weight of dead branches for a Spruce, kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_dead_branches_Spruce <- function(
   diameter.cm,
   height.m,

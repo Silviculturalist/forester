@@ -27,8 +27,6 @@
 #'
 #' @return mm, Double bark thickness.
 #' @export
-#'
-#' @examples
 Jonsson_1980_bark_diameter_under_bark_Spruce_5_200 <- function(
   jonson_bonitet,
   diameter_at_breast_height,

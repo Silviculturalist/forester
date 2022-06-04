@@ -27,8 +27,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 Eriksson_1997_height_trajectory_Sweden_Birch <- function(
   dominant_height,
   age,

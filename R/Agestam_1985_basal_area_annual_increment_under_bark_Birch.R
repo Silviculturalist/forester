@@ -23,8 +23,6 @@
 #'
 #' @return Annual basal area growth under bark for Birch. m2/ha.
 #' @export
-#'
-#' @examples
 Agestam_1985_basal_area_annual_increment_under_bark_Birch <- function(
   basal_area_Birch_m2_ha_after_thinning,
   stem_count_Birch,

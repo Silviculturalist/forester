@@ -31,8 +31,6 @@
 #'
 #' @return Basal area weighted diameter, in cm.
 #' @export
-#'
-#' @examples
 Pettersson_1992_young_stands_mean_diameter_x_trees_Pine <- function(
   dominant_height,
   diameter_mean_basal_area_stem,

@@ -31,8 +31,6 @@
 #'
 #' @return mm, diameter increment during five years.
 #' @export
-#'
-#' @examples
 Jonsson_1980_five_year_increment_under_bark_Pine_5_60 <- function(
   jonson_bonitet,
   diameter_at_breast_height,

@@ -18,10 +18,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
-
-
 Liziniewicz_2016_height_trajectory_Sweden_Pinus_contorta <- function(
   dominant_height,
   age,

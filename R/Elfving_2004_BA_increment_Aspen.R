@@ -44,8 +44,6 @@
 #'
 #' @return The 5 - year increase of Basal Area (m^2)
 #' @export
-#'
-#' @examples
 Elfving_2004_BA_increment_Aspen <- function(
   diameter_cm,
   Basal_area_weighted_mean_diameter_cm,

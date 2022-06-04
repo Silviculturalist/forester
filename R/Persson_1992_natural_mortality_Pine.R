@@ -36,8 +36,6 @@
 #'
 #' @return Annual mortality, basal area on bark + 0.01 m2/ha/yr.
 #' @export
-#'
-#' @examples
 Persson_1992_natural_mortality_Pine <- function(
   basal_area_above_bark,
   dominant_height_m,

@@ -17,8 +17,6 @@
 #'
 #' @return Basal area increment percentage according to compound interest.
 #' @export
-#'
-#' @examples
 Carbonnier_1975_compound_basal_area_growth_Oak <- function(
   SIH100,
   silt_fraction,

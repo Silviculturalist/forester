@@ -10,8 +10,6 @@
 #'
 #' @return Volume of tree, dm3.
 #' @export
-#'
-#' @examples
 Carbonnier_1954_volume_Larch <- function(
   diameter_cm,
   height_m

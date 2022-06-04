@@ -19,8 +19,6 @@
 #'
 #' @return Diameter increment per annum, cm.
 #' @export
-#'
-#' @examples
 Braastad_1974_BA_increment_Norway_Norway_Spruce <- function(
   SIH40,
   age,

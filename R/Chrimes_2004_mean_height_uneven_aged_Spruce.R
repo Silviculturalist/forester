@@ -15,8 +15,6 @@
 #'
 #' @return Height of tree, metres.
 #' @export
-#'
-#' @examples
 Chrimes_2004_mean_height_uneven_aged_Spruce <- function(diameter_cm){
   return(
 

@@ -20,7 +20,6 @@
 #' @return Over bark Basal area increment for a class. m2/ha/yr
 #' @export
 #'
-#' @examples
 Chrimes_2004_basal_area_increment_uneven_aged_Spruce <- function(
   diameter_cm,
   residual_stand_basal_area_m2_ha,

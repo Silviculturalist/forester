@@ -20,8 +20,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 Petersson_Stahl_2006_below_ground_biomass_Pine <- function(
   diameter.cm,
   age_at_breast_height,

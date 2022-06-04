@@ -12,8 +12,6 @@
 #'
 #' @return Basal Area Increment, Percent.
 #' @export
-#'
-#' @examples
 Braastad_1977_BA_increment_percent_Norway_Pine <- function(
   SIH40,
   total_stand_age,

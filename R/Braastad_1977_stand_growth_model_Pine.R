@@ -15,9 +15,7 @@
 #' @param BA_m2_ha_MAX Optional. Default = NULL. Provide an upper limit to Basal Area after thinning given in m2/ha.
 #'
 #' @return
-#' @export
-#'
-#' @examples
+
 Braastad_1977_stand_growth_model_Pine <- function(
   SIH40,
   Age,

@@ -8,8 +8,6 @@
 #'
 #' @return Form Height
 #' @export
-#'
-#' @examples
 Eriksson_1976_form_height <- function(dominant_height_dm, SI, diameter_of_mean_basal_area_over_bark_cm){
 
   if(SI<=17.9){

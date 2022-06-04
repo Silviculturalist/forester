@@ -27,8 +27,6 @@
 #'
 #' @export
 #' @md
-#'
-#' @examples
 Hagglund_age_to_height <-  function(
   latitude,
   SI,

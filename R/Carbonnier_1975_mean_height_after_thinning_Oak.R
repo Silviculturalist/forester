@@ -10,8 +10,6 @@
 #'
 #' @return Mean height of the Oak stand, in meters.
 #' @export
-#'
-#' @examples
 Carbonnier_1975_mean_height_after_thinning_Oak <- function(
   Loreys_mean_height_before_thinning,
   basal_area_weighted_mean_diameter_cm_before_thinning,

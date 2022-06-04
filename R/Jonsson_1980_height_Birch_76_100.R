@@ -28,8 +28,6 @@
 #'
 #' @return mm, diameter increment during five years.
 #' @export
-#'
-#' @examples
 Jonsson_1980_height_Birch_76_100 <- function(
   jonson_bonitet,
   diameter_at_breast_height,

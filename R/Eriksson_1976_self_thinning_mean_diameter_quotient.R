@@ -12,8 +12,6 @@
 #'
 #' @return Quotient D4/D1.
 #' @export
-#'
-#' @examples
 Eriksson_1976_self_thinning_mean_diameter_quotient <- function(dominant_height_m){
   return(
     0.039*(dominant_height_m*10)^0.517

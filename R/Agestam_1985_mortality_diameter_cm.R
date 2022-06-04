@@ -10,8 +10,6 @@
 #'
 #' @return Basal area weighted mean diameter of dead trees, in cm.
 #' @export
-#'
-#' @examples
 Agestam_1985_mortality_diameter_cm <- function(
   species,
   age_at_breast_height,

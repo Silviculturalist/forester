@@ -35,8 +35,7 @@
 #'
 #' @return A list with elements (1) : Stocking, varying between 0-1, and (2): Young stand quality W.
 #' @export
-#'
-#' @examples
+
 Elfving_1992_stocking_cultivated_regeneration <- function(
   latitude,
   altitude,

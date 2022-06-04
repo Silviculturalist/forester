@@ -16,8 +16,6 @@
 #'
 #' @return Lorey's Mean Height
 #' @export
-#'
-#' @examples
 Pettersson_1992_mean_height_Lorey_after_PCT_Pine <- function(
   dominant_height,
   stems

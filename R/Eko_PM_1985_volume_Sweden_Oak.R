@@ -26,8 +26,6 @@
 #'
 #' @return m3sk.
 #' @export
-#'
-#' @examples
 Eko_PM_1985_volume_Sweden_Oak <- function(
   basal_area.m2,
   basal_area_other_species,

@@ -10,8 +10,6 @@
 #' @return List, with element 1: Total production in cubic metres; element 2:
 #' Mean Annual Increment.
 #' @export
-#'
-#' @examples
 Jonson_1914_total_production <- function(stand_age, stand_mean_height,species){
 
   #total production

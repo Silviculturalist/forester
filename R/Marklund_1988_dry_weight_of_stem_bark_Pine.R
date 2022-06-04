@@ -10,8 +10,6 @@
 #'
 #' @return Dry weight of Pine stem above bark in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_stem_bark_Pine <- function(
   diameter.cm,
   height.m,

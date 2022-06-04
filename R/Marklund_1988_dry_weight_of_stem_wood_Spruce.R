@@ -8,8 +8,6 @@
 #'
 #' @return Dry weight of stem wood for Spruce, in kilograms.
 #' @export
-#'
-#' @examples
 
 Marklund_1988_dry_weight_of_stem_wood_Spruce <- function(
   diameter.cm,

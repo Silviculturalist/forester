@@ -9,8 +9,7 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
+
 Eriksson_1976_basal_area_before_first_thinning <- function(dominant_height_m, number_of_trees_per_ha,planted){
 
   b <- ifelse(planted,0.355,0.319)

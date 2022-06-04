@@ -22,8 +22,7 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
+
 Johansson_2013_height_trajectory_Sweden_Oak <- function(
   dominant_height,
   age,

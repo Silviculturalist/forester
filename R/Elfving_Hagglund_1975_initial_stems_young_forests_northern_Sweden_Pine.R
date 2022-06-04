@@ -34,8 +34,6 @@
 #'
 #' @return Stems thicker than 2.5 cm per ha.
 #' @export
-#'
-#' @examples
 Elfving_Hagglund_1975_initial_stems_young_forests_northern_Sweden_Pine<- function(
   latitude,
   altitude,

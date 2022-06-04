@@ -23,8 +23,6 @@
 #'
 #' @return Volume Pine m3sk/ha.
 #' @export
-#'
-#' @examples
 Agestam_1985_volume_Pine_SI <- function(
   basal_area_Pine_m2_ha,
   SI_Pine_m,

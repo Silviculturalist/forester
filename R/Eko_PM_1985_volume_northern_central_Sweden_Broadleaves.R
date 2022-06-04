@@ -28,8 +28,6 @@
 #'
 #' @return m3sk.
 #' @export
-#'
-#' @examples
 Eko_PM_1985_volume_northern_central_Sweden_Broadleaves <- function(
   basal_area.m2,
   basal_area_other_species,

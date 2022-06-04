@@ -16,8 +16,6 @@
 #'
 #' @return Number of living stems per hectare after PCT
 #' @export
-#'
-#' @examples
 Pettersson_1992_living_stems_after_PCT_Spruce <- function(
   dominant_height,
   stems

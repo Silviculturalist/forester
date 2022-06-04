@@ -16,8 +16,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 Elfving_2003_height_trajectory_Sweden_Spruce <- function(
   dominant_height,
   age,

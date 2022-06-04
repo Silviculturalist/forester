@@ -14,8 +14,6 @@
 #'
 #' @return dry weight of roots above 5 cm, kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_roots_above_5_Spruce <- function(
   diameter.cm,
   dominant_species,

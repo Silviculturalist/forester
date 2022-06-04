@@ -22,8 +22,6 @@
 #'
 #' @return numeric. Height at reference age in metres.
 #' @export
-#'
-#' @examples
 Allen_2020_height_development_Norway_spruce <- function(dominant_height,
                                                         stand_age,
                                                         ref_age){

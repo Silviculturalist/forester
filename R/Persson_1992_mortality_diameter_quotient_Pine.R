@@ -21,8 +21,7 @@
 #'
 #' @return Ratio between the diameter of self-thinned stems and the diameter of the remaining stems.
 #' @export
-#'
-#' @examples
+
 Persson_1992_mortality_diameter_quotient_Pine <- function(
   dominant_height_m,
   stems,

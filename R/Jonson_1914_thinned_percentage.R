@@ -11,8 +11,6 @@
 #'
 #' @return Percent thinned of total volume.
 #' @export
-#'
-#' @examples
 Jonson_1914_thinned_percentage <- function(stand_age){
   return(
     9*(stand_age-29)^(1/3)

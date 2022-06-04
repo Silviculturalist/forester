@@ -25,8 +25,6 @@
 #' [forester::Leijon_1979_SI_translation_Spruce_to_Pine_3]
 #'
 #' @export
-#'
-#' @examples
 Leijon_1979_SI_translation_Spruce_to_Pine_2 <- function(
   SI_Spruce,
   latitude,

@@ -14,8 +14,6 @@
 #'
 #' @return Mean stem diameter, cm.
 #' @export
-#'
-#' @examples
 Carbonnier_1975_initial_stand_mean_diameter <- function(
   stems,
   dominant_height_m

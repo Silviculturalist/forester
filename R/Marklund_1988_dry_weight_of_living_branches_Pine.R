@@ -15,8 +15,6 @@
 #'
 #' @return Dry weight of living branches for a Pine tree, in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_living_branches_Pine<- function(
   diameter.cm,
   height.m,

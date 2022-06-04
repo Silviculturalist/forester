@@ -23,8 +23,6 @@
 #'
 #' @return Volume Birch m3sk/ha.
 #' @export
-#'
-#' @examples
 Agestam_1985_volume_Birch_height <- function(
   basal_area_Birch_m2_ha,
   dominant_height_Birch_m,

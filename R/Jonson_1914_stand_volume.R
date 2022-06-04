@@ -12,8 +12,6 @@
 #'
 #' @return Stand volume, cubic metres.
 #' @export
-#'
-#' @examples
 Jonson_1914_stand_volume <- function(stand_mean_height,species="Pinus
                                       sylvestris"){
 

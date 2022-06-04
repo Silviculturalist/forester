@@ -18,8 +18,6 @@
 #'
 #' @return Dry weight of stump and roots, in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_dry_weight_of_stump_and_roots_Pine <- function(
   diameter.cm,
   dominant_species,

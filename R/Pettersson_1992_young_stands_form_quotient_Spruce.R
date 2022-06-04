@@ -19,8 +19,7 @@
 #'
 #' @return Form quotient
 #' @export
-#'
-#' @examples
+
 Pettersson_1992_young_stands_form_quotient_Spruce <- function(
   dominant_height,
   initial_stems,

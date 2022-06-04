@@ -64,8 +64,6 @@
 #'
 #' @return Basal area growth over bark during the five year growth period.
 #' @export
-#'
-#' @examples
 Eko_PM_1985_basal_area_5_year_increment_southern_Sweden_Broadleaves <- function(
   basal_area.m2,
   stem_number_ha,

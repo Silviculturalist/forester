@@ -18,8 +18,6 @@
 #'
 #' @return Basal area weighted diameter, in cm.
 #' @export
-#'
-#' @examples
 Pettersson_1992_young_stands_BA_weighted_diameter_Spruce <- function(
   dominant_height,
   diameter_mean_basal_area_stem

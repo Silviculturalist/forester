@@ -18,8 +18,6 @@
 #'
 #' @return Living stems per hectare after thinning
 #' @export
-#'
-#' @examples
 Pettersson_1992_form_quotient_after_PCT_Pine <- function(
   stems,
   dominant_height,

@@ -10,8 +10,6 @@
 #'
 #' @return Volume of the BA weighted mean tree (m3).
 #' @export
-#'
-#' @examples
 Braastad_1974_QMD_tree_volume_Norway_Norway_Spruce <- function(
   diameter_cm,
   height_m

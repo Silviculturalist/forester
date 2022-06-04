@@ -10,8 +10,6 @@
 #'
 #' @return Dry weight of living branches, in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_living_branches_Birch <- function(
   diameter.cm,
   height.m,

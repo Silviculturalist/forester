@@ -15,8 +15,6 @@
 #'
 #' @return Basal Area m2 / ha.
 #' @export
-#'
-#' @examples
 Braastad_1974_initial_Basal_area_Norway_Spruce <- function(
   SIH40,
   stems_per_ha,

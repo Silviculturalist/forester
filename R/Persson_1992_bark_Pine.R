@@ -22,8 +22,6 @@
 #'
 #' @return Bark Area, m2/ha.
 #' @export
-#'
-#' @examples
 Persson_1992_bark_Pine <- function(
   basal_area_above_bark,
   SI,

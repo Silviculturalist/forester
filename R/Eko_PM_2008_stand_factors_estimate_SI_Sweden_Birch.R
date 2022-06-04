@@ -51,8 +51,6 @@
 #'
 #' @return Site Index for Birch H50
 #' @export
-#'
-#' @examples
 Eko_PM_2008_stand_factors_estimate_SI_Sweden_Birch <- function(
   altitude,
   latitude,

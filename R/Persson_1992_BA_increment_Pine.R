@@ -25,8 +25,6 @@
 #'
 #' @return Annual basal area increment under bark, m2/ha/yr
 #' @export
-#'
-#' @examples
 Persson_1992_BA_increment_Pine <- function(
   basal_area_after_thinning,
   age_at_breast_height,

@@ -22,8 +22,7 @@
 #'
 #' @return Bark area at breast height for Pine, m2/ha.
 #' @export
-#'
-#' @examples
+
 Agestam_1985_bark_subtraction_Pine <- function(
   basal_area_over_bark_Pine,
   SI_Pine,

@@ -8,8 +8,6 @@
 #'
 #' @return Form factor for stand.
 #' @export
-#'
-#' @examples
 Carbonnier_1975_form_factor_Oak <- function(
   Lorey_mean_height
 ){

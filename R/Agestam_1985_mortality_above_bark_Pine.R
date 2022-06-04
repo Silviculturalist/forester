@@ -21,8 +21,7 @@
 #'
 #' @return m2/ha mortality above bark per annum.
 #' @export
-#'
-#' @examples
+
 Agestam_1985_mortality_above_bark_Pine <- function(
   stems_Pine_ha,
   basal_area_above_bark_all_species,

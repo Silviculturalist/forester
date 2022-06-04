@@ -43,8 +43,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 Johansson_1999_height_trajectory_Sweden_Alnus_glutinosa <- function(
   dominant_height,
   age,

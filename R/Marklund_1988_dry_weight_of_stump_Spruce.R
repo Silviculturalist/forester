@@ -8,8 +8,6 @@
 #'
 #' @return Dry weight stump for Spruce, in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_stump_Spruce <- function(
   diameter.cm,
   dominant_species,

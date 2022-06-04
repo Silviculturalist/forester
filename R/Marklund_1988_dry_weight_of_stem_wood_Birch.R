@@ -8,8 +8,6 @@
 #'
 #' @return Dry weight of stem wood, in kilograms.
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_stem_wood_Birch <- function(
   diameter.cm,
   height.m,

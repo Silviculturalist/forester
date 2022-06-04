@@ -10,8 +10,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_stem_bark_Spruce <-  function(
   diameter.cm,
   height.m,

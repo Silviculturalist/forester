@@ -47,8 +47,6 @@
 #'
 #' @return Volume distribution for stands of Norway Spruce after PCT
 #' @export
-#'
-#' @examples
 Pettersson_1992_volume_distribution_after_PCT_Spruce <- function(
   diameter_mean_basal_area_stem,
   stems,

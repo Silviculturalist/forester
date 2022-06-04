@@ -20,8 +20,7 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
+
 Elfving_Kiviste_1997_height_trajectory_Sweden_Pine <- function(
   dominant_height,
   age,

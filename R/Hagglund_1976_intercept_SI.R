@@ -62,8 +62,6 @@
 #'
 #' @return SI H100
 #' @export
-#'
-#' @examples
 Hagglund_1976_intercept_SI <- function(
   species,
   intercept_2.5_5.m,

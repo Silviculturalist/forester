@@ -9,8 +9,6 @@
 #'
 #' @return A list containing two elements: i) Lorey's Mean height. ii) Basal Area m2 per hectare.
 #' @export
-#'
-#' @examples
 Braastad_1977_initial_stand_Norway_Pine <- function(
   dominant_height,
   stand_total_age,

@@ -13,8 +13,6 @@
 #'
 #' @return Dry weight of stump and roots for Spruce from Marklund 1988
 #' @export
-#'
-#' @examples
 Marklund_1988_dry_weight_of_stump_and_roots_Spruce <- function(
   diameter.cm,
   dominant_species,

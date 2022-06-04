@@ -11,8 +11,7 @@
 #'
 #' @return Stem Volume over bark in m^3.
 #' @export
-#'
-#' @examples
+
 Johnsson_1953_volume_hybrid_aspen <- function(
   diameter.cm,
   height.m

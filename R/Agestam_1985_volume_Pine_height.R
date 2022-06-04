@@ -22,8 +22,6 @@
 #'
 #' @return Volume Pine m3sk/ha.
 #' @export
-#'
-#' @examples
 Agestam_1985_volume_Pine_height <- function(
   basal_area_Pine_m2_ha,
   dominant_height_Pine_m,
