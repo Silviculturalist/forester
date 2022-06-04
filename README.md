@@ -14,6 +14,12 @@ For git interaction with R, <https://happygitwithr.com/index.html>
 
 As a GIT client, I use: <https://www.gitkraken.com>
 
+## News: 
+
+Ongoing: Variable renaming, e.g. issue #39. Common abbreviations can be useful. Variables names should include unit. New naming convention where name is followed by '\<varname\>.\<unit\>' .
+
+Saturday 04 June 2022 : Massive restructuring of Söderbergs 1986, 1992 functions for individual tree species.
+
 ## Downloading and Installing from Github
 
 I have started a git repository on Github from which anyone can download my R-package (in development), suggest edits or point out issues: <https://github.com/Silviculturalist/forester>
