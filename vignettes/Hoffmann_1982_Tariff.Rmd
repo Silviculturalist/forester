@@ -13,19 +13,26 @@ Hoffmann, C. 1982. Die Berechnung von Tarifen für die Waldinventur. Reports. 23
 
 Data.
 
-```{r out.width='50%'}
+```{r fig.asp=2, message=FALSE, warning=FALSE, out.width='50%'}
 library(tidyverse)
-#data("Hoffmann_1982") #Included with forester package.
+library(forester)
+
+data("Hoffmann_1982") #Included with forester package.
 
 colnames(Hoffmann_1982) <- c("Diameter_cm","Volume")
 
-nls(Volume~exp(a1)*(Diameter_cm^a2)*exp(a3*log(Diameter_cm)^4),data = Hoffmann_1982,start = c(a1=-3,a2=3,a3=-0.05))
+# nls(Volume~exp(a1)*(Diameter_cm^a2)*exp(a3*log(Diameter_cm)^4),data = Hoffmann_1982,start = c(a1=-3,a2=3,a3=-0.05))
 
 
 Hoffmann_1982 %>% ggplot(aes(x=Diameter_cm,y=Volume))+
-                           geom_point()+
-                           geom_function(fun= function(x) exp(-9.687304) * (x^2.981208) * exp(-0.004043 * log(x)^4) )+
   labs(y=expression(Volume~m^3),
-       x=expression(Diameter~at~breast~height~"(cm)"))
+         x=expression(Diameter~at~breast~height~"(cm)"))+
+  scale_x_continuous(trans="log",lim=c(0.01,100),breaks=c(5,10,20,30,40,50,70,100))+
+  scale_y_continuous(trans="log",lim=c(0.01,10),breaks=c(0.02,0.03,0.05,0.1,0.2,0.3,0.5,1,2,3,5,7))+
+  geom_point()+
+  coord_cartesian(xlim=c(5,100),ylim=c(0.02,9))+
+  geom_function(fun= function(x) exp(-9.687304) * (x^2.981208) * exp(-0.004043 * log(x)^4))+
+  theme_classic()
+
 
 ```

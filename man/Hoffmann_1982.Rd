@@ -18,6 +18,8 @@ A data frame with columns:
 Hoffmann_1982
 }
 \description{
-To work this out for yourself, look at the forester vignette: vignette("Hoffmann_1982_Tariff.Rmd")
+This data has been digitalised by hand after figure 2 from the
+source. To work this out for yourself, look at the forester vignette:
+vignette("Hoffmann_1982_Tariff.Rmd")
 }
 \keyword{datasets}
