@@ -1,0 +1,31 @@
+---
+title: "Hoffmann Tariff Tables"
+author: "Carl Vigren"
+date: '2022-06-14'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Hoffmann, C. 1982. Die Berechnung von Tarifen für die Waldinventur. Reports. 236. Swiss Federal Institute of Forestry Research. CH-8903 Birmensdorf. Sonderdruck aus Forstwissenschaftliches Centralblatt 101 (1982), 1:24-36. Available Online (14th June 2022): [Here](https://www.dora.lib4ri.ch/wsl/islandora/object/wsl%3A14464/datastream/PDF/Hoffmann-1982-Die_Berechnung_von_Tarifen_für-%28published_version%29.pdf)
+
+Data.
+
+```{r out.width='50%'}
+library(tidyverse)
+#data("Hoffmann_1982") #Included with forester package.
+
+colnames(Hoffmann_1982) <- c("Diameter_cm","Volume")
+
+nls(Volume~exp(a1)*(Diameter_cm^a2)*exp(a3*log(Diameter_cm)^4),data = Hoffmann_1982,start = c(a1=-3,a2=3,a3=-0.05))
+
+
+Hoffmann_1982 %>% ggplot(aes(x=Diameter_cm,y=Volume))+
+                           geom_point()+
+                           geom_function(fun= function(x) exp(-9.687304) * (x^2.981208) * exp(-0.004043 * log(x)^4) )+
+  labs(y=expression(Volume~m^3),
+       x=expression(Diameter~at~breast~height~"(cm)"))
+
+```

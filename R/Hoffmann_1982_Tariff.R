@@ -1,0 +1,18 @@
+#' Tariff functions following Hoffmann 1982.
+#'
+#' @source Hoffmann, C. 1982. Die Berechnung von Tarifen für die Waldinventur.
+#' Reports. 236. Swiss Federal Institute of Forestry Research. CH-8903
+#' Birmensdorf. Sonderdruck aus Forstwissenschaftliches Centralblatt 101 (1982),
+#'  1:24-36. Available Online (14th June 2022): \url{https://www.dora.lib4ri.ch/wsl/islandora/object/wsl%3A14464/datastream/PDF/Hoffmann-1982-Die_Berechnung_von_Tarifen_für-%28published_version%29.pdf}
+#'
+#'@format A data frame with columns:
+#'\describe{
+#' \item{DBH_cm}{Diameter at breast height 1.3 metres for measured trees, in cm.}
+#' \item{Volumem3}{Volume of the measured trees, in cu.m.}
+#' }
+#'
+#'@description This data has been digitalised by hand after figure 2 from the
+#'source. To work this out for yourself, look at the forester vignette:
+#' vignette("Hoffmann_1982_Tariff.Rmd")
+#'
+"Hoffmann_1982"
