@@ -18,9 +18,11 @@ As a GIT client, I use: <https://www.gitkraken.com>
 
 Ongoing: Variable renaming, e.g. issue #39. Common abbreviations can be useful. Variables names should include unit. New naming convention where name is followed by '\<varname\>.\<unit\>' .
 
-Saturday 04 June 2022 : Massive restructuring of Söderbergs 1986, 1992 functions for individual tree species.
+Thursday 07 July 2022: SIS_est() for calculating site index from stand factors (Hägglund, B. & Lundmark, J-E. 1979) is no longer exported due to large errors in calculation).
 
 Tuesday 14 June 2022: Example vignette introducing the Hoffmann_1982 dataset for constructing secondary volume functions (Tariff functions).
+
+Saturday 04 June 2022 : Massive restructuring of Söderbergs 1986, 1992 functions for individual tree species.
 
 ## Downloading and Installing from Github
 
