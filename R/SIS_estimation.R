@@ -19,7 +19,7 @@
 #' @param ditched TRUE/FALSE if affected by ditching.
 #' @param climate_code Optional, else from lat, lon.
 #' @param county Optional, else from lat/lon
-#' @export
+
 #'
 #' @return Site index, in metres.
 #' @examples
