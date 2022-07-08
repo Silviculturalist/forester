@@ -22,7 +22,7 @@ Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(
 \arguments{
 \item{dominant_height}{height of tree or stand in m.}
 
-\item{age}{Age of stand or tree at breast height 1.3 m.}
+\item{age}{Age of stand or tree at *breast height 1.3 m.*}
 
 \item{age2}{Necessary if output is "Height". The age for which height along the same curve is to be computed.}
 
@@ -51,6 +51,13 @@ print a matrix for height developments.
 \details{
 OBSERVE! Will throw warnings if outside of material, but not stop.
 
+OBSERVE! The SIH100 returned is H100 TOTAL AGE, whereas if you enter age2 as 100 it is age at breast height.
+
+In order to calculate Height at another point in time (age2 at breast height) based on a SIH100 total age (age1 total age) - subtract the time to breast height from age1.
+e.g. From Total Age 100, H=16 to age at breast height age2.
+Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(16,age=100-forester::Hagglund_1972_Norway_Spruce_time_to_BH_northern_Sweden(16,1,61),age2=140,61,1)
+
+
 Based on the Chapman-Richards function.
 }
 \examples{
@@ -69,4 +76,7 @@ ggplot()+
   ylim(c(0,30))
 
 
+}
+\seealso{
+[forester::Hagglund_1972_Norway_spruce_time_to_BH_northern_Sweden()]
 }
