@@ -49,6 +49,12 @@ print a matrix for height developments.
 OBSERVE! Will throw warnings if outside of material, but not stop.
 
 Based on the Chapman-Richards function. f.4.1
+
+OBSERVE! The SIH100 returned is H100 TOTAL AGE, whereas if you enter age2 as 100 and output == "Height", it is age at breast height.
+Example below analogous from Spruce.
+In order to calculate Height at another point in time (age2 at breast height) based on a SIH100 total age (age1 total age) - subtract the time to breast height from age1.
+e.g. From Total Age 100, H=16 to age at breast height age2.
+Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(16,age=100-forester::Hagglund_1972_Norway_Spruce_time_to_BH_northern_Sweden(16,1,61),age2=140,61,1)
 }
 \examples{
 ggplot()+
@@ -93,4 +99,7 @@ annotate("text",x=115, y=26,label="24",size=3)+
 annotate("text",x=115, y=24, label="22", size=3)+
 annotate("text",x=115, y=22, label="20",size=3)+
 annotate("text",x=115, y=18, label="16",size=3)
+}
+\seealso{
+[forester::Hagglund_1974_Sweden_Time_to_Breast_Height_Pine]
 }

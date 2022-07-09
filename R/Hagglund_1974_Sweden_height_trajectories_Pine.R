@@ -9,9 +9,18 @@
 #'
 #' Based on the Chapman-Richards function. f.4.1
 #'
+#' OBSERVE! The SIH100 returned is H100 TOTAL AGE, whereas if you enter age2 as 100 and output == "Height", it is age at breast height.
+#' Example below analogous from Spruce.
+#' In order to calculate Height at another point in time (age2 at breast height) based on a SIH100 total age (age1 total age) - subtract the time to breast height from age1.
+#' e.g. From Total Age 100, H=16 to age at breast height age2.
+#' Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(16,age=100-forester::Hagglund_1972_Norway_Spruce_time_to_BH_northern_Sweden(16,1,61),age2=140,61,1)
+
+#'
 #' @source Hägglund, Björn (1974) Övre höjdens utveckling i tallbestånd:
 #' Site index curves for Scots Pine in Sweden. Dept.
 #'  of Forest Yield Research. Royal College of Forestry. Report 31. 54 pp. Stockholm.
+#'
+#' @seealso [forester::Hagglund_1974_Sweden_Time_to_Breast_Height_Pine]
 #' @param dominant_height Top height of tree or stand in m.
 #' @param age Age of stand or tree at breast height 1.3 m.
 #' @param age2 Necessary if output is "Height". The age for which height along

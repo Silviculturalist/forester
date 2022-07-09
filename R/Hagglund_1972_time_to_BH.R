@@ -103,10 +103,8 @@ Hagglund_1972_Norway_Spruce_time_to_BH_northern_Sweden <- function(H100TotalAge,
 #'ggplot()+xlim(c(0,100))+geom_function(fun=function(x) Hagglund_1973_southern_Sweden_Height_trajectories_Spruce(28,age=100-Hagglund_1973_Norway_Spruce_time_to_BH_southern_Sweden(28),age2=x))+geom_point(aes(x=seq(10,100,10),y=c(55,100,140,175,204,228,248,264,277,288)/10))+xlab("Age at breast height")+ylab("Dominant Height, m")
 Hagglund_1973_Norway_Spruce_time_to_BH_southern_Sweden <- function(H100TotalAge){
   top_height_dm <- H100TotalAge*10
-
-
-
   top_height_dm <- top_height_dm - 13
+  age = 100
 
 
 

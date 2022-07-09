@@ -7,6 +7,7 @@
                         Tuesday 14 June: New data & vignette available! ?Hoffmann_1982 \n
                         Thursday 7 July: Large errors found in SIS_est() for Hägglund, B. & Lundmark J-E ståndortsboniteringssystem. Therefore no longer exported until resolved.\n
                         Friday 8 July: Strong clarifications of Hägglund 1972 & 1973 functions, which took age at breast height and reported Site Index as total age.\n
-                                       Introduced functions to calculate Time to Breast height for these functions."
+                                       Introduced functions to calculate Time to Breast height for these functions.\n
+                        Saturday 9 July: Analogues to previous change on Friday 8 July also for Hägglunds function for Scots Pine (1974)."
                         )
 }

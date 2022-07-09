@@ -18,6 +18,10 @@ As a GIT client, I use: <https://www.gitkraken.com>
 
 Ongoing: Variable renaming, e.g. issue #39. Common abbreviations can be useful. Variables names should include unit. New naming convention where name is followed by '\<varname\>.\<unit\>' .
 
+Saturday 9 July: Analogues to previous change on Friday 8 July also for Hägglunds function for Scots Pine (1974).
+
+Friday 8 July: Strong clarifications of Hägglund 1972 & 1973 functions, which took age at breast height and reported Site Index as total age.
+
 Thursday 07 July 2022: SIS_est() for calculating site index from stand factors (Hägglund, B. & Lundmark, J-E. 1979) is no longer exported due to large errors in calculation).
 
 Tuesday 14 June 2022: Example vignette introducing the Hoffmann_1982 dataset for constructing secondary volume functions (Tariff functions).
