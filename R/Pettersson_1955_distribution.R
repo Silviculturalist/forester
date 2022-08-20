@@ -57,3 +57,36 @@ PhiTable <- function(Phi){
     )
   )
 }
+
+
+## Stem quota through low-thinning
+# uPrim is the quota by which we pull the left-most end of the normal distribution to the right.
+
+stemquota <- function(uPrim){
+  return(
+    uPrim*exp(-(4.5*(1-uPrim))/(1+uPrim))
+  )
+}
+
+#Abbreviations Definitions at p. 229.
+
+#Effect of low thinning on total number of stems.. 12.3.3.
+#Phi1 and Phi2 are the parts of the distribution to the right of i - which is set to be equal.
+#Phi2 then becomes Phi1/uPrim. ... 12.2.3 p.93.
+#PsiPrim is the through-thinning (genomgallring..) strength.
+lowThinningStemQuota <- function(uPrim, Phi1, PsiPrim){
+
+  stemquote <- stemquota(uPrim)
+
+  BigFPhi1 <- PhiTable(Phi1)$Fphi
+
+  Phi2 <- Phi1/uPrim
+
+  BigFPhi2 <- PhiTable(Phi2)$Fphi
+  return(
+    stemquote*(BigFPhi2/BigFPhi1)*PsiPrim
+  )
+}
+
+
+
