@@ -9,7 +9,8 @@
 #' From functions relating easily gathered information to a fitted stem and
 #' volume distribution respectively, a skewed normal distribution is estimated.
 #' From an expanded series, the frequency of each class is then calculated.
-#' N.B. The values from this function seems to differ from the original output.
+#'
+#' @details TESTED ONLY FOR 2 CM class width!
 #'
 #' @param age Stand age at breast height (1.3 m)
 #' @param dominant_height Dominant height, in metres.
@@ -28,6 +29,7 @@ Eriksson_1976_volume_frequency <- function(
   dominant_height,
   QMD,
   volume,
+  stems,
   class_width_cm=2,
   class_middle=1.5
   ){
@@ -43,50 +45,34 @@ Eriksson_1976_volume_frequency <- function(
   #Coefficient of excess for the volume distribution
   volume_excess <- 4.851*((volume_asymmetry+3)^-0.387)-3
 
-  #Expansion of the normal distribution
-  phi_0 <- function(X){return(
+  #Volume mean
+  volumeMean= QMD + (0.000022*(dominant_height^3.238)*(QMD^-2.118)*(age^0.239)*((volume/100)^-0.274))
 
-    (1/(sqrt(2*pi)))*exp(-((X^2)/2))
 
-  )}
+  #Cramér 1961 moment estimation of PDF of normal distribution.
+  CramerNormalPDF <- function(x, mean, sd,skew,kurtosis,total){
+    X <- (x-mean)/sd #X is number of sd from mean.
 
-  phi_3 <- function(X){return(
-    ((-X^3)+3*X)*phi_0(X)
-  )}
-
-  phi_4 <- function(X){return(
-    ((X^4)-(6*(X^2)) + 3)*phi_0(X)
-  )}
-
-  phi_6 <- function(X){return(
-    ((X^6) - (15*(X^4)) + (45*(X^2)) -15)*phi_0(X)
-  )}
-
-  approximated_normal_frequency <- function(class_middle, #theoretical mean of actual diameter class.
-                                            QMD, #QMD
-                                            standard_deviation, #of chosen distribution
-                                            asymmetry_coefficient, #for chosen distribution
-                                            excess_coefficient, #for chosen distribution
-                                            total){ #total stems or volume.
-
-    X <- (class_middle - QMD)/standard_deviation
+    phi0 <- function(X) (1/sqrt(2*pi))*exp(-((X^2)/2))
+    phi3 <- function(X) (-X^3+3*X)*phi0(X)
+    phi4 <- function(X) (X^4 - 6*X^2 +3)*phi0(X)
+    phi6 <- function(X) (X^6 - 15*X^4 + 45*X^2 -15)*phi0(X)
 
     return(
-      (total/standard_deviation) * (
-        phi_0(X) - (asymmetry_coefficient/factorial(3))*phi_3(X) +
-          (excess_coefficient/factorial(4))*phi_4(X) +
-          ((10*(asymmetry_coefficient^2))/factorial(6))*phi_6(X))
+      ((total)/sd) *(phi0(X)-(skew/factorial(3))*phi3(X)+(kurtosis/factorial(4))*phi4(X)+ ((10*skew^2)/factorial(6))*phi6(X))
     )
   }
 
-  volume_frequency <- approximated_normal_frequency(
-    class_middle=class_middle,
-    QMD=QMD,
-    standard_deviation = volume_sd,
-    asymmetry_coefficient = volume_asymmetry,
-    excess_coefficient = volume_excess,
-    total=100*class_width_cm #for relative values.
+  volume_frequency <- CramerNormalPDF(
+    x=class_middle,
+    mean=volumeMean,
+    sd = volume_sd,
+    skew = volume_asymmetry,
+    kurtosis = volume_excess,
+    total = 100*class_width_cm #? Works for 2 cm classes. Don't know why.
   )
+
+
 
   return(
     volume_frequency
@@ -121,53 +107,31 @@ Eriksson_1976_stem_frequency <- function(
   #Coefficient of excess for the diameter distribution
   diameter_excess <- 1.844*(dominant_height^0.276)*(QMD^0.014)*((stems/1000)^-0.163)*(age^-0.050)*(diameter_sd^-0.477)-3
 
-  #Expansion of the normal distribution
-  phi_0 <- function(X){return(
+  #Get arithmetic mean diameter (Cajanus theorem)
+  diameterArithmetic <- sqrt(QMD^2 - diameter_sd^2)
 
-    (1/(sqrt(2*pi)))*exp(-((X^2)/2))
 
-  )}
+  CramerNormalPDF <- function(x, mean, sd,skew,kurtosis,total){
+    X <- (x-mean)/sd #X is number of sd from mean.
 
-  phi_3 <- function(X){return(
-    ((-X^3)+3*X)*phi_0(X)
-  )}
-
-  phi_4 <- function(X){return(
-    ((X^4)-(6*(X^2)) + 3)*phi_0(X)
-  )}
-
-  phi_6 <- function(X){return(
-    ((X^6) - (15*(X^4)) + (45*(X^2)) -15)*phi_0(X)
-  )}
-
-  approximated_normal_frequency <- function(class_middle, #theoretical mean of actual diameter class.
-                                            QMD, #QMD
-                                            standard_deviation, #of chosen distribution
-                                            asymmetry_coefficient, #for chosen distribution
-                                            excess_coefficient, #for chosen distribution
-                                            total){ #total stems or volume.
-
-    X <- (class_middle - QMD)/standard_deviation
+    phi0 <- function(X) (1/sqrt(2*pi))*exp(-((X^2)/2))
+    phi3 <- function(X) (-X^3+3*X)*phi0(X)
+    phi4 <- function(X) (X^4 - 6*X^2 +3)*phi0(X)
+    phi6 <- function(X) (X^6 - 15*X^4 + 45*X^2 -15)*phi0(X)
 
     return(
-      (total/standard_deviation) * (
-        phi_0(X) - (asymmetry_coefficient/factorial(3))*phi_3(X) +
-          (excess_coefficient/factorial(4))*phi_4(X) +
-          ((10*(asymmetry_coefficient^2))/factorial(6))*phi_6(X))
+      ((total)/sd) *(phi0(X)-(skew/factorial(3))*phi3(X)+(kurtosis/factorial(4))*phi4(X)+ ((10*skew^2)/factorial(6))*phi6(X))
     )
   }
 
-  stem_frequency <- approximated_normal_frequency(
-    class_middle=class_middle,
-    QMD=QMD,
-    standard_deviation = diameter_sd,
-    asymmetry_coefficient = diameter_asymmetry,
-    excess_coefficient = diameter_excess,
-    total=100*class_width_cm #for relative values.
+  stem_frequency <- CramerNormalPDF(
+    x=class_middle,
+    mean=diameterArithmetic,
+    sd = diameter_sd,
+    skew = diameter_asymmetry,
+    kurtosis = diameter_excess,
+    total = 100*class_width_cm #? Works for 2 cm classes. Don't know why.
   )
-
-
-
 
   return(
     stem_frequency
