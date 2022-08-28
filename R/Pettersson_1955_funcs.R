@@ -4,7 +4,7 @@
 #' Massenproduktion des Nadelwaldes). Reports of the forest research institute
 #' of Sweden. Vol 45:1. Centraltryckeriet Esselte AB. Stockholm. Available
 #' Online (07/08/2022): \href{PUB EPSILON SLU}{https://pub.epsilon.slu.se/9982/1/medd_statens_skogsforskningsinst_045_01_a.pdf}
-#'
+#' @details age and age2 absolutely must be of same type!
 #' @param dominant_height Dominant height of the stand (Height corresponding to \eqn{3\sigma} of the diameter distribution)
 #' @param age Age of stand.
 #' @param age2 Desired age of stand.
@@ -309,4 +309,199 @@ Pettersson_1955_height_trajectory_northern_Sweden_Spruce <-  function(
     )
   }
 
+}
+
+
+#' Pettersson time to breast height.
+#'
+#' @details This is a smoothed function over calculated years to breast height
+#' 1.3 m in Petterson 1955. On the form: \math{timeToBH = Asymptote + (R0 - Asymptote) * exp(-exp(lrc) * H100)}
+#' Which is included in the height_trajectory functions.
+#'
+#' @source Pettersson, H. 1955. Barrskogens volymproduktion (Die
+#' Massenproduktion des Nadelwaldes). Reports of the forest research institute
+#' of Sweden. Vol 45:1. Centraltryckeriet Esselte AB. Stockholm. Available
+#' Online (07/08/2022): \href{PUB EPSILON SLU}{https://pub.epsilon.slu.se/9982/1/medd_statens_skogsforskningsinst_045_01_a.pdf}
+#'
+#' @param H100 Dominant height at total age 100.
+#' @param species One of "Picea abies" or "Pinus sylvestris
+#' @param planted 1 if planted, 0 if natural regeneration.
+#' @param northern 1 if in northern sweden, else 0 if in southern sweden.
+#'
+#' @return time to breast height (years).
+Petterson_1955_time_to_BH <- function(
+    species,
+    H100=20,
+    planted=0,
+    northern=0,
+    q_val=0.7
+){
+
+  planted=ifelse(planted==1,qval,1)
+
+  if(species=="Pinus sylvestris"){
+
+    if(northern==1){
+      #Pine northern Sweden
+      tBH = (9.913445+(34.667120-9.913445)*exp(-exp(-2.263625)*H100))*planted
+    } else {
+
+      #Pine southern Sweden
+      tBH = (6.462 + (32.083-6.462)*exp(-exp(-2.267)*H100))*planted
+
+    }
+
+  }
+
+  if(species=="Picea abies"){
+    if(northern==1){
+      #Spruce northern Sweden
+      tBH = (15.278 + (38.518-15.278)*exp(-exp(-2.266)*H100))*planted
+
+    } else {
+      #Spruce southern Sweden
+      tBH = (7.967 + (33.286-7.967)*exp(-exp(-2.263)*H100))*planted
+    }
+
+  }
+
+  return(
+    tBH
+  )
+
+}
+
+
+
+
+
+
+#' Diameter increment for 5 years for Swedish Conifers from Petterson 1955.
+#'
+#' @details This relates to the procentual increment over 5 years for the Mean
+#'  diameter.
+#'
+#' @source Pettersson, H. 1955. Barrskogens volymproduktion (Die
+#' Massenproduktion des Nadelwaldes). Reports of the forest research institute
+#' of Sweden. Vol 45:1. Centraltryckeriet Esselte AB. Stockholm. Available
+#' Online (07/08/2022): \href{PUB EPSILON SLU}{https://pub.epsilon.slu.se/9982/1/medd_statens_skogsforskningsinst_045_01_a.pdf}
+#'
+#' @param stems Number of stems per hectare.
+#' @param diameterCm Mean diameter in cm.
+#' @param totalAge Total age of stand.
+#' @param yearsSinceFirstThinning Number of years since the first thinning.
+#' @param stemsAfterThinningPeriodStart stems remaining after the thinning
+#' at the start of the period.
+#' @param diameterAfterThinningCm Mean diameter in cm after the thinning stage
+#' at the start of the perid.
+#'
+#' @return Diameter increment in percent.
+#' @export
+#' @name Pettersson_1955_Dp5
+
+
+Pettersson_1955_diameter_procentual_increment_northern_Sweden_Pine <- function(
+  stems,
+  diameterCm,
+  totalAge,
+  yearsSinceFirstThinning,
+  stemsAfterThinningPeriodStart,
+  diameterAfterThinningCm
+){
+
+  a=4.216
+  b2=0.6737
+  b3=-0.5925
+  b4=-122.4
+  b5=106.9
+  b6=-1.791
+  b7=12.06
+
+  #Diameter sum on bark per ha.. before first thinning in meters!
+  w = (diameterCm/100)*stems
+
+
+  logp5 <- a +
+    b2*log(w)+
+    b3*log(totalAge)+
+    b4*(1/yearsSinceFirstThinning+30)+
+    b5*(log(yearsSinceFirstThinning+30)/(yearsSinceFirstThinning+30))+
+    b6*log(stemsAfterThinningPeriodStart+1000)+
+    b7*(1/(diameterAfterThinningCm+3))
+
+
+
+  return(
+    exp(logp5)
+  )
+}
+
+
+#' @export
+#' @rdname Pettersson_1955_Dp5
+Pettersson_1955_diameter_procentual_increment_southern_Sweden_Pine <- function(
+    stems,
+    diameterCm,
+    totalAge,
+    yearsSinceFirstThinning,
+    diameterAfterThinningCm
+){
+
+  a=5.712
+  b2=0.3941
+  b3=-0.6819
+  b4=-0.003613
+  b5=-1.723
+  b6=16.58
+
+  #Diameter sum on bark per ha.. before first thinning in meters!
+  w = (diameterCm/100)*stems
+
+
+  logp5 <- a +
+    b2*log(w)+
+    b3*log(totalAge)+
+    b4*yearsSinceFirstThinning+
+    b5*log(yearsSinceFirstThinning+600)+
+    b6*(1/(diameterAfterThinningCm+3))
+
+
+
+  return(
+    exp(logp5)
+  )
+}
+
+#' @export
+#' @rdname Pettersson_1955_Dp5
+Pettersson_1955_diameter_procentual_increment_southern_Sweden_Spruce <- function(
+    stems,
+    diameterCm,
+    totalAge,
+    yearsSinceFirstThinning,
+    diameterAfterThinningCm
+){
+
+  a=5.628
+  b2=0.6970
+  b3=-0.9404
+  b4=-0.004580
+  b5=-1.721
+  b6=14.84
+  #Diameter sum on bark per ha.. before first thinning in meters!
+  w = (diameterCm/100)*stems
+
+
+  logp5 <- a +
+    b2*log(w)+
+    b3*log(totalAge)+
+    b4*yearsSinceFirstThinning+
+    b5*log(yearsSinceFirstThinning+500)+
+    b6*(1/(diameterAfterThinningCm+3))
+
+
+
+  return(
+    exp(logp5)
+  )
 }
