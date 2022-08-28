@@ -58,6 +58,64 @@ PhiTable <- function(Phi){
   )
 }
 
+#Asymmetry
+#generally moves towards 0 with repeat inventories -- becomes more normal.
+
+#Excess.
+#moves away from normal with revisions.
+
+#p89.
+#Growth quotients R and r.
+# Ms = arithmetic mean of cut distribution.
+# [ ] previous period.
+# { } next period.
+# alpha = lower cut-off.
+# L = upper bound.
+# S  =stems per ha.
+
+# R = Ms1  / [Ms2]
+# r = sigma s 1 / [sigma s 2]
+
+
+
+# p 92
+# shifting a base for cut off of a normal distribution..
+# base is before and after thinning = 6 sigma n .
+
+# sigma n2  = u' * sigma n1.
+
+#Done by two moments:
+# 1 low thinning - brings about distribution.
+# 2 combined through thinning secures Poseidon'.
+
+# Distance to the right of intersection of I and II:
+# Phi1 sigma n1 = Phi2 sigma n2 = Phi2 * u' * sigma n1.
+# where Phi2 = Phi1 / u'.
+
+#This gives i1 = 3 / (1 + u')
+# Also gives i2 = (3*u')/(1+u')
+
+# p. 94.
+# if I2 = stems in distribution 2 and I = stems in distribution 1
+# I2/I = u' * exp(-(4.5*(1-u')/(1+u')))
+
+#Works.
+Stems2OverStems1 <- function(uPrim) uPrim * exp(-(4.5*(1-uPrim)/(1+uPrim)))
+
+
+
+
+
+
+# p. 127.
+#Assume normal distribution with lower cut-off alpha.
+# L is upper bound.
+# phi = (L-alpha)/ sigma. (s.d.)
+#Number of diameter classes = a.
+#Class width becomes upper bound / a.
+
+
+
 
 ## Stem quota through low-thinning
 # uPrim is the quota by which we pull the left-most end of the normal distribution to the right.

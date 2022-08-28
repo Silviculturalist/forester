@@ -64,3 +64,53 @@ Assmann_Franz_1965_height_trajectory_Germany_Bayern_Spruce <- function(
 }
 
 Assmann_Franz_1965_height_trajectory_Germany_Bayern_Spruce <- Vectorize(Assmann_Franz_1965_height_trajectory_Germany_Bayern_Spruce)
+
+#
+# Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bayern_Spruce <- function(
+#     dominant_height,
+#     age,
+#     SIH100,
+#     YieldLevel = 3
+# ){
+#
+#   # First calculate the Site Index ("OH".)
+#
+#
+#
+#
+#
+#
+#   # Now calculate the difference between the dominant height and the HL.
+#   paramsB<- switch(
+#     YieldLevel,
+#     list("b00"=1.95,"b01"=0.019,"b10"=158.4,"b11"=-2.16,"b20"=0.02584,"b21"=0.01553),
+#     list("b00"=2.3,"b01"=0.015,"b10"=160,"b11"=-2.5,"b20"=-0.0202,"b21"=0.01783),
+#     list("b00"=2.7,"b01"=0.01,"b10"=160,"b11"=-2.75,"b20"=-0.06899,"b21"=0.02027)
+#     )
+#
+#   D2 <- paramsB[["b00"]]+paramsB[["b01"]]*SIH100
+#   A2 <- paramsB[["b10"]]+paramsB[["b11"]]*SIH100 #
+#   #NB D1 calculation is missing exp in paper!
+#   D1 <- exp(paramsB[["b20"]]+paramsB[["b21"]]*SIH100) #Diff at age 20.
+#
+#   A1  = 20
+#
+# #At age 100 should be 2.8m
+#
+#
+#
+#
+#   b0 = log(D1) - b1*log(20) - b2*log(log(20))
+#
+#
+#
+#   return(
+# log(dominant_height-HL) = b0 + b1*log(age)+ b2*log(log(age))
+#   )
+#
+#
+# }
+#
+#
+# #examples
+#
