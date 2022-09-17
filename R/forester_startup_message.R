@@ -3,6 +3,7 @@
                         For News and issues, go to 'https://github.com/Silviculturalist/forester'\n
                         Breaking changes can take place at any time.\n
                         \n
+                        Saturday 17 September: Regression of Swedish Forest Agency Thinning Recommendations 1984 added.\n
                         Saturday 4 June: Massive update to structure of Soderbergs Individual Tree functions.\n
                         Tuesday 14 June: New data & vignette available! ?Hoffmann_1982 \n
                         Thursday 7 July: Large errors found in SIS_est() for Hägglund, B. & Lundmark J-E ståndortsboniteringssystem. Therefore no longer exported until resolved.\n
