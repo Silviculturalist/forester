@@ -1,4 +1,4 @@
-#' Height trajectory for Birch in Sweden from Elfving 2003.
+#' Height trajectory for Birch in Sweden from Eriksson et al 1997.
 #'
 #' @source Eriksson, H., Johansson, U., Kiviste, A. (1997) A site-index model for
 #' pure and mixed stands of Betula pendula and Betula pubescens in Sweden.
@@ -21,12 +21,27 @@
 #'
 #'
 #' @param dominant_height Dominant height of stand, m.
-#' @param age Total age.
-#' @param age2 Total age at output age.
+#' @param age Age at breast height.
+#' @param age2 Output age at breast height.
 #' @param output One of "SIH100","Equation" or "Height".
 #'
-#' @return
+#' @return One of output.
 #' @export
+#'
+#' @example
+#'
+#'ErikssonVect <- Vectorize(Eriksson_1997_height_trajectory_Sweden_Birch)
+#'
+#'plot(NULL,
+#'     xlim=c(0,100),
+#'     ylim=c(0,35))
+#'
+#'for(i in 1:11){
+#'  lines(seq(0,100,0.1),ErikssonVect(seq(10,30,2)[i],age = 50,age2 = seq(0,100,0.1)))
+#'}
+#'
+#'points(rep(50,11),seq(10,30,2))
+
 Eriksson_1997_height_trajectory_Sweden_Birch <- function(
   dominant_height,
   age,
@@ -51,28 +66,28 @@ Eriksson_1997_height_trajectory_Sweden_Birch <- function(
 
   paramasi <- 7
   parambeta <- 394
-  paramb2 <- -1.387
+  paramb2 <- 1.387
 
-  d <- parambeta*(paramasi^paramb2)
+  d <- parambeta/(paramasi^paramb2)
 
-  r <- (((dominant_height-d)^2)+(4*parambeta*dominant_height*(age^paramb2)))^0.5
+  r <- (((dominant_height-1.3-d)^2)+(4*parambeta*(dominant_height-1.3)/(age^paramb2)))^0.5
 
 
   if(output=="SIH100"){
     return(
-      (dominant_height+d+r)/ (2+(4*parambeta*(100^paramb2)) / (dominant_height-d+r))
+      ((dominant_height-1.3+d+r)/ (2+(4*parambeta*(100^-paramb2)) / (dominant_height-1.3-d+r)))+1.3
     )
   }
 
   if(output=="Equation"){
     return(
-      paste0("y ~",(dominant_height+d+r),"/(2+(4*",parambeta,"*(age^",paramb2,")) / ",(dominant_height-d+r),")")
+      paste0("y ~(",(dominant_height-1.3+d+r),"/(2+(4*",parambeta,"*(age^",-paramb2,")) / ",(dominant_height-1.3-d+r),"))+1.3")
     )
   }
 
   if(output=="Height"){
     return(
-      ((dominant_height+d+r)/ (2+(4*parambeta*(age2^paramb2)) / (dominant_height-d+r)))
+      ((dominant_height-1.3+d+r)/ (2+(4*parambeta*(age2^-paramb2)) / (dominant_height-1.3-d+r)))+1.3
     )
   }
 
