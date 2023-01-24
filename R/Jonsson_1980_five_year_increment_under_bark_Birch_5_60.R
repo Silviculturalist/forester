@@ -25,7 +25,8 @@
 #' @param cutting_period "a", if cutting during first half of five year period;
 #' "b", if cutting during second half of five year period.
 #' @param plot_basal_area_under_bark Basal area of plot. (under bark).
-
+#' @param diameter_of_largest_tree_on_plot Diameter at breast height under bark (?)
+#' in cm of the largest tree on the plot.
 #'
 #' @return mm, diameter increment during five years.
 #' @export

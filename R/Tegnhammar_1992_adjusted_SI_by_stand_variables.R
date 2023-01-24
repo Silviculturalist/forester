@@ -67,7 +67,7 @@
 #' 5 \tab Swamp moss type (\emph{Polytrichum commune, P. gracile, P. strictum, Sphagnum, Depranocladus, Scorpidium, Paludella, Calliergon, Tomentypnum, Campylium.}) \cr
 #' 6 \tab Fresh moss type (\emph{Hylocomium splendens, Ptilium crista-castrensis, Dicranum ssp.}) \cr
 #' }
-#' @param aspect If more than 1:20 (5\%), one of the following, otherwise 0.
+#' @param aspect_main If more than 1:20 (5\%), one of the following, otherwise 0.
 #'
 #'  \tabular{cl}{
 #' 1 \tab North \cr
@@ -104,7 +104,7 @@
 #' @export
 #'
 #' @examples
-Tegnhammar_1992_adjusted_SI_by_stand_variables <- function(species,latitude,longitude, altitude,vegetation, ground_layer,aspect_main,incline_percent,soil_moisture,soil_depth,soil_texture,humidity,ditched,lateral_water,peat_humification="Medium",epsg='EPSG:4326'){
+Tegnhammar_1992_adjusted_SI_by_stand_variables <- function(latitude,longitude, altitude,vegetation, ground_layer,aspect_main,soil_moisture,soil_depth,soil_texture,humidity,ditched,lateral_water,peat_humification="Medium",epsg='EPSG:4326'){
 
   #If missing humidity.
   if(missing(humidity)){

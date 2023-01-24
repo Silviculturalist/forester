@@ -306,6 +306,44 @@
 #' full plots (default).
 #' @param vegetation 1-18. See [forester::Sweden_vegetation_types()] for
 #' description.
+#' @param county Character string. One of:
+#'  \tabular{cc}{
+#'  Northern Sweden \tab \cr
+#' \tab Norrbottens lappmark \cr
+#' \tab Norrbottens kustland \cr
+#' \tab Västerbottens lappmark \cr
+#' \tab Västerbottens kustland \cr
+#' \tab Västernorrland - Ångermanlands landskap \cr
+#' \tab Västernorrland - Medelpads landskap \cr
+#' \tab Jämtland - Jämtlands landskap \cr
+#' \tab Jämtland - Härjedalens landskap \cr
+#' \tab Kopparberg - Sälen-Idre. \cr
+#'
+#'  Central Sweden \tab \cr
+#'  \tab Kopparberg - övriga \cr
+#'  \tab Gävleborg - Hälsinglands landskap \cr
+#'  \tab Gävleborg - övriga \cr
+#'  \tab Värmland \cr
+#'
+#'  Southern Sweden \tab \cr
+#'  \tab Stockholm \cr
+#'  \tab Uppsala \cr
+#'  \tab Västmanland \cr
+#'  \tab Södermanland \cr
+#'  \tab Örebro \cr
+#'  \tab Östergötland \cr
+#'  \tab Skaraborg \cr
+#'  \tab Älvsborg - Västergötlands landskap \cr
+#'  \tab Älvsborg - Dalslands landskap \cr
+#'  \tab Jönköping \cr
+#'  \tab Kronoberg \cr
+#'  \tab Kalmar \cr
+#'  \tab Halland \cr
+#'  \tab Kristianstad \cr
+#'  \tab Malmöhus \cr
+#'  \tab Blekinge \cr
+#'  \tab Gotland \cr
+#'  }
 #' @md
 #'
 #' @return Basal area increment during 5 years, m2.

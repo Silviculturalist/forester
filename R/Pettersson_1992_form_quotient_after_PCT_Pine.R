@@ -14,6 +14,7 @@
 #'
 #' @param stems Number of stems per hectare
 #' @param dominant_height Dominant height, metres
+#' @param latitude Latitude, degrees.
 #'
 #'
 #' @return Living stems per hectare after thinning

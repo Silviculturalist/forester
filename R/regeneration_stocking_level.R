@@ -1,5 +1,7 @@
 #' Stocking in regenerations
 #'
+#' @author Elfving, B. \url{Report Growth Models Heureka}{https://www.heurekaslu.org/w/images/9/93/Heureka_prognossystem_%28Elfving_rapportutkast%29.pdf}
+#'
 #' @param altitude altitude masl
 #' @param latitude latitude decimal
 #' @param main_species Main species "Picea abies" or "Pinus sylvestris".
@@ -8,22 +10,60 @@
 #' @param proportion_cultivated percent cultivated, for partly planted sites.
 #' @param N_full number seedlings demanded for full stocking. In thousands?
 #' @param soil_moisture Soil moisture code (SWE-NFI 'FUKTIGHET')
-#' @param county Swedish county
+#' @param county Swedish county, character string.
+#'  \tabular{cc}{
+#'  Northern Sweden \tab \cr
+#' \tab Norrbottens lappmark \cr
+#' \tab Norrbottens kustland \cr
+#' \tab Västerbottens lappmark \cr
+#' \tab Västerbottens kustland \cr
+#' \tab Västernorrland - Ångermanlands landskap \cr
+#' \tab Västernorrland - Medelpads landskap \cr
+#' \tab Jämtland - Jämtlands landskap \cr
+#' \tab Jämtland - Härjedalens landskap \cr
+#' \tab Kopparberg - Sälen-Idre. \cr
+#'
+#'  Central Sweden \tab \cr
+#'  \tab Kopparberg - övriga \cr
+#'  \tab Gävleborg - Hälsinglands landskap \cr
+#'  \tab Gävleborg - övriga \cr
+#'  \tab Värmland \cr
+#'
+#'  Southern Sweden \tab \cr
+#'  \tab Stockholm \cr
+#'  \tab Uppsala \cr
+#'  \tab Västmanland \cr
+#'  \tab Södermanland \cr
+#'  \tab Örebro \cr
+#'  \tab Östergötland \cr
+#'  \tab Skaraborg \cr
+#'  \tab Älvsborg - Västergötlands landskap \cr
+#'  \tab Älvsborg - Dalslands landskap \cr
+#'  \tab Jönköping \cr
+#'  \tab Kronoberg \cr
+#'  \tab Kalmar \cr
+#'  \tab Halland \cr
+#'  \tab Kristianstad \cr
+#'  \tab Malmöhus \cr
+#'  \tab Blekinge \cr
+#'  \tab Gotland \cr
+#'  }
 #' @param scarification 1 if scarified, 0 if no treatment.
 #' @param burnt 1 if prescribed burning, 0 if no treatment.
 #' @param no_treatment 1 if no measures were taken to promote regeneration.
 #' @param uncleaned 1 if bushes and small trees remain after clear-cut.
 #' @param number_seed_trees number of seed trees per hectare
-#' @param SIS
-#' @param SIH
+#' @param SI100 e.g. [forester::forester::Hagglund_1972_northern_Sweden_Height_trajectories_Spruce],
+#' [forester::Hagglund_1973_southern_Sweden_Height_trajectories_Spruce],
+#' [forester::forester::Hagglund_1974_Sweden_height_trajectories_Pine]
 #' @param area size of regeneration area in hectares.
 #' @param square_spacing Average square spacing used for sowing/planting
 #'
-#' @return
+#' @return Stocking quality, between 0 and 1.
 #' @export
 #'
 #' @examples
-regeneration_stocking <- function(altitude, latitude,age, regeneration_method, proportion_cultivated, N_full, ground_water, county="county", scarification, burnt, no_treatment, uncleaned, number_seed_trees, SIH, SIS, area){
+regeneration_stocking <- function(altitude, latitude,age, regeneration_method, proportion_cultivated, N_full, ground_water, county="county", scarification, burnt, no_treatment, uncleaned, number_seed_trees, SIH, SIS, area,square_spacing,soil_moisture,main_species){
   #SI
   if(exists(SIH)){
     si <- SIH

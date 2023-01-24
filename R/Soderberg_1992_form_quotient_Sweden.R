@@ -194,7 +194,7 @@ Soderberg_1992_form_factor_southern_Sweden_Spruce <- function(
       BA_quotient_Spruce <- BA_Spruce.m2/BA.m2
       BA_quotient_Birch <- BA_Birch.m2/BA.m2
       diameter_quotient <- DBH.cm/DBH_largest_tree_on_plot.cm
-      close_to_coast <- ifelse(distance_to_coast<50,1,0)
+      close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
 
 
       return(
@@ -242,7 +242,7 @@ Soderberg_1992_form_factor_southern_Sweden_Pine <- function(
   BA_quotient_Spruce <- BA_Spruce.m2/BA.m2
   BA_quotient_Birch <- BA_Birch.m2/BA.m2
   diameter_quotient <- DBH.cm/DBH_largest_tree_on_plot.cm
-  close_to_coast <- ifelse(distance_to_coast<50,1,0)
+  close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
 
   south_eastern_county <- ifelse(county %in% c("Stockholm","Södermanland","Uppsala","Östergötland","Kalmar","Västmanland"),1,0)
 
@@ -466,7 +466,7 @@ Soderberg_1992_form_factor_northern_Sweden_Pine <- function(
 
   BA_quotient_Pine <- BA_Pine.m2/BA.m2
   diameter_quotient <- DBH.cm/DBH_largest_tree_on_plot.cm
-  close_to_coast <- ifelse(distance_to_coast<50,1,0)
+  close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
 
   return(
     exp(
@@ -509,7 +509,7 @@ Soderberg_1992_form_factor_northern_central_Sweden_Spruce <- function(
   BA_quotient_Pine <- BA_Pine.m2/BA.m2
   BA_quotient_Spruce <- BA_Spruce.m2/BA.m2
   diameter_quotient <- DBH.cm/DBH_largest_tree_on_plot.cm
-  close_to_coast <- ifelse(distance_to_coast<50,1,0)
+  close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
 
   return(
     exp(
@@ -538,7 +538,7 @@ Soderberg_1992_form_factor_northern_central_Sweden_Spruce <- function(
 #' @export
 Soderberg_1992_form_factor_northern_central_Sweden_Broadleaves <- function(
     SI100_Pine,
-    distance_to_coast,
+    distance_to_coast_km,
     DBH.cm,
     DBH_largest_tree_on_plot.cm,
     total_age,
@@ -553,7 +553,7 @@ Soderberg_1992_form_factor_northern_central_Sweden_Broadleaves <- function(
   BA_quotient_Birch <- BA_Birch.m2/(BA.m2)
   BA_quotient_Spruce <- BA_Spruce.m2/(BA.m2)
   diameter_quotient <- DBH.cm/DBH_largest_tree_on_plot.cm
-  close_to_coast <- ifelse(distance_to_coast<50,1,0)
+  close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
 
   return(
     exp(
@@ -640,7 +640,7 @@ Soderberg_1992_form_factor_central_Sweden_Pine <- function(
   BA_quotient_Spruce <- BA_Spruce.m2/BA.m2
   BA_quotient_Birch <- BA_Birch.m2/BA.m2
   diameter_quotient <- DBH.cm/DBH_largest_tree_on_plot.cm
-  close_to_coast <- ifelse(distance_to_coast<50,1,0)
+  close_to_coast <- ifelse(distance_to_coast_km<50,1,0)
 
   return(
     exp(

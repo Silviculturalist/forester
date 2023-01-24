@@ -221,15 +221,15 @@
 #' @param BA_Pine.m2_ha Basal area Scots Pine on the plot, m^2 / ha.
 #' @param BA_Spruce.m2_ha Basal area Norway Spruce on the plot, m^2 / ha.
 #' @param BA_Birch.m2_ha Basal area Birch on the plot, m^2 / ha.
+#' @param BA_Oak.m2_ha Basal area Oak on the plot, m^2 / ha.
 #' @param BA.m2_ha Basal area of all tree species the plot, m^2 / ha.
 #' @param age Age at breast height of the tree.
-#' @param thinned TRUE if the stand has been thinned, otherwise FALSE.
-#' @param last_thinned Number of growing seasons since last thinning.
 #' @param latitude Latitude, degrees.
 #' @param altitude Altitude, meters above sea level.
 #' @param SI_species Species for which SIH100 was estimated. One of :
 #' 'Picea abies' or 'Pinus sylvestris'.
 #' @param SI100 Site Index H100, m.
+#' @param SI100_Spruce Site Index H100, m for Norway Spruce. See description.#'
 #' @param soil_moisture 1-5. e.g. [forester::Sweden_soil_types('moisture')]
 #' @param lateral_water \tabular{cl}{
 #' Code \tab Description \cr
@@ -239,14 +239,11 @@
 #' 4 \tab Longer periods \cr
 #' 5 \tab Slope \cr
 #' }
-#' @param peatland 1 if plot is Peatland, 0 for others (default).
 #' @param divided_plot 1 for plots described in different parts, which appears
 #' when the original plot consists of different land classes, density classes
 #' or cutting classes or belongs to different owners. 0 for full plots
 #' (default).
 #' @param fertilised_plot 1 for fertilised plots, 0 for others (default).
-#' @param plot_inventoried_76_77 1 for plots measured in the years 1976-77,
-#' 0 for others (default).
 #' @param aspect If more than 2:20 / 5\%, one of the following. Otherwise 0.
 #' \tabular{cl}{
 #' 1 \tab North  \cr
@@ -267,6 +264,48 @@
 #' which appears when the original plot consists of different land classes,
 #' density classes or cutting classes or belongs to different owners. 0 for
 #' full plots (default).
+#' @param distance_to_coast_km Closest distance to coast, in km, e.g. [forester::coast_distance]
+#' @param continental TRUE, if the plot is situated in a continental climatic region.
+#'  cf. Ångstrom 1958. e.g. [forester::Angstrom_1958_local_climate_Sweden()] .
+#'  Otherwise FALSE.
+#'  @param county Character string. One of:
+#'  \tabular{cc}{
+#'  Northern Sweden \tab \cr
+#' \tab Norrbottens lappmark \cr
+#' \tab Norrbottens kustland \cr
+#' \tab Västerbottens lappmark \cr
+#' \tab Västerbottens kustland \cr
+#' \tab Västernorrland - Ångermanlands landskap \cr
+#' \tab Västernorrland - Medelpads landskap \cr
+#' \tab Jämtland - Jämtlands landskap \cr
+#' \tab Jämtland - Härjedalens landskap \cr
+#' \tab Kopparberg - Sälen-Idre. \cr
+#'
+#'  Central Sweden \tab \cr
+#'  \tab Kopparberg - övriga \cr
+#'  \tab Gävleborg - Hälsinglands landskap \cr
+#'  \tab Gävleborg - övriga \cr
+#'  \tab Värmland \cr
+#'
+#'  Southern Sweden \tab \cr
+#'  \tab Stockholm \cr
+#'  \tab Uppsala \cr
+#'  \tab Västmanland \cr
+#'  \tab Södermanland \cr
+#'  \tab Örebro \cr
+#'  \tab Östergötland \cr
+#'  \tab Skaraborg \cr
+#'  \tab Älvsborg - Västergötlands landskap \cr
+#'  \tab Älvsborg - Dalslands landskap \cr
+#'  \tab Jönköping \cr
+#'  \tab Kronoberg \cr
+#'  \tab Kalmar \cr
+#'  \tab Halland \cr
+#'  \tab Kristianstad \cr
+#'  \tab Malmöhus \cr
+#'  \tab Blekinge \cr
+#'  \tab Gotland \cr
+#'  }
 #' @md
 #'
 #' @return Form quotient of tree
@@ -331,7 +370,7 @@ Soderberg_1986_form_factor_Sweden_Oak <- function(
 Soderberg_1986_form_factor_Sweden_Beech <- function(
     DBH.cm,
     BA_Beech.m2_ha,
-    Basal_area_Oak_m2_ha,
+    BA_Oak.m2_ha,
     BA.m2_ha,
     SI100_Spruce,
     age,
@@ -339,10 +378,8 @@ Soderberg_1986_form_factor_Sweden_Beech <- function(
     altitude,
     divided_plot=0
 ){
-  spruce <- ifelse(SI_species=="Picea abies")
-  pine <- ifelse(SI_species=="Pinus sylvestris")
   BA_quotient_Beech <- BA_Beech.m2_ha/BA.m2_ha
-  BA_quotient_Oak <- Basal_area_Oak_m2_ha/BA.m2_ha
+  BA_quotient_Oak <- BA_Oak.m2_ha/BA.m2_ha
   north <- ifelse(aspect%in%c(8,1,2,3),1,0)
 
   return(

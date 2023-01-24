@@ -28,7 +28,7 @@
 #'
 #' @export
 Leijon_1979_SI_translation_Spruce_to_Pine_3 <- function(
-  SI_Pine,
+  SI_Spruce,
   latitude,
   altitude,
   continental,

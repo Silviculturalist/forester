@@ -26,7 +26,7 @@
 #' SIS_estimate(plotid=12332, species="Pinus sylvestris",vegetation=13, ground_layer=6, latitude=63.8,longitude=12.32, altitude=200,incline_percent=0,soil_moisture=2,soil_texture=2,soil_depth=1,lateral_water=1,ditched=FALSE)
 
 
-SIS_estimate <- function(plotid,species, vegetation, ground_layer, latitude, longitude, altitude, aspect_main, incline_percent, soil_moisture, soil_texture, soil_depth, lateral_water, ditched, local_climate, county){
+SIS_estimate <- function(plotid,species, vegetation, ground_layer, latitude, longitude, altitude, aspect_main, incline_percent, soil_moisture, soil_texture, soil_depth, lateral_water, ditched, climate_code, county){
 
 assertive.numbers::assert_all_are_whole_numbers(c(vegetation, soil_moisture,soil_texture),tol = 0)
 
@@ -55,8 +55,8 @@ if(incline_percent<=10){
 }
 
 #Climate Code calc.
-if(missing(local_climate)){
-  local_climate <- forester::local_climate_sweden(latitude=latitude,longitude = longitude)
+if(missing(climate_code)){
+  climate_code <- forester::Angstrom_1958_local_climate_Sweden(latitude=latitude,longitude = longitude,epsg=4326) #TODO: Correct epsg for WGS84?
 }
 
 #use googleway for altitude if missing
@@ -93,7 +93,7 @@ g2 <- if(D<0){
 if(species=="Pinus sylvestris"){
   if(soil_moisture==1){ #Pine on dry and very dry soil.
     deep_soil <- ifelse(soil_depth==1,TRUE,FALSE)
-    k3 <- ifelse(local_climate=="K3",TRUE,FALSE)
+    k3 <- ifelse(climate_code=="K3",TRUE,FALSE)
     lnh100dm <- 5.44789 + -0.01566*(latitude-60+abs(latitude-60)) + -0.01020*((altitude^2)/10000) + 0.09162*deep_soil + -0.0417*soil_texture + 0.12*k3
 
     if(vegetation==18){
@@ -114,7 +114,7 @@ if(species=="Pinus sylvestris"){
 
   } else if(soil_moisture==2 & vegetation %in% c(1,2,3,4,5,6,7,8,9)){
     deep_soil <- ifelse(soil_depth==1,TRUE,FALSE)
-    m2 <- ifelse(local_climate=="M2",TRUE,FALSE)
+    m2 <- ifelse(climate_code=="M2",TRUE,FALSE)
 
     lnh100dm <- 5.34912 + -0.02037*(latitude-60+abs(latitude-60)) + -0.00481*((altitude^2)/10000) + 0.11574*deep_soil + -0.16403*m2
 
@@ -189,7 +189,7 @@ if(species=="Pinus sylvestris"){
   if(soil_moisture==2 & vegetation %in% c(1,2,3,4,5,6,7,8,9)){
     short_water <- ifelse(lateral_water%in%c(3),TRUE,FALSE)
     long_water <- ifelse(lateral_water%in%c(4,5),TRUE,FALSE)
-    m2 <- ifelse(local_climate=="M2",TRUE,FALSE)
+    m2 <- ifelse(climate_code=="M2",TRUE,FALSE)
     swamp_moss <- ifelse(ground_layer==5,TRUE,FALSE)
 
     lnh100dm <- 5.68205 + -0.03423*((latitude-60)+abs(latitude-60)) + -0.02122*((latitude-60)-abs(latitude-60)) + -0.00691*((altitude^2)/10000) + short_water*0.03247 + long_water*+0.05097 + -0.10806*m2 + -0.073*swamp_moss

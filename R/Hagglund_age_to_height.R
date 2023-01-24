@@ -1,6 +1,6 @@
 #' Age at a certain height according to height trajectories by Hägglund (1972,1973,1974)
 #'
-#' @param description Wrapper to find age at breast height, total age and age to
+#' @description Wrapper to find age at breast height, total age and age to
 #' breast height at a set SI and/or height for Hagglunds functions.
 #'
 #' @param latitude Degrees N. Only required for "Picea abies" if locality is "northern".

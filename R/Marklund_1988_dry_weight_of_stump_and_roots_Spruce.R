@@ -8,8 +8,8 @@
 #' otherwise FALSE.
 #' @param peat If the humus layer is thicker than 30 cm, TRUE, otherwise
 #' FALSE.
-#' @param mobile_ground_water_shorter_periods If surface/subsurface water flow
-#' occurs during shorter periods, TRUE, otherwise FALSE.
+#' @param mobile_ground_water_longer_periods If surface/subsurface water flow
+#' occurs during longer periods, TRUE, otherwise FALSE.
 #'
 #' @return Dry weight of stump and roots for Spruce from Marklund 1988
 #' @export

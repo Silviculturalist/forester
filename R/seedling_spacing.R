@@ -5,7 +5,7 @@
 #' @param distance_b The \strong{between-row} distance.
 #' @param system Planting system, one of \emph{square} or \emph{rectangular}. Defaults to \strong{square}
 #' @param stems_per_ha The number of steams planted per hectare
-#' @param area area in square metres. Defaults to 1 hectare, 10'000 sq. metres.
+#' @param area_m2 area in square metres. Defaults to 1 hectare, 10'000 sq. metres.
 #' @param output One of \emph{stems per ha} or \emph{spacing}
 #'
 #' @return Prints the output value.

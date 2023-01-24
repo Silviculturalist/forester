@@ -24,7 +24,7 @@
 #' if the tree plot is more than 30 cm deep peat.
 #' @param latitude latitude
 #' @param longitude longitude
-#' @param espg_in EPSG of Latitude and Longitude, default=4326.
+#' @param epsg_in EPSG of Latitude and Longitude, default=4326.
 #' @param altitude Metres above sea level.
 #'
 #' @return List of weights, in g.
