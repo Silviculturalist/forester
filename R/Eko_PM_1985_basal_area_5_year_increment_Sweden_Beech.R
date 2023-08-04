@@ -61,6 +61,7 @@
 #' @param TAX77 Always 0 for simulation. Otherwise see original text.
 #' @param fertilised 1 if the stand has been fertilised, otherwise 0.
 #' @param latitude Latitude, degrees.
+#' @param ba_quotient_acute_mortality Quotient of basal area (total?) expected to die during the next five-year period, from e.g. wind or snowbreak, which do not affect the growth.
 #'
 #' @return Basal area growth over bark during the five year growth period.
 #' @export
@@ -80,7 +81,8 @@ Eko_PM_1985_basal_area_5_year_increment_Sweden_Beech <- function(
   altitude,
   TAX77=0,
   fertilised,
-  latitude
+  latitude,
+  ba_quotient_acute_mortality
 ){
   SIdm <- SI*10
 

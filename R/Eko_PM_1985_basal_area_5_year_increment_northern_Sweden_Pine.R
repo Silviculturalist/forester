@@ -59,7 +59,8 @@
 #' @param soil_moisture Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"
 #' @param altitude Metres above sea level
 #' @param TAX77 Always 0 for simulation. Otherwise see original text.
-#'
+#' @param ba_quotient_chronic_mortality Quotient of basal area (total?) expected to die during the next five-year period, from e.g. crowding, drought (factors that have affected the growth of the stand)
+#' @param ba_quotient_acute_mortality Quotient of basal area (total?) expected to die during the next five-year period, from e.g. wind or snowbreak, which do not affect the growth.
 #' @return Basal area growth over bark during the five year growth period.
 #' @export
 Eko_PM_1985_basal_area_5_year_increment_northern_Sweden_Pine <- function(
@@ -76,7 +77,9 @@ Eko_PM_1985_basal_area_5_year_increment_northern_Sweden_Pine <- function(
   south_sweden,
   soil_moisture,
   altitude,
-  TAX77=0
+  TAX77=0,
+  ba_quotient_chronic_mortality,
+  ba_quotient_acute_mortality
 ){
   SIdm <- SI*10
 

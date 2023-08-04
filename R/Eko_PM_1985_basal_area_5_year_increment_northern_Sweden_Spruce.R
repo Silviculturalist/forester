@@ -61,6 +61,8 @@
 #' @param TAX77 Always 0 for simulation. Otherwise see original text.
 #' @param fertilised 1 if the stand has been fertilised, otherwise 0.
 #' @param latitude Latitude, degrees.
+#' @param ba_quotient_chronic_mortality Quotient of basal area (total?) expected to die during the next five-year period, from e.g. crowding, drought (factors that have affected the growth of the stand)
+#' @param ba_quotient_acute_mortality Quotient of basal area (total?) expected to die during the next five-year period, from e.g. wind or snowbreak, which do not affect the growth.
 #'
 #' @return Basal area growth over bark during the five year growth period.
 #' @export
