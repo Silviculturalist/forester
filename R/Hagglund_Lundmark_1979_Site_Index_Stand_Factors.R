@@ -46,7 +46,7 @@
 #' @export
 #'
 #' @examples
-Hagglund_Lundmark_1979_Site_Index_Stand_Factors <- function(
+Hagglund_Lundmark_1979_H100_Spruce_Stand_Factors <- function(
   species,
   vegetation,
   groundLayer,
@@ -423,5 +423,59 @@ Hagglund_Lundmark_1979_Site_Index_Stand_Factors <- function(
   return(
     SIS
   )
+}
+
+
+#' Determine swedish field layer from site index and soil moisture
+#'
+#' @description
+#' A helper function in the case that Swedish NFI Field Layer is unknown.
+#' TODO: Check if in fact H100_Spruce, or H100_Pine.
+#'
+#'
+#' @param H100_Spruce Site Index for Norway Spruce
+#' @param soilMoisture integer 1-5 see
+#' [forester::Sweden_soil_types(type="moisture")]
+#' @source https://www.heurekaslu.se/wiki/VegetationType_from_site_features
+#'
+#' @return Swedish NFI Field Layer Code
+#' @example
+#' SWE_NFI_FieldLayer_from_Site(15,1)
+SWE_NFI_FieldLayer_from_Site <- function(H100_Spruce, soilMoisture) {
+
+  if (soilMoisture == 1) {
+    return(
+      ifelse(H100_Spruce < 16, 15,
+             ifelse(H100_Spruce < 20, 14,
+                    ifelse(H100_Spruce < 28, 13,
+                          ifelse(H100_Spruce < 32, 9,
+                                ifelse(H100_Spruce < 36, 4, 1)))))
+    )
+  } else if (soilMoisture == 2) {
+    return(
+      ifelse(H100_Spruce < 28, 13,
+                    ifelse(H100_Spruce < 32, 9,
+                           ifelse(H100_Spruce < 36, 4, 1))))
+
+  } else if (soilMoisture == 3) {
+    return(
+      ifelse(H100_Spruce < 28, 13,
+                    ifelse(H100_Spruce < 32, 8, 1)))
+
+  } else if (soilMoisture == 4) {
+    return(
+      ifelse(H100_Spruce < 28, 13,
+                    ifelse(H100_Spruce < 32, 4, 1)))
+
+  } else if (soilMoisture == 5) {
+    return(
+      ifelse(H100_Spruce < 20, 11,
+             ifelse(H100_Spruce < 24, 13,
+                    ifelse(H100_Spruce < 28, 8,
+                           ifelse(H100_Spruce < 32, 4, 1)))))
+
+  } else {
+    return(NULL)
+  }
 }
 
