@@ -46,7 +46,7 @@
 #' @export
 #'
 #' @examples
-Hagglund_Lundmark_1979_H100_Spruce_Stand_Factors <- function(
+Hagglund_Lundmark_1979_Site_Index_Prediction <- function(
   species,
   vegetation,
   groundLayer,
