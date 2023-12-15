@@ -1,9 +1,12 @@
 #' Time to breast height for Spruce in Northern Sweden.
+#' @param H100TotalAge Site Index H100 from Hagglund 1972.
+#' @param culture 1 if culture, otherwise 0.
+#' @param latitude degrees North.
 #'@seealso [forester::Hagglund_1972_northern_Sweden_Height_trajectories_Spruce()]
 #'@export
 #'@examples
 #'ggplot()+xlim(c(0,200))+geom_function(fun=function(x) Hagglund_1972_northern_Sweden_Height_trajectories_Spruce(16,age=100-Hagglund_1972_Norway_Spruce_time_to_BH_northern_Sweden(16,1,61),age2=x,61,1))+geom_point(aes(x=seq(10,200,10),y=c(27,46,66,86,104,121,137,151,164,175,185,194,203,210,216,222,227,231,235,239)/10))
-Hagglund_1972_Norway_Spruce_time_to_BH_northern_Sweden <- function(H100TotalAge,culture,latitude){
+Hagglund_1972_Norway_Spruce_time_to_BH_northern_Sweden <- function(H100TotalAge,culture=1,latitude){
 
   P <- 0.9175^culture
 
@@ -97,6 +100,7 @@ Hagglund_1972_Norway_Spruce_time_to_BH_northern_Sweden <- function(H100TotalAge,
 }
 
 #' Time to breast height for Spruce in Southern Sweden.
+#' @param H100TotalAge Site Index H100 from Hagglund 1973.
 #'@export
 #'@seealso [forester::Hagglund_1973_southern_Sweden_Height_trajectories_Spruce()]
 #'@examples

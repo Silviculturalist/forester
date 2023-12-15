@@ -10,6 +10,11 @@ Hagglund_1974_Sweden_Time_to_Breast_Height_Pine(
   regeneration = "culture"
 )
 }
+\arguments{
+\item{H100TotalAge}{Site Index H100 for Pine according to Hägglund 1974.}
+
+\item{regeneration}{Method of regeneration. One of : 'culture','natural' or 'unknown'}
+}
 \description{
 Time to breast height for Scots Pine in Sweden.
 }

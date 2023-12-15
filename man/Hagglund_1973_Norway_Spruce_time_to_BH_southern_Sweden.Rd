@@ -6,6 +6,9 @@
 \usage{
 Hagglund_1973_Norway_Spruce_time_to_BH_southern_Sweden(H100TotalAge)
 }
+\arguments{
+\item{H100TotalAge}{Site Index H100 from Hagglund 1973.}
+}
 \description{
 Time to breast height for Spruce in Southern Sweden.
 }

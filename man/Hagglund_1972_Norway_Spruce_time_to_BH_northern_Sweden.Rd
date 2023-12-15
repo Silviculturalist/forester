@@ -6,9 +6,16 @@
 \usage{
 Hagglund_1972_Norway_Spruce_time_to_BH_northern_Sweden(
   H100TotalAge,
-  culture,
+  culture = 1,
   latitude
 )
+}
+\arguments{
+\item{H100TotalAge}{Site Index H100 from Hagglund 1972.}
+
+\item{culture}{1 if culture, otherwise 0.}
+
+\item{latitude}{degrees North.}
 }
 \description{
 Time to breast height for Spruce in Northern Sweden.

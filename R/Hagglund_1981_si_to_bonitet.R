@@ -1,14 +1,16 @@
 #' Smoothed Productivity estimates in m^3sk (cu.m.) from Hägglund 1981.
 #'
-#' @description Interface for Hägglund (1981) "Samband mellan ståndortsindex H100 och bonitet för tall och gran i Sverige", Report #26, Projekt Hugin. This function is separate from the deprecated `forester::si_to_bonitet`. In`forester::si_to_bonitet_integrated` function choice is controlled by indirect parameter input.
-#' @param H100 Estimated stand top height at 100 years age.
-#' @param main_species Main species.
-#' @param vegetation Vegetation class.
+#' @description Smoothed productivity estimates in m3sk from Hägglund 1981.
+#' @param H100 Estimated stand top height at 100 years age. e.g. [forester::Hagglund_1972_northern_Sweden_Height_trajectories_Spruce()],[forester::Hagglund_1973_southern_Sweden_Height_trajectories_Spruce()],[forester::Hagglund_1974_Sweden_height_trajectories_Pine()]
+#' @param main_species Main species, one of: 'Picea abies', or 'Pinus sylvestris'
+#' @param vegetation Vegetation class [forester::Sweden_vegetation_types()]
 #' @param altitude Metres above sea level.
-#' @param county Swedish county.
+#' @param county Swedish county [forester::county_sweden()]
 #' @return Estimates the mean volume growth in m3sk / ha yr-1 at the time of culmination (or if late culmination, at 150yrs of age)
 #' @export
 #' @details
+#'
+#'  This function conveniently chooses the appropriate function.
 #'
 #'  Productive potential as a function of site index
 #'
@@ -25,9 +27,7 @@
 #'  f - Pine, southern and middle Sweden as well as lowlands of northern Sweden.
 #'
 #'  g - Pine, northern Sweden, more than 200 meters above sea level.
-#'
-#' @examples
-#' si_to_bonitet_integrated(H100=14, function="a")
+
 
 Hagglund_1981_si_to_bonitet <- function(H100, main_species, vegetation, altitude, county){
   stopifnot(is.numeric(H100))

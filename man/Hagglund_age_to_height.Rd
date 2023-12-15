@@ -25,9 +25,6 @@ Hagglund_age_to_height(
 \item{locality}{For "Picea abies": "northern" or "southern" Sweden.}
 
 \item{regeneration}{How was the stand established? One of "culture", "natural regeneration" or "unknown".}
-
-\item{description}{Wrapper to find age at breast height, total age and age to
-breast height at a set SI and/or height for Hagglunds functions.}
 }
 \value{
 List of 3 elements:
@@ -39,7 +36,8 @@ List of 3 elements:
 "Total age", numeric.
 }
 \description{
-Age at a certain height according to height trajectories by Hägglund (1972,1973,1974)
+Wrapper to find age at breast height, total age and age to
+breast height at a set SI and/or height for Hagglunds functions.
 }
 \seealso{
 \code{\link[=Hagglund_1972_northern_Sweden_Height_trajectories_Spruce]{Hagglund_1972_northern_Sweden_Height_trajectories_Spruce()}} ,

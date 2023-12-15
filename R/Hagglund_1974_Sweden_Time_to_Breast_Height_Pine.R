@@ -1,4 +1,6 @@
 #' Time to breast height for Scots Pine in Sweden.
+#' @param H100TotalAge Site Index H100 for Pine according to Hägglund 1974.
+#' @param regeneration Method of regeneration. One of : 'culture','natural' or 'unknown'
 #'@seealso [forester::Hagglund_1974_Sweden_height_trajectories_Pine]
 #'@export
 Hagglund_1974_Sweden_Time_to_Breast_Height_Pine <- function(H100TotalAge,
