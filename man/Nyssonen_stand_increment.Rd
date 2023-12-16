@@ -39,9 +39,13 @@ Annual volume-increment percentage for next five year period.
 OBS. Controlled, but may differ from tables (errata correction?)
 }
 \details{
-Spruce function no. 18 (diameter)\n n= 146. R^2=0.893. se percent 16.8.\n
-Spruce function no. 19 (w/o diameter)\n n= 146. R^2=0.884. se percent 17.3.\n
+\itemize{
+\item Spruce function no. 18 (diameter) n= 146. R^2=0.893. se percent 16.8.
+\item Spruce function no. 19 (w/o diameter) n= 146. R^2=0.884. se percent 17.3.
+}
 
-Pine function no. 16. \n n=352, R^2=0.904, se percent 16.1\n
-Pine function no. 17.\n n=352. R^2=0.893, se percent 16.9.\n
+\itemize{
+\item Pine function no. 16.  n=352, R^2=0.904, se percent 16.1
+\item Pine function no. 17. n=352. R^2=0.893, se percent 16.9.
+}
 }

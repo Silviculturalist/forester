@@ -13,10 +13,10 @@
 #' Residual spread = ±3.8 yrs , ±35.3\%.
 #'
 #'
-#' @return
+#' @return Years until breast height 1.3 m.
 #' @export
 #'
-#' @examples
+#' @example
 #' Braastad_1977_time_to_breast_height_Norway_Pine(SIH40=17)
 Braastad_1977_time_to_breast_height_Norway_Pine<- function(
   SIH40

@@ -41,7 +41,7 @@
 #' @param thinned 1 if the plot has been thinned, otherwise 0.
 #' @param last_thinned Number of growth seasons since the stand was last thinned.
 #'
-#' @return
+#' @return Basal Area.
 #' @export
 Elfving_2009_BA_stand <- function(vegetation, stand_age, Basal_area_Conifer_m2_ha, Basal_area_Pine_m2_ha, Basal_area_Birch_m2_ha, Basal_area_after_thinning, Basal_area_before_thinning, Basal_area_stand, stems_after_thinning, peatland, soil_moisture, SIS100, latitude, altitude, ditched, thinned, last_thinned){
 

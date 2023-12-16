@@ -15,8 +15,7 @@
 #'
 #' @return Total volume yield m3/ha.
 #' @export
-#'
-#' @examples
+
 Pettersson_1992_total_volume_yield_after_PCT_Spruce <- function(
   stems,
   dominant_height,

@@ -24,7 +24,14 @@ Johansson_2013_height_trajectory_Sweden_Beech(
 \item{output}{One of "SIH100","Equation" or "Height".}
 }
 \value{
+If output is "SIH100", the numeric value for the height (m) a stand
+will reach at age 100.
 
+ If output is "Height", the numeric value for the height (m) a stand will
+ reach at age_2.
+
+ If output is "Equation", a named list with 2 elements: I) "Equation": text response with the equation for that height
+ curve.
 }
 \description{
 "Beech and Oak: The curves are based on permanent experimental plots in beech and Oak stands,

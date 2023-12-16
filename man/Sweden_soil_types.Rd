@@ -7,7 +7,7 @@
 Sweden_soil_types(type = "texture")
 }
 \arguments{
-\item{type}{One of "texture","moisture" or "depth"}
+\item{type}{One of "texture","moisture","water" or "depth"}
 }
 \value{
 A tibble.

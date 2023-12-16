@@ -28,9 +28,6 @@ Johansson_1996_height_trajectory_Sweden_Aspen(
 
 \item{output}{One of "SIH100","Equation" or "Height" (default).}
 }
-\value{
-
-}
 \description{
 Abstract:
 

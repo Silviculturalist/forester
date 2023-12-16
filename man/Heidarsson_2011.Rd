@@ -6,7 +6,10 @@
 \alias{Heidarsson_2011_stem_taper_Iceland_Pinus_contorta}
 \title{Stem taper of Lodgepole Pine and Siberian Larch on Iceland}
 \source{
-
+Heidarsson, L. & Pukkala, T. (2011). Taper functions for lodgepole
+pine (\emph{Pinus contorta}) and Siberian larch (\emph{Larix sibirica}) in
+Iceland. Icel. Agric. Sci. 24:3-11. Available (2022-04-02):
+\url{https://skemman.is/bitstream/1946/19885/1/Larus\%20Heidarsson\%20et\%20al\%202011\%20IAS.pdf}
 }
 \usage{
 Heidarsson_2011_stem_taper_Iceland_Larix_sibirica(
@@ -29,6 +32,8 @@ Heidarsson_2011_stem_taper_Iceland_Pinus_contorta(
 \item{output_height}{Output height.}
 }
 \value{
+Diameter at height (?)
+
 Diameter of tree in cm at output height.
 }
 \description{

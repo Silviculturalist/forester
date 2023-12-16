@@ -53,9 +53,9 @@ if the tree plot is more than 30 cm deep peat.}
 
 \item{longitude}{longitude}
 
-\item{altitude}{Metres above sea level.}
+\item{epsg_in}{EPSG of Latitude and Longitude, default=4326.}
 
-\item{espg_in}{EPSG of Latitude and Longitude, default=4326.}
+\item{altitude}{Metres above sea level.}
 }
 \value{
 List of weights, in g.

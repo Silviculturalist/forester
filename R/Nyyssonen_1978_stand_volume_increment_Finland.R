@@ -9,8 +9,11 @@
 #' @param BA_mean_diameter Optional for improved function. Basal area weighted mean diameter (median of basal area)
 #' @param vegetation Optional for improved function in Spruce. Necessary for Pine. One of [forester::Finland_vegetation_types()]
 #'
-#' @details Spruce function no. 18 (diameter)\n n= 146. R^2=0.893. se percent 16.8.\n
-#' Spruce function no. 19 (w/o diameter)\n n= 146. R^2=0.884. se percent 17.3.\n
+#' @details
+#' \itemize{
+#' \item Spruce function no. 18 (diameter) n= 146. R^2=0.893. se percent 16.8.
+#' \item Spruce function no. 19 (w/o diameter) n= 146. R^2=0.884. se percent 17.3.
+#' }
 #'
 #' @return Annual volume-increment percentage for next five year period.
 #' @export
@@ -44,8 +47,12 @@ Nyyssonen_1978_stand_volume_increment_Finland_Spruce <- function(
 
 #' @export
 #' @rdname Nyssonen_stand_increment
-#' @details Pine function no. 16. \n n=352, R^2=0.904, se percent 16.1\n
-#' Pine function no. 17.\n n=352. R^2=0.893, se percent 16.9.\n
+#' @details
+#' \itemize{
+#' \item Pine function no. 16.  n=352, R^2=0.904, se percent 16.1
+#' \item Pine function no. 17. n=352. R^2=0.893, se percent 16.9.
+#' }
+
 
 Nyyssonen_1978_stand_volume_increment_Finland_Pine <- function(
   age,

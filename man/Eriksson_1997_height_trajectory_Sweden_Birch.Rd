@@ -2,7 +2,7 @@
 % Please edit documentation in R/Eriksson_1997_height_trajectory_Sweden_BIrch.R
 \name{Eriksson_1997_height_trajectory_Sweden_Birch}
 \alias{Eriksson_1997_height_trajectory_Sweden_Birch}
-\title{Height trajectory for Birch in Sweden from Elfving 2003.}
+\title{Height trajectory for Birch in Sweden from Eriksson et al 1997.}
 \source{
 Eriksson, H., Johansson, U., Kiviste, A. (1997) A site-index model for
 pure and mixed stands of Betula pendula and Betula pubescens in Sweden.
@@ -20,14 +20,14 @@ Eriksson_1997_height_trajectory_Sweden_Birch(
 \arguments{
 \item{dominant_height}{Dominant height of stand, m.}
 
-\item{age}{Total age.}
+\item{age}{Age at breast height.}
 
-\item{age2}{Total age at output age.}
+\item{age2}{Output age at breast height.}
 
 \item{output}{One of "SIH100","Equation" or "Height".}
 }
 \value{
-
+One of output.
 }
 \description{
 Abstract
@@ -41,4 +41,18 @@ based on the Hossfeld IV growth equation performed best, and its practical
 application was therefore recommended. For birch stands over 40 yrs of age,
 top‐height growth predicted by the new model was significantly slower than
 that predicted by a site‐index model used previously.
+}
+\examples{
+
+ErikssonVect <- Vectorize(Eriksson_1997_height_trajectory_Sweden_Birch)
+
+plot(NULL,
+    xlim=c(0,100),
+    ylim=c(0,35))
+
+for(i in 1:11){
+ lines(seq(0,100,0.1),ErikssonVect(seq(10,30,2)[i],age = 50,age2 = seq(0,100,0.1)))
+}
+
+points(rep(50,11),seq(10,30,2))
 }

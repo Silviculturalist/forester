@@ -4,7 +4,13 @@
 #' alone is in any case poor, and the equations are material specific.
 #' In some inventory tasks guideline volume curves, based on diameter only,
 #' are required. The following equations....can be used for this type of task."
-#' @details Pine relative SE = 17.2 percent. \n Spruce relative SE = 18.7 percent. \n
+#' @details
+#' Pine relative SE = 17.2 percent.
+#'
+#'
+#' Spruce relative SE = 18.7 percent.
+#'
+#'
 #' Birch relative SE = 18.8 percent.
 #'
 #' @param diameter_cm Diameter at breast height 1.3 m in cm.

@@ -25,9 +25,6 @@ Johansson_1999_height_trajectory_Sweden_Alnus_incana(
 
 \item{output}{One of "SIH100","Equation" or "Height".}
 }
-\value{
-
-}
 \description{
 Abstract:
 

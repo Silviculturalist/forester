@@ -6,8 +6,13 @@
 #' alone is in any case poor, and the equations are material specific.
 #' In some inventory tasks guideline volume curves, based on diameter only,
 #' are required. The following equations....can be used for this type of task."
-#' @details Pine relative SE with bark (without bark) = 7.10 (7.5) percent. \n
-#' Spruce relative SE = 7.47 (8.1) percent. \n
+#' @details
+#' Pine relative SE with bark (without bark) = 7.10 (7.5) percent.
+#'
+#'
+#' Spruce relative SE = 7.47 (8.1) percent.
+#'
+#'
 #' Birch relative SE = 8.23 (8.4) percent.
 #'
 #' @param diameter_cm Diameter at breast height 1.3 m in cm.

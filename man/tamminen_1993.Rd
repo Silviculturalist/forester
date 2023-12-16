@@ -15,8 +15,8 @@ spruce stands in South Finland using site properties. Folia Forestalia 819. 26 p
 Tamminen_1993_SI_prediction_southern_Finland_Norway_Spruce(
   vegetation,
   temperature_sum,
-  fine_fraction_lower_than_15_percent,
-  clay_content_higher_than_10_percent
+  fine_fraction_lower_than_15_percent = FALSE,
+  clay_content_higher_than_10_percent = FALSE
 )
 
 Tamminen_1993_SI_prediction_southern_Finland_Scots_Pine(
@@ -24,7 +24,7 @@ Tamminen_1993_SI_prediction_southern_Finland_Scots_Pine(
   temperature_sum,
   humus_thickness_cm,
   rod_penetration_cm,
-  shallow_soil_l_t_30_cm
+  shallow_soil = FALSE
 )
 }
 \arguments{
@@ -32,7 +32,15 @@ Tamminen_1993_SI_prediction_southern_Finland_Scots_Pine(
 
 \item{temperature_sum}{Effective temperature sum (>5 C), e.g. Ojansuu & Henttonen 1983.}
 
-\item{clay_content_higher_than_10_percent}{}
+\item{fine_fraction_lower_than_15_percent}{Boolean. TRUE if fine fraction of soil is lower than than 15 percent, otherwise FALSE (default)}
+
+\item{clay_content_higher_than_10_percent}{Boolean. TRUE if clay content of soil is higher  than 10 percent, otherwise FALSE (default)}
+
+\item{humus_thickness_cm}{Thickness of humus layer, in cm.}
+
+\item{rod_penetration_cm}{Penetration of stone rod, e.g. Viro 1952.}
+
+\item{shallow_soil}{Boolean. TRUE if shallow soil (<30 cm to bedrock) else FALSE (Default).}
 }
 \description{
 SI prediction for Norway Spruce and Scots Pine in southern Finland.

@@ -23,9 +23,6 @@ Johansson_2013_height_trajectory_Sweden_Oak(
 
 \item{output}{One of "SIH100","Equation" or "Height".}
 }
-\value{
-
-}
 \description{
 "Beech and Oak: The curves are based on permanent experimental plots in beech and Oak stands,
 which are followed with repeat measurements. The same plots were used in the 1970's for develop

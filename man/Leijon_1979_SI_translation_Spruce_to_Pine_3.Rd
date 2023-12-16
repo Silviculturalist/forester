@@ -10,7 +10,7 @@ Funktion 7.5, p. 67.
 }
 \usage{
 Leijon_1979_SI_translation_Spruce_to_Pine_3(
-  SI_Pine,
+  SI_Spruce,
   latitude,
   altitude,
   continental,
@@ -19,6 +19,8 @@ Leijon_1979_SI_translation_Spruce_to_Pine_3(
 )
 }
 \arguments{
+\item{SI_Spruce}{SI Spruce H100, meters by Hägglund 1972,1973.}
+
 \item{latitude}{Degrees N.}
 
 \item{altitude}{Meters above sea level.}
@@ -28,8 +30,6 @@ Leijon_1979_SI_translation_Spruce_to_Pine_3(
 \item{dry}{TRUE/FALSE subsoil water depth >2 meters. SWE:"Torr" mark.}
 
 \item{herbs}{TRUE/FALSE field strata of low- or rich-herbs. SWE: "Örttyper".}
-
-\item{SI_Spruce}{SI Spruce H100, meters by Hägglund 1972,1973.}
 }
 \value{
 SI Pine H100, meters by Hägglund 1974.

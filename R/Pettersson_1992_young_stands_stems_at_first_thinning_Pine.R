@@ -18,8 +18,6 @@
 #'
 #' @return Number of stems at time for first thinning.
 #' @export
-#'
-#' @examples
 Pettersson_1992_young_stands_stems_at_first_thinning_Pine <- function(
   dominant_height,
   initial_stems,

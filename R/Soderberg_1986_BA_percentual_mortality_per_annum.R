@@ -27,8 +27,7 @@
 #'
 #' @return Mortality as annual proportion of basal area.
 #' @export
-#'
-#' @examples
+
 Soderberg_1986_BA_percentual_mortality_per_annum <- function(SI_species,
                                                      SIH100,
                                                      total_age_stand,

@@ -44,7 +44,7 @@ Soderberg_1986_form_factor_Sweden_Oak(
 Soderberg_1986_form_factor_Sweden_Beech(
   DBH.cm,
   BA_Beech.m2_ha,
-  Basal_area_Oak_m2_ha,
+  BA_Oak.m2_ha,
   BA.m2_ha,
   SI100_Spruce,
   age,
@@ -262,6 +262,49 @@ which appears when the original plot consists of different land classes,
 density classes or cutting classes or belongs to different owners. 0 for
 full plots (default).}
 
+\item{county}{Character string. One of:
+\tabular{cc}{
+Northern Sweden \tab \cr
+\tab Norrbottens lappmark \cr
+\tab Norrbottens kustland \cr
+\tab Västerbottens lappmark \cr
+\tab Västerbottens kustland \cr
+\tab Västernorrland - Ångermanlands landskap \cr
+\tab Västernorrland - Medelpads landskap \cr
+\tab Jämtland - Jämtlands landskap \cr
+\tab Jämtland - Härjedalens landskap \cr
+\tab Kopparberg - Sälen-Idre. \cr
+
+Central Sweden \tab \cr
+\tab Kopparberg - övriga \cr
+\tab Gävleborg - Hälsinglands landskap \cr
+\tab Gävleborg - övriga \cr
+\tab Värmland \cr
+
+Southern Sweden \tab \cr
+\tab Stockholm \cr
+\tab Uppsala \cr
+\tab Västmanland \cr
+\tab Södermanland \cr
+\tab Örebro \cr
+\tab Östergötland \cr
+\tab Skaraborg \cr
+\tab Älvsborg - Västergötlands landskap \cr
+\tab Älvsborg - Dalslands landskap \cr
+\tab Jönköping \cr
+\tab Kronoberg \cr
+\tab Kalmar \cr
+\tab Halland \cr
+\tab Kristianstad \cr
+\tab Malmöhus \cr
+\tab Blekinge \cr
+\tab Gotland \cr
+}}
+
+\item{BA_Oak.m2_ha}{Basal area Oak on the plot, m^2 / ha.}
+
+\item{SI100_Spruce}{Site Index H100, m for Norway Spruce. See description.#'}
+
 \item{aspect}{If more than 2:20 / 5\\%, one of the following. Otherwise 0.
 \tabular{cl}{
 1 \tab North  \cr
@@ -274,6 +317,10 @@ full plots (default).}
 8 \tab North-West \cr
 }}
 
+\item{continental}{TRUE, if the plot is situated in a continental climatic region.
+cf. Ångstrom 1958. e.g. \code{\link[=Angstrom_1958_local_climate_Sweden]{Angstrom_1958_local_climate_Sweden()}} .
+Otherwise FALSE.}
+
 \item{maritime}{TRUE, if the plot is situated in a maritime climatic region.
 cf. Ångstrom 1958. e.g. \code{\link[=Angstrom_1958_local_climate_Sweden]{Angstrom_1958_local_climate_Sweden()}} .
 Otherwise FALSE.}
@@ -282,18 +329,11 @@ Otherwise FALSE.}
 
 \item{latitude}{Latitude, degrees.}
 
+\item{distance_to_coast_km}{Closest distance to coast, in km, e.g. \link{coast_distance}}
+
 \item{fertilised_plot}{1 for fertilised plots, 0 for others (default).}
 
 \item{BA_Pine.m2_ha}{Basal area Scots Pine on the plot, m^2 / ha.}
-
-\item{thinned}{TRUE if the stand has been thinned, otherwise FALSE.}
-
-\item{last_thinned}{Number of growing seasons since last thinning.}
-
-\item{peatland}{1 if plot is Peatland, 0 for others (default).}
-
-\item{plot_inventoried_76_77}{1 for plots measured in the years 1976-77,
-0 for others (default).}
 }
 \value{
 Form quotient of tree

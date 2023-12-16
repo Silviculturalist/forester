@@ -268,7 +268,7 @@
 #' @param continental TRUE, if the plot is situated in a continental climatic region.
 #'  cf. Ångstrom 1958. e.g. [forester::Angstrom_1958_local_climate_Sweden()] .
 #'  Otherwise FALSE.
-#'  @param county Character string. One of:
+#' @param county Character string. One of:
 #'  \tabular{cc}{
 #'  Northern Sweden \tab \cr
 #' \tab Norrbottens lappmark \cr

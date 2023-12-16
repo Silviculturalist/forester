@@ -12,7 +12,11 @@
 #' @param latitude Decimal latitude (only used for Norway Spruce).
 #' @param altitude Meters above sea level.
 #'
-#' @details \n Spruce: R^2 = 0.62 (sd 16\%)\n Pine: R^2 = 0.56 (sd 21\%).\n
+#' @details
+#' \itemize{
+#'    \item Spruce: R^2 = 0.62 (sd 16\%)
+#'    \item Pine: R^2 = 0.56 (sd 21\%)
+#'    }
 #' Largest deviation on high site indices for spruce (3 m.)
 #'
 #' @return Estimated Site Index H40 [forester::Tveite_1976_height_trajectory_Norway_Pine()][forester::Tveite_1977_height_trajectory_Norway_Norway_Spruce()]

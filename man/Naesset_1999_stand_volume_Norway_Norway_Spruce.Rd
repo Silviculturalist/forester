@@ -9,17 +9,20 @@ Norway.}
 Erik Næsset & Bjorn Tveite (1999) Stand Volume Functions for Picea
 abies in Eastern, Central and Northern Norway, Scandinavian Journal of Forest
  Research, 14:2, 164-174, DOI: \href{https://doi.org/10.1080/02827589950152890}{10.1080/02827589950152890}
-
- @param BA_m2_ha Basal Area, m^2 / ha.
- @param mean_height_Lorey Lorey's mean height e.g. [forester::Lorey_mean_height()]
- @param SIH40 Site Index H40 from Tveite 1977. e.g. [Tveite_1977_height_trajectory_Norway_Norway_Spruce()]
 }
 \usage{
 Naesset_1999_stand_volume_Norway_Norway_Spruce(
   BA_m2_ha,
   mean_height_Lorey,
-  SIH40
+  SI40
 )
+}
+\arguments{
+\item{BA_m2_ha}{Basal Area, m^2 / ha.}
+
+\item{mean_height_Lorey}{Lorey's mean height e.g. [forester::Lorey_mean_height()]}
+
+\item{SI40}{Site Index H40 from Tveite 1977. e.g. [Tveite_1977_height_trajectory_Norway_Norway_Spruce()]}
 }
 \value{
 Stand Volume, m^3 / ha.

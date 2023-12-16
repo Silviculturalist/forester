@@ -25,9 +25,9 @@ plant_spacing(
 
 \item{stems_per_ha}{The number of steams planted per hectare}
 
-\item{output}{One of \emph{stems per ha} or \emph{spacing}}
+\item{area_m2}{area in square metres. Defaults to 1 hectare, 10'000 sq. metres.}
 
-\item{area}{area in square metres. Defaults to 1 hectare, 10'000 sq. metres.}
+\item{output}{One of \emph{stems per ha} or \emph{spacing}}
 }
 \value{
 Prints the output value.

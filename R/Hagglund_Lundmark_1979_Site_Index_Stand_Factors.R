@@ -64,6 +64,13 @@ Hagglund_Lundmark_1979_Site_Index_Prediction <- function(
   close2Coast=FALSE,
   LimesNorrlandicus=FALSE
   ){
+  #Check integer values.
+  stopifnot(vegetation%in%1:18)
+  stopifnot(soilMoisture%in%1:5)
+  stopifnot(soilTexture%in%1:9)
+  stopifnot(soilDepth%in%1:4)
+  stopifnot(lateralWater%in%1:3)
+
   #Ensure that aspect is correctly provided.
   if(!aspectMain %in% c("North","South","East","West",NA)) stop("aspectMain must be 'North', 'South', 'East', 'West' or NA")
 

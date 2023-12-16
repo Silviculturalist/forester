@@ -2,7 +2,11 @@
 #'
 #' @description "When volume is calculated by means of a taper curve,
 #' the stump height is needed for defining the integration limit.
-#' @details Pine relative SE = 68 percent. \n Spruce relative SE = 38 percent. \n
+#' @details
+#' Pine relative SE = 68 percent.
+#'
+#' Spruce relative SE = 38 percent.
+#'
 #' Birch relative SE = 44 percent.
 #'
 #' @param diameter_cm Diameter at breast height 1.3 m in cm.

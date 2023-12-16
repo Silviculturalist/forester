@@ -7,7 +7,6 @@
 #' Sciences. ISSN 0348-0496.
 #'
 #' @description
-#' @description
 #' \strong{Applicable counties:}
 #'  \tabular{lr}{
 #'  Northern Sweden \tab \cr

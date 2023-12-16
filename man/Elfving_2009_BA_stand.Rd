@@ -84,7 +84,7 @@ Code \tab Vegetation \cr
 \item{last_thinned}{Number of growth seasons since the stand was last thinned.}
 }
 \value{
-
+Basal Area.
 }
 \description{
 This relates to the function given in text in the source: the calibrated function BEY2 suggested for application in Heureka.

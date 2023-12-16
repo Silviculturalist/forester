@@ -69,3 +69,6 @@ Dominant height of the stand in metres at desired age.
 \description{
 Dominant height development of Norway Spruce and Scots Pine in Sweden.
 }
+\details{
+age and age2 absolutely must be of same type!
+}

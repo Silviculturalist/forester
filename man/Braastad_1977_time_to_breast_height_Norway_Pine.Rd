@@ -14,7 +14,7 @@ Braastad_1977_time_to_breast_height_Norway_Pine(SIH40)
 \item{SIH40}{Site Index H40, e.g. [forester::Tveite_1976_height_trajectory_Norway_Pine()]}
 }
 \value{
-
+Years until breast height 1.3 m.
 }
 \description{
 Time to breast height for stands of Scots Pine in Norway from Braastad 1977.
@@ -25,7 +25,4 @@ Not applicable for SIHH40 lower than 8.
 R = 0.377
 
 Residual spread = ±3.8 yrs , ±35.3\%.
-}
-\examples{
-Braastad_1977_time_to_breast_height_Norway_Pine(SIH40=17)
 }

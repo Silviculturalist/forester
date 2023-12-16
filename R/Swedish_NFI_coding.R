@@ -51,7 +51,7 @@ Sweden_vegetation_types <- function(layer="field"){
 
 #' Coding and description of swedish categorical soil parameters.
 #'
-#' @param type One of "texture","moisture" or "depth"
+#' @param type One of "texture","moisture","water" or "depth"
 #'
 #' @return A tibble.
 #' @export

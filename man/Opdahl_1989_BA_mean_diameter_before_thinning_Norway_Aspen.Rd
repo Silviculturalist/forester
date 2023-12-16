@@ -24,6 +24,8 @@ Opdahl_1989_BA_mean_diameter_before_thinning_Norway_Aspen(
 \item{stems_per_ha_before_thinning}{Number of Stems per hectare before thinning.}
 
 \item{correction}{Should the function use the correction used in the original simulation? E.g. return 96.7%. Default =TRUE}
+
+\item{description}{Basal area mean diameter before thinning for aspen stands in Norway.}
 }
 \value{
 Basal area mean diameter (cm).

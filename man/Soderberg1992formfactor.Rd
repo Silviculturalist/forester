@@ -138,7 +138,7 @@ Soderberg_1992_form_factor_northern_central_Sweden_Spruce(
 
 Soderberg_1992_form_factor_northern_central_Sweden_Broadleaves(
   SI100_Pine,
-  distance_to_coast,
+  distance_to_coast_km,
   DBH.cm,
   DBH_largest_tree_on_plot.cm,
   total_age,

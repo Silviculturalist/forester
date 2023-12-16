@@ -46,9 +46,6 @@ Braastad_1977_stand_growth_model_Pine(
 
 \item{predict_ages}{A vector of ages to predict, starting with the Age.}
 }
-\value{
-
-}
 \description{
 Braastad 1977 growth model for Pine stands in Norway.
 }

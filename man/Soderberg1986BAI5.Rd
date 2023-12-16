@@ -476,6 +476,45 @@ full plots (default).}
 
 \item{soil_moisture}{1-5. e.g. \link{Sweden_soil_types('moisture')}}
 
+\item{county}{Character string. One of:
+\tabular{cc}{
+Northern Sweden \tab \cr
+\tab Norrbottens lappmark \cr
+\tab Norrbottens kustland \cr
+\tab Västerbottens lappmark \cr
+\tab Västerbottens kustland \cr
+\tab Västernorrland - Ångermanlands landskap \cr
+\tab Västernorrland - Medelpads landskap \cr
+\tab Jämtland - Jämtlands landskap \cr
+\tab Jämtland - Härjedalens landskap \cr
+\tab Kopparberg - Sälen-Idre. \cr
+
+Central Sweden \tab \cr
+\tab Kopparberg - övriga \cr
+\tab Gävleborg - Hälsinglands landskap \cr
+\tab Gävleborg - övriga \cr
+\tab Värmland \cr
+
+Southern Sweden \tab \cr
+\tab Stockholm \cr
+\tab Uppsala \cr
+\tab Västmanland \cr
+\tab Södermanland \cr
+\tab Örebro \cr
+\tab Östergötland \cr
+\tab Skaraborg \cr
+\tab Älvsborg - Västergötlands landskap \cr
+\tab Älvsborg - Dalslands landskap \cr
+\tab Jönköping \cr
+\tab Kronoberg \cr
+\tab Kalmar \cr
+\tab Halland \cr
+\tab Kristianstad \cr
+\tab Malmöhus \cr
+\tab Blekinge \cr
+\tab Gotland \cr
+}}
+
 \item{peatland}{1 if plot is Peatland, 0 for others (default).}
 
 \item{fertilised_plot}{1 for fertilised plots, 0 for others (default).}

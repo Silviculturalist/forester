@@ -23,9 +23,6 @@ Johansson_2013_height_trajectory_Sweden_Larch(
 
 \item{output}{One of "SIH100","Equation" or "Height".}
 }
-\value{
-
-}
 \description{
 "Larch: Swedish height development curves for Larch have not been constructed earlier. Access to
 new data series have made such possible. The curves for larch are based on 21 permanent experimental plots with

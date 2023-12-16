@@ -25,8 +25,7 @@
 #'
 #' @return Basal area m2/ha.
 #' @export
-#'
-#' @examples
+
 Soderberg_1986_BA_self_thinned_stands <- function(
   SI_species,
   SIH100,
@@ -58,6 +57,6 @@ Soderberg_1986_BA_self_thinned_stands <- function(
     )
   )
 
-
-
 }
+
+Soderberg_1986_BA_self_thinned_stands <- Vectorize(Soderberg_1986_BA_self_thinned_stands)

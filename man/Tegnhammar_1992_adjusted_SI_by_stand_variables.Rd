@@ -12,14 +12,12 @@ ISSN 0348-0496
 }
 \usage{
 Tegnhammar_1992_adjusted_SI_by_stand_variables(
-  species,
   latitude,
   longitude,
   altitude,
   vegetation,
   ground_layer,
   aspect_main,
-  incline_percent,
   soil_moisture,
   soil_depth,
   soil_texture,
@@ -72,6 +70,19 @@ Code \tab Ground layer \cr
 6 \tab Fresh moss type (\emph{Hylocomium splendens, Ptilium crista-castrensis, Dicranum ssp.}) \cr
 }}
 
+\item{aspect_main}{If more than 1:20 (5\%), one of the following, otherwise 0.
+
+ \tabular{cl}{
+1 \tab North \cr
+2 \tab North-East \cr
+3 \tab East \cr
+4 \tab South-East \cr
+5 \tab South \cr
+6 \tab South-West \cr
+7 \tab West \cr
+8 \tab North-West \cr
+}}
+
 \item{soil_moisture}{Type 1="Dry/torr",2="Mesic/frisk",3="Mesic-moist/frisk-fuktig",4="Moist/fuktig",5="Wet/Blöt"}
 
 \item{soil_depth}{Type 1="Deep, >70cm",2="Rather shallow, 20-70cm",3="Shallow <20cm", 4= "Varying".}
@@ -98,19 +109,6 @@ Code \tab Short \cr
 \item{peat_humification}{"Low", if organic remnants clearly visible: squeezing sample gives somewhat cloudy water; "Medium", if with some difficulty organic remnants can be distinguished, if sample is squeezed the water is cloudy; or "High", if no organic remnants can be distinguished. Water and humus cannot be separated by squeezing. Humus is porridge-like.}
 
 \item{epsg}{Default is WGS84 'EPSG:4326'. For SWEREF-99TM - 'EPSG:3006'.}
-
-\item{aspect}{If more than 1:20 (5\%), one of the following, otherwise 0.
-
- \tabular{cl}{
-1 \tab North \cr
-2 \tab North-East \cr
-3 \tab East \cr
-4 \tab South-East \cr
-5 \tab South \cr
-6 \tab South-West \cr
-7 \tab West \cr
-8 \tab North-West \cr
-}}
 }
 \value{
 Tegnhammars adjusted SI, meters.

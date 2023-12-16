@@ -18,7 +18,14 @@
 #' @param age2 Total age at output age.
 #' @param output One of "SIH100","Equation" or "Height".
 #'
-#' @return
+#' @return If output is "SIH100", the numeric value for the height (m) a stand
+#' will reach at age 100.
+#'
+#'  If output is "Height", the numeric value for the height (m) a stand will
+#'  reach at age2.
+#'
+#'  If output is "Equation", a text response with the equation for that height curve.
+#'
 #' @export
 
 Elfving_Kiviste_1997_height_trajectory_Sweden_Pine <- function(

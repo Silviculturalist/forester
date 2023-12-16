@@ -1,7 +1,8 @@
 #' Heidarsson & Pukkala 2012 Individual tree model for Larix sibirica on Iceland.
-#' @source Heiðarsson, L. & Pukkala, T. (2012). Models for simulating the
+#'
+#' @source Heidarsson, L. & Pukkala, T. (2012). Models for simulating the
 #' temporal development of Siberian larch (\emph{Larix sibirica}) plantations in
-#' Hallormsstaður Iceland. Icel. Agric. Sci. 25:13-23. Available (2022-04-02):
+#' Hallormsstadur Iceland. Icel. Agric. Sci. 25:13-23. Available (2022-04-02):
 #' \url{https://skemman.is/bitstream/1946/19764/1/Larus%20Heidarsson%20et%20al%202012.pdf}
 #'
 #' @param dominant_height Dominant height of stand, in metres.
@@ -64,6 +65,7 @@ Heidarsson_2012_tree_survival_Iceland_Larix_sibirica <- function(
 
 #' @export
 #' @rdname Heidarsson_2011
+#' @return Diameter at height (?)
 Heidarsson_2011_stem_taper_Iceland_Larix_sibirica <- function(
     diameter_cm,
     height_m,
@@ -86,10 +88,10 @@ Heidarsson_2011_stem_taper_Iceland_Larix_sibirica <- function(
 
 #' Stem taper of Lodgepole Pine and Siberian Larch on Iceland
 #'
-#' @source Heiðarsson, L. & Pukkala, T. (2011). Taper functions for lodgepole
+#' @source Heidarsson, L. & Pukkala, T. (2011). Taper functions for lodgepole
 #' pine (\emph{Pinus contorta}) and Siberian larch (\emph{Larix sibirica}) in
 #' Iceland. Icel. Agric. Sci. 24:3-11. Available (2022-04-02):
-#' \url{https://skemman.is/bitstream/1946/19885/1/Larus%20Heidarsson%20et%20al%202011%20IAS.pdf}
+#' \url{https://skemman.is/bitstream/1946/19885/1/Larus\%20Heidarsson\%20et\%20al\%202011\%20IAS.pdf}
 #'
 #' @details \tabular{lrr}{
 #' Species \tab R^2 \tab RMSE \cr

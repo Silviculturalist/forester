@@ -23,6 +23,8 @@ Pettersson_1992_form_quotient_after_PCT_Pine(stems, dominant_height, latitude)
 \item{stems}{Number of stems per hectare}
 
 \item{dominant_height}{Dominant height, metres}
+
+\item{latitude}{Latitude, degrees.}
 }
 \value{
 Living stems per hectare after thinning

@@ -43,6 +43,9 @@ Jonsson_1980_five_year_increment_under_bark_Birch_5_60(
 
 \item{age_at_breast_height}{Age at breast height.}
 
+\item{diameter_of_largest_tree_on_plot}{Diameter at breast height under bark (?)
+in cm of the largest tree on the plot.}
+
 \item{cutting_period}{"a", if cutting during first half of five year period;
 "b", if cutting during second half of five year period.}
 

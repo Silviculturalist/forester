@@ -42,8 +42,7 @@
 #'
 #' @return List of distribution metrics.
 #' @export
-#'
-#' @examples
+
 Pettersson_1992_young_stands_volume_distribution_Pine <- function(
   dominant_height,
   diameter_corresponding_to_mean_basal_area_cm,

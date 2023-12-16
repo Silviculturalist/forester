@@ -16,8 +16,14 @@
 #' @param age2 Total age at output age.
 #' @param output One of "SIH100","Equation" or "Height".
 #'
-#' @return
-#' @export
+#' @return If output is "SIH100", the numeric value for the height (m) a stand
+#' will reach at age 100.
+#'
+#'  If output is "Height", the numeric value for the height (m) a stand will
+#'  reach at age_2.
+#'
+#'  If output is "Equation", a named list with 2 elements: I) "Equation": text response with the equation for that height
+#'  curve.
 Liziniewicz_2016_height_trajectory_Sweden_Pinus_contorta <- function(
   dominant_height,
   age,

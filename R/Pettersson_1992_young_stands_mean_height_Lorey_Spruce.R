@@ -17,8 +17,7 @@
 #'
 #' @return Lorey's Mean height of the stand.
 #' @export
-#'
-#' @examples
+
 Pettersson_1992_young_stands_mean_height_Lorey_Spruce <- function(
   dominant_height,
   initial_stems,

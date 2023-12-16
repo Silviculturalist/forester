@@ -20,7 +20,7 @@
 #' E.g. mean of tallest 10 \%.
 #'
 #' @return A data.frame. Stand description at stand age + 5 .
-#' @export
+
 Allen_2020_P_abies_five_year_increment <- function(stand_age,
                                                    volume,
                                                    SI_40,

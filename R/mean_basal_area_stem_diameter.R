@@ -28,7 +28,6 @@
 #' @examples
 mean_basal_area_stem_diameter <- function(basal_area_m2_ha,
                                           stem_count){
-  stop("This function not yet verified.")
   return(
     2*sqrt((basal_area_m2_ha/stem_count)/pi)*100
   )

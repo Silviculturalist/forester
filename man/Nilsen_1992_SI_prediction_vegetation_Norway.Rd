@@ -39,6 +39,9 @@ Estimated Site Index H40 [forester::Tveite_1976_height_trajectory_Norway_Pine()]
 Site index estimation from vegetation type and site properties in Norway.
 }
 \details{
-\n Spruce: R^2 = 0.62 (sd 16\%)\n Pine: R^2 = 0.56 (sd 21\%).\n
+\itemize{
+   \item Spruce: R^2 = 0.62 (sd 16\%)
+   \item Pine: R^2 = 0.56 (sd 21\%)
+   }
 Largest deviation on high site indices for spruce (3 m.)
 }

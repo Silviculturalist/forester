@@ -27,6 +27,9 @@ Height of the uppermost root collar (cm)
 the stump height is needed for defining the integration limit.
 }
 \details{
-Pine relative SE = 68 percent. \n Spruce relative SE = 38 percent. \n
+Pine relative SE = 68 percent.
+
+Spruce relative SE = 38 percent.
+
 Birch relative SE = 44 percent.
 }

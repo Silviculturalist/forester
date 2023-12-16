@@ -27,7 +27,13 @@ Elfving_Kiviste_1997_height_trajectory_Sweden_Pine(
 \item{output}{One of "SIH100","Equation" or "Height".}
 }
 \value{
+If output is "SIH100", the numeric value for the height (m) a stand
+will reach at age 100.
 
+ If output is "Height", the numeric value for the height (m) a stand will
+ reach at age2.
+
+ If output is "Equation", a text response with the equation for that height curve.
 }
 \description{
 156 Scots pine stands, whereof most were long term experiments maintained by the

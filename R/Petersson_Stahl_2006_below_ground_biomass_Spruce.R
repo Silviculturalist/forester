@@ -11,6 +11,7 @@
 #' @param age_at_breast_height Age at breast height.
 #' @param crown_base_height.m Height to the lowest living green branch not
 #' separated by more than three whorls from the crown.
+#' @param height.m Tree height, m.
 #' @param height.m.basal_area_weighted Basal area weighted height of stand.
 #' @param age_basal_area_weighted Basal area weighted age of stand.
 #' @param basal_area Basal area of the stand, m2 per hectare.

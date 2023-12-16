@@ -28,7 +28,7 @@
 #' @return One of output.
 #' @export
 #'
-#' @example
+#' @examples
 #'
 #'ErikssonVect <- Vectorize(Eriksson_1997_height_trajectory_Sweden_Birch)
 #'

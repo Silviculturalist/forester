@@ -1,7 +1,7 @@
 #' Volume over bark for individual Aspen trees in Norway from Opdahl 1991.
 #'
 #' @source Opdahl, H. 1991. Bonitet, vekst og produksjon hos osp (Populus tremula L.) i Sør-Norge. (Site-index, growth and yield in Aspen (Populus tremula L.) stands in South Norway.) Medd. Skogforsk. 44(11):1-44. ISBN 82-7169-527-4. ISSN 0803-2866. p. 23
-#'
+#' @description Volume over bark for individual aspen trees in Norway.
 #' @param diameter_cm Diameter of tree in cm.
 #' @param height_m Height of tree in m.
 #' @param correction Limit as per p.23 if below 8 cm.
@@ -9,8 +9,7 @@
 #'
 #' @return
 #' @export
-#'
-#' @examples
+
 Opdahl_1989_volume_over_bark_Norway_Aspen <- function(
   diameter_cm,
   height_m,

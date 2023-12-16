@@ -8,6 +8,7 @@
 #' @description n=328
 #'
 #' @param diameter.cm Diameter at breast height, in cm.
+#' @param height.m Height of tree, m.
 #' @param age_at_breast_height Age at breast height.
 #' @param crown_base_height.m Height to the lowest living green branch not
 #' separated by more than three whorls from the crown.

@@ -315,7 +315,7 @@ Pettersson_1955_height_trajectory_northern_Sweden_Spruce <-  function(
 #' Pettersson time to breast height.
 #'
 #' @details This is a smoothed function over calculated years to breast height
-#' 1.3 m in Petterson 1955. On the form: \math{timeToBH = Asymptote + (R0 - Asymptote) * exp(-exp(lrc) * H100)}
+#' 1.3 m in Petterson 1955. On the form: \eqn{timeToBH = Asymptote + (R0 - Asymptote) * exp(-exp(lrc) * H100)}
 #' Which is included in the height_trajectory functions.
 #'
 #' @source Pettersson, H. 1955. Barrskogens volymproduktion (Die
@@ -503,5 +503,120 @@ Pettersson_1955_diameter_procentual_increment_southern_Sweden_Spruce <- function
 
   return(
     exp(logp5)
+  )
+}
+
+
+
+#' @export
+#' @details For the diameter increment viz. Norway Spruce in northern Sweden,
+#' only 10 yr intervals from the initial age can be provided. This due to the
+#' function being a preliminary work based on 'long-cores' (every tenth yr)
+#' which was collected from "Skogsforskningsinstitutets stora undersökning i
+#' orörd skog", field work 1941-1949. Measurements for last 100 years of age
+#' class 140-179. Site quality classes III-VIII in counties Norrbotten,
+#' Västerbotten, Jämtland & Västernorrland. p. 289. Original strength of
+#' site index was deemed too high for immediate use and subjectively corrected.
+#' @rdname Pettersson_1955_Dp5
+Pettersson_1955_diameter_procentual_increment_northern_Sweden_Spruce <- function(
+    diameterCm,
+    ageAtBreastHeight,
+    H100,
+    initialAge,
+    yearSinceInitialAge
+){
+  #Since material was measured at 10 yr intervals, it was sorted into 5 periods
+  #(c(10,20),c(30,40),c(50,60),c(70,80),c(90,100)) from the center.
+  if((yearsSinceInitialAge%%10!=0)) stop("yearsSinceInitialAge must be evenly
+                                         divisible by 10. Read documentation.")
+
+  if(yearsSinceInitialAge%in%c(10,20)){
+    A = -0.1716*initialAge + 1.096*(0.25*H100+15)
+    B = 1.149
+  }
+
+  if(yearsSinceInitialAge%in%c(30,40)){
+    A = -0.3070*initialAge + 2.206*(0.25*H100+15)
+    B = 1.284
+  }
+
+  if(yearsSinceInitialAge%in%c(50,60)){
+    A = -0.3733*initialAge + 3.041*(0.25*H100+15)
+    B = 1.368
+  }
+
+  if(yearsSinceInitialAge%in%c(70,80)){
+    A = -0.3930*initialAge + 3.748*(0.25*H100+15)
+    B = 1.410
+  }
+
+  if(yearsSinceInitialAge%in%c(90,100)){
+    A = -0.3960*initialAge + 4.36*(0.25*H100+15)
+    B = 1.443
+  }
+
+  return(
+    A+B*diameterCm
+  )
+
+}
+
+
+#' Petterson 1955 Diameter Classes for truncated normal distributions.
+#' @details The parameters suffix '0' indicates that this is the initial state.
+#' @param Phi0 Range of the truncated distribution from upper limit to
+#' truncation expressed in standard deviations of the normal distribution. e.g.
+#' untruncated normal distribution Phi0 is 6.
+#' @param Sigman0 Standard deviation of the normal distribution.
+#' @param alpha0 The truncation point.
+#' @param nClasses Number of desired diameter classes.
+#' @export
+Petterson_1955_DiameterClasses <- function(Phi0=3,Sigman0, alpha0, nClasses){
+upperDistributionLimit = alpha0 + Phi0*Sigman0
+lowerDistributionLimit = Phi0*Sigman0
+classWidth = (Phi0*Sigman0)/nClasses
+classMiddleDiameters = seq(alpha0+0.5*classWidth,upperDistributionLimit-0.5*classWidth,by=classWidth)
+
+return(
+  list(
+    "upperDistributionLimit"=upperDistributionLimit,
+    "lowerDistributionLimit"=lowerDistributionLimit,
+    "classWidth"=classWidth,
+    "classMiddleDiameters"=classMiddleDiameters
+  )
+)
+}
+
+
+Petterson_1955_DiameterToHeight_Sweden_Pine_Spruce <- function(
+    species="Picea abies",
+    dominantHeightM = 20,
+    diameterUpperDistributionLimit,
+    diameterCm,
+    northernSweden=TRUE
+){
+  if(northernSweden==TRUE) #For both Pine and Spruce due to lack of material.
+  {
+    K = 0.0035*dominantHeightM + 0.7718 #R^2  =1
+    n=2
+  }
+
+  if(northernSweden!=TRUE && species=="Pinus sylvestris")
+  {
+    K = 0.0063*dominantHeightM + 0.7281 #R^2 = 1
+    n=2
+  }
+
+  if(northernSweden!=TRUE && species=="Picea abies")
+  {
+    K = 0.0028*dominantHeightM + 0.8347 #R^2 = 1
+    n=3
+  }
+
+  APrim = (1-K)/(dominantHeightM-1.3)^(1/n)
+  B = K / (dominantHeightM-1.3)^(1/n)
+
+  return(
+    ((1/(((APrim*diameterUpperDistributionLimit)/diameterCm)+B))^n)+1.3
   )
 }

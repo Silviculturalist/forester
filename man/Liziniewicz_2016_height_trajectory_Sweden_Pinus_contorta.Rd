@@ -22,7 +22,14 @@ Liziniewicz_2016_height_trajectory_Sweden_Pinus_contorta(
 \item{output}{One of "SIH100","Equation" or "Height".}
 }
 \value{
+If output is "SIH100", the numeric value for the height (m) a stand
+will reach at age 100.
 
+ If output is "Height", the numeric value for the height (m) a stand will
+ reach at age_2.
+
+ If output is "Equation", a named list with 2 elements: I) "Equation": text response with the equation for that height
+ curve.
 }
 \description{
 Provides interface for the site index function from "\emph{A site index model for lodgepole pine (Pinus contorta Dougl. var. latifolia) in northern Sweden}" (2016),

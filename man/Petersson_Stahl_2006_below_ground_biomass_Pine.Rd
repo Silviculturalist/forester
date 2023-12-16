@@ -29,6 +29,8 @@ Petersson_Stahl_2006_below_ground_biomass_Pine(
 
 \item{age_at_breast_height}{Age at breast height.}
 
+\item{height.m}{Height of tree, m.}
+
 \item{crown_base_height.m}{Height to the lowest living green branch not
 separated by more than three whorls from the crown.}
 
@@ -43,9 +45,6 @@ separated by more than three whorls from the crown.}
 \item{Dry_soil}{If Dry or Mesic : 1, otherwise 0.}
 
 \item{Root_detail}{2 or 5 mm resolution of smallest included roots.}
-}
-\value{
-
 }
 \description{
 n=328
