@@ -1,3 +1,92 @@
+#' Basal area mean diameter before thinning for Aspen stands in Norway from Opdahl 1989.
+#'
+#' @source Opdahl, H. 1989. Avsmaling og volum hos osp (Populus tremula L.) i Sør-Norge. (Tapering and volume of Aspen (Populus tremula L.) in South Norway.) Medd. Nor. Inst. Skogforsk. 43.2.:42s. in
+#' Opdahl, H. 1991. Bonitet, vekst og produksjon hos osp (Populus tremula L.) i Sør-Norge. (Site-index, growth and yield in Aspen (Populus tremula L.) stands in South Norway.) Medd. Skogforsk. 44(11):1-44. ISBN 82-7169-527-4. ISSN 0803-2866., page 21. (function 6).
+#'
+#' @param description Basal area mean diameter before thinning for aspen stands in Norway.
+#'
+#' @param SIH40 Site Index H40, e.g. [forester::Opdahl_1991_height_trajectory_Norway_Aspen()]
+#' @param dominant_height Dominant height of stand, m. (arithmetic mean of 100 trees with largest diameter per hectare)
+#' @param stems_per_ha_before_thinning Number of Stems per hectare before thinning.
+#' @param correction Should the function use the correction used in the original simulation? E.g. return 96.7%. Default =TRUE
+#'
+#' @return Basal area mean diameter (cm).
+#' @export
+
+Opdahl_1989_BA_mean_diameter_before_thinning_Norway_Aspen <- function(
+  SIH40,
+  dominant_height,
+  stems_per_ha_before_thinning,
+  correction=TRUE
+){
+  correction <- ifelse(isTRUE(correction),0.967,1)
+
+  return(
+    (68.69078 * (SIH40^0.05957) * (stems_per_ha_before_thinning^(-0.45314)) * (dominant_height^0.49641))*correction
+  )
+}
+#' Volume over bark for individual Aspen trees in Norway from Opdahl 1991.
+#'
+#' @source Opdahl, H. 1991. Bonitet, vekst og produksjon hos osp (Populus tremula L.) i Sør-Norge. (Site-index, growth and yield in Aspen (Populus tremula L.) stands in South Norway.) Medd. Skogforsk. 44(11):1-44. ISBN 82-7169-527-4. ISSN 0803-2866. p. 23
+#' @description Volume over bark for individual aspen trees in Norway.
+#' @param diameter_cm Diameter of tree in cm.
+#' @param height_m Height of tree in m.
+#' @param correction Limit as per p.23 if below 8 cm.
+#' @param age Age (?)
+#'
+#' @return
+#' @export
+
+Opdahl_1989_volume_over_bark_Norway_Aspen <- function(
+  diameter_cm,
+  height_m,
+  age,
+  correction=TRUE
+){
+  if(isTRUE(correction)){
+  if(diameter_cm<8){
+    return(0.025)
+  }
+  }
+
+  return(
+    -0.04755 + (diameter_cm*0.00699)-((diameter_cm^2)*0.0023) + ((diameter_cm^2)*height_m*age* 0.00004)
+  )
+}
+#' Height trajectories for Aspen stands in Norway from Opdahl 1991.
+#'
+#' @source Opdahl, H. 1991. Bonitet, vekst og produksjon hos osp (Populus tremula L.) i Sør-Norge. (Site-index, growth and yield in Aspen (Populus tremula L.) stands in South Norway.) Medd. Skogforsk. 44(11):1-44. ISBN 82-7169-527-4. ISSN 0803-2866.
+#'
+#' @description Functions 1:5, pages 14-15.
+#'
+#' @param dominant_height Dominant Height, metres.
+#' @param age Age at breast height.
+#' @param age2 Age at breast height at which to calculate new height.
+#'
+#' @return Top Height at age at breast height == age2
+#' @export
+#'
+#' @examples
+#' Opdahl_1991_height_trajectory_Norway_Aspen(dominant_height=5,age = 10,age2 = 40)
+Opdahl_1991_height_trajectory_Norway_Aspen <- function(dominant_height, age, age2){
+
+  OSP20 <- ((age+5.94064)/(2.19443+0.64260*(age+5.94064)))^8.07005
+  OSP23 <- ((age+4.89477)/(2.25222+0.55797*(age+4.89477)))^6.30208
+
+  DIFF <- ((OSP23+0.0262)-(OSP20+0.1103))/3
+
+  diffratio <- (dominant_height-OSP20)/DIFF
+
+  OSP20_age2 <- ((age2+5.94064)/(2.19443+0.64260*(age2+5.94064)))^8.07005
+  OSP23_age2 <- ((age2+4.89477)/(2.25222+0.55797*(age2+4.89477)))^6.30208
+  Diff2 <- ((OSP23_age2+0.0262)-(OSP20_age2+0.1103))/3
+
+  dominant_height2 <- OSP20_age2 + diffratio*Diff2
+
+  return(
+    dominant_height2
+  )
+}
 Opdahl_1991_mean_height_Lorey_Norway_Aspen <- function(dominant_height,
                                                        BA_mean_diameter,
                                                        stems_per_ha_before_thinning,
