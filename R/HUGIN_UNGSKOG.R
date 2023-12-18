@@ -439,6 +439,3 @@ Nystrom_1987_DBH_of_individual_young_trees <- function(
 
 }
 
-
-
-#Nystrom_2010_height_distribution_
