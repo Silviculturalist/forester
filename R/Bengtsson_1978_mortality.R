@@ -11,7 +11,7 @@
 #'  higher than normal so at application the mortality given by the functions
 #'  was reduced with 40 % in northern Sweden and 25 % in southern Sweden.
 #'
-#'  \url[Available Online (Swedish)](https://lagen.nu/sou/1978:7/sid287.png)
+#'  \href{https://lagen.nu/sou/1978:7/sid287.png}{Available Online (Swedish)}
 #'
 #' @param QMD Diameter of mean basal area stem. Possibly arithmetic mean diameter.
 #' @param age stand age.
@@ -28,7 +28,7 @@
 Bengtsson_1978_annual_volume_mortality_percent <- function(
     QMD, #mean dbh
     age,
-    MAIMax,
+    MAI,
     northern_Sweden=TRUE,
     species='Pinus sylvestris',
     reduce=TRUE,
@@ -109,7 +109,7 @@ Bengtsson_1978_annual_volume_mortality_percent <- function(
     reduction = ifelse(northern_Sweden,0.6,0.75) #-40% northern Sweden, -25% s. Sweden.
   }
 
-  val = (a+b1*QMD+b2*(QMD^2)+b3*age+b4*(age^2)+b5*MAIMax)*reduction
+  val = (a+b1*QMD+b2*(QMD^2)+b3*age+b4*(age^2)+b5*MAI)*reduction
 
   if(val<floor){
     val=floor

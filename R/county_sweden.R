@@ -5,12 +5,12 @@
 #'
 #' @param latitude Latitude, decimal
 #' @param longitude Longitude, decimal
-#' @param espg Reference system. Default 'WGS84': 4326. For SWEREF99TM: '3006'.
+#' @param epsg Reference system. Default 'WGS84': 4326. For SWEREF99TM: '3006'.
 #'
 #' @return Text, Swedish County
 #' @export
 #'
-county_sweden <- function(latitude, longitude,epsg=4326){
+county_sweden <- function(latitude, longitude, epsg=4326){
 
   if(missing(latitude) | missing(longitude)) stop("Cannot calculate county, requires either County or Latitude & Longitude.")
 

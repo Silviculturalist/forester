@@ -1028,7 +1028,7 @@ Soderberg_1986_double_bark_Sweden_Oak <- function(
 #' 'Picea abies' or 'Pinus sylvestris'.
 #' @param SI100 Site Index H100, m.
 #' @param SI100_Spruce Site Index H100, m for Norway Spruce. See description.#'
-#' @param soil_moisture 1-5. e.g. [forester::Sweden_soil_types('moisture')]
+#' @param soil_moisture 1-5. e.g. [forester::Sweden_soil_types()]
 #' @param lateral_water \tabular{cl}{
 #' Code \tab Description \cr
 #' 1 \tab Missing \cr
@@ -2049,7 +2049,7 @@ Soderberg_1986_form_factor_central_Sweden_Pine <- function(
 #' @param SI_species Species for which SIH100 was estimated.
 #' One of : 'Picea abies' or 'Pinus sylvestris'.
 #' @param SI100 Site Index H100, m.
-#' @param soil_moisture 1-5. e.g. [forester::Sweden_soil_types('moisture')]
+#' @param soil_moisture 1-5. e.g. [forester::Sweden_soil_types()]
 #' @param peatland 1 if plot is Peatland, 0 for others (default).
 #' @param divided_plot 1 for plots described in different parts,
 #' which appears when the original plot consists of different land classes,

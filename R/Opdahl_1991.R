@@ -3,7 +3,7 @@
 #' @source Opdahl, H. 1989. Avsmaling og volum hos osp (Populus tremula L.) i Sør-Norge. (Tapering and volume of Aspen (Populus tremula L.) in South Norway.) Medd. Nor. Inst. Skogforsk. 43.2.:42s. in
 #' Opdahl, H. 1991. Bonitet, vekst og produksjon hos osp (Populus tremula L.) i Sør-Norge. (Site-index, growth and yield in Aspen (Populus tremula L.) stands in South Norway.) Medd. Skogforsk. 44(11):1-44. ISBN 82-7169-527-4. ISSN 0803-2866., page 21. (function 6).
 #'
-#' @param description Basal area mean diameter before thinning for aspen stands in Norway.
+#' @description Basal area mean diameter before thinning for aspen stands in Norway.
 #'
 #' @param SIH40 Site Index H40, e.g. [forester::Opdahl_1991_height_trajectory_Norway_Aspen()]
 #' @param dominant_height Dominant height of stand, m. (arithmetic mean of 100 trees with largest diameter per hectare)
@@ -66,8 +66,7 @@ Opdahl_1989_volume_over_bark_Norway_Aspen <- function(
 #' @return Top Height at age at breast height == age2
 #' @export
 #'
-#' @examples
-#' Opdahl_1991_height_trajectory_Norway_Aspen(dominant_height=5,age = 10,age2 = 40)
+#' @example Opdahl_1991_height_trajectory_Norway_Aspen(dominant_height=5,age = 10,age2 = 40)
 Opdahl_1991_height_trajectory_Norway_Aspen <- function(dominant_height, age, age2){
 
   OSP20 <- ((age+5.94064)/(2.19443+0.64260*(age+5.94064)))^8.07005
@@ -87,33 +86,35 @@ Opdahl_1991_height_trajectory_Norway_Aspen <- function(dominant_height, age, age
     dominant_height2
   )
 }
-Opdahl_1991_mean_height_Lorey_Norway_Aspen <- function(dominant_height,
-                                                       BA_mean_diameter,
-                                                       stems_per_ha_before_thinning,
-                                                       Basal_area_m2_ha_before_thinning,
-                                                       stand_age_at_breast_height,
-                                                       correction = TRUE) {
 
-  warning("This function has been reconstructed from data in the original source. It is an approximation.")
-  correction <- ifelse(isTRUE(correction), 0.75, 0)
-
-  return(#Observe, contains typo in source. Missing a closing bracket.
-    ((dominant_height - correction) - (
-      137.396 + ((dominant_height - correction) * 158.856) - (((
-        dominant_height - correction
-      ) ^ 2) * 3.78E-07) - (BA_mean_diameter * 41.154) + ((
-        BA_mean_diameter * (dominant_height - correction)
-      ) * 0.1406) + ((
-        stems_per_ha_before_thinning * (dominant_height - correction)
-      ) * 0.07) - ((Basal_area_m2_ha_before_thinning ^ 2) * 1.52) + (stand_age_at_breast_height *
-                                                                          1.254e-05)
-    ) / 10000
-    ))
-  # a       b        c      d      e    f    g         h     k     RMSE i
-  #137.396 158.856 3.78e-07 41.154 0.1406 0.07 1.52 1.254e-05 10000 0.431344 0
-
-
-}
+#
+# Opdahl_1991_mean_height_Lorey_Norway_Aspen <- function(dominant_height,
+#                                                        BA_mean_diameter,
+#                                                        stems_per_ha_before_thinning,
+#                                                        Basal_area_m2_ha_before_thinning,
+#                                                        stand_age_at_breast_height,
+#                                                        correction = TRUE) {
+#
+#   warning("This function has been reconstructed from data in the original source. It is an approximation.")
+#   correction <- ifelse(isTRUE(correction), 0.75, 0)
+#
+#   return(#Observe, contains typo in source. Missing a closing bracket.
+#     ((dominant_height - correction) - (
+#       137.396 + ((dominant_height - correction) * 158.856) - (((
+#         dominant_height - correction
+#       ) ^ 2) * 3.78E-07) - (BA_mean_diameter * 41.154) + ((
+#         BA_mean_diameter * (dominant_height - correction)
+#       ) * 0.1406) + ((
+#         stems_per_ha_before_thinning * (dominant_height - correction)
+#       ) * 0.07) - ((Basal_area_m2_ha_before_thinning ^ 2) * 1.52) + (stand_age_at_breast_height *
+#                                                                           1.254e-05)
+#     ) / 10000
+#     ))
+#   # a       b        c      d      e    f    g         h     k     RMSE i
+#   #137.396 158.856 3.78e-07 41.154 0.1406 0.07 1.52 1.254e-05 10000 0.431344 0
+#
+#
+# }
 
 #
 # #Find the right values.

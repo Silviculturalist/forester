@@ -12,7 +12,6 @@
 #' @param diameter_cm Diameter at breast height 1.3 m in cm.
 #' @param BA_m2_ha Basal area of the plot, in m^2 / ha
 #' @param BA_m2_ha_Spruce Basal area Spruce, in m^2 / ha
-#' @param BA_m2_ha_Pine Basal area Pine, in m^2 / ha
 #' @param BA_m2_ha_Broadleaves Basal area Broadleaves, in m^2 / ha
 #' @param HL Lorey's Mean Height for the plot.
 #' @param QMD Basal area weighted mean diameter, in cm. (To do: Check with authors)
