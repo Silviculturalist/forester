@@ -19,20 +19,20 @@ Lexerod_2005_recruitment_count_5cm_Norway_Norway_Spruce(
   SI40,
   age,
   stems_ha,
-  prop_spruce
+  percent_spruce
 )
 
 Lexerod_2005_recruitment_count_5cm_Norway_Scots_Pine(
   SI40,
   age,
   stems_ha,
-  prop_pine
+  percent_pine
 )
 
 Lexerod_2005_recruitment_count_5cm_Norway_Birch(
   age,
   stems_ha,
-  prop_birch_broadleaves
+  percent_birch_broadleaves
 )
 
 Lexerod_2005_recruitment_count_5cm_Norway_Broadleaves(
@@ -41,7 +41,7 @@ Lexerod_2005_recruitment_count_5cm_Norway_Broadleaves(
   SI40,
   age,
   stems_ha,
-  prop_birch_broadleaves
+  percent_birch_broadleaves
 )
 }
 \arguments{
@@ -51,16 +51,20 @@ Lexerod_2005_recruitment_count_5cm_Norway_Broadleaves(
 [forester::Tveite_1977_height_trajectory_Norway_Norway_Spruce()], Strand
 (1967).}
 
-\item{age}{Total age (?)}
+\item{age}{Stand age, breast height (1.3m)}
 
 \item{stems_ha}{Stems per hectare.}
 
-\item{prop_spruce}{Proportion (Basal area? Stems?) of Spruce.}
+\item{percent_spruce}{Percent (Basal area? Stems?) of Spruce.}
 
-\item{prop_pine}{Proportion (Basal area? Stems?) of Scots Pine.}
+\item{percent_pine}{Percent (Basal area? Stems?) of Scots Pine.}
 
-\item{prop_birch_broadleaves}{Sum of proportion of of birch and other
-broadleaves. (BA\% or stems?)}
+\item{percent_birch_broadleaves}{Sum of Percent of of birch and other
+broadleaves. (stems)}
+
+\item{altitude}{meters above sea level.}
+
+\item{latitude}{Degrees N.}
 }
 \value{
 Number of recruits

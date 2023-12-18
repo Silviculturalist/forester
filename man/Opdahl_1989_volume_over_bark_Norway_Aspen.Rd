@@ -23,6 +23,9 @@ Opdahl_1989_volume_over_bark_Norway_Aspen(
 
 \item{correction}{Limit as per p.23 if below 8 cm.}
 }
+\value{
+dm3, m3 (?)
+}
 \description{
 Volume over bark for individual aspen trees in Norway.
 }

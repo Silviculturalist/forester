@@ -74,6 +74,9 @@ NordLarsen_2009_height_trajectory_Denmark_Douglas_Fir(
 
 \item{output}{One of "Equation" or "Height".}
 }
+\value{
+m.
+}
 \description{
 Site-specific height growth models for six common tree species in Denmark.
 }

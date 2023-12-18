@@ -4,7 +4,8 @@
 \alias{Fries_1964_height_trajectory_southern_central_Sweden_Birch}
 \title{Development of Birch stands according to Fries 1964}
 \source{
-https://pub.epsilon.slu.se/12765/
+Fries, J. 1964. Vårtbjörkens Produktion i Svealand och södra Norrland. Studia Forestalia Suecica.
+ \url{https://pub.epsilon.slu.se/12765/}
 }
 \usage{
 Fries_1964_height_trajectory_southern_central_Sweden_Birch(

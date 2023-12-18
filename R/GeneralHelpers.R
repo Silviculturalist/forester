@@ -114,8 +114,6 @@ Oppermann_Cajanus_stand_BA <- function(
 #'
 #' @return QMD, cm.
 #' @export
-#'
-#' @examples
 quadratic_mean_diameter <- function(
     Basal_area_m2_ha,
     stems_per_ha
@@ -136,8 +134,6 @@ quadratic_mean_diameter <- function(
 #'
 #' @return Basal area, m2/ha.
 #' @export
-#'
-#' @examples
 stand_basal_area_QMD <- function(
     stems_per_ha,
     QMD

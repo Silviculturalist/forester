@@ -8,8 +8,6 @@
 #'
 #' @return \%
 #' @export
-#'
-#' @examples
 Eriksson_1976_bark_procent <- function(age_bh_100_largest_trees_per_ha_years, SI, diameter_of_mean_basal_area_under_bark_cm, basal_area_under_bark_ha_m2){
 
   if(SI<=17.9){
@@ -94,7 +92,7 @@ Eriksson_1976_bark_subtraction_procent <- function(diameter_of_mean_basal_area_o
 #' @param number_of_trees_per_ha Number of trees per hectare.
 #' @param planted If site was planted, TRUE. If the site was founded by pre-commercial thinning to a certain plant spacing, FALSE.
 #'
-#' @return
+#' @return Basal Area, m2 / ha
 #' @export
 
 Eriksson_1976_basal_area_before_first_thinning <- function(dominant_height_m, number_of_trees_per_ha,planted){

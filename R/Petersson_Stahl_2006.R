@@ -12,7 +12,7 @@
 #' @param diameter.cm Diameter at breast height, in cm.
 #' @param Root_detail 2 or 5 mm resolution of smallest included roots.
 #'
-#' @return
+#' @return Below-ground biomass (g)
 #' @export
 Petersson_Stahl_2006_below_ground_biomass_Birch <- function(
   diameter.cm,
@@ -65,7 +65,7 @@ Petersson_Stahl_2006_below_ground_biomass_Birch <- function(
 #' @param Dry_soil If Dry or Mesic : 1, otherwise 0.
 #' @param Root_detail 2 or 5 mm resolution of smallest included roots.
 #'
-#' @return
+#' @return Below-ground biomass (g)
 #' @export
 Petersson_Stahl_2006_below_ground_biomass_Pine <- function(
   diameter.cm,
@@ -162,7 +162,7 @@ Petersson_Stahl_2006_below_ground_biomass_Pine <- function(
 #' @param Dry_soil If Dry or Mesic : 1, otherwise 0.
 #' @param Root_detail 2 or 5 mm resolution of smallest included roots.
 #'
-#' @return
+#' @return Below-ground biomass (g)
 #' @export
 Petersson_Stahl_2006_below_ground_biomass_Spruce <- function(
   diameter.cm,

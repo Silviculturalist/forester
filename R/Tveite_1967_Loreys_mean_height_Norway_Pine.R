@@ -9,8 +9,6 @@
 #'
 #' @return Lorey's mean height for stands of Scots Pine in Norway.
 #' @export
-#'
-#' @examples
 Tveite_1967_Loreys_mean_height_Norway_Pine <- function(
   dominant_height,
   stems_per_ha,

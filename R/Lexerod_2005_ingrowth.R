@@ -16,9 +16,9 @@
 #' [forester::Tveite_1976_height_trajectory_Norway_Pine()],
 #' [forester::Tveite_1977_height_trajectory_Norway_Norway_Spruce()], Strand
 #' (1967).
-#' @param age Total age (?)
+#' @param age Stand age, breast height (1.3m)
 #' @param stems_ha Stems per hectare.
-#' @param prop_spruce Proportion (Basal area? Stems?) of Spruce.
+#' @param percent_spruce Percent (Basal area? Stems?) of Spruce.
 #' @return Number of recruits
 #'
 #' @name Lexerod_2005_count
@@ -28,14 +28,14 @@ Lexerod_2005_recruitment_count_5cm_Norway_Norway_Spruce <- function(
   SI40,
   age,
   stems_ha,
-  prop_spruce
+  percent_spruce
 ){
   return(
-    exp(-3.9717 + 0.0631*SI40 + 0.0391*age - 0.0001*log(stems_ha) + 0.8335*log(stems_ha) + 0.4374*log(prop_spruce))
+    exp(-3.9717 + 0.0631*SI40 + 0.0391*age - 0.0001*log(stems_ha) + 0.8335*log(stems_ha) + 0.4374*log(percent_spruce))
   )
 }
 
-#' @param prop_pine Proportion (Basal area? Stems?) of Scots Pine.
+#' @param percent_pine Percent (Basal area? Stems?) of Scots Pine.
 #' @rdname Lexerod_2005_count
 #' @export
 #' @details Scots Pine observations: 228. Adj.R^2 = 0.297. CV(percent): 16.0.
@@ -43,14 +43,14 @@ Lexerod_2005_recruitment_count_5cm_Norway_Scots_Pine <- function(
   SI40,
   age,
   stems_ha,
-  prop_pine
+  percent_pine
 ){
   return(
-    exp(-0.66805 + 0.0547*SI40 + 0.0175*age + 0.4145*log(stems_ha) + 0.4344*log(prop_pine))
+    exp(-0.66805 + 0.0547*SI40 + 0.0175*age + 0.4145*log(stems_ha) + 0.4344*log(percent_pine))
   )
 }
 
-#' @param prop_birch_broadleaves Sum of proportion of of birch and other
+#' @param percent_birch_broadleaves Sum of Percent of of birch and other
 #' broadleaves. (BA\% or stems?)
 #' @rdname Lexerod_2005_count
 #' @export
@@ -58,17 +58,17 @@ Lexerod_2005_recruitment_count_5cm_Norway_Scots_Pine <- function(
 Lexerod_2005_recruitment_count_5cm_Norway_Birch <- function(
   age,
   stems_ha,
-  prop_birch_broadleaves
+  percent_birch_broadleaves
 ){
   return(
-    exp(-0.8924 + 0.0294*age - 0.0001*stems_ha + 0.6204*log(stems_ha) + 0.2790*log(prop_birch_broadleaves))
+    exp(-0.8924 + 0.0294*age - 0.0001*stems_ha + 0.6204*log(stems_ha) + 0.2790*log(percent_birch_broadleaves))
   )
 }
 
-#' @param prop_birch_broadleaves Sum of proportion of of birch and other
-#' broadleaves. (BA\% or stems?)
-#' @param altitude
-#' @param latitude
+#' @param percent_birch_broadleaves Sum of Percent of of birch and other
+#' broadleaves. (stems)
+#' @param altitude meters above sea level.
+#' @param latitude Degrees N.
 #' @rdname Lexerod_2005_count
 #' @export
 #' @details Broadleaf observations: 166. Adj.R^2 = 0.159. CV(percent): 18.4.
@@ -78,10 +78,10 @@ Lexerod_2005_recruitment_count_5cm_Norway_Broadleaves <- function(
   SI40,
   age,
   stems_ha,
-  prop_birch_broadleaves
+  percent_birch_broadleaves
 ){
   return(
-    exp(15.5017 - 0.2691*log(altitude) - 3.6831*log(latitude) + 0.0444*SI40 + 0.2657*log(age) - 0.0002*stems_ha + 0.5514*log(stems_ha) + 0.3727*log(prop_birch_broadleaves))
+    exp(15.5017 - 0.2691*log(altitude) - 3.6831*log(latitude) + 0.0444*SI40 + 0.2657*log(age) - 0.0002*stems_ha + 0.5514*log(stems_ha) + 0.3727*log(percent_birch_broadleaves))
   )
 }
 
@@ -102,9 +102,9 @@ Lexerod_2005_recruitment_count_5cm_Norway_Broadleaves <- function(
 #' [forester::Tveite_1976_height_trajectory_Norway_Pine()],
 #' [forester::Tveite_1977_height_trajectory_Norway_Norway_Spruce()], Strand
 #' (1967).
-#' @param age Total age (?)
+#' @param age Stand age, breast height (1.3m)
 #' @param stems_ha Stems per hectare.
-#' @param prop_spruce Proportion (Basal area? Stems?) of Spruce.
+#' @param percent_spruce Percent (stems) of Spruce.
 #' @return Probability of recruitment.
 #'
 #' @name Lexerod_2005
@@ -115,14 +115,14 @@ Lexerod_2005_prob_recruitment_5cm_Norway_Norway_Spruce <- function(
     SI40,
     age,
     stems_ha,
-    prop_spruce
+    percent_spruce
 ){
   return(
-    -17.5779 + 1.4185*log(SI40) + 2.0103*log(age) + 0.8111*log(stems_ha) + 0.9393*log(prop_spruce)
+    -17.5779 + 1.4185*log(SI40) + 2.0103*log(age) + 0.8111*log(stems_ha) + 0.9393*log(percent_spruce)
   )
 }
 
-#' @param prop_pine Proportion (Basal area? Stems?) of Scots Pine.
+#' @param percent_pine Percent (Basal area? Stems?) of Scots Pine.
 #' @rdname Lexerod_2005
 #' @export
 #' @details Scots Pine observations: 897. Misclassified (7.9 percent). Chi^2:
@@ -131,15 +131,15 @@ Lexerod_2005_prob_recruitment_5cm_Norway_Scots_Pine <- function(
     SI40,
     age,
     stems_ha,
-    prop_pine
+    percent_pine
 ){
   return(
-    -14.6228 + 1.1399*log(SI40) + 0.9231*log(age) + 0.7120*log(stems_ha) + 1.2627*log(prop_pine)
+    -14.6228 + 1.1399*log(SI40) + 0.9231*log(age) + 0.7120*log(stems_ha) + 1.2627*log(percent_pine)
   )
 }
 
-#' @param prop_birch_broadleaves Sum of proportion of of birch and other
-#' broadleaves. (BA\% or stems?)
+#' @param percent_birch_broadleaves Sum of Percent of of birch and other
+#' broadleaves. (stems)
 #' @rdname Lexerod_2005
 #' @export
 #' @details Birch observations: 897. Misclassified (6.9 percent). Chi^2:
@@ -147,10 +147,10 @@ Lexerod_2005_prob_recruitment_5cm_Norway_Scots_Pine <- function(
 Lexerod_2005_prob_recruitment_5cm_Norway_Birch <- function(
     age,
     stems_ha,
-    prop_birch_broadleaves
+    percent_birch_broadleaves
 ){
   return(
-    -8.2528 + 1.1822*log(age) + 0.2306*log(stems_ha) + 0.9530*log(prop_birch_broadleaves)
+    -8.2528 + 1.1822*log(age) + 0.2306*log(stems_ha) + 0.9530*log(percent_birch_broadleaves)
   )
 }
 

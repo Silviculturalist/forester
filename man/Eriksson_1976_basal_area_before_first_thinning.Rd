@@ -20,6 +20,9 @@ Eriksson_1976_basal_area_before_first_thinning(
 
 \item{planted}{If site was planted, TRUE. If the site was founded by pre-commercial thinning to a certain plant spacing, FALSE.}
 }
+\value{
+Basal Area, m2 / ha
+}
 \description{
 Author does not reccomend the use of this function if dominant height exceeds 16 meters, since self thinning increases rapidly if the number of stems then also is high.
 In ranges between 1'100 and 10'000 stems per ha and a dominant height between 7 and 16 metres the function should provide acceptable results. Results may be less accurate at lower site indexes due to no underlying data.

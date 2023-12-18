@@ -9,8 +9,6 @@
 #'
 #' @return Lorey's Mean height for Spruce stands in Norway.
 #' @export
-#'
-#' @examples
 Tveite_1967_Loreys_mean_height_Norway_Norway_Spruce <- function(
   dominant_height,
   stems_per_ha,

@@ -102,8 +102,6 @@
 #'
 #' @return Tegnhammars adjusted SI, meters.
 #' @export
-#'
-#' @examples
 Tegnhammar_1992_adjusted_SI_by_stand_variables <- function(latitude,longitude, altitude,vegetation, ground_layer,aspect_main,soil_moisture,soil_depth,soil_texture,humidity,ditched,lateral_water,peat_humification="Medium",epsg='EPSG:4326'){
 
   #If missing humidity.

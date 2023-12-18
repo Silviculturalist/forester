@@ -24,6 +24,9 @@ Johansson_2011_height_trajectory_Sweden_Poplar(
 
 \item{output}{One of "SIH100","Equation" or "Height".}
 }
+\value{
+m.
+}
 \description{
 Abstract:
 

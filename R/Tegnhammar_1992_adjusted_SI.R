@@ -26,8 +26,6 @@
 #'
 #' @return SIHjust, m.
 #' @export
-#'
-#' @examples
 Tegnhammar_1992_adjusted_SI <- function(SIH, dominant_age, latitude) {
   return(((SIH*10) + (3.89 - 0.0498 * latitude) * (dominant_age - 15))/10)
 }

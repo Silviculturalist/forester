@@ -2,7 +2,7 @@
 #'
 #' @source Johansson, T. (1996) Site Index Curves for European Aspen (Populus tremula L.)
 #'  Growing on Forest Land of Different Soils in Sweden. Silva Fennica 30(4): 437-458.
-#'  Available: \url{https://silvafennica.fi/pdf/article5568.pdf}
+#'  Available: \url{https://doi.org/10.14214/sf.a8503}
 #'
 #' @description
 #'
@@ -27,7 +27,7 @@
 #' @param model1 Default FALSE. If TRUE, uses model 1 from 1996 instead of recommendation from FAKTA SKOG 13?
 #' @param output One of "SIH100","Equation" or "Height" (default).
 #'
-#' @return
+#' @return m.
 #' @export
 Johansson_1996_height_trajectory_Sweden_Aspen <- function(
   dominant_height,

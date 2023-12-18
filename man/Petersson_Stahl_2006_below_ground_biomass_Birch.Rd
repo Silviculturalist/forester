@@ -17,6 +17,9 @@ Petersson_Stahl_2006_below_ground_biomass_Birch(diameter.cm, Root_detail)
 
 \item{Root_detail}{2 or 5 mm resolution of smallest included roots.}
 }
+\value{
+Below-ground biomass (g)
+}
 \description{
 n=13
 }

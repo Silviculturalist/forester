@@ -99,6 +99,7 @@ Moren_Perttu_1994_Sweden_start_of_growing_season_5C <- function(
 
 
 #' @return Global Radiation Sum.
+#' @rdname Moren1994
 #' @export
 Moren_Perttu_1994_Sweden_global_radiation_sum <- function(
   Latitude,

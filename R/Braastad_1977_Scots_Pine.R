@@ -136,7 +136,8 @@ Braastad_1977_QMD_tree_volume_Norway_Pine <- function(
 #' @return Years until breast height 1.3 m.
 #' @export
 #'
-#' @example Braastad_1977_time_to_breast_height_Norway_Pine(SIH40=17)
+#' @examples
+#' Braastad_1977_time_to_breast_height_Norway_Pine(SIH40=17)
 Braastad_1977_time_to_breast_height_Norway_Pine<- function(
     SIH40
 ){

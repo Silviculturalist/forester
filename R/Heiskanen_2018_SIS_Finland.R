@@ -21,8 +21,6 @@
 #' @md
 #' @return H100 Estimate. (tree-species independent).
 #' @export
-#'
-#' @examples
 Heiskanen_2018_SIS_Finland <- function(
   site_type=1,
   temperature_sum=1425.5,

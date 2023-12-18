@@ -45,6 +45,9 @@ separated by more than three whorls from the crown.}
 
 \item{Root_detail}{2 or 5 mm resolution of smallest included roots.}
 }
+\value{
+Below-ground biomass (g)
+}
 \description{
 n=328
 }

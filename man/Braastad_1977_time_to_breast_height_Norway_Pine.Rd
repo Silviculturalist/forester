@@ -25,3 +25,6 @@ R = 0.377
 
 Residual spread = ±3.8 yrs , ±35.3\%.
 }
+\examples{
+Braastad_1977_time_to_breast_height_Norway_Pine(SIH40=17)
+}

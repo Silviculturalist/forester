@@ -16,7 +16,7 @@
 #' @param age2 Total age at output age.
 #' @param output One of "SIH100","Equation" or "Height".
 #'
-#' @return
+#' @return m.
 #' @export
 #'
 #' @examples

@@ -24,6 +24,9 @@ Johansson_2013_height_trajectory_Sweden_Hybrid_Aspen(
 
 \item{output}{One of "SIH100","Equation" or "Height".}
 }
+\value{
+m.
+}
 \description{
 Abstract:
 

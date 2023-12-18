@@ -1,9 +1,9 @@
 #' Heidarsson & Pukkala 2012 Individual tree model for Larix sibirica on Iceland.
 #'
 #' @source Heidarsson, L. & Pukkala, T. (2012). Models for simulating the
-#' temporal development of Siberian larch (\emph{Larix sibirica}) plantations in
+#' temporal development of Siberian larch (**Larix sibirica**) plantations in
 #' Hallormsstadur Iceland. Icel. Agric. Sci. 25:13-23. Available (2022-04-02):
-#' \url{https://skemman.is/bitstream/1946/19764/1/Larus%20Heidarsson%20et%20al%202012.pdf}
+#' [skemman.is](https://skemman.is/bitstream/1946/19764/1/Larus%20Heidarsson%20et%20al%202012.pdf)
 #'
 #' @param dominant_height Dominant height of stand, in metres.
 #' @param age Age at breast height, 1.3 m.

@@ -41,10 +41,8 @@
 #' @param age2 Total age at output age.
 #' @param output One of "SIH100","Equation" or "Height".
 #'
-#' @return
+#' @return m.
 #' @export
-#'
-#' @examples
 Johansson_1999_height_trajectory_Sweden_Alnus_incana <- function(
   dominant_height,
   age,

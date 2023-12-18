@@ -13,7 +13,7 @@
 #'
 #' @name nordlarsen2009
 #'
-#' @return
+#' @return m.
 #' @export
 #' @examples
 #' # A ggplot of some common site indices for Beech in Denmark.

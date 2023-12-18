@@ -25,6 +25,9 @@ Johansson_1999_height_trajectory_Sweden_Alnus_glutinosa(
 
 \item{output}{One of "SIH100","Equation" or "Height" (default).}
 }
+\value{
+m.
+}
 \description{
 Abstract:
 

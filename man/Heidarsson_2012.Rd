@@ -8,7 +8,10 @@
 \alias{Heidarsson_2012_tree_survival_Iceland_Larix_sibirica}
 \title{Heidarsson & Pukkala 2012 Individual tree model for Larix sibirica on Iceland.}
 \source{
-
+Heidarsson, L. & Pukkala, T. (2012). Models for simulating the
+temporal development of Siberian larch (**Larix sibirica**) plantations in
+Hallormsstadur Iceland. Icel. Agric. Sci. 25:13-23. Available (2022-04-02):
+[skemman.is](https://skemman.is/bitstream/1946/19764/1/Larus%20Heidarsson%20et%20al%202012.pdf)
 }
 \usage{
 Heidarsson_2012_height_trajectory_Iceland_Larix_sibirica(

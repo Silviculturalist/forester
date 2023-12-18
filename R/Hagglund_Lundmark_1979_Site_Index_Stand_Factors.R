@@ -44,8 +44,6 @@
 #' @return Site Index H100 (meters).
 #' Will return NA & issue a warning message if no method was found.
 #' @export
-#'
-#' @examples
 Hagglund_Lundmark_1979_Site_Index_Prediction <- function(
   species,
   vegetation,
@@ -446,7 +444,8 @@ Hagglund_Lundmark_1979_Site_Index_Prediction <- function(
 #' @source https://www.heurekaslu.se/wiki/VegetationType_from_site_features
 #'
 #' @return Swedish NFI Field Layer Code
-#' @example
+#' @export
+#' @examples
 #' SWE_NFI_FieldLayer_from_Site(15,1)
 SWE_NFI_FieldLayer_from_Site <- function(H100_Spruce, soilMoisture) {
 
