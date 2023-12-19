@@ -4,8 +4,7 @@
 \alias{Eriksson_frequency}
 \alias{Eriksson_1976_volume_frequency}
 \alias{Eriksson_1976_stem_frequency}
-\title{Volume and Stem Frequencies for even-aged Norway Spruce stands from the Great Yield
-Investigation (Näslund 1971).}
+\title{Volume Frequency for Norway spruce stands.}
 \source{
 Eriksson, H. 1976. Yield of Norway spruce in Sweden. Research Notes.
 Dept. of. Forest Yield Research. Nr. 41. Royal College of Forestry.
@@ -56,5 +55,8 @@ volume distribution respectively, a skewed normal distribution is estimated.
 From an expanded series, the frequency of each class is then calculated.
 }
 \details{
+Volume and Stem Frequencies for even-aged Norway Spruce stands from the Great Yield
+Investigation (Näslund 1971).
+
 TESTED ONLY FOR 2 CM class width!
 }

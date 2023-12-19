@@ -9,6 +9,7 @@
 #' @param stems Stems/ha at period start.
 #' @param ThinningProportionBAStart Proportion of basal area thinned at start of period. 0 - 0.8
 #' @param ThinningForm Boolean. 1 if thinned from above or unthinned, otherwise 0.
+#' @param fertilised Boolean. 1 if a fertilised stand, otherwise 0.
 #' @name ElfvingMortality2010
 #' @return Annual mortality in percent of basal area at start of period.
 #' @export

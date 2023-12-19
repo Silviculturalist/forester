@@ -155,7 +155,7 @@ Soderberg_1986_double_bark_Sweden_Oak(DBH.u.b.cm, age, latitude)
 
 \item{altitude}{Altitude, metres.}
 
-\item{soil_moisture}{1-5. e.g. \link{Sweden_soil_types('moisture')}}
+\item{soil_moisture}{1-5. e.g. \code{\link[=Sweden_soil_types]{Sweden_soil_types()}}}
 
 \item{vegetation}{Vegetation type according to follows Swedish National
 forest inventory FALTSKIKT. e.g. \code{\link[=Sweden_vegetation_types]{Sweden_vegetation_types()}}}

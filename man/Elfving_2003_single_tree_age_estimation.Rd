@@ -3,6 +3,9 @@
 \name{Elfving_2003_single_tree_age_estimation}
 \alias{Elfving_2003_single_tree_age_estimation}
 \title{Functions for estimation of single tree ages at breast height}
+\source{
+Elfving, B. (2003) Ålderstilldelning till enskilda träd i skogliga tillväxtprognoser. SLU, inst. f. skogsskötsel. Arbetsrapport 182.
+}
 \usage{
 Elfving_2003_single_tree_age_estimation(
   diameter_cm,
@@ -10,9 +13,8 @@ Elfving_2003_single_tree_age_estimation(
   mean_diameter_codominant_trees,
   latitude,
   altitude,
-  lnd,
   total_stand_age,
-  SIS,
+  SIS_100,
   Basal_area_plot,
   species,
   vegetation,
@@ -34,6 +36,8 @@ Elfving_2003_single_tree_age_estimation(
 \item{altitude}{altitude, metres above sea level.}
 
 \item{total_stand_age}{total stand age}
+
+\item{SIS_100}{Site index from stand variables, meters. e.g. [forester::Hagglund_Lundmark_1979_Site_Index_Prediction()]}
 
 \item{Basal_area_plot}{As estimated with relascope in field. m^2 / ha}
 
@@ -66,13 +70,13 @@ Code \tab Vegetation \cr
 
 \item{county}{Swedish county}
 
-\item{ditch}{TRUE / FALSE}
+\item{peat}{TRUE / FALSE}
 
-\item{SIS_100}{Site index from stand variables, metres. e.g. [forester::SIS_estimate()]}
+\item{ditch}{TRUE / FALSE}
 }
 \value{
 A list, with element 1 : Age at breast height, 2: Boolean if tree is a standard, 3: Boolean if tree is suppressed.
 }
 \description{
-Presented in Elfving, B. (2003) Ålderstilldelning till enskilda träd i skogliga tillväxtprognoser. SLU, inst. f. skogsskötsel. Arbetsrapport 182.
+Functions for estimation of single tree ages at breast height
 }

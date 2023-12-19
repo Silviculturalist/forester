@@ -12,7 +12,7 @@
 \alias{Soderberg_1986_form_factor_northern_central_Sweden_Spruce}
 \alias{Soderberg_1986_form_factor_northern_central_Sweden_Broadleaves}
 \alias{Soderberg_1986_form_factor_northern_central_Sweden_Birch}
-\alias{Soderberg_1986_diameter_quotient_Gotland_Sweden_Pine}
+\alias{Soderberg_1986_form_factor_Gotland_Sweden_Pine}
 \alias{Soderberg_1986_form_factor_central_Sweden_Pine}
 \title{Form factor for Individual trees in Sweden from Söderberg 1986.}
 \source{
@@ -195,7 +195,7 @@ Soderberg_1986_form_factor_northern_central_Sweden_Birch(
   divided_plot = 0
 )
 
-Soderberg_1986_diameter_quotient_Gotland_Sweden_Pine(
+Soderberg_1986_form_factor_Gotland_Sweden_Pine(
   DBH.cm,
   DBH_largest_tree_on_plot.cm,
   BA_Pine.m2_ha,
@@ -244,7 +244,7 @@ largest tree on the plot.}
 \item{vegetation}{1-18. See \code{\link[=Sweden_vegetation_types]{Sweden_vegetation_types()}} for
 description.}
 
-\item{soil_moisture}{1-5. e.g. \link{Sweden_soil_types('moisture')}}
+\item{soil_moisture}{1-5. e.g. \code{\link[=Sweden_soil_types]{Sweden_soil_types()}}}
 
 \item{lateral_water}{\tabular{cl}{
 Code \tab Description \cr

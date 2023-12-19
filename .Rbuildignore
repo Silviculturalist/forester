@@ -1,3 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^R/Eide_Langsaeter_1941\.R$
+^R/Fries_1964\.R$
+^R/Opdahl_1991\.R$
+^R/Tham_1988_Individual_Tree_Mix_Spruce_Birch_Sweden\.R$
+^R/HUGIN_UNGSKOG\.R$
+^R/Karlsson_1981_HUGIN_ingrowth\.R$
+^R/Pettersson_1955_distribution\.R$
+^R/Pettersson_1955_funcs\.R$

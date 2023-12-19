@@ -62,7 +62,7 @@ Allen_2020_Volume_Norway_Spruce_Norway <- function(
   )
 }
 
-#Basal area at the end of a growth period
+#' Basal area at the end of a growth period
 #' @source Allen, M.G. II, Antón-Fernández, C., Astrup, R. (2020) "A stand-level
 #' growth and yield model for thinned and unthinned managed Norway spruce forests
 #' in Norway". Scandinavian Journal of Forest Research. Vol. 35. pp. 238-251.
@@ -96,7 +96,7 @@ Allen_2020_Basal_Area_Norway_Spruce_Norway <- function(
 }
 
 
-#Calculate the number of surviving stems
+#' Calculate the number of surviving stems
 #' @source Allen, M.G. II, Antón-Fernández, C., Astrup, R. (2020) "A stand-level
 #' growth and yield model for thinned and unthinned managed Norway spruce forests
 #' in Norway". Scandinavian Journal of Forest Research. Vol. 35. pp. 238-251.

@@ -139,8 +139,6 @@ Andreassen_2003_BA_increment_Norway_Broadleaves_topographic(
 \item{latitude}{Latitude, decimal.}
 
 \item{altitude}{Meters above sea level.}
-
-\item{BA_m2_ha_Pine}{Basal area Pine, in m^2 / ha}
 }
 \description{
 OBSERVE! Quality control not complete.

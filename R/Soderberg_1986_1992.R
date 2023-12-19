@@ -323,7 +323,7 @@ Soderberg_1986_BA_self_thinned_stands <- Vectorize(Soderberg_1986_BA_self_thinne
 #' @param continental TRUE, if the plot is situated in a continental climatic
 #' region. cf. Ångström 1958. e.g.
 #' [forester::Angstrom_1958_local_climate_Sweden()]. Otherwise FALSE.
-#' @param soil_moisture 1-5. e.g. [forester::Sweden_soil_types('moisture')]
+#' @param soil_moisture 1-5. e.g. [forester::Sweden_soil_types()]
 #' @param distance_to_coast_km Closest distance to coast, in km, e.g.
 #' [forester::coast_distance()]
 #' @param SI100 Site Index H100, m. TO DO: Ask P-M Ekö for clarification.
@@ -1680,7 +1680,7 @@ Soderberg_1986_form_factor_northern_central_Sweden_Birch <- function(
 
 #' @rdname Soderberg1986formfactor
 #' @export
-Soderberg_1986_diameter_quotient_Gotland_Sweden_Pine <- function(
+Soderberg_1986_form_factor_Gotland_Sweden_Pine <- function(
     DBH.cm,
     DBH_largest_tree_on_plot.cm,
     BA_Pine.m2_ha,

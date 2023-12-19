@@ -7,7 +7,7 @@
 Allen, M.G. II, Antón-Fernández, C., Astrup, R. (2020) "A stand-level
 growth and yield model for thinned and unthinned managed Norway spruce forests
 in Norway". Scandinavian Journal of Forest Research. Vol. 35. pp. 238-251.
-DOI: <https://doi.org/10.1080/02827581.2020.1773525>
+DOI: \url{https://doi.org/10.1080/02827581.2020.1773525}
 }
 \usage{
 Allen_2020_height_development_Norway_spruce(

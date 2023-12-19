@@ -34,6 +34,8 @@ Elfving_2010_GMax_Spruce_Pine_Sweden(dominant_height, H100, stems, latitude)
 \item{ThinningProportionBAStart}{Proportion of basal area thinned at start of period. 0 - 0.8}
 
 \item{ThinningForm}{Boolean. 1 if thinned from above or unthinned, otherwise 0.}
+
+\item{fertilised}{Boolean. 1 if a fertilised stand, otherwise 0.}
 }
 \value{
 Annual mortality in percent of basal area at start of period.

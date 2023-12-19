@@ -11,7 +11,7 @@ county_sweden(latitude, longitude, epsg = 4326)
 
 \item{longitude}{Longitude, decimal}
 
-\item{espg}{Reference system. Default 'WGS84': 4326. For SWEREF99TM: '3006'.}
+\item{epsg}{Reference system. Default 'WGS84': 4326. For SWEREF99TM: '3006'.}
 }
 \value{
 Text, Swedish County

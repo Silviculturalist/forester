@@ -474,7 +474,7 @@ full plots (default).}
 
 \item{BA_Spruce.m2_ha}{Basal area Spruce on the plot, m^2 / ha.}
 
-\item{soil_moisture}{1-5. e.g. \link{Sweden_soil_types('moisture')}}
+\item{soil_moisture}{1-5. e.g. \code{\link[=Sweden_soil_types]{Sweden_soil_types()}}}
 
 \item{county}{Character string. One of:
 \tabular{cc}{

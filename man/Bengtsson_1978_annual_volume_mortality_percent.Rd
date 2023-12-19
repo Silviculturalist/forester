@@ -7,7 +7,7 @@
 Bengtsson_1978_annual_volume_mortality_percent(
   QMD,
   age,
-  MAIMax,
+  MAI,
   northern_Sweden = TRUE,
   species = "Pinus sylvestris",
   reduce = TRUE,
@@ -20,6 +20,8 @@ Bengtsson_1978_annual_volume_mortality_percent(
 
 \item{age}{stand age.}
 
+\item{MAI}{Mean Annual Increment max. e.g. [forester::Hagglund_1981_si_to_bonitet()],[forester::Jonson_1914_to_MAImax()]}
+
 \item{northern_Sweden}{Northern Sweden? North of c. 60 deg. lat?}
 
 \item{species}{One of 'Pinus sylvestris','Picea abies' or 'Betula pendula'.}
@@ -29,8 +31,6 @@ Bengtsson_1978_annual_volume_mortality_percent(
 \item{floor}{Minimum annual mortality, in percent of live standing volume.}
 
 \item{cieling}{Maximum annual mortality, in percent of live standing volume.}
-
-\item{MAI}{Mean Annual Increment max. e.g. [forester::Hagglund_1981_si_to_bonitet()],[forester::Jonson_1914_to_MAImax()]}
 }
 \value{
 Annual mortality in percent of live standing volume.
@@ -47,5 +47,5 @@ Natural mortality. Functions based on National Forest Inventory
  higher than normal so at application the mortality given by the functions
  was reduced with 40 % in northern Sweden and 25 % in southern Sweden.
 
- \url[Available Online (Swedish)](https://lagen.nu/sou/1978:7/sid287.png)
+ \href{https://lagen.nu/sou/1978:7/sid287.png}{Available Online (Swedish)}
 }
