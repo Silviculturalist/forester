@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^R/Eide_Langsaeter_1941\.R$
+^R/Hagglund_1979_contorta\.R$
 ^R/Fries_1964\.R$
 ^R/Opdahl_1991\.R$
 ^R/Tham_1988_Individual_Tree_Mix_Spruce_Birch_Sweden\.R$

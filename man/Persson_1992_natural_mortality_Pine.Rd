@@ -13,8 +13,8 @@ ISSN 0348-7636. Garpenberg. p. 60. pp. 206.
 \usage{
 Persson_1992_natural_mortality_Pine(
   basal_area_above_bark,
-  dominant_height_m,
-  SI,
+  dominant_height,
+  H100,
   stems,
   latitude
 )
@@ -22,9 +22,9 @@ Persson_1992_natural_mortality_Pine(
 \arguments{
 \item{basal_area_above_bark}{Basal area over bark, m2/ha}
 
-\item{dominant_height_m}{Dominant height m}
+\item{dominant_height}{Dominant height m}
 
-\item{SI}{Site Index, m. e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]}
+\item{H100}{Site Index, m. e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]}
 
 \item{stems}{Number of stems per ha.}
 

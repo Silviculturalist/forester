@@ -33,146 +33,146 @@ Esselte, Stockholm. p. 1-80. \url{https://pub.epsilon.slu.se/9900/1/medd_statens
 }
 \usage{
 Naslund_1947_volume_southern_Sweden_Pine(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm,
-  crownBaseHeight_m = NULL,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_form_factor_southern_Sweden_Pine(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm,
-  crownBaseHeight_m = NULL,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_volume_southern_Sweden_Spruce(
-  height_m,
-  diameter_cm,
-  crownBaseHeight_m = NULL,
+  height,
+  DBH,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_form_factor_southern_Sweden_Spruce(
-  height_m,
-  diameter_cm,
-  crownBaseHeight_m = NULL,
+  height,
+  DBH,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_volume_southern_Sweden_Birch(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_form_factor_southern_Sweden_Birch(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_volume_Sweden_Spruce(
-  height_m,
-  diameter_cm,
-  crownBaseHeight_m = NULL,
+  height,
+  DBH,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_form_factor_Sweden_Pine(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm = NULL,
-  crownBaseHeight_m = NULL,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_form_factor_Sweden_Spruce(
-  height_m,
-  diameter_cm,
-  crownBaseHeight_m = NULL,
+  height,
+  DBH,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_volume_Sweden_Spruce(
-  height_m,
-  diameter_cm,
-  crownBaseHeight_m = NULL,
+  height,
+  DBH,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_form_factor_Sweden_Birch(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm = NULL,
   over_bark = TRUE
 )
 
 Naslund_1947_volume_Sweden_Birch(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm = NULL,
   over_bark = TRUE
 )
 
 Naslund_1940_volume_northern_Sweden_Pine(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm = NULL,
-  crownBaseHeight_m = NULL,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1940_form_factor_northern_Sweden_Pine(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm = NULL,
-  crownBaseHeight_m = NULL,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1940_volume_northern_Sweden_Spruce(
-  height_m,
-  diameter_cm,
-  crownBaseHeight_m = NULL,
+  height,
+  DBH,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1940_form_factor_northern_Sweden_Spruce(
-  height_m,
-  diameter_cm,
-  crownBaseHeight_m = NULL,
+  height,
+  DBH,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1940_volume_northern_Sweden_Birch(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm = NULL,
-  crownBaseHeight_m = NULL,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 
 Naslund_1940_form_factor_northern_Sweden_Birch(
-  height_m,
-  diameter_cm,
+  height,
+  DBH,
   double_bark_mm = NULL,
-  crownBaseHeight_m = NULL,
+  crownBaseheight = NULL,
   over_bark = TRUE
 )
 }
 \arguments{
-\item{height_m}{Tree height, meters.}
+\item{height}{Tree height, meters.}
 
-\item{diameter_cm}{Diameter at breast height, over or respectively under bark.}
+\item{DBH}{Diameter at breast height, over or respectively under bark.}
 
 \item{double_bark_mm}{Double bark thickness, mm.}
 
-\item{crownBaseHeight_m}{Height until crown base.}
+\item{crownBaseheight}{Height until crown base.}
 
 \item{over_bark}{Boolean. If input diameter is over/under bark, and if returned value should be over or under bark.}
 }

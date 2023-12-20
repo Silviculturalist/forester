@@ -1326,10 +1326,10 @@ Marklund_1988_biomass_Sweden <- function(
 
   #Calculate form quotient if available.
   if(!is.null(diameter_3m.cm)){
-    arglist$form_quotient3 <- diameter_3m.cm/diameter.cm
+    arglist$form_quotient3 <- diameter_3m.cm/DBH
   }
   if(!is.null(diameter_5m.cm)){
-    arglist$form_quotient5 <- diameter_5m.cm/diameter.cm
+    arglist$form_quotient5 <- diameter_5m.cm/DBH
   }
 
   #Convert input crs to RT90.
@@ -1356,7 +1356,7 @@ Marklund_1988_biomass_Sweden <- function(
   }
 
   if(!is.null(double_bark.mm)){
-    arglist$relative_bark_thickness <-  (double_bark.mm / (diameter.cm*10))*100
+    arglist$relative_bark_thickness <-  (double_bark.mm / (DBH*10))*100
   }
 
   stemOutput  <- list(

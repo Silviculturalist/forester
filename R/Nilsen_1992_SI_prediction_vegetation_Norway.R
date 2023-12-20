@@ -74,7 +74,7 @@ Nilsen_1992_vegetation_types <- function(description=FALSE,species=FALSE,code=1:
     "Code"=seq(1,8,1),
     "English"=c("Lichen", "Berry-heather","Heather-Bog bilberry", "Bilberry","Small fern","Low herbs","Large fern","Tall herbs"),
     "Norwegian"=c("Lavskog","Bærlyngskog", "Røsslyng-Blokkebærskog", "Blåbærskog","Småbregneskog","Lågurtskog","Storbregneskog","Høgstaudeskog")
-  ) %>% filter(Code==code) %>% print()
+  ) %>% dplyr::filter(Code==code) %>% print()
 
    if(description==TRUE){
      if(!(code%in%seq(1,8,1))) stop("Requires argument 'code' to be 1-8.")

@@ -9,21 +9,21 @@ Pukkala, T., Lähde, E., Laiho, O. (2009). Growth and Yield Models of uneven-siz
 }
 \usage{
 Pukkala_2009_diameter_ingrowth_Finland_Spruce(
-  BA_m2_ha,
+  BA,
   stems_ha_spruce,
   stems_ha_other,
   vegetation
 )
 
 Pukkala_2009_diameter_ingrowth_Finland_Betula_Pine(
-  BA_m2_ha,
+  BA,
   stems_ha_spruce,
   stems_ha_other,
   vegetation
 )
 }
 \arguments{
-\item{BA_m2_ha}{Total Basal Area (m2/ha) of trees >5 cm dbh.}
+\item{BA}{Total Basal Area (m2/ha) of trees >5 cm dbh.}
 
 \item{stems_ha_spruce}{Spruce stems per hectare >5 cm dbh.}
 

@@ -8,19 +8,14 @@
 Pukkala, T., Lähde, E., Laiho, O. (2009). Growth and Yield Models of uneven-sized forest stands in Finland. For. Ecol. Manage. 258: 207-216. Available (25/12/2021) \url{https://doi.org/10.1016/j.foreco.2009.03.05}
 }
 \usage{
-Pukkala_2009_survival_Finland_Betula_Pine(
-  diameter_cm,
-  BA_m2_ha,
-  BAL_Spruce,
-  BAL
-)
+Pukkala_2009_survival_Finland_Betula_Pine(diameter_cm, BA, BAL_Spruce, BAL)
 
-Pukkala_2009_survival_Spruce(diameter_cm, BA_m2_ha, BAL_Spruce, BAL)
+Pukkala_2009_survival_Spruce(diameter_cm, BA, BAL_Spruce, BAL)
 }
 \arguments{
 \item{diameter_cm}{Diameter at breast height 1.3 m of subject tree (cm).}
 
-\item{BA_m2_ha}{Total Basal Area of all trees with dbh greater than 5 cm. (m2/ha)}
+\item{BA}{Total Basal Area of all trees with dbh greater than 5 cm. (m2/ha)}
 
 \item{BAL_Spruce}{Basal Area of all Spruce trees with a dbh larger than that of the subject tree (m2/ha).}
 

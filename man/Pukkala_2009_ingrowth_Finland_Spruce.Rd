@@ -12,14 +12,14 @@ Pukkala_2009_ingrowth_Finland_Spruce(
   stems_ha_spruce,
   stems_ha_other,
   vegetation,
-  BA_m2_ha
+  BA
 )
 
 Pukkala_2009_ingrowth_Finland_Betula_Pine(
   stems_ha_spruce,
   stems_ha_other,
   vegetation,
-  BA_m2_ha
+  BA
 )
 }
 \arguments{
@@ -29,7 +29,7 @@ Pukkala_2009_ingrowth_Finland_Betula_Pine(
 
 \item{vegetation}{One of [forester::Finland_vegetation_types()]}
 
-\item{BA_m2_ha}{Total Basal Area (m2/ha) of trees >5 cm dbh.}
+\item{BA}{Total Basal Area (m2/ha) of trees >5 cm dbh.}
 }
 \value{
 Number of ingrowth per hectare.

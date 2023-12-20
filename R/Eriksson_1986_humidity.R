@@ -25,14 +25,15 @@ Eriksson_1986_humidity <- function(latitude,
     stop("Latitude and Longitude have been mixed up.")
   }
 
-  point <- st_sfc(sf::st_point(x=c(longitude,latitude)))
-  st_crs(point) <- epsg
+  # Create a SpatVector point
+  point <- terra::vect(cbind(longitude, latitude), crs = terra::crs(paste0("epsg:",epsg)))
 
-  #Reproject point to WGS84 if epsg is not 4326.
-  if(epsg!=4326){
-    assign(x = "point",value = st_transform(point,crs=4326))
+  # Reproject point to WGS84 if epsg is not 4326
+  if(epsg != 4326) {
+    point <- terra::project(point, "+proj=longlat +datum=WGS84")
   }
 
-  return(forester:::humiditet$humiditet[st_within(point,forester:::humiditet)[[1]]])
+
+  return(terra::extract(terra::vect(forester:::humiditet), point)[['humiditet']])
 
 }

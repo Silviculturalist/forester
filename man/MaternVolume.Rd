@@ -11,14 +11,14 @@ Matérn, B. 1975. Volymfunktioner för stående träd av ek och bok. Skogsho
 PM for Heureka 2004-01-20 Björn Elfving. Available: \url{https://www.heurekaslu.org/w/images/9/93/Heureka_prognossystem_\%28Elfving_rapportutkast\%29.pdf}
 }
 \usage{
-Matern_1975_volume_Sweden_Oak(diameter_cm, height_m)
+Matern_1975_volume_Sweden_Oak(DBH, height)
 
-Matern_1975_volume_Sweden_Beech(diameter_cm, height_m)
+Matern_1975_volume_Sweden_Beech(DBH, height)
 }
 \arguments{
-\item{diameter_cm}{Diameter at breast height, cm.}
+\item{DBH}{Diameter at breast height, cm.}
 
-\item{height_m}{Height of tree, metres.}
+\item{height}{Height of tree, metres.}
 }
 \value{
 Volume, dm3.

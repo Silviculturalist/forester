@@ -1,8 +1,10 @@
 ---
 title: "The effect of stand density on Diameter metrics"
-author: "Carl Vigren"
-date: "8/25/2021"
-output: html_document
+author: Carl Vigren
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 bibliography: references.bib
 ---
 

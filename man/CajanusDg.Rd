@@ -2,7 +2,7 @@
 % Please edit documentation in R/GeneralHelpers.R
 \name{CajanusDg}
 \alias{CajanusDg}
-\alias{Oppermann_Cajanus_stand_QMD}
+\alias{Oppermann_Cajanus_stand_DGV}
 \alias{Oppermann_Cajanus_mean_diameter}
 \alias{Oppermann_Cajanus_stand_BA}
 \title{Calculate basal area weighted mean stem diameter from arithmetic mean stem diameter and
@@ -17,9 +17,9 @@ Research Notes. Dept. of. Forest Yield Research. Nr. 41. Royal College of
 Forestry. Stockholm. p. 165.
 }
 \usage{
-Oppermann_Cajanus_stand_QMD(diameter, diameter_sd)
+Oppermann_Cajanus_stand_DGV(diameter, diameter_sd)
 
-Oppermann_Cajanus_mean_diameter(QMD, diameter_sd)
+Oppermann_Cajanus_mean_diameter(DGV, diameter_sd)
 
 Oppermann_Cajanus_stand_BA(stems, diameter, diameter_sd)
 }
@@ -28,12 +28,12 @@ Oppermann_Cajanus_stand_BA(stems, diameter, diameter_sd)
 
 \item{diameter_sd}{Standard deviation of the stem distribution of the stand.}
 
-\item{QMD}{The basal area weighted mean diameter (cm) of the stand (Dg).}
+\item{DGV}{The basal area weighted mean diameter (cm) of the stand (Dg).}
 
 \item{stems}{Stems per hectare.}
 }
 \value{
-Stand QMD.
+Stand DGV.
 
 The mean diameter of the stand, cm.
 

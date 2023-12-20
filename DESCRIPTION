@@ -13,14 +13,14 @@ RoxygenNote: 7.2.3
 Imports:
     dplyr,
     ggplot2,
-    assertive,
-    assertthat,
-    forcats,
+    sf,
     rlang,
-    tidyr
+    tidyr,
+    magrittr
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    robustbase
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)

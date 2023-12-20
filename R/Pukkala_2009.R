@@ -6,9 +6,9 @@
 #'
 #' @param BAL_Spruce Basal area of Spruce trees larger than the subject tree (m2 / ha)
 #' @param BAL_other Basal area of trees other than Spruce larger than the subject tree (m2/ha)
-#' @param BA_m2_ha Basal Area of all trees larger than 5 cm dbh. m2/ha.
+#' @param BA Basal Area of all trees larger than 5 cm dbh. m2/ha.
 #' @param diameter_cm Diameter of subject tree at breast height 1.3m, cm.
-#' @param vegetation One of [Finland_vegetation_types()]
+#' @param vegetation One of [forester::Finland_vegetation_types()]
 #' @param temperature_sum Degree days
 #'
 #' @name Pukkala_2009_diameter_increment_Finland_Pine
@@ -19,7 +19,7 @@
 Pukkala_2009_diameter_increment_Finland_Pine <- function(
   BAL_Spruce,
   BAL_other,
-  BA_m2_ha,
+  BA,
   diameter_cm,
   vegetation,
   temperature_sum
@@ -43,7 +43,7 @@ Pukkala_2009_diameter_increment_Finland_Pine <- function(
   a11=1.229
 
     return(
-      exp((a1+a2*BAL_Spruce + a3*BAL_other + a4*ln(BA) + a5*sqrt(diameter_cm) + a6*(diameter_cm^2) + a7*MT + a8*VT + a9*CT + a10*ClT + a11*log(TS)))*1.110
+      exp((a1+a2*BAL_Spruce + a3*BAL_other + a4*log(BA) + a5*sqrt(diameter_cm) + a6*(diameter_cm^2) + a7*MT + a8*VT + a9*CT + a10*ClT + a11*log(temperature_sum)))*1.110
     )
 
 }
@@ -55,7 +55,7 @@ Pukkala_2009_diameter_increment_Finland_Pine <- function(
 Pukkala_2009_diameter_increment_Finland_Spruce <- function(
   BAL_Spruce,
   BAL_other,
-  BA_m2_ha,
+  BA,
   diameter_cm,
   vegetation,
   temperature_sum
@@ -79,7 +79,7 @@ Pukkala_2009_diameter_increment_Finland_Spruce <- function(
   a11=0.823
 
   return(
-    exp((a1+a2*BAL_Spruce + a3*BAL_other + a4*ln(BA) + a5*sqrt(diameter_cm) + a6*(diameter_cm^2) + a7*MT + a8*VT + a9*CT + a10*ClT + a11*log(TS)))*1.124
+    exp((a1+a2*BAL_Spruce + a3*BAL_other + a4*log(BA) + a5*sqrt(diameter_cm) + a6*(diameter_cm^2) + a7*MT + a8*VT + a9*CT + a10*ClT + a11*log(temperature_sum)))*1.124
   )
 
 }
@@ -91,7 +91,7 @@ Pukkala_2009_diameter_increment_Finland_Spruce <- function(
 Pukkala_2009_diameter_increment_Finland_Betula <- function(
   BAL_Spruce,
   BAL_other,
-  BA_m2_ha,
+  BA,
   diameter_cm,
   vegetation,
   temperature_sum
@@ -115,7 +115,7 @@ Pukkala_2009_diameter_increment_Finland_Betula <- function(
   a11=1.627
 
   return(
-    exp((a1+a2*BAL_Spruce + a3*BAL_other + a4*ln(BA) + a5*sqrt(diameter_cm) + a6*(diameter_cm^2) + a7*MT + a8*VT + a9*CT + a10*ClT + a11*log(TS)))*1.127
+    exp((a1+a2*BAL_Spruce + a3*BAL_other + a4*log(BA) + a5*sqrt(diameter_cm) + a6*(diameter_cm^2) + a7*MT + a8*VT + a9*CT + a10*ClT + a11*log(temperature_sum)))*1.127
   )
 
 }
@@ -131,7 +131,7 @@ Pukkala_2009_diameter_increment_Finland_Betula <- function(
 #' @export
 #'
 Pukkala_2009_diameter_ingrowth_Finland_Spruce <- function(
-  BA_m2_ha,
+  BA,
   stems_ha_spruce,
   stems_ha_other,
   vegetation
@@ -146,7 +146,7 @@ Pukkala_2009_diameter_ingrowth_Finland_Spruce <- function(
   a4=-0.0646
 
   return(
-    exp(a1 + a2*log(BA_m2_ha) + a3*MT + a4*VT_minus)
+    exp(a1 + a2*log(BA) + a3*MT + a4*VT_minus)
   )
 
 }
@@ -156,7 +156,7 @@ Pukkala_2009_diameter_ingrowth_Finland_Spruce <- function(
 #' @details @details Pine & Betula model is based on 141 plot observations, R^2= 0.469, SD of resid. = 0.0730.
 
 Pukkala_2009_diameter_ingrowth_Finland_Betula_Pine <- function(
-  BA_m2_ha,
+  BA,
   stems_ha_spruce,
   stems_ha_other,
   vegetation
@@ -171,7 +171,7 @@ Pukkala_2009_diameter_ingrowth_Finland_Betula_Pine <- function(
   a4=-0.0556
 
   return(
-    exp(a1 + a2*log(BA_m2_ha) + a3*MT + a4*VT_minus)
+    exp(a1 + a2*log(BA) + a3*MT + a4*VT_minus)
   )
 
 }
@@ -277,7 +277,7 @@ Pukkala_2009_height_model_Finland_Norway_Spruce <- function(
 #' @param stems_ha_spruce Spruce stems per hectare >5 cm dbh.
 #' @param stems_ha_other Stems other than Spruce per hectare > 5 cm dbh.
 #' @param vegetation One of [forester::Finland_vegetation_types()]
-#' @param BA_m2_ha Total Basal Area (m2/ha) of trees >5 cm dbh.
+#' @param BA Total Basal Area (m2/ha) of trees >5 cm dbh.
 #'
 #' @return Number of ingrowth per hectare.
 #' @name Pukkala_2009_ingrowth_Finland_Spruce
@@ -287,7 +287,7 @@ Pukkala_2009_ingrowth_Finland_Spruce <- function(
   stems_ha_spruce,
   stems_ha_other,
   vegetation,
-  BA_m2_ha
+  BA
 ){
 
   MT_minus = vegetation%in%c("MT","HMT","VT","EMT","CT","MClT","ClT")
@@ -300,7 +300,7 @@ Pukkala_2009_ingrowth_Finland_Spruce <- function(
   a6=-0.567
 
   return(
-  exp(a1 + a2*sqrt(BA_m2_ha) + a3*log(BA_m2_ha) + a4*sqrt(stems_ha_spruce) + a5*sqrt(stems_ha_other) + a6*MT_minus) - 1
+  exp(a1 + a2*sqrt(BA) + a3*log(BA) + a4*sqrt(stems_ha_spruce) + a5*sqrt(stems_ha_other) + a6*MT_minus) - 1
   )
 
 
@@ -314,7 +314,7 @@ Pukkala_2009_ingrowth_Finland_Betula_Pine <- function(
   stems_ha_spruce,
   stems_ha_other,
   vegetation,
-  BA_m2_ha
+  BA
 ){
 
   MT_minus = vegetation%in%c("MT","HMT","VT","EMT","CT","MClT","ClT")
@@ -327,7 +327,7 @@ Pukkala_2009_ingrowth_Finland_Betula_Pine <- function(
   a6=0
 
   return(
-    exp(a1 + a2*sqrt(BA_m2_ha) + a3*log(BA_m2_ha) + a4*sqrt(stems_ha_spruce) + a5*sqrt(stems_ha_other) + a6*MT_minus) -1
+    exp(a1 + a2*sqrt(BA) + a3*log(BA) + a4*sqrt(stems_ha_spruce) + a5*sqrt(stems_ha_other) + a6*MT_minus) -1
   )
 
 
@@ -342,7 +342,7 @@ Pukkala_2009_ingrowth_Finland_Betula_Pine <- function(
 #'
 #'
 #' @param diameter_cm Diameter at breast height 1.3 m of subject tree (cm).
-#' @param BA_m2_ha Total Basal Area of all trees with dbh greater than 5 cm. (m2/ha)
+#' @param BA Total Basal Area of all trees with dbh greater than 5 cm. (m2/ha)
 #' @param BAL_Spruce Basal Area of all Spruce trees with a dbh larger than that of the subject tree (m2/ha).
 #' @param BAL Basal Area of all trees with a dbh larger than that of the subject tree (m2/ha).
 #'
@@ -352,7 +352,7 @@ Pukkala_2009_ingrowth_Finland_Betula_Pine <- function(
 #' @export
 Pukkala_2009_survival_Finland_Betula_Pine <- function(
   diameter_cm,
-  BA_m2_ha,
+  BA,
   BAL_Spruce,
   BAL
 ){
@@ -364,7 +364,7 @@ Pukkala_2009_survival_Finland_Betula_Pine <- function(
   a5=-0.106
 
     return(
-      (1 / (1+ exp(-(a1 + a2*sqrt(diameter_cm) + a3*log(BA_m2_ha) + a4*BAL_Spruce + a5*BAL))))^(5/6)
+      (1 / (1+ exp(-(a1 + a2*sqrt(diameter_cm) + a3*log(BA) + a4*BAL_Spruce + a5*BAL))))^(5/6)
     )
 
 
@@ -376,7 +376,7 @@ Pukkala_2009_survival_Finland_Betula_Pine <- function(
 
 Pukkala_2009_survival_Spruce <- function(
   diameter_cm,
-  BA_m2_ha,
+  BA,
   BAL_Spruce,
   BAL
 ){
@@ -388,7 +388,7 @@ Pukkala_2009_survival_Spruce <- function(
   a5=0
 
   return(
-    (1 / (1+ exp(-(a1 + a2*sqrt(diameter_cm) + a3*log(BA_m2_ha) + a4*BAL_Spruce + a5*BAL))))^(5/6)
+    (1 / (1+ exp(-(a1 + a2*sqrt(diameter_cm) + a3*log(BA) + a4*BAL_Spruce + a5*BAL))))^(5/6)
   )
 
 

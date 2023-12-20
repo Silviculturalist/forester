@@ -54,7 +54,3 @@ Standard deviation about the function (sf) : 0.245
 
 sf/standard deviation about the mean:  46\%
 }
-\examples{
-library(ggplot2)
-ggplot()+geom_function(fun= function(x) Agestam_1985_basal_area_annual_increment_under_bark_Pine(basal_area_Pine_m2_ha_after_thinning = 15,stem_count_Pine = 800,age_at_breast_height_period_start = x,SI_H100_Pine = 25,basal_area_other_species_m2_ha_after_thinning = 15,diameter_mean_basal_area_stem_Pine_cm = 1,diameter_mean_basal_area_stem_all_species_cm = 1,increment_period_years = 10))+xlim(c(10,140))+ylim(c(0,0.5))
-}

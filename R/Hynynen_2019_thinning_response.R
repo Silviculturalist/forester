@@ -12,7 +12,7 @@
 #' @param BasalArea stand basal area, m^2ha^-1
 #' @param height_weighted_w_ba mean height weighted with basal area, m.
 #' @param REM_percent removed percentage in cutting, percent of stand basal area.
-#' @param management 1 if evenaged, 2 if unevenaged
+#' @param management 1 if even-aged, 2 if uneven-aged
 #' @param CUT0.5 True or False, if between 0-5 yr since thinning
 #' @param CUT5.10 True or False, if between 5-10 yr since thinning
 #' @param CUT10.15 True or False, if between 10-15 yr since thinning
@@ -31,37 +31,11 @@ Hynynen_2019_thinning_response <- function(BasalArea, height_weighted_w_ba, REM_
     EA <- 0
   }
 
-# Checks  -----------------------------------------------------------------
+  stopifnot(BasalArea>=0 && BasalArea<=100)
 
-
-
-  BasalArea %>%
-    assert_is_numeric()
-
-  height_weighted_w_ba %>%
-    assert_is_numeric()
-
-  REM_percent %>%
-    assert_is_numeric() %>%
-    is_in_range(lower=0, upper=100)
-
-  management %>%
-    assert_is_numeric()
-
-  degreedays %>% assert_is_numeric()
-
-  CUT0.5 %>% assert_is_a_bool()
-
-
-  CUT5.10 %>% assert_is_a_bool()
-
-  CUT10.15 %>% assert_is_a_bool()
-
-
-# Function ----------------------------------------------------------------
-
+  return(
   -3.5181 + 0.3859*log(degreedays) + 0.09006*isOMT + 0.05175*log(BasalArea) + 29.2065*((1/height_weighted_w_ba)) + -144.18*(1/(height_weighted_w_ba^2)) + -0.2407*UEA*CUT0.5*REM_percent + -0.09355*UEA*REM_percent*CUT5.10 + 0.1080*EA*REM_percent*CUT5.10 + 0.1940*EA*REM_percent*CUT10.15
-
+  )
 
 
 

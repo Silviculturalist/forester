@@ -30,7 +30,7 @@ Moren_Perttu_1994_Sweden_temperature_sum_5C <- function(
 
   if(Correction & !is.null(TmaxMonthly) & !is.null(TminMonthly)){
     #p. 7, eq. 10. Gorczynski
-    C = 1.7*(Tmax-Tmin)/sin(Latitude)-20.4
+    C = 1.7*(TmaxMonthly-TminMonthly)/sin(Latitude)-20.4
 
     Corr = ifelse(
       C<12.5,-100,

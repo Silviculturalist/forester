@@ -24,7 +24,7 @@ Karlsson_2000_height_trajectory_Finland_coastal_Norway_Spruce <- function(
 
   #Estimate SI100 or if age = 100, set dominant_height to SI100_est
   if(age!=100){
-    SI100_est <- optimise(f = function(SI100,age,dominant_height) abs(Karlsson_height_function(SI100,age=age)-dominant_height)^2,interval=c(0,50),age=50,dominant_height=10.1857)[["minimum"]]
+    SI100_est <- stats::optimise(f = function(SI100,age,dominant_height) abs(Karlsson_height_function(SI100,age=age)-dominant_height)^2,interval=c(0,50),age=50,dominant_height=10.1857)[["minimum"]]
     } else if (age==100) {
       SI100_est <- dominant_height
       }

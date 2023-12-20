@@ -1,8 +1,10 @@
 ---
 title: "Development of the Top Height Concept in Swedish Forest Science"
-author: "Carl Vigren"
-date: "8/16/2021"
-output: html_document
+author: Carl Vigren
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 bibliography: references.bib
 ---
 

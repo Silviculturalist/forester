@@ -2,7 +2,7 @@
 % Please edit documentation in R/Pettersson_1992.R
 \name{Pettersson_1992_young_stands_volume_distribution_Spruce}
 \alias{Pettersson_1992_young_stands_volume_distribution_Spruce}
-\title{Volume distribution in young stands of Scots Pine, from Pettersson 1992}
+\title{Volume distribution in young stands of Norway spruce, from Pettersson 1992}
 \source{
 Pettersson Nils (1992) The effect on stand development of different
 spacing after planting and precommercial thinning in Norway Spruce (Picea abies
@@ -13,7 +13,8 @@ spacing after planting and precommercial thinning in Norway Spruce (Picea abies
 Pettersson_1992_young_stands_volume_distribution_Spruce(
   dominant_height,
   diameter_corresponding_to_mean_basal_area_cm,
-  initial_stems
+  initial_stems,
+  H100
 )
 }
 \arguments{
@@ -22,12 +23,14 @@ Pettersson_1992_young_stands_volume_distribution_Spruce(
 \item{diameter_corresponding_to_mean_basal_area_cm}{Diameter corresponding to the mean basal area stem, in cm.}
 
 \item{initial_stems}{Initial number of stems.}
+
+\item{H100}{Site Index age 100 for Norway Spruce, e.g. [forester::Hagglund_1972_northern_Sweden_Height_trajectories_Spruce()][forester::Hagglund_1973_southern_Sweden_Height_trajectories_Spruce()]}
 }
 \value{
 List of distribution metrics.
 }
 \description{
-Volume distribution in young stands of Scots Pine, from Pettersson 1992
+Volume distribution in young stands of Norway spruce, from Pettersson 1992
 }
 \details{
 function 9-12.

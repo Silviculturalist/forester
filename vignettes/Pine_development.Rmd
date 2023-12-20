@@ -1,9 +1,8 @@
 ---
-title: "Pine_development"
+title: "Pine development"
 author: Carl Vigren
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Pine_development}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -211,10 +210,12 @@ From the diameters and our earlier relation between height and diameter from a s
 diameters <- diameters %>% mutate(height= 1.3 + diameters^2/(19.1265151455858 + 0.229470870878339 * diameters)^2)
 ```
 
-Now that we have the diameters and heights of all stems, we can approximate the volume of the stand with help of the `forester::tree.volume` function.
+Now that we have the diameters and heights of all stems, we can approximate the volume of the stand with help of the `forester::Brandel_1990_volume_Spruce()` function.
 
 ```{r}
-diameters <- diameters %>% mutate(volume= tree.volume(dbh.cm=diameters/10, height.m=height,species.latin="Picea abies", latitude = 65))
+diameters <- diameters %>% mutate(volume= Brandel_1990_volume_Spruce(diameter_cm=diameters/10,
+                                                                     height_m=height,
+                                                                     latitude = 65))
 ```
 
 The total stand standing volume is (dm^3): 

@@ -15,20 +15,20 @@
 #'
 #' (sf)/standard deviation about the mean: 84.0%
 #'
-#' @param SI Site Index e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]
-#' @param dominant_height_m Dominant height m.
+#' @param H100 Site Index e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]
+#' @param dominant_height Dominant height m.
 #'
 #' @return Basal area at the end of the period, m2/ha.
 #' @export
 Persson_1992_average_basal_area_Pine <- function(
-  SI,
-  dominant_height_m
+  H100,
+  dominant_height
 ){
   return(
     exp(
     -0.150317+ #including correction for logarithmic bias.
-      +0.50463*log(dominant_height_m)+
-      +0.62033*log(SI)
+      +0.50463*log(dominant_height)+
+      +0.62033*log(H100)
     )
   )
 }
@@ -54,7 +54,7 @@ Persson_1992_average_basal_area_Pine <- function(
 #' (sf)/standard deviation about the mean: 45.9%
 #' @param basal_area_after_thinning Basal area at the beginning of the period, after thinning, under bark, m2/ha
 #' @param age_at_breast_height Age at breast height
-#' @param SI Site Index after Hägglund 1974, m.
+#' @param H100 Site Index after Hägglund 1974, m.
 #' @param latitude Latitude, degrees.
 #'
 #' @return Annual basal area increment under bark, m2/ha/yr
@@ -62,7 +62,7 @@ Persson_1992_average_basal_area_Pine <- function(
 Persson_1992_BA_increment_Pine <- function(
   basal_area_after_thinning,
   age_at_breast_height,
-  SI,
+  H100,
   latitude
 ){
 
@@ -71,7 +71,7 @@ Persson_1992_BA_increment_Pine <- function(
         +4.90697+
         +0.44683*log(basal_area_after_thinning)+
         -0.63272*log(age_at_breast_height)+
-        +0.30834*log(SI)+
+        +0.30834*log(H100)+
         -1.32323*log(latitude)
       )
     )
@@ -95,7 +95,7 @@ Persson_1992_BA_increment_Pine <- function(
 #' (sf)/standard deviation about the mean: 32.4%
 #'
 #' @param basal_area_above_bark Basal area over bark, m2/ha
-#' @param SI Site Index, m. e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]
+#' @param H100 Site Index, m. e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]
 #' @param stems Number of stems per ha.
 #' @param latitude Latitude, degrees.
 #'
@@ -103,7 +103,7 @@ Persson_1992_BA_increment_Pine <- function(
 #' @export
 Persson_1992_bark_Pine <- function(
   basal_area_above_bark,
-  SI,
+  H100,
   stems,
   latitude
 ){
@@ -111,7 +111,7 @@ Persson_1992_bark_Pine <- function(
     exp(
     8.43648+ #including correction for logarithmic bias.
       +0.94902*log(basal_area_above_bark)+
-      -0.176223*log(SI)+
+      -0.176223*log(H100)+
       +0.037108*log(stems)+
       -2.30456*log(latitude)
     )
@@ -134,7 +134,7 @@ Persson_1992_bark_Pine <- function(
 #'
 #' (sf)/standard deviation about the mean: 90.2 \%
 #'
-#' @param dominant_height_m Dominant height, m.
+#' @param dominant_height Dominant height, m.
 #' @param stems Stems per hectare
 #' @param thinned TRUE / FALSE if the thinning removal at the start of the period is at least 10\% of the basal area, 1, otherwise 0.
 #'
@@ -142,14 +142,14 @@ Persson_1992_bark_Pine <- function(
 #' @export
 
 Persson_1992_mortality_diameter_quotient_Pine <- function(
-  dominant_height_m,
+  dominant_height,
   stems,
   thinned
 ){
   return(
     exp(
       -1.06123+
-      +0.38727*log(dominant_height_m)+
+      +0.38727*log(dominant_height)+
       -0.080630*log(stems)+
       +0.140766*thinned
     )
@@ -186,8 +186,8 @@ Persson_1992_mortality_diameter_quotient_Pine <- function(
 #'
 #'
 #' @param basal_area_above_bark Basal area over bark, m2/ha
-#' @param dominant_height_m Dominant height m
-#' @param SI Site Index, m. e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]
+#' @param dominant_height Dominant height m
+#' @param H100 Site Index, m. e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]
 #' @param stems Number of stems per ha.
 #' @param latitude Latitude, degrees.
 #'
@@ -195,28 +195,28 @@ Persson_1992_mortality_diameter_quotient_Pine <- function(
 #' @export
 Persson_1992_natural_mortality_Pine <- function(
   basal_area_above_bark,
-  dominant_height_m,
-  SI,
+  dominant_height,
+  H100,
   stems,
   latitude
 ){
 
-  average_BA_1_3 <- Persson_1992_average_basal_area_Pine(dominant_height_m= dominant_height_m,
-                                                         SI = SI)*1.3
+  average_BA_1_3 <- Persson_1992_average_basal_area_Pine(dominant_height= dominant_height,
+                                                         H100 = H100)*1.3
 
   ifelse(G>=average_BA_1_3,
          return(
            exp(
              -17.24908+ #including correction for logarithmic bias.
                +1.86053*log(basal_area_above_bark)+
-               +1.75182*log(dominant_height_m)+
+               +1.75182*log(dominant_height)+
                +0.44001*log(stems)
            )
          ),
          return(
            exp(
              +15.3390+
-             +1.01872*log(dominant_height_m)+
+             +1.01872*log(dominant_height)+
              +0.69317*log(stems)+
              -6.38718*log(latitude)
            )
@@ -247,7 +247,7 @@ Persson_1992_natural_mortality_Pine <- function(
 #' (sf)/standard deviation about the mean: 8.2%
 #'
 #' @param basal_area_above_bark Basal area over bark, m2/ha
-#' @param dominant_height_m Dominant height, metres.
+#' @param dominant_height Dominant height, metres.
 #' @param stems Number of stems per ha.
 #' @param latitude Latitude, degrees.
 #'
@@ -256,7 +256,7 @@ Persson_1992_natural_mortality_Pine <- function(
 
 Persson_1992_volume_Pine <- function(
   basal_area_above_bark,
-  dominant_height_m,
+  dominant_height,
   stems,
   latitude
 ){
@@ -264,7 +264,7 @@ Persson_1992_volume_Pine <- function(
     exp(
     -0.58147+ #including correction for logarithmic bias.
       +1.11493*log(basal_area_above_bark)+
-      +0.73376*log(dominant_height_m)+
+      +0.73376*log(dominant_height)+
       -0.072569*log(stems)+
       +0.160919*log(latitude)
     )

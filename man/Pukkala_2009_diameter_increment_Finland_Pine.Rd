@@ -12,7 +12,7 @@ Pukkala, T., Lähde, E., Laiho, O. (2009). Growth and Yield Models of uneven-siz
 Pukkala_2009_diameter_increment_Finland_Pine(
   BAL_Spruce,
   BAL_other,
-  BA_m2_ha,
+  BA,
   diameter_cm,
   vegetation,
   temperature_sum
@@ -21,7 +21,7 @@ Pukkala_2009_diameter_increment_Finland_Pine(
 Pukkala_2009_diameter_increment_Finland_Spruce(
   BAL_Spruce,
   BAL_other,
-  BA_m2_ha,
+  BA,
   diameter_cm,
   vegetation,
   temperature_sum
@@ -30,7 +30,7 @@ Pukkala_2009_diameter_increment_Finland_Spruce(
 Pukkala_2009_diameter_increment_Finland_Betula(
   BAL_Spruce,
   BAL_other,
-  BA_m2_ha,
+  BA,
   diameter_cm,
   vegetation,
   temperature_sum
@@ -41,7 +41,7 @@ Pukkala_2009_diameter_increment_Finland_Betula(
 
 \item{BAL_other}{Basal area of trees other than Spruce larger than the subject tree (m2/ha)}
 
-\item{BA_m2_ha}{Basal Area of all trees larger than 5 cm dbh. m2/ha.}
+\item{BA}{Basal Area of all trees larger than 5 cm dbh. m2/ha.}
 
 \item{diameter_cm}{Diameter of subject tree at breast height 1.3m, cm.}
 

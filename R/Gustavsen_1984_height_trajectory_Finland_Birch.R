@@ -24,7 +24,7 @@
 #'
 #'
 #'
-#' @param dominant_height Dominant height, in metres.
+#' @param dominant_height Dominant height, in meters.
 #' @param age Total age
 #' @param age2 Total age at output
 #'
@@ -58,7 +58,7 @@ Gustavsen_1984_height_trajectory_Finland_Birch <- function(
   }
 
   return(
-    optimise(f = birch_incrementer,
+    stats::optimise(f = birch_incrementer,
                               interval = c(0,30),
                               start_age=age2, #observe opposite order.
                               end_age=age,

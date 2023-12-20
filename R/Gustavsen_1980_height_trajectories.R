@@ -36,7 +36,7 @@ Gustavsen_1980_height_trajectory_Finland_Scots_Pine <- function(
   hd_df <- data.frame(age=numeric(),height=numeric(),increment=numeric())
   for(i in age:age2){
     increment = (dominant_height * log(SI100/128.229) * exp(4.70248/i^0.47692 - 4.70248/100^0.47692) * (-2.24269/i^1.47692))
-    hd_df <- bind_rows(hd_df,data.frame("age"=i,"height"=dominant_height,"increment"=increment))
+    hd_df <- dplyr::bind_rows(hd_df,data.frame("age"=i,"height"=dominant_height,"increment"=increment))
     dominant_height <- if(age<age2) (dominant_height+increment) else (dominant_height-increment)
   }
 
@@ -69,7 +69,7 @@ Gustavsen_1980_height_trajectory_Finland_Norway_Spruce <- function(
   hd_df <- data.frame(age=numeric(),height=numeric(),increment=numeric())
   for(i in age:age2){
     increment = (dominant_height * log(SI100/147.481) * exp(4.64631/i^0.29981 - 4.64631/100^0.29981) * (-1.39299/i^1.29981))
-    hd_df <- bind_rows(hd_df,data.frame("age"=i,"height"=dominant_height,"increment"=increment))
+    hd_df <- dplyr::bind_rows(hd_df,data.frame("age"=i,"height"=dominant_height,"increment"=increment))
     dominant_height <- if(age<age2) (dominant_height+increment) else (dominant_height-increment)
   }
 

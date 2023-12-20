@@ -1206,7 +1206,7 @@ Pettersson_1992_young_stands_volume_distribution_Pine <- function(
   )
 
 }
-#' Volume distribution in young stands of Scots Pine, from Pettersson 1992
+#' Volume distribution in young stands of Norway spruce, from Pettersson 1992
 #'
 #' @source Pettersson Nils (1992) The effect on stand development of different
 #' spacing after planting and precommercial thinning in Norway Spruce (Picea abies
@@ -1247,6 +1247,7 @@ Pettersson_1992_young_stands_volume_distribution_Pine <- function(
 #' @param dominant_height Dominant height of the stand, in meters.
 #' @param diameter_corresponding_to_mean_basal_area_cm Diameter corresponding to the mean basal area stem, in cm.
 #' @param initial_stems Initial number of stems.
+#' @param H100 Site Index age 100 for Norway Spruce, e.g. [forester::Hagglund_1972_northern_Sweden_Height_trajectories_Spruce()][forester::Hagglund_1973_southern_Sweden_Height_trajectories_Spruce()]
 #'
 #' @return List of distribution metrics.
 #' @export
@@ -1254,16 +1255,17 @@ Pettersson_1992_young_stands_volume_distribution_Pine <- function(
 Pettersson_1992_young_stands_volume_distribution_Spruce <- function(
   dominant_height,
   diameter_corresponding_to_mean_basal_area_cm,
-  initial_stems
+  initial_stems,
+  H100
 ){
   mean_volume <- exp(0.5271 + 0.8418*log(diameter_corresponding_to_mean_basal_area_cm))
 
   #Note unclear double negation in text! Verify.
-  volume_standard_deviation <- exp(2.1613 + 0.4634*log(diameter_corresponding_to_mean_basal_area_cm) - -0.6656*log(SI))
+  volume_standard_deviation <- exp(2.1613 + 0.4634*log(diameter_corresponding_to_mean_basal_area_cm) - -0.6656*log(H100))
 
-  volume_skew_plus_3 <- exp(0.9021 + 0.1278*log(initial_stems)-0.2647*log(SI))
+  volume_skew_plus_3 <- exp(0.9021 + 0.1278*log(initial_stems)-0.2647*log(H100))
 
-  volume_kurtosis_plus_3 <- exp(1.2019-0.1900*log(initial_stems)+0.4445*log(SI))
+  volume_kurtosis_plus_3 <- exp(1.2019-0.1900*log(initial_stems)+0.4445*log(H100))
 
   return(
     list(

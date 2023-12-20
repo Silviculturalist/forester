@@ -11,14 +11,10 @@ Swedish University of Agricultural Sciences.
 ISSN 0348-7636. Garpenberg. p. 61. pp. 206.
 }
 \usage{
-Persson_1992_mortality_diameter_quotient_Pine(
-  dominant_height_m,
-  stems,
-  thinned
-)
+Persson_1992_mortality_diameter_quotient_Pine(dominant_height, stems, thinned)
 }
 \arguments{
-\item{dominant_height_m}{Dominant height, m.}
+\item{dominant_height}{Dominant height, m.}
 
 \item{stems}{Stems per hectare}
 

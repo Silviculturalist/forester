@@ -98,9 +98,7 @@ Jonson_1914_thinned_percentage <- function(stand_age){
 #' @export
 Jonson_1914_to_MAImax <- function(jonson_class){
 
-  ifelse()
-
-  assert_all_are_in_range (jonson_class, lower = 1,upper = 9)
+  stopifnot(jonson_class%in%1:9)
 
   if(jonson_class==1){
     10.5

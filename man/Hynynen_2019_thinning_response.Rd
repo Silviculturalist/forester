@@ -23,7 +23,7 @@ Hynynen_2019_thinning_response(
 
 \item{REM_percent}{removed percentage in cutting, percent of stand basal area.}
 
-\item{management}{1 if evenaged, 2 if unevenaged}
+\item{management}{1 if even-aged, 2 if uneven-aged}
 
 \item{isOMT}{Binary, if site type is Oxalis-Myrtillus (mesic) )== 1}
 

@@ -14,7 +14,7 @@ ISSN 0348-7636. Garpenberg. p. 56. pp. 206.
 Persson_1992_BA_increment_Pine(
   basal_area_after_thinning,
   age_at_breast_height,
-  SI,
+  H100,
   latitude
 )
 }
@@ -23,7 +23,7 @@ Persson_1992_BA_increment_Pine(
 
 \item{age_at_breast_height}{Age at breast height}
 
-\item{SI}{Site Index after Hägglund 1974, m.}
+\item{H100}{Site Index after Hägglund 1974, m.}
 
 \item{latitude}{Latitude, degrees.}
 }

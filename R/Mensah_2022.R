@@ -5,23 +5,23 @@
 #' experiments. For. Ecol. Manage. 512. Available online (2022-04-08):
 #' \url{https://doi.org/10.1016/j.foreco.2022.120162}
 #'
-#' @description Note: BA_m2_ha should be given for age>40 for Norway Spruce or
+#' @description Note: BA should be given for age>40 for Norway Spruce or
 #' Scots Pine.For Larch and Lodgepole Pine, age should be 30. The function will
 #' throw a warning.
 #'
 #'
-#' @param BA_m2_ha Basal area at breast height, m2 / ha.
+#' @param BA Basal area at breast height, m2 / ha.
 #' @param age Total stand age at start.
 #' @param age2 Total stand age desired.
-#' @param stems_ha Number of stems per hectare at start.
-#' @param SI100 Site Index H100 e.g. \cr
+#' @param stems Number of stems per hectare at start.
+#' @param H100 Site Index H100 e.g. \cr
 #' \tabular{ll}{
 #' Scots Pine\tab [forester::Elfving_Kiviste_1997_height_trajectory_Sweden_Pine()]\cr
 #' Norway Spruce\tab [forester::Elfving_2003_height_trajectory_Sweden_Spruce()]\cr
 #' Lodgepole Pine\tab [forester::Liziniewicz_2016_height_trajectory_Sweden_Pinus_contorta()]\cr
 #' Larch\tab [forester::Johansson_2013_height_trajectory_Sweden_Larch()]\cr
 #' }
-#' @param SI50 Site Index H50, see parameter SI100
+#' @param H50 Site Index H50, see parameter H100
 #'
 #' @details Table of fit-statistics for basal area functions:
 #' \tabular{lrrr}{
@@ -37,12 +37,12 @@
 #' @return Expected BA m2 / ha at age2.
 #' @export
 
-Mensah_2022_BA_m2_ha_Sweden_Scots_Pine <- function(
-    BA_m2_ha,
+Mensah_2022_BA_Sweden_Scots_Pine <- function(
+    BA,
     age,
     age2,
-    stems_ha,
-    SI100){
+    stems,
+    H100){
 
   if(age<40){warning("For stable estimates age should be above 40!")}
 
@@ -50,43 +50,43 @@ Mensah_2022_BA_m2_ha_Sweden_Scots_Pine <- function(
   a0 <- -52.8873
   a1 <- 0.0064
   a2 <- -0.007
-  stems_ha <- sqrt(10000/stems_ha)
+  stems <- sqrt(10000/stems)
   return(
-  exp(log(BA_m2_ha)+ a0*((1/age2)-(1/age))+a1*stems_ha+a2*SI100)
+  exp(log(BA)+ a0*((1/age2)-(1/age))+a1*stems+a2*H100)
   )
 }
-Mensah_2022_BA_m2_ha_Sweden_Scots_Pine <- Vectorize(Mensah_2022_BA_m2_ha_Sweden_Scots_Pine)
+Mensah_2022_BA_Sweden_Scots_Pine <- Vectorize(Mensah_2022_BA_Sweden_Scots_Pine)
 
 
 #' @export
 #' @rdname Mensah_2022_BA
-Mensah_2022_BA_m2_ha_Sweden_Norway_Spruce <- function(
-    BA_m2_ha,
+Mensah_2022_BA_Sweden_Norway_Spruce <- function(
+    BA,
     age,
     age2,
-    stems_ha,
-    SI100){
+    stems,
+    H100){
 
   if(age<40){warning("For stable estimates age should be above 40!")}
   #F01
   a0 <- -55.1743
   a1 <- 0.0273
   a2 <- -0.0012
-  stems_ha <- sqrt(10000/stems_ha)
+  stems <- sqrt(10000/stems)
   return(
-  exp(log(BA_m2_ha)+ a0*((1/age2)-(1/age))+a1*stems_ha+a2*SI100)
+  exp(log(BA)+ a0*((1/age2)-(1/age))+a1*stems+a2*H100)
   )
 }
-Mensah_2022_BA_m2_ha_Sweden_Norway_Spruce <- Vectorize(Mensah_2022_BA_m2_ha_Sweden_Norway_Spruce)
+Mensah_2022_BA_Sweden_Norway_Spruce <- Vectorize(Mensah_2022_BA_Sweden_Norway_Spruce)
 
 #' @export
 #' @rdname Mensah_2022_BA
-Mensah_2022_BA_m2_ha_Sweden_Lodgepole_Pine <- function(
-    BA_m2_ha,
+Mensah_2022_BA_Sweden_Lodgepole_Pine <- function(
+    BA,
     age,
     age2,
-    stems_ha,
-    SI50){
+    stems,
+    H50){
 
   if(age!=30){warning("age should be 30 for stable estimates!")}
   #F04
@@ -94,22 +94,22 @@ Mensah_2022_BA_m2_ha_Sweden_Lodgepole_Pine <- function(
   a1 <- 1.0931
   a2 <- -0.1089
   c0 <- 2.6904
-  stems_ha <- sqrt(10000/stems_ha)
+  stems <- sqrt(10000/stems)
   return(
     # minus a0?
-  BA_m2_ha*((1-exp(-a0*age2))/(1-exp(-a0*(age))))^(c0 + a1*stems_ha + a2*SI50)
+  BA*((1-exp(-a0*age2))/(1-exp(-a0*(age))))^(c0 + a1*stems + a2*H50)
   )
 }
-Mensah_2022_BA_m2_ha_Sweden_Lodgepole_Pine <- Vectorize(Mensah_2022_BA_m2_ha_Sweden_Lodgepole_Pine)
+Mensah_2022_BA_Sweden_Lodgepole_Pine <- Vectorize(Mensah_2022_BA_Sweden_Lodgepole_Pine)
 
 #' @export
 #' @rdname Mensah_2022_BA
-Mensah_2022_BA_m2_ha_Sweden_Larch <- function(
-    BA_m2_ha,
+Mensah_2022_BA_Sweden_Larch <- function(
+    BA,
     age,
     age2,
-    stems_ha,
-    SI100){
+    stems,
+    H100){
   #F04
   if(age!=30){warning("age should be 30 for stable estimates!")}
 
@@ -117,13 +117,13 @@ Mensah_2022_BA_m2_ha_Sweden_Larch <- function(
   a1 <- 0.7837
   a2 <- 0.5909
   c0 <- 0.0887
-  stems_ha <- sqrt(10000/stems_ha)
+  stems <- sqrt(10000/stems)
   return(
     #minus a0?
-  BA_m2_ha*((1-exp(-a0*age2))/(1-exp(-a0*(age))))^(c0 + a1*stems_ha + a2*SI100)
+  BA*((1-exp(-a0*age2))/(1-exp(-a0*(age))))^(c0 + a1*stems + a2*H100)
   )
 }
-Mensah_2022_BA_m2_ha_Sweden_Larch <- Vectorize(Mensah_2022_BA_m2_ha_Sweden_Larch)
+Mensah_2022_BA_Sweden_Larch <- Vectorize(Mensah_2022_BA_Sweden_Larch)
 
 
 
@@ -212,7 +212,7 @@ Mensah_2022_MAI_max_Sweden_Larch <- function(H100){
 #' Lodgepole Pine\tab [forester::Liziniewicz_2016_height_trajectory_Sweden_Pinus_contorta()]\cr
 #' Larch\tab [forester::Johansson_2013_height_trajectory_Sweden_Larch()]\cr
 #' }
-#' @param BA_m2_ha e.g. [forester::Mensah_2022_BA_m2_ha_Sweden_Scots_Pine]
+#' @param BA e.g. [forester::Mensah_2022_BA_Sweden_Scots_Pine]
 #'
 #' @details \cr
 #' \tabular{lrrr}{
@@ -229,13 +229,13 @@ Mensah_2022_MAI_max_Sweden_Larch <- function(H100){
 
 Mensah_2022_volume_yield_m3_ha_Sweden_Scots_Pine <- function(
   dominant_height,
-  BA_m2_ha
+  BA
   ){
   a0 <- 0.8013
   a1 <- 1.0208
   a2 <- 0.8062
   return(
-    a0*dominant_height^a1*BA_m2_ha^a2
+    a0*dominant_height^a1*BA^a2
   )
 }
 
@@ -243,13 +243,13 @@ Mensah_2022_volume_yield_m3_ha_Sweden_Scots_Pine <- function(
 #' @rdname Mensah_2022_volume
 Mensah_2022_volume_yield_m3_ha_Sweden_Norway_Spruce <- function(
     dominant_height,
-    BA_m2_ha
+    BA
     ){
   a0 <- 0.7498
   a1 <- 1.1781
   a2 <- 0.7169
   return(
-    a0*dominant_height^a1*BA_m2_ha^a2
+    a0*dominant_height^a1*BA^a2
   )
 }
 
@@ -257,13 +257,13 @@ Mensah_2022_volume_yield_m3_ha_Sweden_Norway_Spruce <- function(
 #' @rdname Mensah_2022_volume
 Mensah_2022_volume_yield_m3_ha_Sweden_Lodgepole_Pine <- function(
     dominant_height,
-    BA_m2_ha
+    BA
     ){
   a0 <- 0.8783
   a1 <- 0.9251
   a2 <- 0.8839
   return(
-    a0*dominant_height^a1*BA_m2_ha^a2
+    a0*dominant_height^a1*BA^a2
   )
 }
 
@@ -271,13 +271,13 @@ Mensah_2022_volume_yield_m3_ha_Sweden_Lodgepole_Pine <- function(
 #' @rdname Mensah_2022_volume
 Mensah_2022_volume_yield_m3_ha_Sweden_Larch <- function(
     dominant_height,
-    BA_m2_ha
+    BA
     ){
   a0 <- 1.4005
   a1 <- 1.6359
   a2 <- 0.1558
   return(
-    a0*dominant_height^a1*BA_m2_ha^a2
+    a0*dominant_height^a1*BA^a2
   )
 }
 
@@ -308,7 +308,7 @@ Mensah_2022_volume_yield_m3_ha_Sweden_Larch <- function(
 #' @export
 #' @name Mensah_initial_BA
 
-Mensah_2022_initial_BA_m2_ha_Sweden_Scots_Pine <- function(H100,age){
+Mensah_2022_initial_BA_Sweden_Scots_Pine <- function(H100,age){
   a0 <- 147.4
   a1 <- 11.63
   a2 <- 0.00594
@@ -320,7 +320,7 @@ Mensah_2022_initial_BA_m2_ha_Sweden_Scots_Pine <- function(H100,age){
 
 #'@export
 #'@rdname Mensah_initial_BA
-Mensah_2022_initial_BA_m2_ha_Sweden_Norway_Spruce<- function(H100,age){
+Mensah_2022_initial_BA_Sweden_Norway_Spruce<- function(H100,age){
   a0 <- -169.5
   a1 <- 11.23
   a2 <- 0.0098
@@ -332,7 +332,7 @@ Mensah_2022_initial_BA_m2_ha_Sweden_Norway_Spruce<- function(H100,age){
 
 #'@export
 #'@rdname Mensah_initial_BA
-Mensah_2022_initial_BA_m2_ha_Sweden_Lodgepole_Pine<- function(H50,age){
+Mensah_2022_initial_BA_Sweden_Lodgepole_Pine<- function(H50,age){
   a0 <- -313.6
   a1 <- 49.86
   a2 <- 0.0014
@@ -344,7 +344,7 @@ Mensah_2022_initial_BA_m2_ha_Sweden_Lodgepole_Pine<- function(H50,age){
 
 #'@export
 #'@rdname Mensah_initial_BA
-Mensah_2022_initial_BA_m2_ha_Sweden_Larch<- function(H100,age){
+Mensah_2022_initial_BA_Sweden_Larch<- function(H100,age){
   a0 <- -283.7
   a1 <- 30.22
   a2 <- 0.00055 #typo?

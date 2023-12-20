@@ -33,11 +33,11 @@ Karlberg_1961_height_trajectory_HL_Scandinavia_Douglas_Fir <- function(
     HL){
 
   #Find H50 which produces age, HL.
-  h50 <- optimise(f= function(h50,age,HL) abs(HL-2*h50*pnorm((log10(age)-1.6990)/(0.24 + 0.0088*h50))),lower = 0,upper=100, age={age},HL={HL})[[1]]
+  h50 <- stats::optimise(f= function(h50,age,HL) abs(HL-2*h50*stats::pnorm((log10(age)-1.6990)/(0.24 + 0.0088*h50))),lower = 0,upper=100, age={age},HL={HL})[[1]]
 
   #return predicted HL at age2.
   return(
-    2*h50*pnorm((log10(age2)-1.6990)/(0.24 + 0.0088*h50))
+    2*h50*stats::pnorm((log10(age2)-1.6990)/(0.24 + 0.0088*h50))
   )
 
 }
@@ -79,11 +79,11 @@ Karlberg_1961_height_trajectory_HL_southern_scandinavia_Sitka_Spruce <- function
 ){
 
   #Find H50 which produces age, HL.
-  h50 <- optimise(f= function(h50,age,HL) abs(HL-2*h50*pnorm((log10(age)-1.6990)/(0.21 + 0.0066*h50))),lower = 0,upper=100, age={age},HL={HL})[[1]]
+  h50 <- stats::optimise(f= function(h50,age,HL) abs(HL-2*h50*stats::pnorm((log10(age)-1.6990)/(0.21 + 0.0066*h50))),lower = 0,upper=100, age={age},HL={HL})[[1]]
 
   #return predicted HL at age2.
   return(
-    2*h50*pnorm((log10(age2)-1.6990)/(0.21 + 0.0066*h50))
+    2*h50*stats::pnorm((log10(age2)-1.6990)/(0.21 + 0.0066*h50))
   )
 
 }

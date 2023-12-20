@@ -11,12 +11,12 @@ Swedish University of Agricultural Sciences.
 ISSN 0348-7636. Garpenberg. p. 58. pp. 206.
 }
 \usage{
-Persson_1992_bark_Pine(basal_area_above_bark, SI, stems, latitude)
+Persson_1992_bark_Pine(basal_area_above_bark, H100, stems, latitude)
 }
 \arguments{
 \item{basal_area_above_bark}{Basal area over bark, m2/ha}
 
-\item{SI}{Site Index, m. e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]}
+\item{H100}{Site Index, m. e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]}
 
 \item{stems}{Number of stems per ha.}
 

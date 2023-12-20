@@ -14,13 +14,13 @@ experiments. For. Ecol. Manage. 512. Available online (2022-04-08):
 \url{https://doi.org/10.1016/j.foreco.2022.120162}
 }
 \usage{
-Mensah_2022_volume_yield_m3_ha_Sweden_Scots_Pine(dominant_height, BA_m2_ha)
+Mensah_2022_volume_yield_m3_ha_Sweden_Scots_Pine(dominant_height, BA)
 
-Mensah_2022_volume_yield_m3_ha_Sweden_Norway_Spruce(dominant_height, BA_m2_ha)
+Mensah_2022_volume_yield_m3_ha_Sweden_Norway_Spruce(dominant_height, BA)
 
-Mensah_2022_volume_yield_m3_ha_Sweden_Lodgepole_Pine(dominant_height, BA_m2_ha)
+Mensah_2022_volume_yield_m3_ha_Sweden_Lodgepole_Pine(dominant_height, BA)
 
-Mensah_2022_volume_yield_m3_ha_Sweden_Larch(dominant_height, BA_m2_ha)
+Mensah_2022_volume_yield_m3_ha_Sweden_Larch(dominant_height, BA)
 }
 \arguments{
 \item{dominant_height}{\cr
@@ -31,7 +31,7 @@ Lodgepole Pine\tab [forester::Liziniewicz_2016_height_trajectory_Sweden_Pinus_co
 Larch\tab [forester::Johansson_2013_height_trajectory_Sweden_Larch()]\cr
 }}
 
-\item{BA_m2_ha}{e.g. [forester::Mensah_2022_BA_m2_ha_Sweden_Scots_Pine]}
+\item{BA}{e.g. [forester::Mensah_2022_BA_Sweden_Scots_Pine]}
 }
 \value{
 Volume Yield m^3 ha^-1

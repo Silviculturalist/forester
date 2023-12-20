@@ -13,7 +13,7 @@ ISSN 0348-7636. Garpenberg. p. 58. pp. 206.
 \usage{
 Persson_1992_volume_Pine(
   basal_area_above_bark,
-  dominant_height_m,
+  dominant_height,
   stems,
   latitude
 )
@@ -21,7 +21,7 @@ Persson_1992_volume_Pine(
 \arguments{
 \item{basal_area_above_bark}{Basal area over bark, m2/ha}
 
-\item{dominant_height_m}{Dominant height, metres.}
+\item{dominant_height}{Dominant height, metres.}
 
 \item{stems}{Number of stems per ha.}
 

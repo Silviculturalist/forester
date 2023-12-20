@@ -2,10 +2,10 @@
 % Please edit documentation in R/Mensah_2022.R
 \name{Mensah_2022_BA}
 \alias{Mensah_2022_BA}
-\alias{Mensah_2022_BA_m2_ha_Sweden_Scots_Pine}
-\alias{Mensah_2022_BA_m2_ha_Sweden_Norway_Spruce}
-\alias{Mensah_2022_BA_m2_ha_Sweden_Lodgepole_Pine}
-\alias{Mensah_2022_BA_m2_ha_Sweden_Larch}
+\alias{Mensah_2022_BA_Sweden_Scots_Pine}
+\alias{Mensah_2022_BA_Sweden_Norway_Spruce}
+\alias{Mensah_2022_BA_Sweden_Lodgepole_Pine}
+\alias{Mensah_2022_BA_Sweden_Larch}
 \title{Basal Area development in conifer stands in Sweden.}
 \source{
 Mensah, A. A., Holmström, E., Nyström, K., Nilsson, U. 2022.
@@ -14,24 +14,24 @@ experiments. For. Ecol. Manage. 512. Available online (2022-04-08):
 \url{https://doi.org/10.1016/j.foreco.2022.120162}
 }
 \usage{
-Mensah_2022_BA_m2_ha_Sweden_Scots_Pine(BA_m2_ha, age, age2, stems_ha, SI100)
+Mensah_2022_BA_Sweden_Scots_Pine(BA, age, age2, stems, H100)
 
-Mensah_2022_BA_m2_ha_Sweden_Norway_Spruce(BA_m2_ha, age, age2, stems_ha, SI100)
+Mensah_2022_BA_Sweden_Norway_Spruce(BA, age, age2, stems, H100)
 
-Mensah_2022_BA_m2_ha_Sweden_Lodgepole_Pine(BA_m2_ha, age, age2, stems_ha, SI50)
+Mensah_2022_BA_Sweden_Lodgepole_Pine(BA, age, age2, stems, H50)
 
-Mensah_2022_BA_m2_ha_Sweden_Larch(BA_m2_ha, age, age2, stems_ha, SI100)
+Mensah_2022_BA_Sweden_Larch(BA, age, age2, stems, H100)
 }
 \arguments{
-\item{BA_m2_ha}{Basal area at breast height, m2 / ha.}
+\item{BA}{Basal area at breast height, m2 / ha.}
 
 \item{age}{Total stand age at start.}
 
 \item{age2}{Total stand age desired.}
 
-\item{stems_ha}{Number of stems per hectare at start.}
+\item{stems}{Number of stems per hectare at start.}
 
-\item{SI100}{Site Index H100 e.g. \cr
+\item{H100}{Site Index H100 e.g. \cr
 \tabular{ll}{
 Scots Pine\tab [forester::Elfving_Kiviste_1997_height_trajectory_Sweden_Pine()]\cr
 Norway Spruce\tab [forester::Elfving_2003_height_trajectory_Sweden_Spruce()]\cr
@@ -39,13 +39,13 @@ Lodgepole Pine\tab [forester::Liziniewicz_2016_height_trajectory_Sweden_Pinus_co
 Larch\tab [forester::Johansson_2013_height_trajectory_Sweden_Larch()]\cr
 }}
 
-\item{SI50}{Site Index H50, see parameter SI100}
+\item{H50}{Site Index H50, see parameter H100}
 }
 \value{
 Expected BA m2 / ha at age2.
 }
 \description{
-Note: BA_m2_ha should be given for age>40 for Norway Spruce or
+Note: BA should be given for age>40 for Norway Spruce or
 Scots Pine.For Larch and Lodgepole Pine, age should be 30. The function will
 throw a warning.
 }

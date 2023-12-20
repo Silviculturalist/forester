@@ -57,14 +57,14 @@ Lorey_mean_height <- function(
 #'  \url{https://elischolar.library.yale.edu/cgi/viewcontent.cgi?article=1027&context=yale_fes_bulletin}
 #' @param diameter Mean arithmetic diameter of the stand in cm.
 #' @param diameter_sd Standard deviation of the stem distribution of the stand.
-#' @param QMD The basal area weighted mean diameter (cm) of the stand (Dg).
+#' @param DGV The basal area weighted mean diameter (cm) of the stand (Dg).
 #'
-#' @return Stand QMD.
+#' @return Stand DGV.
 #'
 #' @name CajanusDg
 #' @export
 
-Oppermann_Cajanus_stand_QMD <- function(
+Oppermann_Cajanus_stand_DGV <- function(
     diameter,
     diameter_sd
 ){
@@ -81,11 +81,11 @@ Oppermann_Cajanus_stand_QMD <- function(
 #' Forestry. Stockholm. p. 165.
 #' @export
 Oppermann_Cajanus_mean_diameter <- function(
-    QMD,
+    DGV,
     diameter_sd
 ){
   return(
-    sqrt((DG^2) - (diameter_sd^2))
+    sqrt((DGV^2) - (diameter_sd^2))
   )
 }
 

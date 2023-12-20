@@ -14,7 +14,7 @@ Available (26/03/2022): \url{https://jukuri.luke.fi/handle/10024/522180}
 Gustavsen_1984_height_trajectory_Finland_Birch(dominant_height, age, age2)
 }
 \arguments{
-\item{dominant_height}{Dominant height, in metres.}
+\item{dominant_height}{Dominant height, in meters.}
 
 \item{age}{Total age}
 

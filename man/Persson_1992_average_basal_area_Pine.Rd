@@ -11,12 +11,12 @@ Swedish University of Agricultural Sciences.
 ISSN 0348-7636. Garpenberg. p. 59. pp. 206.
 }
 \usage{
-Persson_1992_average_basal_area_Pine(SI, dominant_height_m)
+Persson_1992_average_basal_area_Pine(H100, dominant_height)
 }
 \arguments{
-\item{SI}{Site Index e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]}
+\item{H100}{Site Index e.g. [forester::Hagglund_1974_Sweden_height_trajectories_Pine()]}
 
-\item{dominant_height_m}{Dominant height m.}
+\item{dominant_height}{Dominant height m.}
 }
 \value{
 Basal area at the end of the period, m2/ha.

@@ -2,10 +2,10 @@
 % Please edit documentation in R/Mensah_2022.R
 \name{Mensah_initial_BA}
 \alias{Mensah_initial_BA}
-\alias{Mensah_2022_initial_BA_m2_ha_Sweden_Scots_Pine}
-\alias{Mensah_2022_initial_BA_m2_ha_Sweden_Norway_Spruce}
-\alias{Mensah_2022_initial_BA_m2_ha_Sweden_Lodgepole_Pine}
-\alias{Mensah_2022_initial_BA_m2_ha_Sweden_Larch}
+\alias{Mensah_2022_initial_BA_Sweden_Scots_Pine}
+\alias{Mensah_2022_initial_BA_Sweden_Norway_Spruce}
+\alias{Mensah_2022_initial_BA_Sweden_Lodgepole_Pine}
+\alias{Mensah_2022_initial_BA_Sweden_Larch}
 \title{Helper functions for Mensah 2022 initial stand density.}
 \source{
 Mensah, A. A., Holmström, E., Nyström, K., Nilsson, U. 2022.
@@ -15,13 +15,13 @@ experiments. For. Ecol. Manage. 512. Available online (2022-04-08):
 (Unpublished supplement, in print 2022-04-14)
 }
 \usage{
-Mensah_2022_initial_BA_m2_ha_Sweden_Scots_Pine(H100, age)
+Mensah_2022_initial_BA_Sweden_Scots_Pine(H100, age)
 
-Mensah_2022_initial_BA_m2_ha_Sweden_Norway_Spruce(H100, age)
+Mensah_2022_initial_BA_Sweden_Norway_Spruce(H100, age)
 
-Mensah_2022_initial_BA_m2_ha_Sweden_Lodgepole_Pine(H50, age)
+Mensah_2022_initial_BA_Sweden_Lodgepole_Pine(H50, age)
 
-Mensah_2022_initial_BA_m2_ha_Sweden_Larch(H100, age)
+Mensah_2022_initial_BA_Sweden_Larch(H100, age)
 }
 \arguments{
 \item{H100}{Site Index H100}
