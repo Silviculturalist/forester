@@ -125,7 +125,7 @@ Bengtsson_1978_annual_volume_mortality_percent <- function(
 #' Annual Basal Area Mortality
 #'
 #' @source Elfving, Björn. 2014-03-17. PM. Modellering av naturlig avgång i Heureka. (Swedish). URL:\url{https://www.heurekaslu.se/w/images/f/f4/HeurekaMortality-PM140317.pdf}
-#'
+#' @source Bengtsson, G. 1981-02-26. Stencil. Beräkning av den naturliga avgången ur virkesförrådet i Hugin-systemet. 8 sid. Umeå: Sveriges lantbruksuniversitet, inst. f. skogstaxering.
 #' @description Annual Mortality in terms of percent of the basal area at start of period.
 #'
 #' @details N.B. At application it at first glance looks as if from ProdMod2 the
@@ -144,12 +144,16 @@ Bengtson_HUGIN_annual_BA_mortality_percent <- function(
   species='Pinus sylvestris',
   DAge=20){
 
+  DAge = ifelse(DAge<100,
+                ((DAge/10) + 1),
+                min(((DAge-100)/20*2 + 12),17))
+
   if(northern_Sweden){
     if(species=='Pinus sylvestris'){
       val=0.14
     }
     if(species=='Picea abies'){
-      val=0.025*((DAge/10) + 1)
+      val=-0.000236 + 0.0250275*DAge
     }
     if(species%in%c('Betula pendula','Betula pubescens')){
       val=0.78
@@ -172,6 +176,13 @@ Bengtson_HUGIN_annual_BA_mortality_percent <- function(
     if(forester::tree_type(species)=='Deciduous'){
       val=0.46
     }
+  }
+
+  val = val/20
+
+  if(val<0|val>1){
+    warning('Mortality proportion out of bounds, clamped to extremes [0,1]')
+    val = ifelse(val>1,1,0)
   }
 
   return(

@@ -5,6 +5,8 @@
 \title{Annual Basal Area Mortality}
 \source{
 Elfving, Björn. 2014-03-17. PM. Modellering av naturlig avgång i Heureka. (Swedish). URL:\url{https://www.heurekaslu.se/w/images/f/f4/HeurekaMortality-PM140317.pdf}
+
+Bengtsson, G. 1981-02-26. Stencil. Beräkning av den naturliga avgången ur virkesförrådet i Hugin-systemet. 8 sid. Umeå: Sveriges lantbruksuniversitet, inst. f. skogstaxering.
 }
 \usage{
 Bengtson_HUGIN_annual_BA_mortality_percent(
