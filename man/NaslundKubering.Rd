@@ -8,9 +8,10 @@
 \alias{Naslund_1947_form_factor_southern_Sweden_Spruce}
 \alias{Naslund_1947_volume_southern_Sweden_Birch}
 \alias{Naslund_1947_form_factor_southern_Sweden_Birch}
-\alias{Naslund_1947_volume_Sweden_Spruce}
+\alias{Naslund_1947_volume_Sweden_Pine}
 \alias{Naslund_1947_form_factor_Sweden_Pine}
 \alias{Naslund_1947_form_factor_Sweden_Spruce}
+\alias{Naslund_1947_volume_Sweden_Spruce}
 \alias{Naslund_1947_form_factor_Sweden_Birch}
 \alias{Naslund_1947_volume_Sweden_Birch}
 \alias{Naslund_1940_volume_northern_Sweden_Pine}
@@ -76,9 +77,10 @@ Naslund_1947_form_factor_southern_Sweden_Birch(
   over_bark = TRUE
 )
 
-Naslund_1947_volume_Sweden_Spruce(
+Naslund_1947_volume_Sweden_Pine(
   height,
   DBH,
+  double_bark_mm = NULL,
   crownBaseheight = NULL,
   over_bark = TRUE
 )

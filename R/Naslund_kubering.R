@@ -176,7 +176,7 @@ Naslund_1947_form_factor_southern_Sweden_Birch <- function(height,DBH,double_bar
 
 #' @rdname NaslundKubering
 #' @export
-Naslund_1947_volume_Sweden_Spruce <- function(height,DBH,double_bark_mm=NULL,crownBaseheight=NULL, over_bark=TRUE){
+Naslund_1947_volume_Sweden_Pine <- function(height,DBH,double_bark_mm=NULL,crownBaseheight=NULL, over_bark=TRUE){
   if(DBH<5) stop('Diameter must be larger than 5 cm.')
 
   if(over_bark==TRUE){
