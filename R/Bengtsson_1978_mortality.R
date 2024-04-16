@@ -139,7 +139,7 @@ Bengtsson_1978_annual_volume_mortality_percent <- function(
 #'
 #' @return Annual Mortality in Percent of Basal Area.
 #' @export
-Bengtson_HUGIN_annual_BA_mortality_percent <- function(
+Elfving_HUGIN_annual_BA_mortality_percent <- function(
   northern_Sweden=TRUE,
   species='Pinus sylvestris',
   DAge=20){
@@ -190,3 +190,137 @@ Bengtson_HUGIN_annual_BA_mortality_percent <- function(
   )
 
 }
+
+
+
+#' Bengtsson Mortality as implemented in HUGIN 1980-06-27
+#'
+#' @source Bengtsson G. Handwritten PM to Anders Lundström 1980-06-27: Functions
+#' for calculating natural mortality in established forests in the first version
+#' of the HUGIN-system. 5 pages.
+#'
+#' @source Bengtsson, G. 1981-02-26. Stencil. Beräkning av den naturliga
+#' avgången ur virkesförrådet i Hugin-systemet. 8 sid. Umeå: Sveriges
+#' lantbruksuniversitet, inst. f. skogstaxering.
+#'
+#' @details Some coefficients preliminary: handwritten note may contain
+#' alternatives. Functions for northern Sweden (region 1-3) based only on
+#' material from Västernorrland and Jämtland county.
+#'
+#' @param species One of 'Pinus sylvestris','Picea abies','Betula pendula','Betula pubescens', or other deciduous tree.
+#' @param BA Basal area m^2/ha (from 0 cm diameter at breast height).
+#' @param stems Stems per hectare (>=5 cm diameter at breast height).
+#' @param region numeric 1:5. Regional division from Swedish NFI 1973-77. Roughly 1-3 > 60N > 4-5
+#' @param age age at breast height.
+#' @param increment Number of years to increment. Default is 1.
+#'
+#' @return A list of lists. Mortality from crowding and other reasons. In
+#' respective lists:
+#' - Mortality in percent of BA at start of period: BA_percent
+#' - Mortality in m^2/ha: BA_mortality
+#' - QMD (cm) of losses: QMD_mortality.
+#' - Number of stems lost based on QMD of losses and total BA: stems_mortality.
+#' @export
+
+Bengtsson_1981_mortality_BA = function(species,BA,stems,region,age,increment=1){
+  if(species=='Pinus sylvestris'){
+    if(region<4){
+      stems=ifelse(stems>2700,2700,stems)
+      crowding=
+        0.3143E-01+
+        -0.6877E-02*BA+
+        +0.2056E-03*BA^2+
+        +0.2684E-04*stems+
+        -0.5092E-08*stems^2
+      other=0.35
+    } else {
+      stems=ifelse(stems>4000,4000,stems)
+      crowding=
+        -0.6766E-01+
+        -0.1283E-02*BA+
+        +0.7748E-04*BA^2+
+        +0.1441E-03*stems+
+        -0.1839E-07*stems^2
+      other=0.38
+
+    }
+  } else if(species=='Picea abies'){
+    if(region<4){
+      crowding=
+        -0.2748E-02+
+        +0.4493E-03*BA+
+        +0.2515E-04*BA^2
+
+      other=
+        -0.3150E-03+
+        +0.3337E-01*ifelse(((age%/%10)+1)<17,(age%/%10)+1,17)
+    } else {
+      stems=ifelse(stems>2800,2800,stems)
+      crowding=
+        +0.1235E-01+
+        -0.2749E-02*BA+
+        +0.8214E-04*BA^2+
+        +0.2457E-04*stems+
+        -0.4498E-08*stems^2
+      other=0.36
+    }
+
+  } else if(region<4){
+    if (species%in%c('Betula pubescens','Betula pendula')){
+      crowding =
+        -0.2513E-01+
+        +0.5489E-02*BA
+      other=0.78
+    } else if(forester::tree_type(species)=="Deciduous"){
+      crowding =
+        -0.7277E-02+
+        -0.2456E-02*BA+
+        +0.1923E-03*BA^2
+      other=0.50
+
+    } else {
+      stop("Unknown species or region.")
+    }
+  } else {
+    if (forester::tree_type(species)=="Deciduous"){
+      crowding = 0.04
+      other=0.46
+    } else {
+      stop("Unknown species or region.")
+    }
+
+  }
+
+  crowding = ifelse(crowding<0,0,crowding)
+  other = ifelse(other<0,0,other)
+
+  QMD = sqrt(BA/((pi/40E3)*stems))
+  crowdingpercent = (crowding*increment)/100
+  otherpercent = (other*increment)/100
+  crowdingtotal = crowdingpercent*BA
+  othertotal = otherpercent*BA
+  QMDcrowding = 0.9*QMD
+  QMDother = 1*QMD
+  crowdingstems = crowdingtotal/((pi/4)*(QMDcrowding/100)^2)
+  otherstems = crowdingstems/((pi/4)*(QMDother/100)^2)
+
+
+  return(list(
+    'Crowding'=
+      list(
+        'BA_percent'=crowdingpercent*100,
+        'BA_mortality'=crowdingtotal,
+        'QMD_mortality'=QMDcrowding,
+        'stems_mortality'=crowdingstems),
+    'Other'=
+      list(
+        'BA_percent'=otherpercent*100,
+        'BA_mortality'=othertotal,
+        'QMD_mortality'=QMDother,
+        'stems_mortality'=otherstems
+      )
+  )
+  )
+}
+
+
