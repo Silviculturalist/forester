@@ -1,0 +1,275 @@
+---
+title: "Interim Norway Spruce Yield Tables for Bavaria"
+author: "Carl Vigren"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Vorläufige Fichten-Ertragstafel für Bayern
+
+## von E. Assmann und F. Franz
+
+In this vignette solutions for the double-logarithmic parabolic
+functions used by F. Franz and E. Assmann for their interim yield tables
+for Norway Spruce in Bavaria are presented.
+
+Original source:
+
+Assmann, E. & Franz, F. 1965. Vorläufige Fichten-Ertragstafel für
+Bayern. Forstwissenschaftliches Centralblatt 84(1/2):13-43. Available
+online (2022-04-06):
+\url{https://www.waldwachstum.wzw.tum.de/fileadmin/publications/Assmann_1965_Vorlaeufige_Fichten-Ertragstafel.pdf}
+
+Definitions: $A$ : age at breast height (1.3 m)
+
+$h_0$ : dominant height , Bestandesoberhöhe.
+
+$HO$ : Site index at age 100, Oberhöhenbonität im Bezugsalter 100.
+
+$h_m$ : \~Lorey's mean height, Bestandesmittelhöhe (mittlere höhe des
+bestandes-grundflächenmittelstammes)
+
+$G_{max}$ : Natural Basal Area, Natürliche Grundfläche
+
+$n.B.G.$ : Natural stocking level, Natürliche bestockungsgrad.
+
+$n.B.G._{opt}$ : Stocking level of maximum volume growth (Quotient of
+n.B.G.), bestockungsgrad der optimale volumenzuwächse (quotient von
+n.B.G.).
+
+$d_m$: Quadratic Mean Diameter, Durchmesser.
+
+$z_v$: Volume increment at optimal stocking level, volumenzuwachs bei
+optimaler grundflächenh.
+
+### Equation 1.
+
+Development of dominant height $h_0$ over age:
+
+$$
+log_{10}h_0 = a_0 + a_1\cdot log_{10}A + a_2\cdot log_{10}^2A\\
+\quad \\
+a_1 = a_{10} + a_{11} \cdot e^{lnHO} + a_{12} \cdot e^{ln^2HO}\\
+\quad \\
+a_2 = a_{20} + a_{21} \cdot e^{lnHO} + a_{22} \cdot e^{ln^2HO}\\
+\quad \\
+\Downarrow \\
+\quad \\
+a_0 = log_{10}HO - a_1\cdot log_{10}100 - a_2\cdot log_{10}^2 100\\
+\quad \\
+h_0 = 10^{a_0+a_1\cdot log_{10}A + a_2\cdot log_{10}^2A}
+$$
+
+```{r}
+ggplot()+
+  scale_x_continuous(limits=c(20,120),breaks=c(seq(20,120,10)))+
+  xlab('Age')+
+  ylab('Dominant height, m')+
+  geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(16,100,x),n=600)+
+  geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(20,100,x),n=600)+
+  geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(24,100,x),n=600)+
+  geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(28,100,x),n=600)+
+  geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(32,100,x),n=600)+
+  geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(36,100,x),n=600)+
+  geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(40,100,x),n=600)+
+  theme_classic()
+```
+
+### Equation 2.
+
+Difference $h_0-h_m$ over age:
+
+$$
+ln(h_0-h_m) = b_0+b_1\cdot lnA+b_2\cdot ln^2A\\
+\quad \\
+(h_0-h_m)_{EXTREMUM} = b_{00}+b_{01}\cdot HO\\
+\quad \\
+A_{EXTREMUM} = b_{10} + b_{11}\cdot HO\\
+\quad \\
+(h_0-h_m)_{A=20} = b_{20}+b_{21}*HO\\
+\quad \\
+\Downarrow \\
+\quad \\
+b_2 = \frac{(ln(h_0-h_m)_{EXTR.}-ln(h_0-h_m)_{A=20})}{-2\cdot lnA_{EXTR.} \cdot (ln20-lnA_{EXTR.}) + ln^220-ln^2A_{EXTR.}}\\
+\quad \\
+b1 = -2b_2\cdot lnA_{EXTR.}\\
+\quad \\
+b_0 = ln(h_0-h_m)_{EXTR.} + 2\cdot b_2\cdot lnA_{EXTR.}\cdot ln20 - b_2\cdot ln^220\\
+\quad \\
+ln(h_0-h_m) = b_0+b_1\cdot lnA+ b_2\cdot ln^2A
+$$
+
+```{r}
+ggplot()+
+xlim(c(20,120))+
+ylab(latex2exp::TeX("$h_0 - h_m$"))+
+xlab('Age')+
+geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(dominant_height = 40,age = 100,age2 = x)- Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 1))+
+geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(dominant_height = 40,age = 100,age2 = x)- Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 2),linetype=2)+
+geom_function(fun=\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(dominant_height = 40,age = 100,age2 = x)- Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 3),linetype=3)+
+  theme_classic()
+```
+
+### Equation 3.
+
+$G_{max}$ over age:
+
+$$
+lnG_{max} = c_0 + c_1\cdot lnA + c_2\cdot ln^2A\\
+\quad \\
+{lnG_{max}}_{EXTR.} = c_{00}+c_{01}\cdot lnHO\\
+\quad \\
+lnA_{EXTR.} = c_{10}+c_{11}\cdot lnHO \\
+\quad \\
+\frac{1}{c_2} = c_{20}+c_{21}\cdot lnHO\\
+\quad \\
+\Downarrow \\
+\quad \\
+c_1 = -2\cdot c_2 \cdot lnA_{EXTR.}\\
+\quad \\
+c_0 = {lnG_{max}}_{EXTR.} - c_1\cdot lnA_{EXTR.} - c_2\cdot ln^2A_{EXTR.}\\
+\quad \\
+lnG_{max} = c_0 + c_1\cdot lnA + c_2\cdot ln^2A
+$$
+
+```{r}
+ggplot()+
+  xlim(c(20,120))+
+  xlab('Age')+
+  ylab(latex2exp::TeX('$G_{max}/ha$'))+
+  geom_function(fun=\(x) Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce(40,x,1))+
+  geom_function(fun=\(x) Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce(40,x,2))+
+  geom_function(fun=\(x) Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce(40,x,3))+
+  geom_function(fun=\(x) Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce(30,x,1),linetype=2)+
+  geom_function(fun=\(x) Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce(30,x,2),linetype=2)+
+  geom_function(fun=\(x) Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce(30,x,3),linetype=2)+
+  theme_classic()
+```
+
+### Equation 4.
+
+$n.B.G._{opt}$ over age:
+
+$$
+ln(1-n.B.G.) = d_0+d_1\cdot lnA + d_2\cdot ln^2A\\
+\quad \\
+ln(1-n.B.G.)_{EXTR.} = d_{00} + d_{01}\cdot lnHO\\
+\quad \\
+lnA_{EXTR.} = d_{10}+d_{11}\cdot lnHO\\
+\quad \\
+d_2 = d_{20}+d_{21}\cdot lnHO\\
+\quad \\
+\Downarrow \\
+\quad \\
+d_1 = -2\cdot d_2\cdot lnA_{EXTR.}\\
+\quad \\
+d_0 = (d_{00} + d_{01}\cdot lnHO)+d_2\cdot lnA_{EXTR.}\\
+\quad \\
+n.B.G._{opt} = 1-e^{d_0 + d_1\cdot lnA + d_2\cdot ln^2A}
+$$
+
+```{r}
+ggplot()+
+scale_x_continuous(limits=c(20,120))+
+  ylim(c(0.7,1))+
+  xlab('Age')+
+  ylab(latex2exp::TeX("$n.B.G._{opt}"))+
+  geom_function(fun=\(x) Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 3),linetype=3)+
+  geom_function(fun=\(x) Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 30,age = x,YieldLevel = 3),linetype=3)+
+  geom_function(fun=\(x) Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 2),linetype=2)+
+  geom_function(fun=\(x) Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 30,age = x,YieldLevel = 2),linetype=2)+
+  geom_function(fun=\(x) Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 1),linetype=1)+
+  geom_function(fun=\(x) Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 30,age = x,YieldLevel = 1),linetype=1)+
+  theme_classic()
+```
+
+### Equation 5.
+
+$d_m$ over age:
+
+$$
+d_m = e_0+e_1\cdot A\\
+\quad \\
+{d_m}_{A=100,n.B.G.=1.0} = e_{00} + e_{01}\cdot lnHO\\
+\quad \\
+ln{d_m}_{A=100} = e_{10} + e_{11}\cdot ln(1.1-n.B.G.)\\
+\quad \\
+lnA_{d_m=0} = e_{20} + e_{21}\cdot lnHO\\
+\quad \\
+\Downarrow \\
+\quad \\
+e_{10} = ln(e_{00}+e_{01}\cdot lnHO)-e_{11}\cdot ln0.1\\
+\quad \\
+d_{100} = e^{e_{10}+e_{11}\cdot ln(1.1-n.B.G.)}\\
+\quad \\
+A_{d_m=0} = e^{e_{20}+e_{21}\cdot lnHO}\\
+\quad \\
+slope = \frac{d_{100}-0}{100-A_{d_m=0}}\\
+\quad \\
+intercept = d_{100}-slope*100\\
+\quad \\
+d_m = intercept+slope*A
+$$
+
+```{r}
+ggplot()+
+  xlab('Age')+
+  ylab(latex2exp::TeX("$d_m\t,cm$"))+
+xlim(c(0,120))+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.79)),linetype=2)+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.94)),linetype=3)+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.92)),linetype=2)+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.98)),linetype=3)+
+  theme_classic()
+```
+
+### Equation 6.
+
+$z_v$ over age:
+
+$$
+lnz_v=f_0+f_1\cdot lnA+f_2\cdot ln^2A\\
+\quad \\
+{lnz_v}_{EXTR.} = f_{00} + f_{01}\cdot lnHO\\
+\quad \\
+lnA_{EXTR.} = f_{10}+f_{11}\cdot lnHO\\
+\quad \\
+f_2=f_{20}+f_{21}\cdot lnHO\\
+\quad \\
+\Downarrow \\
+\quad \\
+f_1 = -2\cdot f_2\cdot lnA_{Extr.}\\
+\quad \\
+f_0 = (f_{00} + f_{01}\cdot lnHO)-f_1\cdot lnA_{EXTR.}-f_2\cdot lnA_{EXTR.}\cdot lnA_{EXTR.}\\
+\quad \\
+lnz_v=f_0+f_1\cdot lnA+f_2\cdot ln^2A
+$$
+
+```{r}
+ggplot()+
+  xlim(c(20,120))+
+  ylim(c(10,30))+
+  ylab('Current Annual Increment VfmS')+
+  xlab('Age')+
+  geom_function(fun=\(x) Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 1))+
+  geom_function(fun=\(x) Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 2))+
+  geom_function(fun=\(x) Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 3))+
+  theme_classic()
+
+```

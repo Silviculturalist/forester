@@ -7,13 +7,13 @@
 #' @param dominant_height Dominant height of the stand, m.
 #' @param age Total Age of the stand.
 #' @param age2 Desired total age of the stand.
-#' @param SIH100 Site Index at reference age 100 acccording to [forester::Assmann_Franz_1965_height_trajectory_Germany_Bavaria_Spruce]
+#' @param SIH100 Site Index at reference age 100 acccording to [forester::Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce]
 #' @param YieldLevel Integer 1-3. 1: 'Lower','Medium','Higher'
-#' @param nBG 0-1. Percent of 'natural basal area', e.g. [forester::Assmann_Franz_1965_maximumBasalArea_Germany_Bavaria_Spruce]
-#'
+#' @param nBG 0-1. Percent of 'natural basal area', e.g. [forester::Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce]
+#' @export
 #' @return Height of the stand in metres at the desired age.
 #' @name Assmann1965
-Assmann_Franz_1965_height_trajectory_Germany_Bavaria_Spruce <- function(
+Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce <- function(
   dominant_height,
   age,
   age2
@@ -57,22 +57,23 @@ Assmann_Franz_1965_height_trajectory_Germany_Bavaria_Spruce <- function(
 #' Height trajectory for Lorey's Mean Height from Assmann & Franz 1965.
 #' @rdname Assmann1965
 #' @return Lorey's Mean Height, m.
+#' @export
 #' @examples
 #' ggplot()+
 #' xlim(c(0,150))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_height_trajectory_Germany_Bavaria_Spruce(dominant_height = 40,age = 100,age2 = x)))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 1)))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 2)))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 3)))
+#' geom_function(fun=(\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(dominant_height = 40,age = 100,age2 = x)))+
+#' geom_function(fun=(\(x) Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 1)))+
+#' geom_function(fun=(\(x) Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 2)))+
+#' geom_function(fun=(\(x) Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 3)))
 #'
 
-Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce <- function(
+Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce <- function(
   SIH100,
   age,
   YieldLevel = 3
 ){
 
-  H0 = Assmann_Franz_1965_height_trajectory_Germany_Bavaria_Spruce(dominant_height = SIH100,age = 100,age2 = age)
+  H0 = Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(dominant_height = SIH100,age = 100,age2 = age)
 
   # Now calculate the difference between the dominant height and the HL.
   paramsB<- switch(
@@ -107,7 +108,7 @@ Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce <- function(
 #' @return m^2 / ha
 #' @rdname Assmann1965
 #' @export
-Assmann_Franz_1965_maximumBasalArea_Germany_Bavaria_Spruce <- function(
+Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce <- function(
     SIH100,
     age,
     YieldLevel){
@@ -117,9 +118,9 @@ Assmann_Franz_1965_maximumBasalArea_Germany_Bavaria_Spruce <- function(
     list('c00'=3.03803, 'c01'=0.03128, 'c10'=5.04091,	'c11'=-0.07097,	'c20'=8.39441, 'c21'=-3.1666),
     list('c00'=2.96995, 'c01'=0.03532, 'c10'=5.14594,	'c11'=-0.10871,	'c20'=7.67280, 'c21'=-2.93375)
     )
-  c2 = 1/(paramsC['c20']+paramsC['c21']*log(SIH100))
-  Gmax = exp(paramsC['c00']+paramsC['c01']*SIH100)
-  AgeMax = exp(paramsC['c10']+paramsC['c11']*log(SIH100))
+  c2 = 1/(paramsC[['c20']]+paramsC[['c21']]*log(SIH100))
+  Gmax = exp(paramsC[['c00']]+paramsC[['c01']]*SIH100)
+  AgeMax = exp(paramsC[['c10']]+paramsC[['c11']]*log(SIH100))
   c1 = -2*c2*log(AgeMax)
   c0 = log(Gmax)-c1*log(AgeMax)-c2*(log(AgeMax))^2
 
@@ -132,9 +133,21 @@ Assmann_Franz_1965_maximumBasalArea_Germany_Bavaria_Spruce <- function(
 
 #' Optimal Basal Area to maximize stem growth for Spruce stands in Bavaria
 #' @rdname Assmann1965
-#' @return m^2 / ha
+#' @return Quotient of Optimal Basal Area
 #' @export
-Assmann_Franz_1965_optimal_BA_Germany_Bavaria_Spruce <- function(
+#' @examples
+#' ggplot()+
+#' scale_x_continuous(limits=c(0,120))+
+#'   ylim(c(0.7,1))+
+#'   coord_fixed(ratio=500)+
+#'   geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 3)),linetype=3)+
+#'   geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 30,age = x,YieldLevel = 3)),linetype=3)+
+#'   geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 2)),linetype=2)+
+#'   geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 30,age = x,YieldLevel = 2)),linetype=2)+
+#'   geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 1)),linetype=1)+
+#'   geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 30,age = x,YieldLevel = 1)),linetype=1)
+#'
+Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce <- function(
   SIH100,
   age,
   YieldLevel
@@ -146,12 +159,12 @@ Assmann_Franz_1965_optimal_BA_Germany_Bavaria_Spruce <- function(
     list('d00'=-12.81379, 'd01'=3.07166, 'd10'=4.07376,	'd11'=-0.10434,	'd20'=-7.54358, 'd21'=1.72779)
   )
 
-  y1 = paramsD[['d00']]+paramsD[['d01']]*log(SIH100)
-  x1 = exp(paramsD[['d10']] + paramsD[['d11']]*log(SIH100))
+  Ymax = paramsD[['d00']]+paramsD[['d01']]*log(SIH100)
+  Amax = exp(paramsD[['d10']] + paramsD[['d11']]*log(SIH100))
   d2 = paramsD[['d20']]+paramsD[['d21']]*log(SIH100)
 
-  d1 = -d2*(1+2*log(x1))
-  d0 = log(1-y1)+d2*log(x1)
+  d1 = -2*d2*log(Amax)
+  d0 = Ymax + d2*log(Amax)*log(Amax)
 
   return(
     1-exp(d0 + d1*log(age)+d2*log(age)*log(age))
@@ -165,13 +178,13 @@ Assmann_Franz_1965_optimal_BA_Germany_Bavaria_Spruce <- function(
 #' @examples
 #' ggplot()+
 #' xlim(c(0,120))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2)))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.79)))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.94)))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2)))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.92)))+
-#' geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.98)))
-Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce <- function(
+#' geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2)))+
+#' geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.79)))+
+#' geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.94)))+
+#' geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2)))+
+#' geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.92)))+
+#' geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.98)))
+Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce <- function(
  age,
  SIH100,
  nBG=1,
@@ -186,14 +199,14 @@ Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce <- function(
    list('e00'=-70.66391, 'e01'=29.86379, 'e11'=0.11941,	'e20'=17.06969, 'e21'=-4.72403),
    list('e00'=-72.29268, 'e01'=30.44087, 'e11'=0.11810,	'e20'=20.43591, 'e21'=-5.86625)
  )
-e10 = log(paramsE[['e00']]+paramsE[['e01']]*log(SIH100))-paramsE[['e11']]*log(0.1)
-    d100 = exp(e10+paramsE[['e11']]*log(1.1-nBG))
-    A0 = exp(paramsE[['e20']]+paramsE[['e21']]*log(SIH100))
-    slope = (d100-0)/(100-A0)
-    intercept = d100-slope*100
-    return(
-        intercept+slope*age
-    )
+ e10 = log(paramsE[['e00']]+paramsE[['e01']]*log(SIH100))-paramsE[['e11']]*log(0.1)
+ d100 = exp(e10+paramsE[['e11']]*log(1.1-nBG))
+ A0 = exp(paramsE[['e20']]+paramsE[['e21']]*log(SIH100))
+ slope = (d100-0)/(100-A0)
+ intercept = d100-slope*100
+ return(
+      intercept+slope*age
+  )
 }
 
 #' Current Annual Increment
@@ -205,18 +218,18 @@ e10 = log(paramsE[['e00']]+paramsE[['e01']]*log(SIH100))-paramsE[['e11']]*log(0.
 #'ggplot()+
 #'  xlim(c(0,120))+
 #'  ylim(c(10,30))+
-#'  geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 1)))+
-#'  geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 2)))+
-#'  geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 3)))
+#'  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 1)))+
+#'  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 2)))+
+#'  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 3)))
 #'
 #'ggplot()+
 #'  xlim(c(0,120))+
 #'  ylim(c(6,18))+
-#'  geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 1)))+
-#'  geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 2)))+
-#'  geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 3)))
+#'  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 1)))+
+#'  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 2)))+
+#'  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 3)))
 #'
-Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce <- function(
+Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce <- function(
   age,
   SIH100,
   YieldLevel=1

@@ -3,12 +3,12 @@
 %   R/Assmann_Franz_1965_height_trajectory_Germany_Bayern_Spruce.R
 \name{Assmann1965}
 \alias{Assmann1965}
-\alias{Assmann_Franz_1965_height_trajectory_Germany_Bavaria_Spruce}
-\alias{Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce}
-\alias{Assmann_Franz_1965_maximumBasalArea_Germany_Bavaria_Spruce}
-\alias{Assmann_Franz_1965_optimal_BA_Germany_Bavaria_Spruce}
-\alias{Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce}
-\alias{Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce}
+\alias{Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce}
+\alias{Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce}
+\alias{Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce}
+\alias{Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce}
+\alias{Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce}
+\alias{Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce}
 \title{Dominant height trajectory for Norway Spruce in Bavaria, Germany.}
 \source{
 Assmann, E. & Franz, F. 1965. Vorläufige Fichten-Ertragstafel für
@@ -16,34 +16,34 @@ Bayern. Forstwissenschaftliches Centralblatt 84(1/2):13-43. Available online (20
 \url{https://www.waldwachstum.wzw.tum.de/fileadmin/publications/Assmann_1965_Vorlaeufige_Fichten-Ertragstafel.pdf}
 }
 \usage{
-Assmann_Franz_1965_height_trajectory_Germany_Bavaria_Spruce(
+Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(
   dominant_height,
   age,
   age2
 )
 
-Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(
+Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(
   SIH100,
   age,
   YieldLevel = 3
 )
 
-Assmann_Franz_1965_maximumBasalArea_Germany_Bavaria_Spruce(
+Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce(
   SIH100,
   age,
   YieldLevel
 )
 
-Assmann_Franz_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100, age, YieldLevel)
+Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100, age, YieldLevel)
 
-Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(
+Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(
   age,
   SIH100,
   nBG = 1,
   YieldLevel = 1
 )
 
-Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(
+Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(
   age,
   SIH100,
   YieldLevel = 1
@@ -56,11 +56,11 @@ Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(
 
 \item{age2}{Desired total age of the stand.}
 
-\item{SIH100}{Site Index at reference age 100 acccording to [forester::Assmann_Franz_1965_height_trajectory_Germany_Bavaria_Spruce]}
+\item{SIH100}{Site Index at reference age 100 acccording to [forester::Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce]}
 
 \item{YieldLevel}{Integer 1-3. 1: 'Lower','Medium','Higher'}
 
-\item{nBG}{0-1. Percent of 'natural basal area', e.g. [forester::Assmann_Franz_1965_maximumBasalArea_Germany_Bavaria_Spruce]}
+\item{nBG}{0-1. Percent of 'natural basal area', e.g. [forester::Franz_Assmann_1965_maximumBasalArea_Germany_Bavaria_Spruce]}
 }
 \value{
 Height of the stand in metres at the desired age.
@@ -69,7 +69,7 @@ Lorey's Mean Height, m.
 
 m^2 / ha
 
-m^2 / ha
+Quotient of Optimal Basal Area
 
 Diameter at breast height, cm.
 
@@ -91,32 +91,43 @@ Current Annual Increment
 \examples{
 ggplot()+
 xlim(c(0,150))+
-geom_function(fun=(\(x) Assmann_Franz_1965_height_trajectory_Germany_Bavaria_Spruce(dominant_height = 40,age = 100,age2 = x)))+
-geom_function(fun=(\(x) Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 1)))+
-geom_function(fun=(\(x) Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 2)))+
-geom_function(fun=(\(x) Assmann_Franz_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 3)))
+geom_function(fun=(\(x) Franz_Assmann_1965_height_trajectory_Germany_Bavaria_Spruce(dominant_height = 40,age = 100,age2 = x)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 1)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 2)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_Lorey_height_trajectory_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 3)))
+
+ggplot()+
+scale_x_continuous(limits=c(0,120))+
+  ylim(c(0.7,1))+
+  coord_fixed(ratio=500)+
+  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 3)),linetype=3)+
+  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 30,age = x,YieldLevel = 3)),linetype=3)+
+  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 2)),linetype=2)+
+  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 30,age = x,YieldLevel = 2)),linetype=2)+
+  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 40,age = x,YieldLevel = 1)),linetype=1)+
+  geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_optimal_BA_Germany_Bavaria_Spruce(SIH100 = 30,age = x,YieldLevel = 1)),linetype=1)
 
 ggplot()+
 xlim(c(0,120))+
-geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2)))+
-geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.79)))+
-geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.94)))+
-geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2)))+
-geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.92)))+
-geom_function(fun=(\(x) Assmann_Franz_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.98)))
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.79)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,40,YieldLevel = 2,nBG = 0.94)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.92)))+
+geom_function(fun=(\(x) Franz_Assmann_1965_diameter_age_Germany_Bavaria_Spruce(x,30,YieldLevel = 2,nBG = 0.98)))
 
 ggplot()+
  xlim(c(0,120))+
  ylim(c(10,30))+
- geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 1)))+
- geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 2)))+
- geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 3)))
+ geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 1)))+
+ geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 2)))+
+ geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,40,YieldLevel = 3)))
 
 ggplot()+
  xlim(c(0,120))+
  ylim(c(6,18))+
- geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 1)))+
- geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 2)))+
- geom_function(fun=\(x) ifelse(x<20,NA,Assmann_Franz_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 3)))
+ geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 1)))+
+ geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 2)))+
+ geom_function(fun=\(x) ifelse(x<20,NA,Franz_Assmann_1965_CAI_optimal_BA_Germany_Bavaria_Spruce(x,30,YieldLevel = 3)))
 
 }
